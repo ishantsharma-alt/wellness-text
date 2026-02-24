@@ -70,7 +70,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <span class="trust-icon">🏆</span><span>Award-Winning Clinic</span>
         </div>
         <div class="trust-item" data-aos="fade-up" data-aos-delay="100">
-          <span class="trust-icon">🔬</span><span>Innovative Technologies</span>
+          <span class="trust-icon">🔬</span><span>Innovative-Technologies</span>
         </div>
         <div class="trust-item" data-aos="fade-up" data-aos-delay="200">
           <span class="trust-icon">👩‍⚕️</span><span>Certified Professionals</span>
