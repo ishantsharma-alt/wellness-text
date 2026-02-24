@@ -288,10 +288,10 @@ function injectInnerBanner(title, subtitle, gradient = "135deg, #B00E09 0%, #CAA
  * Usage: injectBreadcrumb([{label: 'Home', url: '/'}, {label: 'About', url: '/about-us.html'}])
  */
 function injectBreadcrumb(items) {
-  // Insert breadcrumb right after the inner banner
-  const bannerContainer = document.getElementById('dynamic-banner');
-  if (bannerContainer && bannerContainer.nextElementSibling) {
-    bannerContainer.nextElementSibling.insertAdjacentHTML('beforebegin', createBreadcrumb(items));
+  // Insert breadcrumb after banner-content, at the bottom of hero section
+  const bannerContent = document.querySelector('.banner-content');
+  if (bannerContent) {
+    bannerContent.insertAdjacentHTML('afterend', createBreadcrumb(items));
   }
 }
 
