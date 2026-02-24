@@ -1,7 +1,6 @@
 <?php 
 $page_title = 'Home'; 
 $page_subtitle = 'Premium Wellness & Aesthetic Treatments'; 
-$breadcrumb = []; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
