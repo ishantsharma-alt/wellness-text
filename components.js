@@ -25,7 +25,6 @@ const HEADER_TEMPLATE = `
 
     <div class="nav-menu" id="nav-menu">
       <ul class="nav-list">
-        <li><a href="/" class="nav-link">Home</a></li>
         <li><a href="/about-us.html" class="nav-link">About Us</a></li>
         <li><a href="/treatments.html" class="nav-link">Treatments</a></li>
         <li><a href="/gallery.html" class="nav-link">Gallery</a></li>
@@ -288,6 +287,10 @@ function injectInnerBanner(title, subtitle, gradient = "135deg, #B00E09 0%, #CAA
  * Usage: injectBreadcrumb([{label: 'Home', url: '/'}, {label: 'About', url: '/about-us.html'}])
  */
 function injectBreadcrumb(items) {
+  // Don't show breadcrumb on home page
+  const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.php';
+  if (isHomePage) return;
+  
   // Insert breadcrumb after banner-content, at the bottom of hero section
   const bannerContent = document.querySelector('.banner-content');
   if (bannerContent) {

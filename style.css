@@ -894,7 +894,7 @@ body:has(button:hover) .cursor-follower {
 /* ── HERO ────────────────────────────────────────────────────────────────── */
 .hero {
     position: relative;
-    background: linear-gradient(135deg, #130202 0%, #2a0a0a 45%, #1c1005 100%);
+    background: linear-gradient(135deg, #B00E09 0%, #CAAE5F 100%);
     overflow: hidden;
     padding-top: 82px;
 }
@@ -1734,7 +1734,7 @@ body:has(button:hover) .cursor-follower {
 
 /* ── STATS ───────────────────────────────────────────────────────────────── */
 .stats-section {
-    background: linear-gradient(135deg, #130202 0%, #2a0a0a 60%, #1c1005 100%);
+    background: linear-gradient(135deg, #B00E09 0%, #CAAE5F 100%);
 }
 .stats-section .section-header h2 {
     color: var(--white);

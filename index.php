@@ -308,10 +308,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <img src="img/advanced-treatement-3.jpg" alt="Laser treatment" loading="lazy" />
             <div class="gallery-overlay"><span>Carbon Laser</span></div>
           </div>
-          <div class="gallery-item g-wide">
-            <img src="img/advanced-treatement-4.webp" alt="Body treatment" loading="lazy" />
-            <div class="gallery-overlay"><span>Pico Laser</span></div>
-          </div>
+          
         
         </div>
         <div class="gallery-cta" data-aos="fade-up" data-aos-delay="300">
@@ -422,6 +419,30 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <footer class="testimonial-author">
                   <div class="author-avatar">G</div>
                   <div><strong>Gerryl Peñaflor</strong><span>Advanced Facial Client</span></div>
+                </footer>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="testimonial-card">
+                <div class="testimonial-quote">❝</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote><p>"The HIFU treatment results exceeded my expectations. My skin feels tighter and more lifted. The doctors are highly professional and take time to explain everything. I'm already recommending them to all my friends!"</p></blockquote>
+                <footer class="testimonial-author">
+                  <div class="author-avatar">M</div>
+                  <div><strong>Maria Santos</strong><span>HIFU Treatment Client</span></div>
+                </footer>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="testimonial-card">
+                <div class="testimonial-quote">❝</div>
+                <div class="testimonial-stars">★★★★★</div>
+                <blockquote><p>"The expertise and care at Geneva Wellness is unmatched. From the consultation to post-treatment follow-up, everything was seamless. I've seen visible improvements in my skin texture and tone. Highly recommended for anyone serious about their skin!"</p></blockquote>
+                <footer class="testimonial-author">
+                  <div class="author-avatar">R</div>
+                  <div><strong>Rachel Tan</strong><span>CO2 Laser Client</span></div>
                 </footer>
               </article>
             </div>
