@@ -90,7 +90,7 @@
           <!-- Call to Action -->
           <div class="article-cta" data-aos="fade-up">
             <p>Ready to experience the HIFU difference?</p>
-            <a href="../contact-us.html#contact-form" class="btn btn-primary">Book Your Consultation</a>
+            <a href="../contact-us.php#contact-form" class="btn btn-primary">Book Your Consultation</a>
           </div>
         </div>
 

@@ -113,7 +113,7 @@
           <!-- Call to Action -->
           <div class="article-cta" data-aos="fade-up">
             <p>Need personalized post-treatment advice?</p>
-            <a href="../contact-us.html#contact-form" class="btn btn-primary">Contact Our Specialists</a>
+            <a href="../contact-us.php#contact-form" class="btn btn-primary">Contact Our Specialists</a>
           </div>
         </div>
 

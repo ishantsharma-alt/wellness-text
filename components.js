@@ -25,16 +25,16 @@ const HEADER_TEMPLATE = `
 
     <div class="nav-menu" id="nav-menu">
       <ul class="nav-list">
-        <li><a href="/about-us.html" class="nav-link">About Us</a></li>
-        <li><a href="/treatments.html" class="nav-link">Treatments</a></li>
-        <li><a href="/gallery.html" class="nav-link">Gallery</a></li>
-        <li><a href="/testimonials.html" class="nav-link">Testimonials</a></li>
+        <li><a href="/about-us.php" class="nav-link">About Us</a></li>
+        <li><a href="/treatments.php" class="nav-link">Treatments</a></li>
+        <li><a href="/gallery.php" class="nav-link">Gallery</a></li>
+        <li><a href="/testimonials.php" class="nav-link">Testimonials</a></li>
         <li><a href="/blog.php" class="nav-link">Blog</a></li>
-        <li><a href="/contact-us.html" class="nav-link">Contact</a></li>
+        <li><a href="/contact-us.php" class="nav-link">Contact</a></li>
       </ul>
     </div>
 
-    <a href="/contact-us.html#contact-form" class="nav-cta">Book Consultation</a>
+    <a href="/contact-us.php#contact-form" class="nav-cta">Book Consultation</a>
   </nav>
 </header>
 `;
@@ -64,10 +64,10 @@ const FOOTER_TEMPLATE = `
       <div class="footer-column">
         <h4>Quick Links</h4>
         <ul class="footer-links">
-          <li><a href="/about-us.html">About Us</a></li>
-          <li><a href="/treatments.html">Treatments</a></li>
-          <li><a href="/gallery.html">Gallery</a></li>
-          <li><a href="/testimonials.html">Testimonials</a></li>
+          <li><a href="/about-us.php">About Us</a></li>
+          <li><a href="/treatments.php">Treatments</a></li>
+          <li><a href="/gallery.php">Gallery</a></li>
+          <li><a href="/testimonials.php">Testimonials</a></li>
         </ul>
       </div>
 
@@ -76,9 +76,9 @@ const FOOTER_TEMPLATE = `
         <h4>Resources</h4>
         <ul class="footer-links">
           <li><a href="/blog.php">Blog</a></li>
-          <li><a href="/contact-us.html">Contact</a></li>
-          <li><a href="/404.html">Privacy Policy</a></li>
-          <li><a href="/404.html">Terms of Service</a></li>
+          <li><a href="/contact-us.php">Contact</a></li>
+          <li><a href="/404.php">Privacy Policy</a></li>
+          <li><a href="/404.php">Terms of Service</a></li>
         </ul>
       </div>
 
@@ -107,9 +107,9 @@ const FOOTER_TEMPLATE = `
     <div class="footer-bottom">
       <p>&copy; 2024 Geneva Wellness Institute. All rights reserved.</p>
       <div class="footer-bottom-links">
-        <a href="/404.html">Privacy Policy</a>
-        <a href="/404.html">Terms of Service</a>
-        <a href="/404.html">Cookie Settings</a>
+        <a href="/404.php">Privacy Policy</a>
+        <a href="/404.php">Terms of Service</a>
+        <a href="/404.php">Cookie Settings</a>
       </div>
     </div>
   </div>
@@ -194,7 +194,7 @@ const SIDEBAR_TEMPLATE = `
     <div class="cta-box">
       <h4>Ready to Transform?</h4>
       <p>Book your personalized consultation today.</p>
-      <a href="/contact-us.html#contact-form" class="btn btn-primary btn-sm btn-block">Book Now</a>
+      <a href="/contact-us.php#contact-form" class="btn btn-primary btn-sm btn-block">Book Now</a>
     </div>
   </div>
 </aside>

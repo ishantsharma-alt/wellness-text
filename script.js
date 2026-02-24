@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
 /* ── 1.5 HOMEPAGE POPUP ────────────────────────────────────────────────── */
 function initHomepagePopup() {
   // Only show popup on homepage
-  if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  if (window.location.pathname !== '/' && window.location.pathname !== '/index.php') return;
   
   // Check if already shown in this session
   if (sessionStorage.getItem('popupShown')) return;

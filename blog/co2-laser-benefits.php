@@ -92,7 +92,7 @@
           <!-- Call to Action -->
           <div class="article-cta" data-aos="fade-up">
             <p>Ready to say goodbye to acne scars?</p>
-            <a href="../contact-us.html#contact-form" class="btn btn-primary">Schedule Your Consultation</a>
+            <a href="../contact-us.php#contact-form" class="btn btn-primary">Schedule Your Consultation</a>
           </div>
         </div>
 
