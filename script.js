@@ -11,6 +11,92 @@ window.addEventListener('load', () => {
   }
 });
 
+/* ── 1.5 HOMEPAGE POPUP ────────────────────────────────────────────────── */
+function initHomepagePopup() {
+  // Only show popup on homepage
+  if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  
+  // Check if already shown in this session
+  if (sessionStorage.getItem('popupShown')) return;
+  
+  // Create popup markup
+  const popupHTML = `
+    <div class="popup-overlay" id="popup-overlay">
+      <div class="popup-content" role="dialog" aria-modal="true">
+        <button class="popup-close" id="popup-close" aria-label="Close popup">×</button>
+        
+        <div class="popup-header">
+          <h3>Exclusive Offer</h3>
+          <p>Get 20% off your first treatment</p>
+        </div>
+        
+        <form class="popup-form" id="popup-form">
+          <div class="popup-form-group">
+            <input type="text" placeholder="Your Name" name="popup-name" required />
+          </div>
+          <div class="popup-form-group">
+            <input type="email" placeholder="your@email.com" name="popup-email" required />
+          </div>
+          <div class="popup-form-group">
+            <input type="tel" placeholder="+63 917 XXX XXXX" name="popup-phone" required />
+          </div>
+          <button type="submit" class="popup-btn">Claim My Offer</button>
+          <p class="popup-privacy">We respect your privacy. No spam, just wellness.</p>
+        </form>
+      </div>
+    </div>
+  `;
+  
+  // Add popup to page
+  document.body.insertAdjacentHTML('beforeend', popupHTML);
+  
+  const overlay = document.getElementById('popup-overlay');
+  const closeBtn = document.getElementById('popup-close');
+  const form = document.getElementById('popup-form');
+  
+  // Close popup handlers
+  const closePopup = () => {
+    overlay.classList.add('closing');
+    setTimeout(() => {
+      overlay.remove();
+      sessionStorage.setItem('popupShown', 'true');
+    }, 400);
+  };
+  
+  closeBtn.addEventListener('click', closePopup);
+  
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closePopup();
+  });
+  
+  // Form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = form.querySelector('[name="popup-name"]').value;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    submitBtn.textContent = 'Processing...';
+    submitBtn.disabled = true;
+    
+    // Simulate sending (replace with actual API call if needed)
+    setTimeout(() => {
+      submitBtn.textContent = '✓ Offer Applied!';
+      setTimeout(() => {
+        closePopup();
+        sessionStorage.setItem('popupShown', 'true');
+      }, 1000);
+    }, 800);
+  });
+  
+  // Show popup after 3 seconds
+  setTimeout(() => {
+    overlay.classList.add('visible');
+  }, 3000);
+}
+
+// Initialize popup on page load
+window.addEventListener('load', initHomepagePopup);
+
 
 /* ── 2. AOS INIT ────────────────────────────────────────────────────────── */
 if (typeof AOS !== 'undefined') {
@@ -59,11 +145,13 @@ if (cursor && cursorFollower && window.matchMedia('(hover: hover)').matches) {
 /* ── 5. STICKY HEADER ───────────────────────────────────────────────────── */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 70);
+  const isScrolled = window.scrollY > 70;
+  header.classList.toggle('scrolled', isScrolled);
+  header.classList.toggle('sticky', isScrolled);
 }, { passive: true });
 
 
-/* ── 6. HAMBURGER ───────────────────────────────────────────────────────── */
+/* ── 6. HAMBURGER & MOBILE MENU ──────────────────────────────────────────── */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 
