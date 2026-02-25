@@ -23,12 +23,12 @@ $breadcrumb = [
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Animations CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
   {
@@ -171,15 +171,7 @@ $breadcrumb = [
     </section>
 
     <!-- ── CTA SECTION ────────────────────────────────– -->
-    <section class="section cta-section" style="background: linear-gradient(135deg, #B00E09 0%, #CAAE5F 100%);">
-      <div class="container cta-content">
-        <div>
-          <h2 style="color: white; margin-bottom: 1rem;">Ready to Transform Your Wellness Journey?</h2>
-          <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin-bottom: 0;">Schedule a free consultation with our experts today. Let's discuss your goals and create a personalized treatment plan.</p>
-        </div>
-        <a href="contact-us.php#contact-form" class="btn btn-white" data-aos="fade-up">Book Your Consultation</a>
-      </div>
-    </section>
+    <!-- Moved to footer.php to display on all pages -->
 
   </main>
 

@@ -1,3 +1,11 @@
+<?php
+$page_title = 'The Complete Guide to HIFU Facial Lifting';
+$page_subtitle = 'Expert insights on non-invasive facial treatments';
+$breadcrumb = [
+  ['label' => 'Blog', 'url' => '../blog.php'],
+  ['label' => 'Article', 'url' => null]
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +22,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="../style.css" />
@@ -27,14 +35,8 @@
   <!-- ── DYNAMIC HEADER ────────────────────────────────────────────── -->
   <div id="dynamic-header"></div>
 
-  <!-- ── BREADCRUMB ────────────────────────────────– -->
-  <nav class="breadcrumb container" aria-label="Breadcrumb">
-    <a href="../index.php">Home</a>
-    <span>/</span>
-    <a href="../blog.php">Blog</a>
-    <span>/</span>
-    <span aria-current="page">Article Title</span>
-  </nav>
+  <!-- ── HERO SECTION ────────────────────────────────– -->
+  <?php include '../hero-section.php'; ?>
 
   <main>
 

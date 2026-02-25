@@ -1,6 +1,32 @@
 <?php 
 $page_title = 'Get In Touch'; 
-$page_subtitle = 'We'\''re Here to Help'; 
+$page_subtitle = "We're Here to Help";
+
+// Handle form submission
+$form_submitted = false;
+$form_message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Validate form data
+  $name = sanitize_input($_POST['name'] ?? '');
+  $email = sanitize_input($_POST['email'] ?? '');
+  $phone = sanitize_input($_POST['phone'] ?? '');
+  $treatment = sanitize_input($_POST['treatment'] ?? '');
+  $message = sanitize_input($_POST['message'] ?? '');
+  $agree = isset($_POST['agree']) ? true : false;
+  
+  // Basic validation
+  if (!empty($name) && !empty($email) && !empty($phone) && $agree) {
+    // Form is valid - could process here
+    $form_submitted = true;
+    $form_message = 'Thank you! We will contact you shortly to confirm your consultation.';
+  }
+}
+
+// Helper function to sanitize input
+function sanitize_input($input) {
+  return htmlspecialchars(stripslashes(trim($input)), ENT_QUOTES, 'UTF-8');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +46,11 @@ $page_subtitle = 'We'\''re Here to Help';
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="enhancements.css" />
 </head>
 <body>
 
@@ -49,72 +76,111 @@ $page_subtitle = 'We'\''re Here to Help';
 
   <main>
 
-    <!-- ── CONTACT INFO ────────────────────────────────– -->
+    <!-- ── CONTACT INFO & FORM ────────────────────────────────– -->
     <section class="section">
       <div class="container">
-        <div class="contact-info-grid">
-          <div class="contact-info-card" data-aos="fade-up">
-            <div class="info-icon">📍</div>
-            <h3>Visit Us</h3>
-            <address>
-              <p>GF Vivere Hotel<br/>5102 Bridgeway Ave.<br/>Filinvest Corporate City<br/>Alabang, Muntinlupa City<br/>1780, Philippines</p>
-            </address>
+        <div class="contact-layout">
+          
+          <!-- Left: Contact Info -->
+          <div class="contact-info-section" data-aos="fade-right">
+            <h2>Get In Touch</h2>
+            <p style="color: #666; font-size: 1.05rem; margin-bottom: 2.5rem; line-height: 1.7;">Have questions about our treatments? Want to schedule a consultation? We're here to help and look forward to connecting with you.</p>
+            
+            <div class="contact-info-grid">
+              <div class="contact-info-card">
+                <div class="info-icon">📍</div>
+                <h3>Visit Us</h3>
+                <address>
+                  <p>GF Vivere Hotel<br/>5102 Bridgeway Ave.<br/>Filinvest Corporate City<br/>Alabang, Muntinlupa City<br/>1780, Philippines</p>
+                </address>
+              </div>
+              <div class="contact-info-card">
+                <div class="info-icon">📞</div>
+                <h3>Call Us</h3>
+                <p>
+                  <a href="tel:+639175551234">+63 917 555 1234</a><br/>
+                  <a href="tel:+63245551234">(02) 4555 1234</a><br/>
+                  <small>Mon–Sun, 11:00 am – 7:00 pm</small>
+                </p>
+              </div>
+              <div class="contact-info-card">
+                <div class="info-icon">✉️</div>
+                <h3>Email Us</h3>
+                <p>
+                  <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a><br/>
+                  <a href="mailto:support@genevawellness.com">support@genevawellness.com</a><br/>
+                  <small>Response within 24 hours</small>
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="contact-info-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="info-icon">📞</div>
-            <h3>Call Us</h3>
-            <p>
-              <a href="tel:+639175551234">+63 917 555 1234</a><br/>
-              <a href="tel:+63245551234">(02) 4555 1234</a><br/>
-              <small>Mon–Sun, 11:00 am – 7:00 pm</small>
-            </p>
+
+          <!-- Right: Contact Form -->
+          <div class="contact-form-section" data-aos="fade-left">
+            <div class="form-container">
+              <div class="form-header">
+                <h3>Schedule Your Consultation</h3>
+                <p>Fill out the form below and our team will contact you within 24 hours to confirm your appointment.</p>
+              </div>
+
+              <?php if ($form_submitted): ?>
+                <div class="form-success-message">
+                  <strong>✓ <?php echo htmlspecialchars($form_message); ?></strong>
+                </div>
+              <?php endif; ?>
+
+              <form class="contact-form" id="consultation-form" method="POST" action="">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+63 917 XXX XXXX" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="treatment">Preferred Treatment</label>
+                    <select id="treatment" name="treatment">
+                      <option>Select a treatment</option>
+                      <option>HIFU Facial Lifting</option>
+                      <option>CO2 Laser Therapy</option>
+                      <option>Carbon Laser Peel</option>
+                      <option>Pico Laser</option>
+                      <option>Microneedling</option>
+                      <option>Exilis Ultra</option>
+                      <option>Hair Restoration</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message or Questions</label>
+                  <textarea id="message" name="message" placeholder="Tell us about your goals or ask any questions..." rows="5"></textarea>
+                </div>
+
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="agree" name="agree" required />
+                  <label for="agree">I agree to the privacy policy and terms of service</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Request Consultation</button>
+                <p class="form-note">We respect your privacy. Your information will only be used to contact you about your consultation.</p>
+              </form>
+            </div>
           </div>
-          <div class="contact-info-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="info-icon">✉️</div>
-            <h3>Email Us</h3>
-            <p>
-              <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a><br/>
-              <a href="mailto:support@genevawellness.com">support@genevawellness.com</a><br/>
-              <small>Response within 24 hours</small>
-            </p>
-          </div>
+
         </div>
       </div>
     </section>
-
-    <!-- ── CONTACT FORM ────────────────────────────────– -->
-    <section class="section" id="contact-form" style="background: linear-gradient(135deg, rgba(202, 174, 95, 0.05), rgba(250, 210, 184, 0.05));">
-      <div class="container">
-        <div class="form-container">
-          <div class="form-header" data-aos="fade-up">
-            <h2>Schedule Your Consultation</h2>
-            <p>Fill out the form below and our team will contact you within 24 hours to confirm your appointment.</p>
-          </div>
-
-          <form class="contact-form" id="consultation-form" method="POST" data-aos="fade-up" data-aos-delay="100">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name <span aria-label="required">*</span></label>
-                <input type="text" id="name" name="name" placeholder="Your Full Name" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address <span aria-label="required">*</span></label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="phone">Phone Number <span aria-label="required">*</span></label>
-                <input type="tel" id="phone" name="phone" placeholder="+63 917 XXX XXXX" required />
-              </div>
-              <div class="form-group">
-                <label for="treatment">Preferred Treatment</label>
-                <select id="treatment" name="treatment">
-                  <option>Select a treatment</option>
-                  <option>HIFU Facial Lifting</option>
-                  <option>CO2 Laser Therapy</option>
-                  <option>Carbon Laser Peel</option>
                   <option>Pico Laser</option>
                   <option>Microneedling</option>
                   <option>Exilis Ultra</option>
@@ -168,7 +234,7 @@ $page_subtitle = 'We'\''re Here to Help';
           <h2>Frequently Asked Questions</h2>
         </div>
         <div class="faq-grid">
-          <details class="faq-item" data-aos="fade-up">
+          <details class="faq-item" data-aos="fade-up" open>
             <summary>How do I book a consultation?</summary>
             <p>You can book a consultation by filling out the form above, calling us directly at +63 917 555 1234, or visiting our clinic in person. Our team will confirm your appointment time.</p>
           </details>
@@ -208,5 +274,26 @@ $page_subtitle = 'We'\''re Here to Help';
   <script src="components.js"></script>
   <!-- Page-specific Scripts -->
   <script src="script.js"></script>
+  <script src="enhancements.js"></script>
+
+  <!-- FAQ Accordion Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        item.addEventListener('toggle', (e) => {
+          if (e.target.open) {
+            // Close all other FAQ items
+            faqItems.forEach(otherItem => {
+              if (otherItem !== e.target) {
+                otherItem.open = false;
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

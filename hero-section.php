@@ -13,10 +13,19 @@ $page_subtitle = $page_subtitle ?? 'Discover our expertise and commitment';
 $breadcrumb = $breadcrumb ?? [];
 ?>
 
-<section class="hero-section inner-hero" style="background: linear-gradient(135deg, #B00E09 0%, #d63c36 100%);">
+<section class="hero-section inner-hero" style="background: linear-gradient(90deg,rgba(176, 14, 9, 1) 0%, rgba(130, 42, 42, 1) 100%);">
   <div class="hero-overlay"></div>
   <div class="container">
-    <!-- Breadcrumb Navigation -->
+  
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1 class="hero-title"><?php echo htmlspecialchars($page_title); ?></h1>
+      <p class="hero-subtitle"><?php echo htmlspecialchars($page_subtitle); ?></p>
+    </div>
+
+
+      <!-- Breadcrumb Navigation -->
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <ol>
         <li><a href="index.php">Home</a></li>
@@ -37,12 +46,6 @@ $breadcrumb = $breadcrumb ?? [];
         <?php endif; ?>
       </ol>
     </nav>
-
-    <!-- Hero Content -->
-    <div class="hero-content">
-      <h1 class="hero-title"><?php echo htmlspecialchars($page_title); ?></h1>
-      <p class="hero-subtitle"><?php echo htmlspecialchars($page_subtitle); ?></p>
-    </div>
   </div>
 </section>
 
@@ -55,7 +58,8 @@ $breadcrumb = $breadcrumb ?? [];
     justify-content: center;
     color: white;
     overflow: hidden;
-    margin-bottom: 3rem;
+        padding-top: 147px;
+    padding-bottom: 15px;
   }
 
   .hero-overlay {
@@ -116,22 +120,26 @@ $breadcrumb = $breadcrumb ?? [];
   }
 
   .hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 0.8s ease;
+    font-family: "Lora", serif;
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.9s ease 0.1s forwards;
+    color: white;
+    margin-top: 0;
   }
 
   .hero-subtitle {
-    font-size: 1.3rem;
-    color: rgba(255, 255, 255, 0.95);
-    margin: 0;
+    font-size: 1.08rem;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.75;
     max-width: 600px;
+    margin-bottom: 2.5rem;
+    animation: fadeInUp 0.9s ease 0.2s forwards;
     margin-left: auto;
     margin-right: auto;
     font-weight: 300;
-    animation: fadeInUp 0.8s ease 0.2s both;
   }
 
   /* Responsive */
@@ -141,11 +149,11 @@ $breadcrumb = $breadcrumb ?? [];
     }
 
     .hero-title {
-      font-size: 2rem;
+      font-size: clamp(1.8rem, 5vw, 3rem);
     }
 
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     .hero-section.inner-hero .breadcrumb ol {
@@ -160,11 +168,13 @@ $breadcrumb = $breadcrumb ?? [];
     }
 
     .hero-title {
-      font-size: 1.5rem;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      margin-bottom: 1rem;
     }
 
     .hero-subtitle {
       font-size: 0.9rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-section.inner-hero .breadcrumb ol {

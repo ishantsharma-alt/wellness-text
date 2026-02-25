@@ -1,3 +1,10 @@
+<?php
+$page_title = 'Wellness Blog';
+$page_subtitle = 'Expert Insights & Beauty Tips';
+$breadcrumb = [
+  ['label' => 'Blog', 'url' => null]
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +23,10 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -29,20 +36,8 @@
   <!-- ── DYNAMIC HEADER ────────────────────────────────────────────── -->
   <div id="dynamic-header"></div>
 
-  <!-- ── INNER PAGE BANNER ────────────────────────────– -->
-  <section class="inner-banner" style="background: linear-gradient(135deg, #FAD2B8 0%, #CAAE5F 100%);">
-    <div class="inner-banner-content container">
-      <h1 data-aos="fade-up">Wellness Blog</h1>
-      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Expert Insights & Beauty Tips</p>
-    </div>
-  </section>
-
-  <!-- ── BREADCRUMB ────────────────────────────────– -->
-  <nav class="breadcrumb container" aria-label="Breadcrumb">
-    <a href="index.php">Home</a>
-    <span>/</span>
-    <span aria-current="page">Blog</span>
-  </nav>
+  <!-- ── HERO SECTION ────────────────────────────────– -->
+  <?php include 'hero-section.php'; ?>
 
   <main>
 
