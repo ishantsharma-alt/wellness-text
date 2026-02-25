@@ -12,11 +12,15 @@ $breadcrumb = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Read our detailed blog article about wellness, skincare treatments, and beauty tips. Expert advice from Geneva Wellness Institute." />
-  <meta name="keywords" content="blog, wellness, skincare, beauty, treatment, article" />
+  <meta name="keywords" content="blog, wellness, skincare, beauty, treatment, article, expert advice" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="article" />
   <meta property="article:published_time" content="2024-12-15T00:00:00Z" />
   <meta property="article:author" content="Geneva Wellness Institute" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Complete Guide to HIFU Facial Lifting — Geneva Wellness Institute" />
+  <meta name="twitter:description" content="Discover how HIFU technology is revolutionizing non-invasive facial treatments. Expert guide from Geneva Wellness." />
+  <link rel="canonical" href="https://genevawellness.com/blog/hifu-complete-guide.php" />
   <title>Blog Article — Geneva Wellness Institute</title>
 
   <!-- Fonts -->
@@ -26,6 +30,31 @@ $breadcrumb = [
 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="../style.css" />
+
+  <!-- Structured Data for Blog Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The Complete Guide to HIFU Facial Lifting",
+    "description": "Discover how HIFU (High-Intensity Focused Ultrasound) technology is revolutionizing non-invasive facial treatments. Learn about the benefits, what to expect, and real patient results.",
+    "datePublished": "2024-12-15",
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Rafael Santos",
+      "url": "https://genevawellness.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Geneva Wellness Institute",
+      "url": "https://genevawellness.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://genevawellness.com/blog/hifu-complete-guide.php"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -204,7 +233,17 @@ $breadcrumb = [
 
         <!-- Sidebar -->
         <aside class="blog-sidebar">
-          <div class="sidebar-widget" data-aos="fade-up">
+          
+          <!-- Search -->
+          <div class="sidebar-widget search-widget" data-aos="fade-up">
+            <h3>Search Articles</h3>
+            <form class="search-form" action="../blog-search.php" method="get">
+              <input type="search" name="q" placeholder="Search blog..." />
+              <button type="submit" aria-label="Search">🔍</button>
+            </form>
+          </div>
+
+          <div class="sidebar-widget" data-aos="fade-up" data-aos-delay="50">
             <h3>About the Author</h3>
             <div class="author-box">
               <img src="../img/team-member-1.jpg" alt="Dr. Rafael Santos" loading="lazy" width="100" height="100" />

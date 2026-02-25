@@ -17,6 +17,21 @@ $page_subtitle = 'Stories of Transformation & Satisfaction';
   <link rel="canonical" href="https://genevawellness.com/testimonials" />
   <title>Testimonials — Geneva Wellness Institute</title>
 
+  <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ReviewCollection",
+    "name": "Geneva Wellness Reviews",
+    "description": "Client testimonials and reviews for Geneva Wellness Institute treatments",
+    "url": "https://genevawellness.com/testimonials",
+    "author": {
+      "@type": "LocalBusiness",
+      "name": "Geneva Wellness Institute"
+    }
+  }
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +45,7 @@ $page_subtitle = 'Stories of Transformation & Satisfaction';
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <?php include 'header.php'; ?>
+  <div id="dynamic-header"></div>
 
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
   <section class="inner-banner" style="background: linear-gradient(135deg, #B00E09 0%, #FAD2B8 100%);">

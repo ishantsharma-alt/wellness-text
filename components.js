@@ -775,14 +775,48 @@ function initHeaderFunctionality() {
 
 /**
  * Update active nav link based on current page
+ * Enhanced to handle all page types and URL patterns
  */
 function updateActiveNavLink() {
   const currentPath = window.location.pathname;
+  const currentPathname = currentPath.split('/').pop() || 'index.php'; // Get filename
   const links = document.querySelectorAll('.nav-link');
   
   links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === '/' && href === '/')) {
+    let href = link.getAttribute('href');
+    let isActive = false;
+    
+    if (!href) return;
+    
+    // Remove any hash anchor from href for comparison
+    const hrefBase = href.split('#')[0];
+    
+    // Homepage detection
+    if ((currentPathname === 'index.php' || currentPathname === '' || currentPath === '/') && 
+        (hrefBase === '/' || hrefBase === 'index.php' || hrefBase.includes('index'))) {
+      isActive = true;
+    }
+    
+    // Direct filename match (handles most pages)
+    else if (currentPathname === hrefBase || currentPathname === hrefBase + '.php') {
+      isActive = true;
+    }
+    
+    // Path-based match (for nested paths)
+    else if (currentPath.includes(hrefBase)) {
+      isActive = true;
+    }
+    
+    // Blog section detection (includes blog pages, search, and categories)
+    if (!isActive && (href.includes('blog') || hrefBase === 'blog.php')) {
+      if (currentPath.includes('/blog') || currentPath.includes('blog.php') || 
+          currentPath.includes('search') || currentPathname.includes('search')) {
+        isActive = true;
+      }
+    }
+    
+    // Apply active state
+    if (isActive) {
       link.setAttribute('aria-current', 'page');
       link.classList.add('active');
     } else {

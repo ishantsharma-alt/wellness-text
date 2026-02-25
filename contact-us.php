@@ -43,6 +43,32 @@ function sanitize_input($input) {
   <link rel="canonical" href="https://genevawellness.com/contact-us" />
   <title>Contact Us — Geneva Wellness Institute</title>
 
+  <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Geneva Wellness Institute",
+    "url": "https://genevawellness.com/contact-us",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "telephone": "+63-917-555-1234",
+      "email": "hello@genevawellness.com",
+      "areaServed": "PH"
+    },
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Geneva Wellness Institute",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Alabang, Muntinlupa City",
+        "addressCountry": "PH"
+      }
+    }
+  }
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -57,7 +83,7 @@ function sanitize_input($input) {
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <?php include 'header.php'; ?>
+  <div id="dynamic-header"></div>
 
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
   <section class="inner-banner" style="background: linear-gradient(135deg, #CAAE5F 0%, #B00E09 100%);">

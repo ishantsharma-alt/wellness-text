@@ -11,12 +11,15 @@ $breadcrumb = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Read our latest articles on wellness, beauty treatments, skincare tips, and industry insights. Expert advice from the Geneva Wellness team." />
-  <meta name="keywords" content="blog, wellness, skincare, beauty tips, aesthetic treatments, health, articles" />
+  <meta name="keywords" content="blog, wellness, skincare, beauty tips, aesthetic treatments, health, articles, expert advice" />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Blog — Geneva Wellness Institute" />
   <meta property="og:description" content="Latest articles on wellness, beauty, and aesthetic treatments." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/blog.php" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — Geneva Wellness Institute" />
+  <meta name="twitter:description" content="Expert articles on wellness, skincare, and aesthetic treatments." />
   <link rel="canonical" href="https://genevawellness.com/blog.php" />
   <title>Blog — Geneva Wellness Institute</title>
 
@@ -27,6 +30,22 @@ $breadcrumb = [
 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="style.css">
+
+  <!-- Structured Data for Blog Collection -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Wellness Blog",
+    "description": "Expert articles on wellness, skincare, beauty treatments, and aesthetic procedures",
+    "url": "https://genevawellness.com/blog.php",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Geneva Wellness Institute",
+      "url": "https://genevawellness.com"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -39,7 +58,7 @@ $breadcrumb = [
   <!-- ── HERO SECTION ────────────────────────────────– -->
   <?php include 'hero-section.php'; ?>
 
-  <main>
+  <main id="main-content">
 
     <!-- ── BLOG POSTS ────────────────────────────────– -->
     <section class="section">

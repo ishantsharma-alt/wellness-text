@@ -44,10 +44,10 @@ $breadcrumb = [
   <div class="cursor-follower" id="cursor-follower"></div>
 
   <!-- ── PHP INCLUDES ────────────────────────────────────────────– -->
-  <?php include 'header.php'; ?>
+  <div id="dynamic-header"></div>
   <?php include 'hero-section.php'; ?>
 
-  <main>
+  <main id="main-content">
 
     <!-- ── TREATMENT CATEGORIES ────────────────────────– -->
     <section class="section">

@@ -339,7 +339,11 @@ const cursor = document.getElementById('cursor');
 const cursorFollower = document.getElementById('cursor-follower');
 let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
 
-if (cursor && cursorFollower && window.matchMedia('(hover: hover)').matches) {
+// Only show custom cursor on hover-capable devices without reduced motion preference
+const shouldShowCursor = window.matchMedia('(hover: hover)').matches && 
+                        !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (cursor && cursorFollower && shouldShowCursor) {
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -374,6 +378,10 @@ if (cursor && cursorFollower && window.matchMedia('(hover: hover)').matches) {
       cursorFollower.style.height = '36px';
     });
   });
+} else {
+  // Hide custom cursor if prefers-reduced-motion or not hover-capable
+  if (cursor) cursor.style.display = 'none';
+  if (cursorFollower) cursorFollower.style.display = 'none';
 }
 
 /* ── BACK TO TOP ─────────────────────────────────────────────────────────── */
@@ -648,3 +656,122 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+/* ── SEARCH RESULTS PAGE ANIMATIONS ──────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  // Animate search info box
+  const searchInfo = document.querySelector('.search-info');
+  if (searchInfo) {
+    searchInfo.style.opacity = '0';
+    searchInfo.style.transform = 'translateY(20px)';
+    searchInfo.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s';
+    setTimeout(() => {
+      searchInfo.style.opacity = '1';
+      searchInfo.style.transform = 'translateY(0)';
+    }, 100);
+  }
+
+  // Stagger animate blog posts on search results
+  const blogPosts = document.querySelectorAll('.blog-post');
+  blogPosts.forEach((post, index) => {
+    post.style.opacity = '0';
+    post.style.transform = 'translateY(30px)';
+    post.style.transition = `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${0.15 + index * 0.08}s`;
+    setTimeout(() => {
+      post.style.opacity = '1';
+      post.style.transform = 'translateY(0)';
+    }, 200);
+  });
+
+  // Animate no results icon floating
+  const noResultsIcon = document.querySelector('.no-results-icon');
+  if (noResultsIcon) {
+    noResultsIcon.style.animation = 'float 3s ease-in-out infinite';
+  }
+});
+
+/* ── SEARCH FORM ENHANCEMENT ─────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const searchForms = document.querySelectorAll('.search-form');
+  searchForms.forEach(form => {
+    const input = form.querySelector('input[type="search"]');
+    const button = form.querySelector('button[type="submit"]');
+    
+    if (input) {
+      // Focus animation
+      input.addEventListener('focus', () => {
+        form.style.transform = 'scale(1.02)';
+      });
+      
+      input.addEventListener('blur', () => {
+        form.style.transform = 'scale(1)';
+      });
+      
+      form.style.transition = 'transform 0.2s ease';
+    }
+    
+    // Button ripple effect
+    if (button) {
+      button.addEventListener('click', (e) => {
+        if (input.value.trim() === '') {
+          e.preventDefault();
+          input.style.borderColor = 'var(--primary)';
+          input.style.transform = 'translateX(-5px)';
+          setTimeout(() => {
+            input.style.transform = 'translateX(5px)';
+          }, 50);
+          setTimeout(() => {
+            input.style.transform = 'translateX(0)';
+            input.style.borderColor = 'var(--border)';
+          }, 100);
+        }
+      });
+    }
+  });
+});
+
+/* ── BLOG CATEGORY LINKS ENHANCEMENT ─────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const categoryLinks = document.querySelectorAll('.categories-widget a, .tags-widget a');
+  categoryLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      link.style.marginLeft = '8px';
+    });
+    link.addEventListener('mouseleave', () => {
+      link.style.marginLeft = '0';
+    });
+    link.style.transition = 'margin-left 0.2s ease';
+  });
+});
+
+/* ── AUTHOR BOX HOVER EFFECT ─────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const authorImg = document.querySelector('.author-box img');
+  if (authorImg) {
+    authorImg.addEventListener('mouseenter', () => {
+      authorImg.style.boxShadow = '0 8px 25px rgba(202, 174, 95, 0.4)';
+    });
+    authorImg.addEventListener('mouseleave', () => {
+      authorImg.style.boxShadow = '0 4px 15px rgba(202, 174, 95, 0.3)';
+    });
+  }
+});
+
+/* ── SIDEBAR STAGGER REVEAL ──────────────────────────────────────────────── */
+const sidebarObs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateX(0)';
+      sidebarObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.blog-sidebar .sidebar-widget').forEach((widget, i) => {
+  widget.style.opacity = '0';
+  widget.style.transform = 'translateX(30px)';
+  widget.style.transition = `opacity 0.6s ease ${0.2 + i * 0.1}s, transform 0.6s ease ${0.2 + i * 0.1}s`;
+  sidebarObs.observe(widget);
+});
+

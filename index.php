@@ -17,6 +17,32 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   <link rel="canonical" href="https://genevawellness.com" />
   <title>Geneva Wellness Institute — Transformative Wellness & Aesthetic Treatments</title>
 
+  <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Geneva Wellness Institute",
+    "description": "Premium wellness and aesthetic treatments including HIFU, CO2 Laser, Carbon Laser, Hair Restoration, HYDRA 7D, Exilis, and Pico Laser.",
+    "url": "https://genevawellness.com",
+    "telephone": "+63-917-555-1234",
+    "email": "hello@genevawellness.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Alabang, Muntinlupa City",
+      "addressCountry": "PH"
+    },
+    "image": "https://genevawellness.com/img/logo.png",
+    "priceRange": "$$$",
+    "areaServed": "PH",
+    "serviceType": "Wellness and Aesthetic Services",
+    "sameAs": [
+      "https://facebook.com/genevawellness",
+      "https://instagram.com/genevawellness"
+    ]
+  }
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,9 +79,9 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     </div>
   </div>
 
-  <?php include 'header.php'; ?>
+  <div id="dynamic-header"></div>
 
-  <main>
+  <main id="main-content">
 
     <!-- ═══════════════════════════════════════════════
          HERO SECTION

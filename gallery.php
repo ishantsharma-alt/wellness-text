@@ -17,6 +17,21 @@ $page_subtitle = 'See Real Results & Transformations';
   <link rel="canonical" href="https://genevawellness.com/gallery" />
   <title>Gallery — Geneva Wellness Institute</title>
 
+  <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MediaGallery",
+    "name": "Geneva Wellness Gallery",
+    "description": "Gallery of before and after results, treatment outcomes, and facility highlights",
+    "url": "https://genevawellness.com/gallery",
+    "creator": {
+      "@type": "LocalBusiness",
+      "name": "Geneva Wellness Institute"
+    }
+  }
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +45,7 @@ $page_subtitle = 'See Real Results & Transformations';
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <?php include 'header.php'; ?>
+  <div id="dynamic-header"></div>
 
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
   <section class="inner-banner" style="background: linear-gradient(135deg, #CAAE5F 0%, #FAD2B8 100%);">

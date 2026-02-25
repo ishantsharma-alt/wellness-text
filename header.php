@@ -4,18 +4,22 @@
  * Enhanced with premium animations and interactions
  */
 ?>
-<header class="site-header" id="site-header">
-  <!-- Announcement Bar -->
-  <div class="announcement-bar" id="announcement-bar">
-    <div class="announcement-inner">
-      <span class="announcement-icon">✦</span>
-      <span>Exclusive Offer: Get <strong>20% off</strong> your first treatment — Limited time only</span>
-      <a href="contact-us.php#contact-form" class="announcement-cta">Book Now →</a>
-      <span class="announcement-icon">✦</span>
-    </div>
-    <button class="announcement-close" id="announcement-close" aria-label="Close announcement">×</button>
-  </div>
 
+<!-- ── SKIP TO CONTENT (Keyboard Navigation) ────────────────────────── -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<!-- ── ANNOUNCEMENT BAR (BEFORE HEADER) ──────────────── -->
+<div class="announcement-bar" id="announcement-bar">
+  <div class="announcement-inner">
+    <span class="announcement-icon">✦</span>
+    <span>Exclusive Offer: Get <strong>20% off</strong> your first treatment — Limited time only</span>
+    <a href="contact-us.php#contact-form" class="announcement-cta">Book Now →</a>
+    <span class="announcement-icon">✦</span>
+  </div>
+  <button class="announcement-close" id="announcement-close" aria-label="Close announcement">×</button>
+</div>
+
+<header class="site-header" id="site-header">
   <nav class="nav container" aria-label="Primary navigation">
     <!-- Logo -->
     <a href="index.php" class="nav-logo" aria-label="Geneva Wellness Institute - Home">
@@ -113,8 +117,8 @@
   color: white;
   font-size: 0.78rem;
   padding: 0.55rem 1rem;
-  text-align: center;
-  position: relative;
+  text-align: center;  position: relative;
+  z-index: 999;  position: relative;
   z-index: 1001;
   display: flex;
   align-items: center;
@@ -439,24 +443,36 @@
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 0.4rem;
-  background: none;
+  padding: 0.6rem;
+  background: rgba(255,255,255,0.1);
   border: none;
   cursor: pointer;
   margin-left: auto;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+.nav-toggle:hover {
+  background: rgba(255,255,255,0.2);
+}
+.site-header.scrolled .nav-toggle {
+  background: rgba(0,0,0,0.05);
+}
+.site-header.scrolled .nav-toggle:hover {
+  background: rgba(0,0,0,0.08);
 }
 .nav-toggle span {
   display: block;
   width: 24px;
-  height: 2px;
+  height: 2.5px;
   background: white;
   border-radius: 2px;
   transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .site-header.scrolled .nav-toggle span { background: var(--black); }
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 /* ── MOBILE NAV ───────────────────────────────────────── */
 .nav-mobile-cta {
@@ -476,6 +492,10 @@
   font-size: 0.85rem;
   color: var(--muted);
   text-decoration: none;
+  transition: all 0.2s ease;
+}
+.nav-mobile-info a:hover {
+  color: var(--accent-gold);
 }
 
 /* ── RESPONSIVE ───────────────────────────────────────── */
@@ -484,16 +504,19 @@
   .nav-actions { display: none; }
   .nav-menu {
     display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 80px;
     left: 0;
     right: 0;
-    background: rgba(255,255,255,0.99);
+    bottom: 0;
+    background: white;
     backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: stretch;
     padding: 0;
     box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    overflow-y: auto;
+    z-index: 999;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
   }
@@ -536,16 +559,17 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.classList.toggle('active', !expanded);
       document.body.style.overflow = expanded ? '' : 'hidden';
     });
-    // Close on outside click
-    document.addEventListener('click', e => {
-      if (!document.getElementById('site-header').contains(e.target)) {
+    
+    // Close menu on link click
+    const navLinks = menu.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
         toggle.setAttribute('aria-expanded', 'false');
         menu.classList.remove('active');
         document.body.style.overflow = '';
-      }
+      });
     });
-  }
-
+    
   // Scroll progress
   const progress = document.getElementById('nav-progress');
   if (progress) {
