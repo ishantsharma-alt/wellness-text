@@ -651,8 +651,8 @@ function sanitize_input($input) {
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <!-- Dynamic Header (loaded via components.js) -->
-  <div id="dynamic-header"></div>
+  <!-- Header -->
+  <?php include 'header.php'; ?>
 
   <!-- ── INNER BANNER ─────────────────────────────── -->
   <section class="inner-banner" style="background: linear-gradient(135deg, #CAAE5F 0%, #B00E09 100%);">

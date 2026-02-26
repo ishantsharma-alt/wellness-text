@@ -137,7 +137,7 @@ $page_subtitle = 'See Real Results & Transformations';
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <div id="dynamic-header"></div>
+  <?php include 'header.php'; ?>
 
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
   <section class="inner-banner" style="background: linear-gradient(90deg,rgba(176, 14, 9, 1) 0%, rgba(130, 42, 42, 1) 100%);">

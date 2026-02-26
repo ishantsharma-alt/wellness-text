@@ -550,7 +550,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     </div>
   </div>
 
-  <div id="dynamic-header"></div>
+  <?php include 'header.php'; ?>
 
   <main id="main-content">
 

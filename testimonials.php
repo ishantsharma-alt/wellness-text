@@ -118,7 +118,7 @@ $page_subtitle = 'Stories of Transformation & Satisfaction';
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <div id="dynamic-header"></div>
+  <?php include 'header.php'; ?>
 
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
   <section class="inner-banner" style="background: linear-gradient(135deg, #B00E09 0%, #FAD2B8 100%);">

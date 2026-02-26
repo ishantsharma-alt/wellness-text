@@ -49,14 +49,51 @@
    ───────────────────────────────────────────────────────────────────────── */
 .container {
   max-width: 1360px;
-  width: 100%;
+  width: calc(100% - 2rem);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: calc(100% - 1rem);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 0.5rem);
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
 }
 
 /* Global Button Styles */
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: white;
+  padding-top: 80px;
+  transition: padding-top 0.3s ease;
+  overflow-x: hidden;
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 70px;
+  }
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -156,19 +193,26 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-/* Global Typography */
 body {
   font-family: "Inter", sans-serif;
   line-height: 1.6;
   color: #1a1a1a;
   background: white;
-  padding-top: 80px;
+  padding-top: 55px;
   transition: padding-top 0.3s ease;
   overflow-x: hidden;
 }
 
-body.announcement-hidden {
-  padding-top: 80px;
+@media (min-width: 481px) {
+  body {
+    padding-top: 60px;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    padding-top: 80px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2007,6 +2051,42 @@ a:hover {
 .tag:hover {
   background: var(--accent-gold);
   color: white;
+}
+
+/* ── SOCIAL MEDIA CHAT WIDGET (Home Page Only) ────────────────── */
+.social-media-widget {
+  background: linear-gradient(135deg, rgba(202, 174, 95, 0.08), rgba(176, 14, 9, 0.05));
+  border: 2px solid rgba(202, 174, 95, 0.2) !important;
+  padding: 1.5rem !important;
+  text-align: center;
+}
+
+.social-media_messenger-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-media_messenger-wrapper .w-inline-block {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-media_messenger-wrapper .w-inline-block:hover {
+  transform: translateY(-6px) scale(1.1);
+}
+
+.social-media_icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.social-media_messenger-wrapper .w-inline-block:hover .social-media_icon {
+  filter: brightness(1.15) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
 }
 
 /* ── BLOG GRID ───────────────────────────────────────────────────────────── */
@@ -4698,6 +4778,20 @@ img.placeholder-image {
   
   .sidebar-widget h3 {
     font-size: 1rem;
+  }
+
+  /* Social Media Chat Widget Mobile */
+  .social-media-widget {
+    padding: 1rem !important;
+  }
+
+  .social-media_messenger-wrapper {
+    gap: 1rem;
+  }
+
+  .social-media_icon {
+    width: 50px;
+    height: 50px;
   }
 }
 

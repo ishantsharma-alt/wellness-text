@@ -47,8 +47,8 @@ $breadcrumb = [
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <!-- ── DYNAMIC HEADER & HERO ────────────────────────── -->
-  <div id="dynamic-header"></div>
+  <!-- ── HEADER ────────────────────────────────────────── -->
+  <?php include 'header.php'; ?>
   <?php include 'hero-section.php'; ?>
 
   <!-- ── MAIN CONTENT ────────────────────────────────── -->

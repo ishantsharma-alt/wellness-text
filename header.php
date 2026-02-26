@@ -8,17 +8,6 @@
 <!-- ── SKIP TO CONTENT ─────────────────────────────────── -->
 <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
-<!-- ── ANNOUNCEMENT BAR ───────────────────────────────── -->
-<div class="announcement-bar" id="announcement-bar">
-  <div class="announcement-inner">
-    <span class="announcement-icon">✦</span>
-    <span>Exclusive Offer: Get <strong>20% off</strong> your first treatment — Limited time only</span>
-    <a href="contact-us.php#contact-form" class="announcement-cta">Book Now →</a>
-    <span class="announcement-icon">✦</span>
-  </div>
-  <button class="announcement-close" id="announcement-close" aria-label="Close announcement">×</button>
-</div>
-
 <header class="site-header" id="site-header">
   <nav class="nav container" aria-label="Primary navigation">
 
@@ -182,66 +171,12 @@
 
 <style>
 /* ══════════════════════════════════════════════════════
-   ANNOUNCEMENT BAR
-══════════════════════════════════════════════════════ */
-.announcement-bar {
-  background: linear-gradient(90deg, var(--primary) 0%, #8a0b07 50%, var(--primary) 100%);
-  background-size: 200% 100%;
-  animation: annShimmer 4s ease infinite;
-  color: #fff;
-  font-size: 0.78rem;
-  padding: 0.55rem 1rem;
-  text-align: center;
-  position: relative;
-  z-index: 1002;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  overflow: hidden;
-}
-@keyframes annShimmer {
-  0%,100% { background-position: 0% 0%; }
-  50%      { background-position: 100% 0%; }
-}
-.announcement-inner {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.announcement-icon { color: var(--accent-gold); animation: pulse 2s ease infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
-.announcement-cta {
-  color: var(--accent-gold) !important;
-  font-weight: 700;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(202,174,95,.4);
-  transition: border-color .2s;
-}
-.announcement-cta:hover { border-color: var(--accent-gold); }
-.announcement-close {
-  position: absolute;
-  right: 1rem; top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,.15);
-  border: none; color: #fff;
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: 1rem; line-height: 1;
-  transition: background .2s;
-}
-.announcement-close:hover { background: rgba(255,255,255,.3); }
-
-/* ══════════════════════════════════════════════════════
    SITE HEADER
 ══════════════════════════════════════════════════════ */
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 1005;
+  z-index: 1001;
   background: linear-gradient(90deg, var(--primary) 0%, #8a0b07 50%, var(--primary) 100%);
   transition: background .4s cubic-bezier(.25,.46,.45,.94),
               box-shadow .4s ease;
@@ -429,12 +364,17 @@
   display: none;
   position: fixed; inset: 0;
   background: rgba(0,0,0,.52);
-  z-index: 1010;
+  z-index: 999;
   opacity: 0;
   transition: opacity .35s ease;
   backdrop-filter: blur(3px);
+  pointer-events: none;
 }
-.mobile-overlay.active { display:block; opacity:1; }
+.mobile-overlay.active { 
+  display: block; 
+  opacity: 1; 
+  pointer-events: all;
+}
 
 /* ══════════════════════════════════════════════════════
    MOBILE FLYOUT  — slides in from LEFT
@@ -444,7 +384,7 @@
   top: 0; left: 0; bottom: 0;
   width: min(320px, 88vw);
   background: #fff;
-  z-index: 1020;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   transform: translateX(-100%);
@@ -452,8 +392,23 @@
   box-shadow: 4px 0 40px rgba(0,0,0,.18);
   overflow-y: auto;
   overflow-x: hidden;
+  visibility: visible !important;
+  will-change: transform;
 }
-.mobile-flyout.active { transform: translateX(0); }
+.mobile-flyout.active { 
+  transform: translateX(0) !important;
+  left: 0 !important;
+}
+
+/* Backup for older browsers that don't support transform */
+@supports not (transform: translateX(0)) {
+  .mobile-flyout {
+    left: -100vw;
+  }
+  .mobile-flyout.active {
+    left: 0 !important;
+  }
+}
 
 /* Flyout header row */
 .flyout-header {
@@ -463,6 +418,7 @@
   padding: 1.2rem 1.4rem;
   background: linear-gradient(135deg, var(--primary) 0%, #8a0b07 100%);
   flex-shrink: 0;
+  visibility: visible !important;
 }
 .flyout-logo {
   display: flex; align-items: center; gap: .6rem;
@@ -481,23 +437,49 @@
 .flyout-close:hover { background:rgba(255,255,255,.28); }
 
 /* Flyout nav body */
-.flyout-nav { flex:1; padding:.5rem 0; }
-.flyout-list { list-style:none; margin:0; padding:0; }
+.flyout-nav { 
+  flex: 1; 
+  padding: .5rem 0;
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+  overflow-y: auto;
+}
+.flyout-list { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0;
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+}
 
 /* Each top-level item */
+.flyout-list li {
+  display: flex !important;
+  flex-direction: column;
+  width: 100%;
+}
+
 .flyout-link {
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: .88rem 1.5rem;
-  font-size: .975rem; font-weight:500;
+  font-size: .975rem; 
+  font-weight: 500;
   color: var(--black);
   text-decoration: none;
-  background: none; border: none;
-  cursor: pointer; text-align: left;
+  background: none !important; 
+  border: none !important;
+  cursor: pointer; 
+  text-align: left;
   border-bottom: 1px solid rgba(0,0,0,.06);
   transition: background .2s, color .2s, padding-left .2s;
+  visibility: visible !important;
+  -webkit-appearance: none;
+  appearance: none;
 }
 .flyout-link:hover {
   background: rgba(176,14,9,.04);
@@ -572,6 +554,96 @@
   text-decoration:none; z-index:10000;
 }
 .skip-to-content:focus { top:0; }
+
+/* ══════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — enhanced for smaller screens
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .site-header {
+    z-index: 1001;
+  }
+  
+  .nav {
+    height: 60px;
+  }
+  
+  .site-header.scrolled .nav {
+    height: 60px;
+  }
+  
+  .logo-name {
+    font-size: 1.1rem;
+  }
+  
+  .logo-tagline {
+    font-size: 0.5rem;
+  }
+  
+  .logo-emblem {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    z-index: 1001;
+  }
+  
+  .nav {
+    height: 55px;
+    padding: 0 0.5rem;
+  }
+  
+  .site-header.scrolled .nav {
+    height: 55px;
+  }
+  
+  .logo-name {
+    font-size: 0.95rem;
+  }
+  
+  .logo-tagline {
+    font-size: 0.45rem;
+  }
+  
+  .logo-emblem {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .logo-text {
+    display: none;
+  }
+  
+  .nav-toggle {
+    width: 40px;
+    height: 40px;
+    margin: 0 0.5rem;
+  }
+  
+  .nav-toggle span {
+    width: 20px;
+  }
+  
+  .mobile-flyout {
+    width: min(280px, 85vw);
+  }
+  
+  .flyout-header {
+    padding: 1rem;
+  }
+  
+  .flyout-link {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .flyout-sub-link {
+    padding: 0.5rem 1.75rem 0.5rem 2rem;
+    font-size: 0.8rem;
+  }
+}
 </style>
 
 <script>
@@ -594,23 +666,9 @@
     var flyout   = document.getElementById('mobile-flyout');
     var overlay  = document.getElementById('mobile-overlay');
     var closeBtn = document.getElementById('flyout-close');
-    var annClose = document.getElementById('announcement-close');
-    var annBar   = document.getElementById('announcement-bar');
     var progress = document.getElementById('nav-progress');
 
-    /* ─── Announcement bar close ───────────────── */
-    if (annClose && annBar) {
-      annClose.addEventListener('click', function () {
-        annBar.style.height   = annBar.offsetHeight + 'px';
-        annBar.style.overflow = 'hidden';
-        annBar.style.transition = 'height .3s ease, opacity .3s ease';
-        requestAnimationFrame(function () {
-          annBar.style.height  = '0';
-          annBar.style.opacity = '0';
-          setTimeout(function () { if (annBar.parentNode) annBar.remove(); }, 300);
-        });
-      });
-    }
+    console.log('✓ Header init:', { found: !!header, toggle: !!toggle, flyout: !!flyout, overlay: !!overlay });
 
     /* ─── Sticky header + scroll progress ─────── */
     function onScroll() {
@@ -631,6 +689,7 @@
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Close navigation menu');
       document.body.style.overflow = 'hidden';
+      console.log('✓ Flyout opened. Classes:', flyout.className);
       /* focus first focusable element for a11y */
       var first = flyout.querySelector('button, a');
       if (first) { setTimeout(function(){ first.focus(); }, 50); }
@@ -643,12 +702,14 @@
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Open navigation menu');
       document.body.style.overflow = '';
+      console.log('✓ Flyout closed');
     }
 
     /* ─── Hamburger click ──────────────────────── */
     if (toggle) {
       toggle.addEventListener('click', function (e) {
         e.stopPropagation();
+        console.log('🔘 Hamburger clicked. aria-expanded:', toggle.getAttribute('aria-expanded'));
         toggle.getAttribute('aria-expanded') === 'true' ? closeFlyout() : openFlyout();
       });
     }

@@ -22,7 +22,7 @@ $page_title = '404 - Page Not Found';
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <div id="dynamic-header"></div>
+  <?php include 'header.php'; ?>
 
   <!-- ── 404 CONTENT ──────────────────────────────────– -->
   <main class="error-page">

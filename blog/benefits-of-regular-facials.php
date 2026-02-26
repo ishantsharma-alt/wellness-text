@@ -60,7 +60,7 @@ $breadcrumb = [
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <div id="dynamic-header"></div>
+  <?php include '../header.php'; ?>
 
   <?php include '../hero-section.php'; ?>
 
