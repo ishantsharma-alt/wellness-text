@@ -720,7 +720,8 @@ function injectBreadcrumb(items) {
  */
 function initHeaderFunctionality() {
   const toggle = document.getElementById('nav-toggle');
-  const menu = document.getElementById('nav-menu');
+  // Support two patterns: legacy `nav-menu` id or the header's `mobile-flyout` panel
+  const menu = document.getElementById('nav-menu') || document.getElementById('mobile-flyout');
   const header = document.getElementById('site-header');
   const announcementBar = document.getElementById('announcement-bar');
   const closeBtn = document.getElementById('announcement-close');

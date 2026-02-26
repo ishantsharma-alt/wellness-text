@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ── MOBILE MENU TOGGLE ──────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.getElementById('nav-toggle');
-  const navMenu = document.getElementById('nav-menu');
+  // Fallback to `mobile-flyout` when `nav-menu` id does not exist
+  const navMenu = document.getElementById('nav-menu') || document.getElementById('mobile-flyout');
   
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
