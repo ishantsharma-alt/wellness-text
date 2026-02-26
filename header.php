@@ -13,18 +13,7 @@
 
     <!-- Logo -->
     <a href="index.php" class="nav-logo" aria-label="Geneva Wellness Institute - Home">
-      <div class="logo-emblem">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
-          <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1"/>
-          <path d="M24 8 L24 40 M8 24 L40 24" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
-          <text x="24" y="29" font-family="Lora, serif" font-size="14" font-weight="500" text-anchor="middle" fill="currentColor">GW</text>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <span class="logo-name">Geneva</span>
-        <span class="logo-tagline">Wellness Institute</span>
-      </div>
+        <img src="img/geneva-logo.svg">
     </a>
 
     <!-- Desktop Nav Links -->
@@ -180,6 +169,12 @@
   background: linear-gradient(90deg, var(--primary) 0%, #8a0b07 50%, var(--primary) 100%);
   transition: background .4s cubic-bezier(.25,.46,.45,.94),
               box-shadow .4s ease;
+}
+.site-header.scrolled .nav-logo img {
+  filter: brightness(0) saturate(100%);
+}
+.site-header .nav-logo{
+   width:60px;
 }
 .site-header.scrolled {
   background: rgba(255,255,255,.97);

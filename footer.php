@@ -229,17 +229,7 @@
       <div class="gwi-footer-brand">
 
         <a href="index.php" class="gwi-footer-logo-link">
-          <div class="gwi-footer-logo-mark">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="20" cy="20" r="17" stroke="rgba(201,169,110,0.4)" stroke-width="1.2"/>
-              <text x="20" y="25" font-family="Lora,serif" font-size="15" font-weight="600"
-                    text-anchor="middle" fill="#c9a96e">GW</text>
-            </svg>
-          </div>
-          <div class="gwi-footer-logo-text">
-            <span class="fn">Geneva Wellness</span>
-            <span class="fs">Institute</span>
-          </div>
+          <img src="img/geneva-logo.svg">
         </a>
 
         <p class="gwi-footer-desc">
@@ -359,7 +349,7 @@
           <div class="gwi-footer-hour-row"><span class="fhd">Saturday</span> <span class="fht">10:00 AM – 4:00 PM</span></div>
           <div class="gwi-footer-hour-row"><span class="fhd">Sunday</span>   <span class="fht closed">Closed</span></div>
         </div>
-        <a href="https://maps.google.com" target="_blank" rel="noopener" class="gwi-footer-map-link">
+        <a href="https://maps.app.goo.gl/neNdyjEWcqyL7R2aA" target="_blank" rel="noopener" class="gwi-footer-map-link">
           📍 Get Directions →
         </a>
       </div>
