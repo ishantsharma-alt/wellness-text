@@ -1,6 +1,6 @@
 <?php
 $page_title = 'About Us';
-$page_subtitle = 'Our Story & Mission';
+$page_subtitle = 'At Geneva Wellness Institute, we are dedicated to enhancing your natural beauty and well-being through personalized care and advanced treatments. Our expert team combines innovative technologies with a deep commitment to your satisfaction, helping you achieve your beauty and wellness goals in a supportive and luxurious environment.';
 $breadcrumb = [
   ['label' => 'About Us', 'url' => null]
 ];
@@ -59,26 +59,48 @@ $breadcrumb = [
       <div class="container">
         <div class="about-grid">
           <div class="about-content"  data-aos="fade-right">
-            <h2>Transforming Wellness Since Day One</h2>
-            <p>Geneva Wellness Institute was established with a singular mission: to bring world-class aesthetic and wellness treatments to the heart of Metro Manila. We believe that beauty and wellness are not luxuries—they're essential components of self-care and confidence.</p>
-            <p>Our team of certified and experienced professionals is dedicated to delivering personalized treatments using state-of-the-art technology. Each client is treated with care, respect, and discretion.</p>
+            <h2>Welcome to Geneva Wellness Institute</h2>
+            <p>At Geneva Wellness Institute, our mission is to empower you to achieve your beauty and wellness goals through personalized care and advanced treatments. We pride ourselves on offering a luxurious and supportive environment where cutting-edge technology meets expert knowledge. Our dedicated team is here to guide you through your journey, ensuring that each treatment is tailored to your unique needs for optimal results. Whether you're seeking to rejuvenate your skin, enhance your body contours, or restore your hair's vitality, Geneva Wellness Institute is committed to helping you look and feel your best.</p>
+            
             <ul class="highlights">
-              <li>✓ Certified professionals with international training</li>
-              <li>✓ Advanced FDA-approved equipment</li>
-              <li>✓ Personalized treatment plans</li>
-              <li>✓ Transparent pricing & no hidden fees</li>
-              <li>✓ Luxurious, private treatment rooms</li>
+              <li><strong>Personalized Care</strong><br><em>Tailored treatments designed to meet your unique beauty and wellness goals.</em></li>
+              <li><strong>Advanced Technology</strong><br><em>State-of-the-art equipment and the latest innovations in aesthetic medicine.</em></li>
+              <li><strong>Expert Team</strong><br><em>Highly skilled professionals dedicated to your safety and satisfaction.</em></li>
+              <li><strong>Luxurious Environment</strong><br><em>Relax in a soothing, elegant space designed to enhance your experience.</em></li>
             </ul>
           </div>
           <div class="about-image" data-aos="fade-left">
-            <img src="img/about-hero.jpg" alt="Geneva Wellness clinic interior" loading="lazy" width="500" height="500" />
+ <!-- VIDEO SECTION -->
+<div class="video-wrapper">
+    <div class="video-thumbnail" id="videoThumb">
+        <img src="img/about-video.png" alt="About Video">
+        <div class="play-button"></div>
+    </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+    <div class="video-modal-content">
+        <span class="close-video" id="closeVideo">&times;</span>
+
+        <iframe 
+            id="youtubeVideo"
+            src=""
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+
           </div>
         </div>
       </div>
     </section>
 
     <!-- ── VALUES SECTION ────────────────────────────– -->
-    <section class="section values-section">
+    <!-- <section class="section values-section">
       <div class="container">
         <div class="section-header">
           <span class="eyebrow">Our Values</span>
@@ -107,10 +129,10 @@ $breadcrumb = [
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- ── TEAM SECTION ────────────────────────────────– -->
-    <section class="section team-section">
+    <!-- <section class="section team-section">
       <div class="container">
         <div class="section-header">
           <span class="eyebrow">Meet Our Team</span>
@@ -144,7 +166,7 @@ $breadcrumb = [
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- ── STATS SECTION ────────────────────────────────– -->
     <section class="section stats-section" style="background: linear-gradient(135deg, rgba(250, 210, 184, 0.1), rgba(202, 174, 95, 0.05));">
@@ -186,5 +208,116 @@ $breadcrumb = [
   <script src="components.js"></script>
   <!-- Page-specific Scripts -->
   <script src="script.js"></script>
+
+  <style>
+/* Wrapper */
+.video-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Thumbnail */
+.video-thumbnail {
+    position: relative;
+    cursor: pointer;
+    max-width: 700px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.video-thumbnail:hover img {
+    transform: scale(1.05);
+}
+
+/* Play Button */
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+}
+
+.play-button::before {
+    content: "";
+    position: absolute;
+    left: 32px;
+    top: 22px;
+    border-style: solid;
+    border-width: 18px 0 18px 28px;
+    border-color: transparent transparent transparent #000;
+}
+
+/* Modal Background */
+.video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Modal Content */
+.video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+}
+
+/* Iframe */
+.video-modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Close Button */
+.close-video {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+const videoThumb = document.getElementById("videoThumb");
+const videoModal = document.getElementById("videoModal");
+const closeVideo = document.getElementById("closeVideo");
+const youtubeVideo = document.getElementById("youtubeVideo");
+
+videoThumb.addEventListener("click", function() {
+    videoModal.style.display = "flex";
+    youtubeVideo.src = "https://www.youtube.com/embed/GpgTzxevaNQ?autoplay=1";
+});
+
+closeVideo.addEventListener("click", closeModal);
+videoModal.addEventListener("click", function(e){
+    if(e.target === videoModal){
+        closeModal();
+    }
+});
+
+function closeModal(){
+    videoModal.style.display = "none";
+    youtubeVideo.src = "";
+}
+</script>
 </body>
 </html>

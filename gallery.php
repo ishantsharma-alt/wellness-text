@@ -39,6 +39,98 @@ $page_subtitle = 'See Real Results & Transformations';
 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== AUTO GRID GALLERY ===== */
+
+.gallery-section {
+  padding: 90px 0;
+}
+
+.gallery8_component {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 28px;
+}
+
+/* Gallery Card */
+.gallery-item {
+  overflow: hidden;
+  border-radius: 22px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.7s ease, filter 0.5s ease;
+  display: block;
+}
+
+/* Hover */
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(85%);
+}
+
+/* ===== LIGHTBOX ===== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 40px;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 18px;
+  animation: zoomIn 0.4s ease;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Zoom animation */
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+/* ===== MOBILE 2x2 GRID ===== */
+@media (max-width: 768px) {
+  .gallery8_component {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .gallery-item img {
+    height: 180px;
+  }
+}
+    </style>
 </head>
 <body>
 
@@ -48,127 +140,65 @@ $page_subtitle = 'See Real Results & Transformations';
   <div id="dynamic-header"></div>
 
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
-  <section class="inner-banner" style="background: linear-gradient(135deg, #CAAE5F 0%, #FAD2B8 100%);">
+  <section class="inner-banner" style="background: linear-gradient(90deg,rgba(176, 14, 9, 1) 0%, rgba(130, 42, 42, 1) 100%);">
     <div class="inner-banner-content container">
-      <h1 data-aos="fade-up">Gallery</h1>
-      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">See Real Results & Transformations</p>
-    </div>
-  </section>
+      <h1 data-aos="fade-up">Explore Our Transformations
+</h1>
+      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Discover the beauty journeys of our clients at Geneva Wellness Institute. From rejuvenated skin to revitalized hair, see the remarkable results our treatments have achieved. Let these transformations inspire your own path to beauty and wellness.
 
-  <!-- ── BREADCRUMB ────────────────────────────────– -->
+</p>
+ <!-- ── BREADCRUMB ────────────────────────────────– -->
   <nav class="breadcrumb container" aria-label="Breadcrumb">
     <a href="index.php">Home</a>
     <span>/</span>
     <span aria-current="page">Gallery</span>
   </nav>
+    </div>
+    
+  </section>
+
+ 
 
   <main>
 
     <!-- ── GALLERY SECTION ────────────────────────────– -->
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-desc">Explore our collection of real client transformations and facility highlights. Each image represents our commitment to excellence and natural-looking results.</p>
-        </div>
+      
+    <section class="section gallery-section">
+  <div class="container">
 
-        <!-- Gallery Grid -->
-        <div class="gallery-grid">
-          <figure class="gallery-item" data-aos="fade-up">
-            <img src="img/gallery-01.jpg" alt="Treatment result - facial skin improvement" loading="lazy" width="400" height="400" />
-            <figcaption>HIFU Facial Lifting</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="50">
-            <img src="img/gallery-02.jpg" alt="Treatment result - body contouring" loading="lazy" width="400" height="400" />
-            <figcaption>Body Contouring Results</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-            <img src="img/gallery-03.jpg" alt="Treatment result - skin texture improvement" loading="lazy" width="400" height="400" />
-            <figcaption>CO2 Laser Treatment</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="150">
-            <img src="img/gallery-04.jpg" alt="Facility - treatment room" loading="lazy" width="400" height="400" />
-            <figcaption>Treatment Room</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-            <img src="img/gallery-05.jpg" alt="Treatment result - hair restoration" loading="lazy" width="400" height="400" />
-            <figcaption>Hair Restoration Success</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="250">
-            <img src="img/gallery-06.jpg" alt="Treatment result - pigmentation removal" loading="lazy" width="400" height="400" />
-            <figcaption>Pico Laser Results</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-            <img src="img/gallery-07.jpg" alt="Treatment result - facial rejuvenation" loading="lazy" width="400" height="400" />
-            <figcaption>Facial Rejuvenation</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="350">
-            <img src="img/gallery-08.jpg" alt="Treatment result - microneedling outcome" loading="lazy" width="400" height="400" />
-            <figcaption>Microneedling Results</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="400">
-            <img src="img/gallery-09.jpg" alt="Facility - consultation area" loading="lazy" width="400" height="400" />
-            <figcaption>Consultation Room</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="450">
-            <img src="img/gallery-10.jpg" alt="Treatment result - skin brightening" loading="lazy" width="400" height="400" />
-            <figcaption>Carbon Laser Peel</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="500">
-            <img src="img/gallery-11.jpg" alt="Treatment result - cellulite reduction" loading="lazy" width="400" height="400" />
-            <figcaption>Cellulite Treatment</figcaption>
-          </figure>
-          <figure class="gallery-item" data-aos="fade-up" data-aos-delay="550">
-            <img src="img/gallery-12.jpg" alt="Facility - technology showcase" loading="lazy" width="400" height="400" />
-            <figcaption>Advanced Technology</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    <div class="gallery8_component">
 
-    <!-- ── CLIENT TESTIMONIAL SECTION ────────────────– -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(202, 174, 95, 0.08), rgba(250, 210, 184, 0.08));">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">Client Success Stories</span>
-          <h2>Real Transformations</h2>
-        </div>
-        <div class="testimonial-grid">
-          <blockquote class="testimonial-item" data-aos="fade-up">
-            <p>"My skin has never looked better! The HIFU treatment was painless and the results exceeded my expectations."</p>
-            <footer>
-              <strong>Maria Santos</strong>
-              <span>HIFU Treatment Client</span>
-            </footer>
-          </blockquote>
-          <blockquote class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-            <p>"After just 3 sessions, the difference in my skin texture is remarkable. The team is professional and caring."</p>
-            <footer>
-              <strong>Ana Michelle</strong>
-              <span>CO2 Laser Therapy Client</span>
-            </footer>
-          </blockquote>
-          <blockquote class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
-            <p>"I'm so happy with my hair restoration results! The treatment was comfortable and the growth is visible."</p>
-            <footer>
-              <strong>James Rodriguez</strong>
-              <span>Hair Restoration Client</span>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </section>
+      <!-- 13 Images -->
+      <div class="gallery-item"><img src="img\gallery-img-1.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-2.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-3.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-4.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-5.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-6.jpg" alt="Gallery Image"></div>
+       <div class="gallery-item"><img src="img\gallery-img-7.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-8.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-9.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-10.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-11.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-12.jpg" alt="Gallery Image"></div>
+<div class="gallery-item"><img src="img\gallery-img-13.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-14.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-15.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-16.jpg" alt="Gallery Image"></div>
+      <div class="gallery-item"><img src="img\gallery-img-17.jpg" alt="Gallery Image"></div>
 
-    <!-- ── CTA SECTION ────────────────────────────────– -->
-    <section class="section cta-section" style="background: linear-gradient(135deg, #B00E09 0%, #CAAE5F 100%);">
-      <div class="container cta-content">
-        <div>
-          <h2 style="color: white; margin-bottom: 1rem;">Inspired by These Results?</h2>
-          <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin-bottom: 0;">Schedule your consultation today and start your journey to transformation.</p>
-        </div>
-        <a href="contact-us.php#contact-form" class="btn btn-white">Book Now</a>
-      </div>
-    </section>
+    </div>
 
+  </div>
+</section>
+
+<!-- Lightbox Popup -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" src="" alt="Expanded Image">
+</div>
+
+ 
     <?php include 'footer.php'; ?>
 
   </main>
@@ -181,5 +211,29 @@ $page_subtitle = 'See Real Results & Transformations';
   <script src="components.js"></script>
   <!-- Page-specific Scripts -->
   <script src="script.js"></script>
+
+  <script>
+const galleryImages = document.querySelectorAll(".gallery-item img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.querySelector(".lightbox-img");
+const closeBtn = document.querySelector(".lightbox-close");
+
+galleryImages.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.classList.add("active");
+    lightboxImg.src = img.src;
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.classList.remove("active");
+  }
+});
+  </script>
 </body>
 </html>

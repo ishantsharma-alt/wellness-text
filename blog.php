@@ -1,6 +1,6 @@
 <?php
-$page_title = 'Wellness Blog';
-$page_subtitle = 'Expert Insights & Beauty Tips';
+$page_title = 'Geneva Wellness Institute Blog';
+$page_subtitle = 'Welcome to our blog, your ultimate resource for beauty, wellness, and self-care insights. Explore expert advice, treatment guides, and the latest trends to help you look and feel your best. Dive into our articles and discover how you can enhance your natural beauty and overall well-being';
 $breadcrumb = [
   ['label' => 'Blog', 'url' => null]
 ];
@@ -68,7 +68,7 @@ $breadcrumb = [
         <div class="blog-main">
           
           <!-- Featured Post -->
-          <article class="blog-post featured-post" data-aos="fade-up">
+          <!-- <article class="blog-post featured-post" data-aos="fade-up">
             <div class="post-image">
               <img src="img/blog-featured.jpg" alt="Featured blog post" loading="lazy" width="800" height="450" />
             </div>
@@ -81,12 +81,12 @@ $breadcrumb = [
               <p class="post-excerpt">Discover how HIFU (High-Intensity Focused Ultrasound) technology is revolutionizing non-invasive facial treatments. Learn about the benefits, what to expect, and real patient results.</p>
               <a href="blog/hifu-complete-guide.php" class="read-more">Read Full Article →</a>
             </div>
-          </article>
+          </article> -->
 
           <!-- Regular Blog Posts Grid -->
           <div class="blog-posts-grid">
             
-            <article class="blog-post" data-aos="fade-up">
+            <!-- <article class="blog-post" data-aos="fade-up">
               <div class="post-image">
                 <img src="img/blog-01.jpg" alt="Blog post about CO2 laser" loading="lazy" width="400" height="250" />
               </div>
@@ -174,81 +174,70 @@ $breadcrumb = [
                 <p class="post-excerpt">Everything you need to know about chemical peels, from the different strength levels to proper aftercare for optimal results.</p>
                 <a href="blog/chemical-peels-explained.php" class="read-more">Read More</a>
               </div>
+            </article> -->
+
+            <!-- ── NEW POSTS ───────────────────────────────────── -->
+
+            <article class="blog-post " data-aos="fade-up" data-aos-delay="300">
+              <div class="post-image">
+                <img src="img/blog-1-new.jpg" alt="Woman with healthy, vibrant hair" loading="lazy" width="400" height="250" />
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span class="category">Hair Health</span>
+                  <span class="date">November 18, 2024</span>
+                </div>
+                <h3><a href="blog/hair-care-tips.php">Hair Care Tips for a Healthier Scalp</a></h3>
+                <p class="post-excerpt">Explore essential tips for maintaining a healthy scalp and vibrant hair. Our expert advice covers daily routines, product recommendations, and effective scalp treatments.</p>
+                <a href="blog/hair-care-tips.php" class="read-more">Read More</a>
+              </div>
+            </article>
+
+            <article class="blog-post" data-aos="fade-up" data-aos-delay="350">
+              <div class="post-image">
+                <img src="img/blog-2-new.jpg" alt="Body contouring treatment in progress" loading="lazy" width="400" height="250" />
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span class="category">Treatment</span>
+                  <span class="date">November 14, 2024</span>
+                </div>
+                <h3><a href="blog/body-contouring-techniques.php">Top 5 Body Contouring Techniques</a></h3>
+                <p class="post-excerpt">Discover the most effective body contouring techniques to achieve your ideal figure — from CoolSculpting and laser treatments to RF and ultrasonic cavitation.</p>
+                <a href="blog/body-contouring-techniques.php" class="read-more">Read More</a>
+              </div>
+            </article>
+
+            <article class="blog-post" data-aos="fade-up" data-aos-delay="400">
+              <div class="post-image">
+                <img src="img/blog-3-new.jpg" alt="Woman enjoying a relaxing facial treatment" loading="lazy" width="400" height="250" />
+              </div>
+              <div class="post-content">
+                <div class="post-meta">
+                  <span class="category">Beauty</span>
+                  <span class="date">November 10, 2024</span>
+                </div>
+                <h3><a href="blog/benefits-of-regular-facials.php">The Benefits of Regular Facials</a></h3>
+                <p class="post-excerpt">Unlock the secret to glowing, youthful skin with regular facials. Discover how this essential beauty treatment can transform your complexion and boost your confidence.</p>
+                <a href="blog/benefits-of-regular-facials.php" class="read-more">Read More</a>
+              </div>
             </article>
 
           </div>
 
           <!-- Pagination -->
-          <nav class="pagination" data-aos="fade-up" aria-label="Blog pagination">
+          <!-- <nav class="pagination" data-aos="fade-up" aria-label="Blog pagination">
             <a href="#" class="prev disabled" aria-disabled="true">← Previous</a>
             <a href="#" class="page active" aria-current="page">1</a>
             <a href="blog-page-2.php" class="page">2</a>
             <a href="blog-page-3.php" class="page">3</a>
             <a href="blog-page-2.php" class="next">Next →</a>
-          </nav>
+          </nav> -->
 
         </div>
 
         <!-- Sidebar -->
-        <aside class="blog-sidebar">
-          
-          <!-- Search -->
-          <div class="sidebar-widget search-widget" data-aos="fade-up">
-            <h3>Search Articles</h3>
-            <form class="search-form" action="blog-search.php" method="get">
-              <input type="search" name="q" placeholder="Search blog..." />
-              <button type="submit" aria-label="Search">🔍</button>
-            </form>
-          </div>
-
-          <!-- Categories -->
-          <div class="sidebar-widget categories-widget" data-aos="fade-up" data-aos-delay="100">
-            <h3>Categories</h3>
-            <ul>
-              <li><a href="blog-category/skincare.php">Skincare <span class="count">(8)</span></a></li>
-              <li><a href="blog-category/treatments.php">Treatments <span class="count">(12)</span></a></li>
-              <li><a href="blog-category/beauty.php">Beauty Tips <span class="count">(6)</span></a></li>
-              <li><a href="blog-category/hair-health.php">Hair Health <span class="count">(5)</span></a></li>
-              <li><a href="blog-category/wellness.php">Wellness <span class="count">(9)</span></a></li>
-            </ul>
-          </div>
-
-          <!-- Recent Posts -->
-          <div class="sidebar-widget recent-posts-widget" data-aos="fade-up" data-aos-delay="200">
-            <h3>Recent Posts</h3>
-            <ul>
-              <li><a href="/blog/hifu-complete-guide.php">The Complete Guide to HIFU Facial Lifting</a></li>
-              <li><a href="/blog/co2-laser-benefits.php">Why CO2 Laser Therapy is Perfect for Acne Scars</a></li>
-              <li><a href="/blog/post-treatment-skincare.php">Post-Treatment Skincare: Maximize Your Results</a></li>
-              <li><a href="/blog/hair-restoration-myths.php">Hair Restoration: Separating Myth from Reality</a></li>
-            </ul>
-          </div>
-
-          <!-- Tags -->
-          <div class="sidebar-widget tags-widget" data-aos="fade-up" data-aos-delay="300">
-            <h3>Popular Tags</h3>
-            <div class="tags-cloud">
-              <a href="/blog-tag/skin.php" class="tag">Skin</a>
-              <a href="/blog-tag/treatment.php" class="tag">Treatment</a>
-              <a href="/blog-tag/anti-aging.php" class="tag">Anti-Aging</a>
-              <a href="/blog-tag/laser.php" class="tag">Laser</a>
-              <a href="/blog-tag/natural.php" class="tag">Natural</a>
-              <a href="/blog-tag/results.php" class="tag">Results</a>
-              <a href="/blog-tag/wellness.php" class="tag">Wellness</a>
-            </div>
-          </div>
-
-          <!-- Newsletter -->
-          <div class="sidebar-widget newsletter-widget" data-aos="fade-up" data-aos-delay="400" style="background: linear-gradient(135deg, rgba(179, 14, 9, 0.1), rgba(202, 174, 95, 0.1)); padding: 1.5rem; border-radius: 12px;">
-            <h3>Subscribe</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 1rem;">Get wellness tips and treatment insights delivered to your inbox.</p>
-            <form class="newsletter-form" action="/newsletter-subscribe.php" method="post">
-              <input type="email" name="email" placeholder="Your email..." required />
-              <button type="submit" class="btn btn-small">Subscribe</button>
-            </form>
-          </div>
-
-        </aside>
+        <?php include 'sidebar.php'; ?>
 
       </div>
     </section>

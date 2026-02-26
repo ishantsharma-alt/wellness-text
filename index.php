@@ -55,7 +55,478 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
   <!-- Main CSS (ONLY ONCE) -->
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── VIDEO SECTION ───────────────────────────────────────────────── */
+    .video-showcase-section {
+      background: linear-gradient(135deg, #0d0202 0%, #1a0303 40%, #2a0505 100%);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .video-showcase-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(202,174,95,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 20%, rgba(176,14,9,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .video-showcase-section .section-header h2 { color: white; }
+    .video-showcase-section .eyebrow { color: #CAAE5F; background: rgba(202,174,95,0.1); border-color: rgba(202,174,95,0.3); }
+    .video-showcase-section .section-desc { color: rgba(255,255,255,0.6); }
+
+    .video-player-wrap {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(202,174,95,0.15);
+      cursor: pointer;
+    }
+    .video-thumbnail {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .video-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      transition: opacity 0.4s ease, transform 0.6s ease;
+    }
+    .video-player-wrap:hover .video-thumbnail img {
+      opacity: 0.6;
+      transform: scale(1.03);
+    }
+    .video-thumbnail-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(176,14,9,0.35) 0%, rgba(0,0,0,0.4) 100%);
+    }
+    .video-play-btn {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .video-player-wrap:hover .video-play-btn { transform: scale(1.08); }
+    .video-play-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.5);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .video-play-circle::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(202,174,95,0.3);
+      animation: videoPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes videoPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 0; }
+    }
+    .video-play-circle svg { margin-left: 6px; }
+    .video-player-wrap:hover .video-play-circle {
+      background: rgba(202,174,95,0.3);
+      border-color: rgba(202,174,95,0.8);
+    }
+    .video-play-label {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .video-bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+    .video-bottom-bar span {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.85rem;
+      font-family: "Lora", serif;
+      font-style: italic;
+    }
+    .video-bottom-bar .video-duration {
+      background: rgba(202,174,95,0.2);
+      border: 1px solid rgba(202,174,95,0.4);
+      color: #CAAE5F;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-style: normal;
+      font-family: "Inter", sans-serif;
+    }
+
+    /* VIDEO MODAL */
+    .video-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .video-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .video-modal-inner {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 50px 120px rgba(0,0,0,0.8);
+      transform: scale(0.88) translateY(30px);
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .video-modal-overlay.active .video-modal-inner { transform: scale(1) translateY(0); }
+    .video-modal-inner iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: block;
+      border: none;
+    }
+    .video-modal-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: white;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .video-modal-close:hover {
+      background: rgba(202,174,95,0.3);
+      border-color: rgba(202,174,95,0.6);
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    /* ── HOW IT WORKS SECTION ───────────────────────────────────────── */
+    .how-it-works-section {
+      background: linear-gradient(160deg, #fef9f3 0%, #f5ede2 50%, #fef9f3 100%);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .how-it-works-section::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(202,174,95,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .how-it-works-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(176,14,9,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hiw-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      margin-top: 4rem;
+    }
+    .hiw-connector {
+      position: absolute;
+      top: 56px;
+      left: calc(12.5% + 36px);
+      right: calc(12.5% + 36px);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(202,174,95,0.4) 15%, rgba(202,174,95,0.4) 85%, transparent);
+      z-index: 0;
+    }
+    .hiw-connector::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: repeating-linear-gradient(90deg, #CAAE5F 0, #CAAE5F 8px, transparent 8px, transparent 18px);
+      transform: translateY(-50%);
+    }
+    .hiw-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hiw-step-number-wrap {
+      position: relative;
+      margin-bottom: 1.75rem;
+    }
+    .hiw-step-num-outer {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid rgba(202,174,95,0.25);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    .hiw-step:hover .hiw-step-num-outer {
+      border-color: #CAAE5F;
+      box-shadow: 0 12px 40px rgba(202,174,95,0.2);
+      transform: translateY(-4px);
+    }
+    .hiw-step-num-inner {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #B00E09, #8a0b07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+    }
+    .hiw-step:hover .hiw-step-num-inner {
+      background: linear-gradient(135deg, #CAAE5F, #B8955C);
+    }
+    .hiw-step-num-text {
+      font-family: "Lora", serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+    }
+    .hiw-step-icon {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #CAAE5F;
+      border: 2px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+    .hiw-step-title {
+      font-family: "Lora", serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .hiw-step-subtitle {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #CAAE5F;
+      margin-bottom: 0.85rem;
+    }
+    .hiw-step-desc {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.7;
+    }
+    .hiw-cta-wrap {
+      text-align: center;
+      margin-top: 3.5rem;
+    }
+
+    /* ── UPDATED TESTIMONIALS ───────────────────────────────────────── */
+    .testimonial-card {
+      border-top: 3px solid transparent;
+      transition: all 0.4s ease;
+    }
+    .testimonial-card:hover {
+      border-top-color: #CAAE5F;
+    }
+
+    /* ── ACHIEVEMENTS SECTION ───────────────────────────────────────── */
+    .achievements-section {
+      background: white;
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .achievements-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(249,246,241,0.5) 0%, white 30%);
+      pointer-events: none;
+    }
+    .achievements-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    .achievement-card {
+      background: white;
+      border: 1px solid rgba(202,174,95,0.15);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(202,174,95,0.06), rgba(176,14,9,0.04));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .achievement-card:hover::before { opacity: 1; }
+    .achievement-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      border-color: rgba(202,174,95,0.4);
+    }
+    .achievement-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(176,14,9,0.08), rgba(202,174,95,0.08));
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-card:hover .achievement-icon-wrap {
+      background: linear-gradient(135deg, #B00E09, #CAAE5F);
+      transform: scale(1.1) rotate(5deg);
+    }
+    .achievement-num {
+      font-family: "Lora", serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 600;
+      background: linear-gradient(135deg, #B00E09, #CAAE5F);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+    .achievement-desc {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── VIDEO SECTION RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hiw-steps-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .hiw-connector { display: none; }
+      .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-play-circle { width: 70px; height: 70px; }
+    }
+    @media (max-width: 480px) {
+      .hiw-steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .achievements-grid { grid-template-columns: 1fr; }
+      .video-bottom-bar { padding: 1rem; }
+    }
+
+    /* ── BLOG LINK HOVER ENHANCEMENT ───────────────────────────────── */
+    .blog-card .blog-link:hover { gap: 0.75rem; }
+
+    /* ── SECTION DIVIDER ORNAMENT ───────────────────────────────────── */
+    .section-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .section-ornament-line { flex: 1; max-width: 80px; height: 1px; background: linear-gradient(90deg, transparent, rgba(202,174,95,0.5)); }
+    .section-ornament-line.right { background: linear-gradient(90deg, rgba(202,174,95,0.5), transparent); }
+    .section-ornament-diamond { width: 8px; height: 8px; background: #CAAE5F; transform: rotate(45deg); }
+  </style>
 </head>
 <body class="home-page">
 
@@ -91,11 +562,9 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       <div class="hero-bg-layer">
         <div class="hero-gradient-mesh"></div>
         <div class="hero-noise"></div>
-        <!-- Floating orbs -->
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
         <div class="hero-orb hero-orb-3"></div>
-        <!-- Decorative lines -->
         <div class="hero-lines" aria-hidden="true">
           <div class="hero-line hero-line-1"></div>
           <div class="hero-line hero-line-2"></div>
@@ -110,9 +579,9 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <span>Award-Winning Clinic · Alabang, PH</span>
           </div>
           <h1 class="hero-title" data-delay="1">
-            <span class="hero-title-line">Your journey</span>
-            <span class="hero-title-line hero-title-italic">to radiant</span>
-            <span class="hero-title-line">confidence</span>
+            <span class="hero-title-line">Transformative </span>
+            <span class="hero-title-line hero-title-italic">Wellness and  Aesthetic Treatments </span>
+            <span class="hero-title-line">or Everyone</span>
           </h1>
           <p class="hero-subtitle" data-delay="2">
             Premium non-invasive aesthetic treatments crafted for your unique skin goals. Backed by 15+ years of expertise and cutting-edge technology.
@@ -148,7 +617,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
         <!-- Visual -->
         <div class="hero-visual-col">
-          <!-- Main image -->
           <div class="hero-img-container">
             <div class="hero-img-ring-outer"></div>
             <div class="hero-img-ring-inner"></div>
@@ -156,8 +624,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <img src="img/facial-treatment-clinic.jpg" alt="Geneva Wellness Institute Premium Facial Treatment" class="hero-main-img" loading="eager" />
               <div class="hero-img-overlay-grad"></div>
             </div>
-
-            <!-- Floating cards -->
             <div class="hero-card hero-card-1">
               <div class="hero-card-icon">⭐</div>
               <div class="hero-card-info">
@@ -165,7 +631,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <span>500+ Reviews</span>
               </div>
             </div>
-
             <div class="hero-card hero-card-2">
               <div class="hero-card-icon">✨</div>
               <div class="hero-card-info">
@@ -173,7 +638,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <span>Zero Downtime</span>
               </div>
             </div>
-
             <div class="hero-card hero-card-3">
               <div class="hero-card-icon-lg">15+</div>
               <div class="hero-card-info">
@@ -181,8 +645,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <span>Certified Professionals</span>
               </div>
             </div>
-
-            <!-- Decorative elements -->
             <div class="hero-img-deco-1">✦</div>
             <div class="hero-img-deco-2">○</div>
           </div>
@@ -226,6 +688,61 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     </section>
 
     <!-- ═══════════════════════════════════════════════
+         VIDEO SHOWCASE SECTION (NEW — after hero)
+    ═══════════════════════════════════════════════ -->
+    <section class="video-showcase-section" id="video-showcase">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <p class="eyebrow">Watch Our Story</p>
+          <h2>Experience <em style="color:#CAAE5F">Geneva Wellness</em> in action</h2>
+          <p class="section-desc" style="color:rgba(255,255,255,0.6);">See how we transform lives through science-backed beauty and wellness treatments.</p>
+          <div class="section-ornament" style="justify-content:center; margin-top:1rem;">
+            <div class="section-ornament-line"></div>
+            <div class="section-ornament-diamond"></div>
+            <div class="section-ornament-line right"></div>
+          </div>
+        </div>
+
+        <div class="video-player-wrap" data-aos="fade-up" data-aos-delay="150" id="videoThumbnailWrap">
+          <div class="video-thumbnail">
+            <!-- YouTube default thumbnail -->
+            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.jpg'" />
+            <div class="video-thumbnail-overlay"></div>
+            <div class="video-play-btn" id="videoPlayBtn">
+              <div class="video-play-circle">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="video-play-label">Watch Now</span>
+            </div>
+            <div class="video-bottom-bar">
+              <span>Geneva Wellness Institute — Our Story</span>
+              <span class="video-duration">✦ Full Tour</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO MODAL -->
+      <div class="video-modal-overlay" id="videoModal">
+        <div class="video-modal-inner">
+          <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
+          <iframe
+            id="videoIframe"
+            width="560"
+            height="315"
+            src=""
+            data-src="https://www.youtube.com/embed/bD7H1rx4nOw?si=in7SM0y-i5vqDhVu&autoplay=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
          MARQUEE STRIP
     ═══════════════════════════════════════════════ -->
     <div class="marquee-strip" aria-hidden="true">
@@ -238,7 +755,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <span>Exilis</span><span class="marquee-sep">✦</span>
         <span>Pico Laser</span><span class="marquee-sep">✦</span>
         <span>Body Contouring</span><span class="marquee-sep">✦</span>
-        <!-- Duplicate for seamless loop -->
         <span>HIFU Lift</span><span class="marquee-sep">✦</span>
         <span>CO2 Laser</span><span class="marquee-sep">✦</span>
         <span>Carbon Laser</span><span class="marquee-sep">✦</span>
@@ -470,7 +986,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
          ABOUT SECTION — SPLIT LAYOUT
     ═══════════════════════════════════════════════ -->
     <section class="about-split section" id="about">
-      <!-- Left: decorative -->
       <div class="about-deco-panel">
         <div class="about-deco-content">
           <div class="about-deco-year">
@@ -485,7 +1000,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
       </div>
 
-      <!-- Right: content -->
       <div class="about-main">
         <div class="about-visual-stack" data-aos="fade-right">
           <div class="about-img-primary">
@@ -553,7 +1067,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
 
         <div class="ba-grid">
-          <!-- BA Card 1 -->
           <div class="ba-card" data-aos="fade-up" data-aos-delay="0">
             <div class="ba-slider-wrap">
               <div class="ba-before">
@@ -574,7 +1087,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             </div>
           </div>
 
-          <!-- BA Card 2 -->
           <div class="ba-card" data-aos="fade-up" data-aos-delay="150">
             <div class="ba-slider-wrap">
               <div class="ba-before">
@@ -694,10 +1206,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <article class="testimonial-card enhanced-testimonial">
                 <div class="testimonial-quote">❝</div>
                 <div class="testimonial-stars">★★★★★</div>
-                <blockquote><p>"The HIFU treatment results exceeded my expectations. My skin feels tighter and more lifted. The doctors are highly professional and take time to explain everything. I'm already recommending them to all my friends!"</p></blockquote>
+                <blockquote><p>"The body contouring treatments at Geneva Wellness Institute are amazing. I saw noticeable results after just a few sessions. The staff is incredibly supportive and guided me through the entire process. I feel more confident and happy with my body now."</p></blockquote>
                 <footer class="testimonial-author">
                   <div class="author-avatar" style="background: linear-gradient(135deg, #CAAE5F, var(--primary))">M</div>
-                  <div><strong>Maria Santos</strong><span>HIFU Treatment Client</span></div>
+                  <div><strong>Madelle Ocenar</strong><span>Body Contouring Client</span></div>
                 </footer>
               </article>
             </div>
@@ -705,10 +1217,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <article class="testimonial-card enhanced-testimonial">
                 <div class="testimonial-quote">❝</div>
                 <div class="testimonial-stars">★★★★★</div>
-                <blockquote><p>"The expertise and care at Geneva Wellness is unmatched. From the consultation to post-treatment follow-up, everything was seamless. I've seen visible improvements in my skin texture and tone. Highly recommended!"</p></blockquote>
+                <blockquote><p>"I had been struggling with hair loss for years until I discovered Geneva Wellness Institute. Their hair and scalp treatments have made a huge difference. My hair feels thicker and healthier, and I couldn't be happier with the results."</p></blockquote>
                 <footer class="testimonial-author">
-                  <div class="author-avatar" style="background: linear-gradient(135deg, #8a0b07, #CAAE5F)">R</div>
-                  <div><strong>Rachel Tan</strong><span>CO2 Laser Client</span></div>
+                  <div class="author-avatar" style="background: linear-gradient(135deg, #8a0b07, #CAAE5F)">B</div>
+                  <div><strong>Benedict Aydalla</strong><span>Hair Restoration Client</span></div>
                 </footer>
               </article>
             </div>
@@ -720,6 +1232,98 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       </div>
       <div class="container" style="text-align:center; margin-top:2rem;" data-aos="fade-up">
         <a href="testimonials.php" class="btn btn-outline">Read More Testimonials</a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         HOW IT WORKS — NEW SECTION (after testimonials)
+    ═══════════════════════════════════════════════ -->
+    <section class="how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <p class="eyebrow">Our Achievements</p>
+          <h2>Proudly showcasing our excellence in <em>beauty and wellness</em></h2>
+          <p class="section-desc">From your first message to your first treatment — here's how easy it is to start your transformation.</p>
+          <div class="section-ornament">
+            <div class="section-ornament-line"></div>
+            <div class="section-ornament-diamond"></div>
+            <div class="section-ornament-line right"></div>
+          </div>
+        </div>
+
+        <div style="position:relative;">
+          <div class="hiw-connector"></div>
+          <div class="hiw-steps-grid">
+
+            <!-- Step 01 -->
+            <div class="hiw-step" data-aos="fade-up" data-aos-delay="0">
+              <div class="hiw-step-number-wrap">
+                <div class="hiw-step-num-outer">
+                  <div class="hiw-step-num-inner">
+                    <span class="hiw-step-num-text">01</span>
+                  </div>
+                </div>
+                <div class="hiw-step-icon">💬</div>
+              </div>
+              <p class="hiw-step-subtitle">Hair & Scalp Treatment</p>
+              <h3 class="hiw-step-title">Reach out via phone, email, or message</h3>
+              <p class="hiw-step-desc">Send us a message through our contact number, email, or social media channels. Let us know the treatment you're interested in and any preferred dates and times.</p>
+            </div>
+
+            <!-- Step 02 -->
+            <div class="hiw-step" data-aos="fade-up" data-aos-delay="100">
+              <div class="hiw-step-number-wrap">
+                <div class="hiw-step-num-outer">
+                  <div class="hiw-step-num-inner">
+                    <span class="hiw-step-num-text">02</span>
+                  </div>
+                </div>
+                <div class="hiw-step-icon">✨</div>
+              </div>
+              <p class="hiw-step-subtitle">Choose Your Treatment</p>
+              <h3 class="hiw-step-title">Select the service that suits your needs</h3>
+              <p class="hiw-step-desc">Send us a message through our contact number, email, or social media channels. Let us know the treatment you're interested in and any preferred dates and times.</p>
+            </div>
+
+            <!-- Step 03 -->
+            <div class="hiw-step" data-aos="fade-up" data-aos-delay="200">
+              <div class="hiw-step-number-wrap">
+                <div class="hiw-step-num-outer">
+                  <div class="hiw-step-num-inner">
+                    <span class="hiw-step-num-text">03</span>
+                  </div>
+                </div>
+                <div class="hiw-step-icon">📅</div>
+              </div>
+              <p class="hiw-step-subtitle">Confirm Your Appointment</p>
+              <h3 class="hiw-step-title">Settle on a date and time</h3>
+              <p class="hiw-step-desc">Our team will help you find a convenient slot for your appointment. Confirm the date and time that works best for you, and we will reserve your spot.</p>
+            </div>
+
+            <!-- Step 04 -->
+            <div class="hiw-step" data-aos="fade-up" data-aos-delay="300">
+              <div class="hiw-step-number-wrap">
+                <div class="hiw-step-num-outer">
+                  <div class="hiw-step-num-inner">
+                    <span class="hiw-step-num-text">04</span>
+                  </div>
+                </div>
+                <div class="hiw-step-icon">🌟</div>
+              </div>
+              <p class="hiw-step-subtitle">Visit Us</p>
+              <h3 class="hiw-step-title">Enjoy your treatment at Geneva Wellness</h3>
+              <p class="hiw-step-desc">Arrive at our state-of-the-art facility at the scheduled time. Our team will be ready to provide you with an exceptional beauty and wellness experience.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="hiw-cta-wrap" data-aos="fade-up" data-aos-delay="350">
+          <a href="contact-us.php#contact-form" class="btn btn-primary btn-lg">
+            Start Your Journey
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:0.25rem"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -742,7 +1346,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <p class="blog-date">January 15, 2024</p>
               <h3>The Benefits of Regular Facials</h3>
               <p>Discover how regular facial treatments can transform your skin, improve texture, and give you long-lasting radiance.</p>
-              <a href="#" class="blog-link">Read More →</a>
+              <a href="blog/benefits-of-regular-facials.php" class="blog-link">Read More →</a>
             </div>
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
@@ -754,7 +1358,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <p class="blog-date">February 3, 2024</p>
               <h3>Top 5 Body Contouring Techniques</h3>
               <p>Learn about the most effective body contouring techniques and find out which is best for you.</p>
-              <a href="#" class="blog-link">Read More →</a>
+              <a href="blog/body-contouring-techniques.php" class="blog-link">Read More →</a>
             </div>
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
@@ -766,7 +1370,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <p class="blog-date">March 10, 2024</p>
               <h3>Hair Care Tips for a Healthier Scalp</h3>
               <p>Explore essential tips for maintaining a healthy scalp and vibrant hair with expert advice from our certified therapists.</p>
-              <a href="#" class="blog-link">Read More →</a>
+              <a href="blog/hair-care-tips.php" class="blog-link">Read More →</a>
             </div>
           </article>
         </div>
@@ -793,5 +1397,38 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   <script src="components.js"></script>
   <script src="script.js"></script>
   <script src="enhancements.js"></script>
+
+  <!-- ── VIDEO MODAL SCRIPT ─────────────────────────── -->
+  <script>
+    (function() {
+      const thumbnailWrap = document.getElementById('videoThumbnailWrap');
+      const modal = document.getElementById('videoModal');
+      const modalClose = document.getElementById('videoModalClose');
+      const iframe = document.getElementById('videoIframe');
+
+      function openVideo() {
+        iframe.src = iframe.dataset.src;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeVideo() {
+        modal.classList.remove('active');
+        iframe.src = '';
+        document.body.style.overflow = '';
+      }
+
+      if (thumbnailWrap) thumbnailWrap.addEventListener('click', openVideo);
+      if (modalClose) modalClose.addEventListener('click', closeVideo);
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) closeVideo();
+        });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeVideo();
+      });
+    })();
+  </script>
 </body>
 </html>

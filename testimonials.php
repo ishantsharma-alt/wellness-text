@@ -39,6 +39,79 @@ $page_subtitle = 'Stories of Transformation & Satisfaction';
 
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.video-card {
+  position: relative;
+  cursor: pointer;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.video-card img {
+  width: 100%;
+  display: block;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(176,14,9,0.9);
+  color: #fff;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.video-modal-content {
+  width: 85%;
+  max-width: 900px;
+  position: relative;
+}
+
+.close-video {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+@media(max-width: 992px){
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 576px){
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
 </head>
 <body>
 
@@ -50,218 +123,98 @@ $page_subtitle = 'Stories of Transformation & Satisfaction';
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
   <section class="inner-banner" style="background: linear-gradient(135deg, #B00E09 0%, #FAD2B8 100%);">
     <div class="inner-banner-content container">
-      <h1 data-aos="fade-up">Client Testimonials</h1>
-      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Stories of Transformation & Satisfaction</p>
-    </div>
-  </section>
+      <h1 data-aos="fade-up">What Our Clients Say</h1>
+      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Hear from those who have experienced the transformative power of Geneva Wellness Institute. Our clients share their stories of rejuvenation, confidence, and beauty. Let their words inspire your own journey to wellness
 
-  <!-- ── BREADCRUMB ────────────────────────────────– -->
+</p>
+      <!-- ── BREADCRUMB ────────────────────────────────– -->
   <nav class="breadcrumb container" aria-label="Breadcrumb">
     <a href="index.php">Home</a>
     <span>/</span>
     <span aria-current="page">Testimonials</span>
   </nav>
+    </div>
+  </section>
+
+  
 
   <main>
 
-    <!-- ── RATING SUMMARY ────────────────────────────– -->
-    <section class="section">
-      <div class="container">
-        <div class="rating-summary" data-aos="fade-up">
-          <div class="rating-score">
-            <div class="stars">★★★★★</div>
-            <div class="rating-number">4.9/5.0</div>
-            <p>Based on 500+ client reviews</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
-    <!-- ── TESTIMONIALS GRID ────────────────────────– -->
-    <section class="section">
-      <div class="container">
-        <div class="testimonials-featured">
-          <!-- Testimonial 1 -->
-          <article class="testimonial-card" data-aos="fade-up">
-            <div class="testimonial-header">
-              <div class="testimonial-avatar">M</div>
-              <div class="testimonial-author">
-                <strong>Maria Santos</strong>
-                <small>Verified Client</small>
-              </div>
-              <div class="stars-rating">★★★★★</div>
-            </div>
-            <p class="testimonial-title">Exceeded My Expectations</p>
-            <p class="testimonial-text">"I was nervous about getting HIFU done, but Dr. Rafael made me feel completely at ease. The procedure was painless, and I've never seen my skin look better. The results are natural and beautiful. I'm recommending this clinic to all my friends!"</p>
-            <div class="testimonial-meta">
-              <span>HIFU Treatment</span>
-              <span>•</span>
-              <span>6 months ago</span>
-            </div>
-          </article>
+    <!-- ── VIDEO TESTIMONIALS ───────────────────────── -->
+<section class="section">
+  <div class="container">
 
-          <!-- Testimonial 2 -->
-          <article class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="testimonial-header">
-              <div class="testimonial-avatar">J</div>
-              <div class="testimonial-author">
-                <strong>James Rodriguez</strong>
-                <small>Verified Client</small>
-              </div>
-              <div class="stars-rating">★★★★★</div>
-            </div>
-            <p class="testimonial-title">Hair Restoration is a Game-Changer</p>
-            <p class="testimonial-text">"After struggling with hair loss for years, I finally found a solution that actually works. The team at Geneva Wellness was patient in explaining the process, and the results are extraordinary. My confidence is back!"</p>
-            <div class="testimonial-meta">
-              <span>Hair Restoration</span>
-              <span>•</span>
-              <span>3 months ago</span>
-            </div>
-          </article>
+    <div class="section-header">
+      <span class="eyebrow">Real Stories</span>
+      <h2>Client Testimonials</h2>
+    </div>
 
-          <!-- Testimonial 3 -->
-          <article class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="testimonial-header">
-              <div class="testimonial-avatar">A</div>
-              <div class="testimonial-author">
-                <strong>Ana Michelle Reyes</strong>
-                <small>Verified Client</small>
-              </div>
-              <div class="stars-rating">★★★★★</div>
-            </div>
-            <p class="testimonial-title">Professional & Caring Team</p>
-            <p class="testimonial-text">"The CO2 laser treatment transformed my skin completely. My acne scars are barely visible now, and my skin tone is so much more even. The staff is incredibly professional and made every visit pleasant."</p>
-            <div class="testimonial-meta">
-              <span>CO2 Laser Therapy</span>
-              <span>•</span>
-              <span>4 months ago</span>
-            </div>
-          </article>
+    <div class="video-grid">
 
-          <!-- Testimonial 4 -->
-          <article class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="testimonial-header">
-              <div class="testimonial-avatar">R</div>
-              <div class="testimonial-author">
-                <strong>Robert Chen</strong>
-                <small>Verified Client</small>
-              </div>
-              <div class="stars-rating">★★★★★</div>
-            </div>
-            <p class="testimonial-title">Results Speak for Themselves</p>
-            <p class="testimonial-text">"I did the Exilis Ultra for body contouring, and the results are incredible. My body is more toned, and my confidence has skyrocketed. The clinic is luxurious, and the team is genuine and knowledgeable."</p>
-            <div class="testimonial-meta">
-              <span>Body Contouring</span>
-              <span>•</span>
-              <span>2 months ago</span>
-            </div>
-          </article>
+     <div class="video-card" data-video="ww-OefRLgiQ">
+    <img src="https://img.youtube.com/vi/ww-OefRLgiQ/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
 
-          <!-- Testimonial 5 -->
-          <article class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="testimonial-header">
-              <div class="testimonial-avatar">C</div>
-              <div class="testimonial-author">
-                <strong>Catherine Lopez</strong>
-                <small>Verified Client</small>
-              </div>
-              <div class="stars-rating">★★★★★</div>
-            </div>
-            <p class="testimonial-title">Worth Every Peso</p>
-            <p class="testimonial-text">"I've tried many skincare products and treatments, but nothing compares to the Pico Laser. My tattoo is almost completely gone, and my skin looks amazing. The investment is definitely worth it."</p>
-            <div class="testimonial-meta">
-              <span>Pico Laser & Skin Treatment</span>
-              <span>•</span>
-              <span>5 months ago</span>
-            </div>
-          </article>
+  <div class="video-card" data-video="xMq9w8a81bo">
+    <img src="https://img.youtube.com/vi/xMq9w8a81bo/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
 
-          <!-- Testimonial 6 -->
-          <article class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
-            <div class="testimonial-header">
-              <div class="testimonial-avatar">P</div>
-              <div class="testimonial-author">
-                <strong>Patricia Gonzales</strong>
-                <small>Verified Client</small>
-              </div>
-              <div class="stars-rating">★★★★★</div>
-            </div>
-            <p class="testimonial-title">Life-Changing Experience</p>
-            <p class="testimonial-text">"The microneedling treatment has given my skin a whole new lease on life. My wrinkles are softer, my skin is glowing, and I feel like a new person. The team is so caring and attentive to detail."</p>
-            <div class="testimonial-meta">
-              <span>Microneedling</span>
-              <span>•</span>
-              <span>1 month ago</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+  <div class="video-card" data-video="8ER__ofvhEQ">
+    <img src="https://img.youtube.com/vi/8ER__ofvhEQ/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
 
-    <!-- ── WHY CLIENTS LOVE US ────────────────────────– -->
-    <section class="section" style="background: linear-gradient(135deg, rgba(202, 174, 95, 0.08), rgba(250, 210, 184, 0.08));">
-      <div class="container">
-        <div class="section-header">
-          <span class="eyebrow">What Sets Us Apart</span>
-          <h2>Why Clients Choose Geneva Wellness</h2>
-        </div>
-        <div class="features-list">
-          <div class="feature-item" data-aos="fade-up">
-            <span class="feature-icon">✓</span>
-            <div>
-              <h3>Expert Professionals</h3>
-              <p>Certified doctors and specialists with years of international training and experience.</p>
-            </div>
-          </div>
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
-            <span class="feature-icon">✓</span>
-            <div>
-              <h3>Advanced Technology</h3>
-              <p>FDA-approved equipment utilizing the latest advancements in aesthetic medicine.</p>
-            </div>
-          </div>
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
-            <span class="feature-icon">✓</span>
-            <div>
-              <h3>Personalized Care</h3>
-              <p>Each client receives a customized treatment plan tailored to their unique goals.</p>
-            </div>
-          </div>
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-            <span class="feature-icon">✓</span>
-            <div>
-              <h3>Transparent Pricing</h3>
-              <p>No hidden fees. Clear, upfront costs with flexible payment options available.</p>
-            </div>
-          </div>
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
-            <span class="feature-icon">✓</span>
-            <div>
-              <h3>Luxurious Environment</h3>
-              <p>Comfortable, clean, and private treatment rooms designed for your comfort.</p>
-            </div>
-          </div>
-          <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
-            <span class="feature-icon">✓</span>
-            <div>
-              <h3>Aftercare Support</h3>
-              <p>Comprehensive follow-up and guidance to maximize results and ensure satisfaction.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="video-card" data-video="PYHIzG4w2HY">
+    <img src="https://img.youtube.com/vi/PYHIzG4w2HY/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
 
-    <!-- ── CTA SECTION ────────────────────────────────– -->
-    <section class="section cta-section" style="background: linear-gradient(135deg, #B00E09 0%, #CAAE5F 100%);">
-      <div class="container cta-content">
-        <div>
-          <h2 style="color: white; margin-bottom: 1rem;">Join Our Satisfied Clients</h2>
-          <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin-bottom: 0;">Start your transformation journey today. Schedule a free consultation with our team.</p>
-        </div>
-        <a href="contact-us.php#contact-form" class="btn btn-white">Book Consultation</a>
-      </div>
-    </section>
+  <div class="video-card" data-video="sUaxQuCmmXg">
+    <img src="https://img.youtube.com/vi/sUaxQuCmmXg/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
+
+  <div class="video-card" data-video="BN-SkkUI7jE">
+    <img src="https://img.youtube.com/vi/BN-SkkUI7jE/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
+
+  <div class="video-card" data-video="A-0R_S9fliw">
+    <img src="https://img.youtube.com/vi/A-0R_S9fliw/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
+
+  <div class="video-card" data-video="w-dkEQi-LTE">
+    <img src="https://img.youtube.com/vi/w-dkEQi-LTE/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
+
+  <div class="video-card" data-video="PXNpnWjP3DM">
+    <img src="https://img.youtube.com/vi/PXNpnWjP3DM/hqdefault.jpg" alt="Video Testimonial">
+    <div class="play-btn">▶</div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPUP MODAL -->
+<div class="video-modal" id="videoModal">
+  <div class="video-modal-content">
+    <span class="close-video">&times;</span>
+    <iframe id="videoFrame" width="100%" height="500"
+      src=""
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+   
 
     <?php include 'footer.php'; ?>
 
@@ -275,5 +228,31 @@ $page_subtitle = 'Stories of Transformation & Satisfaction';
   <script src="components.js"></script>
   <!-- Page-specific Scripts -->
   <script src="script.js"></script>
+
+  <script>
+    const videoModal = document.getElementById("videoModal");
+const videoFrame = document.getElementById("videoFrame");
+const closeVideo = document.querySelector(".close-video");
+
+document.querySelectorAll(".video-card").forEach(card => {
+  card.addEventListener("click", function(){
+    const id = this.getAttribute("data-video");
+    videoFrame.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+    videoModal.style.display = "flex";
+  });
+});
+
+closeVideo.addEventListener("click", function(){
+  videoModal.style.display = "none";
+  videoFrame.src = "";
+});
+
+window.addEventListener("click", function(e){
+  if(e.target === videoModal){
+    videoModal.style.display = "none";
+    videoFrame.src = "";
+  }
+});
+    </script>
 </body>
 </html>

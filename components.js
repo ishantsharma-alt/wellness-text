@@ -41,14 +41,13 @@ const HEADER_TEMPLATE = `
               <div class="dropdown-group">
                 <p class="dropdown-label">Face</p>
                 <a href="treatments.php#hifu" class="dropdown-link"><span>✦</span> HIFU Lift</a>
-                <a href="treatments.php#co2-laser" class="dropdown-link"><span>✦</span> CO2 Laser</a>
-                <a href="treatments.php#carbon-laser" class="dropdown-link"><span>✦</span> Carbon Laser</a>
-                <a href="treatments.php#hydra-7d" class="dropdown-link"><span>✦</span> HYDRA 7D</a>
+                <a href="treatments.php#co2" class="dropdown-link"><span>✦</span> CO2 Laser</a>
+                <a href="treatments.php#carbon" class="dropdown-link"><span>✦</span> Carbon Laser</a>
+                <a href="treatments.php#hydrafacial" class="dropdown-link"><span>✦</span> HYDRA 7D</a>
               </div>
               <div class="dropdown-group">
                 <p class="dropdown-label">Body</p>
-                <a href="treatments.php#exilis" class="dropdown-link"><span>✦</span> Exilis</a>
-                <a href="treatments.php#hair" class="dropdown-link"><span>✦</span> Hair Restoration</a>
+                <a href="treatments.php#exilis-face" class="dropdown-link"><span>✦</span> Exilis</a>
                 <a href="treatments.php#pico" class="dropdown-link"><span>✦</span> Pico Laser</a>
               </div>
               <div class="dropdown-promo">
