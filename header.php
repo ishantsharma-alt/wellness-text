@@ -242,7 +242,7 @@
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 1000;
+  z-index: 1005;
   background: linear-gradient(90deg, var(--primary) 0%, #8a0b07 50%, var(--primary) 100%);
   transition: background .4s cubic-bezier(.25,.46,.45,.94),
               box-shadow .4s ease;
