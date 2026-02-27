@@ -225,12 +225,12 @@ function injectFooter() {
   const footerContainer = document.getElementById('dynamic-footer');
   if (footerContainer && footerContainer.innerHTML.trim() === '') {
     let footerHTML = FOOTER_TEMPLATE;
-    
+
     // Adjust image paths for subdirectories
     if (window.location.pathname.includes('/blog/') || window.location.pathname.includes('/blog-category/')) {
       footerHTML = footerHTML.replace(/src="img\//g, 'src="../img/');
     }
-    
+
     footerContainer.innerHTML = footerHTML;
   }
 }
@@ -245,7 +245,7 @@ function injectSidebar() {
     // Check if we're in a subdirectory (blog or blog-category)
     const isSubdirectory = window.location.pathname.includes('/blog/') || window.location.pathname.includes('/blog-category/');
     let sidebarHTML = SIDEBAR_TEMPLATE;
-    
+
     if (isSubdirectory) {
       // Replace relative paths with ../ for subdirectory pages
       sidebarHTML = sidebarHTML
@@ -254,7 +254,7 @@ function injectSidebar() {
         .replace(/href="contact-us\.php/g, 'href="../contact-us.php')
         .replace(/href="blog\//g, 'href="../blog/');
     }
-    
+
     sidebarContainer.innerHTML = sidebarHTML;
   }
 }
@@ -278,7 +278,7 @@ function injectBreadcrumb(items) {
   // Don't show breadcrumb on home page
   const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.php';
   if (isHomePage) return;
-  
+
   // Insert breadcrumb after banner-content, at the bottom of hero section
   const bannerContent = document.querySelector('.banner-content');
   if (bannerContent) {
@@ -289,122 +289,158 @@ function injectBreadcrumb(items) {
 // ── HEADER FUNCTIONALITY ──────────────────────────────────────────
 
 /**
- * Initialize header interactive elements
+ * Initialize header interactive elements.
+ *
+ * IMPORTANT: header.php includes a self-contained IIFE that registers ALL
+ * flyout/overlay/toggle listeners and sets window.__gwiHeaderInit = true.
+ * If we add a SECOND click listener on #nav-toggle here, both handlers fire
+ * on every click — the net effect is the flyout opens and immediately closes.
+ *
+ * Fix: if window.__gwiHeaderInit is truthy, skip all toggle/flyout wiring
+ * and only handle the parts components.js exclusively owns (announcement bar,
+ * active nav link). This resolves the home-page flyout bug without breaking
+ * any other page.
  */
 function initHeaderFunctionality() {
-  const toggle = document.getElementById('nav-toggle');
-  // Support two patterns: legacy `nav-menu` id or the header's `mobile-flyout` panel
-  const menu = document.getElementById('nav-menu') || document.getElementById('mobile-flyout');
-  const header = document.getElementById('site-header');
-  const announcementBar = document.getElementById('announcement-bar');
+
+  // ── GUARD ────────────────────────────────────────────────────────────────
+  // header.php's IIFE already wired up the flyout on this page.
+  // Only do the lightweight work that belongs to components.js.
+  if (window.__gwiHeaderInit) {
+    // Announcement bar close (components.js owns this)
+    const closeBtn  = document.getElementById('announcement-close');
+    const annBar    = document.getElementById('announcement-bar');
+    if (closeBtn && annBar) {
+      closeBtn.addEventListener('click', () => {
+        annBar.classList.add('hidden');
+        document.body.classList.add('announcement-hidden');
+      });
+    }
+
+    // Active nav-link highlighting
+    updateActiveNavLink();
+    window.addEventListener('hashchange', updateActiveNavLink);
+
+    return; // ← EXIT: do NOT add any more listeners to #nav-toggle
+  }
+  // ── END GUARD ────────────────────────────────────────────────────────────
+
+  // Fallback path: header.php IIFE did not run (e.g. server-side error or
+  // a page that uses a different header include). Wire everything up here.
+  const toggle   = document.getElementById('nav-toggle');
+  const menu     = document.getElementById('nav-menu') || document.getElementById('mobile-flyout');
+  const overlay  = document.getElementById('mobile-overlay');
+  const header   = document.getElementById('site-header');
+  const annBar   = document.getElementById('announcement-bar');
   const closeBtn = document.getElementById('announcement-close');
-  const links = document.querySelectorAll('.nav-link');
+  const links    = document.querySelectorAll('.nav-link');
 
   const closeMenu = () => {
     if (!toggle || !menu) return;
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation menu');
     menu.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
     document.body.style.overflow = '';
   };
 
-  // Close announcement bar
-  if (closeBtn && announcementBar) {
+  // Announcement bar close
+  if (closeBtn && annBar) {
     closeBtn.addEventListener('click', () => {
-      announcementBar.classList.add('hidden');
+      annBar.classList.add('hidden');
       document.body.classList.add('announcement-hidden');
     });
   }
 
   if (toggle && menu) {
-    // Mobile menu toggle
+    // Hamburger toggle
     toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      const nextState = !isOpen;
-      toggle.setAttribute('aria-expanded', String(nextState));
-      menu.classList.toggle('active', nextState);
-      document.body.style.overflow = nextState ? 'hidden' : '';
+      const isOpen   = toggle.getAttribute('aria-expanded') === 'true';
+      const nextOpen = !isOpen;
+      toggle.setAttribute('aria-expanded', String(nextOpen));
+      toggle.setAttribute('aria-label', nextOpen ? 'Close navigation menu' : 'Open navigation menu');
+      menu.classList.toggle('active', nextOpen);
+      if (overlay) overlay.classList.toggle('active', nextOpen);
+      document.body.style.overflow = nextOpen ? 'hidden' : '';
     });
 
-    // Close menu when link is clicked
-    links.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+    // Close when overlay is clicked
+    if (overlay) overlay.addEventListener('click', closeMenu);
 
-    // Close menu when clicking outside
+    // Close on nav-link click
+    links.forEach(link => link.addEventListener('click', closeMenu));
+
+    // Close when clicking outside header + menu
     document.addEventListener('click', (e) => {
-      if (header && !header.contains(e.target)) {
+      if (header && !header.contains(e.target) && !menu.contains(e.target)) {
         closeMenu();
       }
     });
 
-    // Prevent stale mobile state after resizing to desktop
+    // Reset on resize to desktop
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1024) {
-        closeMenu();
-      }
+      if (window.innerWidth > 1024) closeMenu();
     });
   }
 
-  // Sticky header on scroll
+  // Sticky header scroll class
   const handleHeaderScroll = () => {
     if (!header) return;
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > 50) {
-      header.classList.add('scrolled', 'sticky');
-    } else {
-      header.classList.remove('scrolled', 'sticky');
-    }
+    header.classList.toggle('scrolled', window.pageYOffset > 50);
   };
-
   window.addEventListener('scroll', handleHeaderScroll, { passive: true });
   handleHeaderScroll();
 
-  // Set active nav link
+  // Active nav link
   updateActiveNavLink();
   window.addEventListener('hashchange', updateActiveNavLink);
 }
+
 /**
  * Update active nav link based on current page
  * Enhanced to handle all page types and URL patterns
  */
 function updateActiveNavLink() {
-  const currentPath = window.location.pathname;
-  const currentPathname = currentPath.split('/').pop() || 'index.php'; // Get filename
-  const links = document.querySelectorAll('.nav-link');
-  
+  const currentPath     = window.location.pathname;
+  const currentPathname = currentPath.split('/').pop() || 'index.php';
+  const links           = document.querySelectorAll('.nav-link');
+
   links.forEach(link => {
-    let href = link.getAttribute('href');
+    let href    = link.getAttribute('href');
     let isActive = false;
-    
+
     if (!href) return;
-    
-    // Remove any hash anchor from href for comparison
+
     const hrefBase = href.split('#')[0];
-    
+
     // Homepage detection
-    if ((currentPathname === 'index.php' || currentPathname === '' || currentPath === '/') && 
-        (hrefBase === '/' || hrefBase === 'index.php' || hrefBase.includes('index'))) {
+    if (
+      (currentPathname === 'index.php' || currentPathname === '' || currentPath === '/') &&
+      (hrefBase === '/' || hrefBase === 'index.php' || hrefBase.includes('index'))
+    ) {
       isActive = true;
     }
-    
-    // Direct filename match (handles most pages)
+    // Direct filename match
     else if (currentPathname === hrefBase || currentPathname === hrefBase + '.php') {
       isActive = true;
     }
-    
-    // Path-based match (for nested paths)
+    // Path-based match
     else if (currentPath.includes(hrefBase)) {
       isActive = true;
     }
-    
-    // Blog section detection (includes blog pages, search, and categories)
+
+    // Blog section detection
     if (!isActive && (href.includes('blog') || hrefBase === 'blog.php')) {
-      if (currentPath.includes('/blog') || currentPath.includes('blog.php') || 
-          currentPath.includes('search') || currentPathname.includes('search')) {
+      if (
+        currentPath.includes('/blog') ||
+        currentPath.includes('blog.php') ||
+        currentPath.includes('search') ||
+        currentPathname.includes('search')
+      ) {
         isActive = true;
       }
     }
-    
+
     // Apply active state
     if (isActive) {
       link.setAttribute('aria-current', 'page');
@@ -423,17 +459,17 @@ function updateActiveNavLink() {
  * Call this once document is loaded
  */
 function initDynamicComponents() {
-  // Inject header (all pages)
-  injectHeader();
-  
   // Inject footer (all pages)
   injectFooter();
-  
+
   // Inject sidebar only on blog pages
   const isBlogPage = window.location.pathname.includes('/blog');
   if (isBlogPage) {
     injectSidebar();
   }
+
+  // Initialize header interactivity
+  initHeaderFunctionality();
 }
 
 /**
@@ -449,7 +485,6 @@ if (document.readyState === 'loading') {
 
 // These functions are available globally for use in page-specific scripts
 window.ComponentManager = {
-  injectHeader,
   injectFooter,
   injectSidebar,
   injectInnerBanner,
@@ -457,8 +492,3 @@ window.ComponentManager = {
   createInnerBanner,
   createBreadcrumb
 };
-
-
-
-
-

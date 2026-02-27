@@ -165,7 +165,7 @@
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 1001;
+  z-index: 9000;
   background: linear-gradient(90deg, var(--primary) 0%, #8a0b07 50%, var(--primary) 100%);
   transition: background .4s cubic-bezier(.25,.46,.45,.94),
               box-shadow .4s ease;
@@ -199,7 +199,6 @@
   transition: color .3s;
 }
 .site-header.scrolled .nav-logo { color: var(--black); }
-/* Keep emblem red (not black) when header turns white */
 .site-header.scrolled .logo-emblem { color: var(--primary); }
 
 .logo-emblem {
@@ -312,10 +311,10 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   HAMBURGER BUTTON  (hidden on desktop)
+   HAMBURGER BUTTON
 ══════════════════════════════════════════════════════ */
 .nav-toggle {
-  display: none;          /* shown via media query below */
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -327,7 +326,9 @@
   cursor: pointer;
   flex-shrink: 0;
   transition: background .25s, border-color .25s;
-  z-index: 1001;
+  /* CRITICAL: high z-index so it's always clickable */
+  z-index: 9999;
+  position: relative;
   margin-left: auto;
 }
 .site-header.scrolled .nav-toggle {
@@ -356,53 +357,47 @@
    DARK OVERLAY
 ══════════════════════════════════════════════════════ */
 .mobile-overlay {
-  display: none;
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   background: rgba(0,0,0,.52);
-  z-index: 999;
+  /* CRITICAL: must sit above hero transforms but below flyout */
+  z-index: 9100;
   opacity: 0;
+  pointer-events: none;
   transition: opacity .35s ease;
   backdrop-filter: blur(3px);
-  pointer-events: none;
+  /* Hidden by default — shown only when active */
+  visibility: hidden;
 }
-.mobile-overlay.active { 
-  display: block; 
-  opacity: 1; 
+.mobile-overlay.active {
+  opacity: 1;
   pointer-events: all;
+  visibility: visible;
 }
 
 /* ══════════════════════════════════════════════════════
-   MOBILE FLYOUT  — slides in from LEFT
+   MOBILE FLYOUT — slides in from LEFT
 ══════════════════════════════════════════════════════ */
 .mobile-flyout {
   position: fixed;
   top: 0; left: 0; bottom: 0;
   width: min(320px, 88vw);
   background: #fff;
-  z-index: 1000;
+  /* CRITICAL: must be highest z-index on the page */
+  z-index: 9200;
   display: flex;
   flex-direction: column;
+  /* Start off-screen to the LEFT */
   transform: translateX(-100%);
   transition: transform .38s cubic-bezier(.25,.46,.45,.94);
   box-shadow: 4px 0 40px rgba(0,0,0,.18);
   overflow-y: auto;
   overflow-x: hidden;
-  visibility: visible !important;
+  /* Always in the DOM, visibility controlled by transform */
   will-change: transform;
 }
-.mobile-flyout.active { 
-  transform: translateX(0) !important;
-  left: 0 !important;
-}
-
-/* Backup for older browsers that don't support transform */
-@supports not (transform: translateX(0)) {
-  .mobile-flyout {
-    left: -100vw;
-  }
-  .mobile-flyout.active {
-    left: 0 !important;
-  }
+.mobile-flyout.active {
+  transform: translateX(0);
 }
 
 /* Flyout header row */
@@ -413,7 +408,6 @@
   padding: 1.2rem 1.4rem;
   background: linear-gradient(135deg, var(--primary) 0%, #8a0b07 100%);
   flex-shrink: 0;
-  visibility: visible !important;
 }
 .flyout-logo {
   display: flex; align-items: center; gap: .6rem;
@@ -432,49 +426,40 @@
 .flyout-close:hover { background:rgba(255,255,255,.28); }
 
 /* Flyout nav body */
-.flyout-nav { 
-  flex: 1; 
+.flyout-nav {
+  flex: 1;
   padding: .5rem 0;
-  display: flex !important;
-  flex-direction: column;
-  width: 100%;
   overflow-y: auto;
 }
-.flyout-list { 
-  list-style: none; 
-  margin: 0; 
+.flyout-list {
+  list-style: none;
+  margin: 0;
   padding: 0;
-  display: flex !important;
-  flex-direction: column;
-  width: 100%;
 }
-
-/* Each top-level item */
 .flyout-list li {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   width: 100%;
 }
-
 .flyout-link {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: .88rem 1.5rem;
-  font-size: .975rem; 
+  font-size: .975rem;
   font-weight: 500;
   color: var(--black);
   text-decoration: none;
-  background: none !important; 
-  border: none !important;
-  cursor: pointer; 
+  background: none;
+  border: none;
+  cursor: pointer;
   text-align: left;
   border-bottom: 1px solid rgba(0,0,0,.06);
   transition: background .2s, color .2s, padding-left .2s;
-  visibility: visible !important;
   -webkit-appearance: none;
   appearance: none;
+  box-sizing: border-box;
 }
 .flyout-link:hover {
   background: rgba(176,14,9,.04);
@@ -531,13 +516,12 @@
 .flyout-cta-links a:hover { color:var(--primary); }
 
 /* ══════════════════════════════════════════════════════
-   RESPONSIVE — ≤ 1024 px : show hamburger, hide desktop nav
+   RESPONSIVE — ≤ 1024px: show hamburger, hide desktop nav
 ══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .nav-list    { display: none; }
   .nav-actions { display: none; }
   .nav-toggle  { display: flex; }
-  /* Push logo left, toggle right */
   .nav-logo { margin-right: auto; }
 }
 
@@ -551,108 +535,36 @@
 .skip-to-content:focus { top:0; }
 
 /* ══════════════════════════════════════════════════════
-   MOBILE RESPONSIVE — enhanced for smaller screens
+   MOBILE RESPONSIVE
 ══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .site-header {
-    z-index: 1001;
-  }
-  
-  .nav {
-    height: 60px;
-  }
-  
-  .site-header.scrolled .nav {
-    height: 60px;
-  }
-  
-  .logo-name {
-    font-size: 1.1rem;
-  }
-  
-  .logo-tagline {
-    font-size: 0.5rem;
-  }
-  
-  .logo-emblem {
-    width: 40px;
-    height: 40px;
-  }
+  .nav { height: 60px; }
+  .logo-name { font-size: 1.1rem; }
+  .logo-tagline { font-size: 0.5rem; }
+  .logo-emblem { width: 40px; height: 40px; }
 }
 
 @media (max-width: 480px) {
-  .site-header {
-    z-index: 1001;
-  }
-  
-  .nav {
-    height: 55px;
-    padding: 0 0.5rem;
-  }
-  
-  .site-header.scrolled .nav {
-    height: 55px;
-  }
-  
-  .logo-name {
-    font-size: 0.95rem;
-  }
-  
-  .logo-tagline {
-    font-size: 0.45rem;
-  }
-  
-  .logo-emblem {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .logo-text {
-    display: none;
-  }
-  
-  .nav-toggle {
-    width: 40px;
-    height: 40px;
-    margin: 0 0.5rem;
-  }
-  
-  .nav-toggle span {
-    width: 20px;
-  }
-  
-  .mobile-flyout {
-    width: min(280px, 85vw);
-  }
-  
-  .flyout-header {
-    padding: 1rem;
-  }
-  
-  .flyout-link {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.9rem;
-  }
-  
-  .flyout-sub-link {
-    padding: 0.5rem 1.75rem 0.5rem 2rem;
-    font-size: 0.8rem;
-  }
+  .nav { height: 55px; padding: 0 0.5rem; }
+  .logo-name { font-size: 0.95rem; }
+  .logo-tagline { font-size: 0.45rem; }
+  .logo-emblem { width: 35px; height: 35px; }
+  .logo-text { display: none; }
+  .nav-toggle { width: 40px; height: 40px; margin: 0 0.5rem; }
+  .nav-toggle span { width: 20px; }
+  .mobile-flyout { width: min(280px, 85vw); }
+  .flyout-header { padding: 1rem; }
+  .flyout-link { padding: 0.75rem 1.25rem; font-size: 0.9rem; }
+  .flyout-sub-link { padding: 0.5rem 1.75rem 0.5rem 2rem; font-size: 0.8rem; }
 }
 </style>
 
 <script>
-/* ══════════════════════════════════════════════════════
-   HEADER — self-contained IIFE
-   Safe alongside components.js & enhancements.js:
-   - Only touches IDs defined in this file
-   - Does NOT redeclare any global variables
-   - Uses a flag to prevent double-init
-══════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
-  if (window.__gwiHeaderInit) return;   // prevent double-init if PHP partial is included twice
+  /* Prevent double-init if header.php partial is included twice */
+  if (window.__gwiHeaderInit) return;
   window.__gwiHeaderInit = true;
 
   function init() {
@@ -663,86 +575,106 @@
     var closeBtn = document.getElementById('flyout-close');
     var progress = document.getElementById('nav-progress');
 
-    console.log('✓ Header init:', { found: !!header, toggle: !!toggle, flyout: !!flyout, overlay: !!overlay });
-
     /* ─── Sticky header + scroll progress ─────── */
     function onScroll() {
       if (header) header.classList.toggle('scrolled', window.scrollY > 20);
       if (progress) {
         var d = document.documentElement;
-        progress.style.width = ((d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100) + '%';
+        var scrolled = d.scrollTop || document.body.scrollTop;
+        var total    = d.scrollHeight - d.clientHeight;
+        progress.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
       }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    /* ─── Flyout open / close helpers ─────────── */
+    /* ─── State tracker ────────────────────────── */
+    var isOpen = false;
+
+    /* ─── Open flyout ──────────────────────────── */
     function openFlyout() {
       if (!flyout || !toggle || !overlay) return;
+      isOpen = true;
       flyout.classList.add('active');
       overlay.classList.add('active');
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Close navigation menu');
       document.body.style.overflow = 'hidden';
-      console.log('✓ Flyout opened. Classes:', flyout.className);
-      /* focus first focusable element for a11y */
+      /* Focus first focusable element */
       var first = flyout.querySelector('button, a');
-      if (first) { setTimeout(function(){ first.focus(); }, 50); }
+      if (first) setTimeout(function () { first.focus(); }, 50);
     }
 
+    /* ─── Close flyout ─────────────────────────── */
     function closeFlyout() {
       if (!flyout || !toggle || !overlay) return;
+      isOpen = false;
       flyout.classList.remove('active');
       overlay.classList.remove('active');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Open navigation menu');
       document.body.style.overflow = '';
-      console.log('✓ Flyout closed');
     }
 
     /* ─── Hamburger click ──────────────────────── */
     if (toggle) {
       toggle.addEventListener('click', function (e) {
+        e.preventDefault();
         e.stopPropagation();
-        console.log('🔘 Hamburger clicked. aria-expanded:', toggle.getAttribute('aria-expanded'));
-        toggle.getAttribute('aria-expanded') === 'true' ? closeFlyout() : openFlyout();
+        if (isOpen) {
+          closeFlyout();
+        } else {
+          openFlyout();
+        }
       });
     }
 
     /* ─── Overlay click → close ────────────────── */
-    if (overlay) overlay.addEventListener('click', closeFlyout);
+    if (overlay) {
+      overlay.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeFlyout();
+      });
+    }
 
     /* ─── X button → close ─────────────────────── */
-    if (closeBtn) closeBtn.addEventListener('click', closeFlyout);
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeFlyout();
+      });
+    }
 
     /* ─── Escape key → close ────────────────────── */
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && flyout && flyout.classList.contains('active')) closeFlyout();
+      if (e.key === 'Escape' && isOpen) closeFlyout();
     });
 
-    /* ─── Any flyout link click → close ─────────── */
+    /* ─── Any flyout anchor click → close ───────── */
     if (flyout) {
       flyout.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', closeFlyout);
+        link.addEventListener('click', function () {
+          closeFlyout();
+        });
       });
     }
 
     /* ─── Resize to desktop → reset ────────────── */
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 1024) closeFlyout();
+      if (window.innerWidth > 1024 && isOpen) closeFlyout();
     });
 
-    /* ─── Treatments accordion (sub-menu) ───────── */
+    /* ─── Treatments accordion ───────────────────── */
     if (flyout) {
       flyout.querySelectorAll('.flyout-toggle-sub').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           e.preventDefault();
           e.stopPropagation();
-          var open    = btn.getAttribute('aria-expanded') === 'true';
-          var subList = btn.closest('.flyout-has-sub').querySelector('.flyout-sub');
-          btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-          subList.setAttribute('aria-hidden', open ? 'true' : 'false');
-          subList.classList.toggle('open', !open);
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          var subList  = btn.closest('.flyout-has-sub').querySelector('.flyout-sub');
+          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          subList.setAttribute('aria-hidden', expanded ? 'true' : 'false');
+          subList.classList.toggle('open', !expanded);
         });
       });
     }
