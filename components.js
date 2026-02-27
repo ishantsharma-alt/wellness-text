@@ -166,7 +166,7 @@ const SIDEBAR_TEMPLATE = `
     </div>
   </div>
 
-  <!-- Social Media Chat Widget (Home Page Only) -->
+  <!-- Social Media Chat Widget (sitewide) -->
   <div class="sidebar-widget social-media-widget" id="social-media-widget">
     <div class="social-media_messenger-wrapper">
       <a href="http://m.me/genevawellnessinstitute?ref=website" target="_blank" class="w-inline-block" title="Message us on Messenger">

@@ -2057,10 +2057,10 @@ a:hover {
   color: white;
 }
 
-/* ── SOCIAL MEDIA CHAT WIDGET (Home Page Only) ────────────────── */
+/* ── SOCIAL MEDIA CHAT WIDGET (sitewide fixed bottom‑left) ────────────────── */
 .social-media-widget {
-  background: linear-gradient(135deg, rgba(202, 174, 95, 0.08), rgba(176, 14, 9, 0.05));
-  border: 2px solid rgba(202, 174, 95, 0.2) !important;
+  /* styling retained in case the sidebar widget is ever reused; the
+     floating behaviour is governed by the wrapper below */
   padding: 1.5rem !important;
   text-align: center;
 }
@@ -2070,13 +2070,13 @@ a:hover {
     gap: 1.5rem;
     flex-wrap: wrap;
     position: fixed;
-    bottom: 106px;
-    right: 0;
-    z-index: 99;
+    bottom: 3rem; /* sits above the back-to-top button */
+    left: 1rem;
+    right: auto;
+    z-index: 10000;
     display: flex;
     flex-direction: column;
-    right: 27px;
-
+    /* default direction; mobile tweaks live in responsive section */
 }
 
 .social-media_messenger-wrapper .w-inline-block {
@@ -2685,7 +2685,7 @@ ul, ol {
 }
 
 li {
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   line-height: 1.7;
 }
 
@@ -3855,12 +3855,16 @@ img.placeholder-image {
 
 /* fixed left‑bottom messenger/whatsapp widget (moved above back-to-top) */
 .social-media_messenger-wrapper {
-  position: fixed;
-  bottom: 3rem; /* sits above the back-to-top button at 2rem */
-  left: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  z-index: 10000;
+      justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 3rem;
+    left: 1rem;
+    right: auto;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column!important;
 }
 .social-media_icon {
   width: 48px;
@@ -4319,7 +4323,9 @@ img.placeholder-image {
   z-index: 9999;
   border-radius: 50%;
 }
-
+.cursor-follower{
+  display: none!important;
+}
 #cursor {
   width: 8px;
   height: 8px;
@@ -4547,13 +4553,17 @@ img.placeholder-image {
   position: relative;
 }
 
+/* indicator is placed inside the header rather than below it; previous
+   bottom:-5px created a visible strip of body background when the header
+   was transparent/transitional, which appeared as a white gap under the
+   navigation. matching the hover underline keeps the layout stable. */
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1.5px; /* same thickness as the hover underline */
   background: var(--accent-gold);
   border-radius: 1px;
   animation: slideIn 0.3s ease;
@@ -4816,6 +4826,15 @@ img.placeholder-image {
     gap: 1rem;
   }
 
+  .nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-top: 28px !important;
+    padding: 0;
+    gap: 0;
+}
+
   .social-media_icon {
     width: 50px;
     height: 50px;
@@ -4824,3 +4843,4 @@ img.placeholder-image {
 
 /* ─────────────────────────────────────────────────────────────────────── */
 }
+

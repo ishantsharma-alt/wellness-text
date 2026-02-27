@@ -377,6 +377,16 @@
 
 </footer><!-- /gwi-footer -->
 
+<!-- sitewide fixed messenger/whatsapp buttons -->
+<div class="social-media_messenger-wrapper">
+  <a href="http://m.me/genevawellnessinstitute?ref=website" target="_blank" class="w-inline-block" title="Message us on Messenger">
+    <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f748ec6aca41df9b913a2_Company%3DMessenger%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="Messenger" class="social-media_icon">
+  </a>
+  <a href="https://wa.me/+639153960593?text=Hello,%20I%20came%20from%20the%20website" target="_blank" class="w-inline-block" title="Chat with us on WhatsApp">
+    <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f7485800c13b6c96360b1_Company%3DWhatsapp%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="WhatsApp" class="social-media_icon">
+  </a>
+</div>
+
 
 <!-- ════════════════════════════════════════════════════
      CONSULTATION POPUP
