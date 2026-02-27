@@ -154,11 +154,13 @@ function sanitize_input($input) {
     .breadcrumb {
       display: flex;
       align-items: center;
+      text-align:center;
       gap: .5rem;
       padding: 14px 0;
       font-size: .85rem;
       color: var(--muted);
-      border-bottom: 1px solid var(--border);
+          display: block;
+    padding-top: 20px !important;
     }
 
     .breadcrumb a {
@@ -435,7 +437,7 @@ function sanitize_input($input) {
     }
 
     /* ── MAP SECTION ───────────────────────────────── */
-    .map-section { padding: 0 0 80px; }
+    .map-section { padding: 54px 0 80px; }
 
     .map-section-heading {
       font-family: 'Lora', serif;
@@ -659,15 +661,17 @@ function sanitize_input($input) {
     <div class="inner-banner-content container">
       <h1 data-aos="fade-up">Get In Touch</h1>
       <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">We're Here to Help</p>
-    </div>
-  </section>
 
-  <!-- ── BREADCRUMB ───────────────────────────────── -->
+       <!-- ── BREADCRUMB ───────────────────────────────── -->
   <nav class="breadcrumb container" aria-label="Breadcrumb">
     <a href="index.php">Home</a>
     <span>/</span>
     <span aria-current="page">Contact Us</span>
   </nav>
+    </div>
+  </section>
+
+ 
 
   <main>
 

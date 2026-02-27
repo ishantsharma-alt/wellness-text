@@ -3792,7 +3792,7 @@ img.placeholder-image {
   .hero-visual-col { order: 1; max-width: 460px; margin: 0 auto; }
   .hero-subtitle { max-width: 100%; }
   .hero-actions { justify-content: center; }
-  .hero-proof { justify-content: center; }
+  .hero-proof { justify-content: center; padding-bottom: 40px;}
   .hero-stats-inner { gap: 0; }
   .hero-stat { padding: 0.5rem 1.5rem; }
   .treatment-showcase-row { grid-template-columns: 1fr; gap: 2rem; }
@@ -4824,8 +4824,13 @@ img.placeholder-image {
 
   .social-media_messenger-wrapper {
     gap: 1rem;
+                right: 1rem;
+            left: auto;
+            bottom: 5rem;
   }
-
+.flyout-logo img{
+  width: 40px;
+}
   .nav-list {
     display: flex;
     align-items: center;

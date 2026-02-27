@@ -2,6 +2,7 @@
 /**
  * Header Template — Geneva Wellness Institute
  * Fixed: Mobile flyout slides from LEFT, hamburger/X toggle, logo emblem color
+ * Fixed: Dropdown not showing (overflow:hidden removed), white gap removed
  */
 ?>
 
@@ -97,12 +98,6 @@
   <div class="flyout-header">
     <a href="index.php" class="flyout-logo" tabindex="-1">
       <img src="img/geneva-logo.svg">
-      <!-- <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
-        <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
-        <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1"/>
-        <text x="24" y="29" font-family="Lora,serif" font-size="14" font-weight="500" text-anchor="middle" fill="currentColor">GW</text>
-      </svg> -->
-      <!-- <span>Geneva Wellness</span> -->
     </a>
     <button class="flyout-close" id="flyout-close" aria-label="Close menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -170,21 +165,17 @@
   background: linear-gradient(90deg, var(--primary) 0%, #8a0b07 50%, var(--primary) 100%);
   transition: background .4s cubic-bezier(.25,.46,.45,.94),
               box-shadow .4s ease;
-  overflow: hidden;          /* prevent any underline/pseudo overflow creating a gap */
-  margin-bottom: 0;          /* reset negative margin now that pseudo strip covers any gap */
+  /* FIX: overflow must be visible so the dropdown is not clipped */
+  overflow: visible;
+  margin-bottom: 0;
 }
 
-/* thin strip matching header background to hide any exposed hero */
+/* FIX: Remove the ::after strip — it was creating the white line
+   visible under the header when hovering nav items */
 .site-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px; /* a little extra to ensure any animation gap is covered */
-  background: inherit;
-  pointer-events: none;
+  display: none;
 }
+
 .site-header.scrolled .nav-logo img {
   filter: brightness(0) saturate(100%);
 }
@@ -247,15 +238,12 @@
 }
 .site-header.scrolled .nav-link { color: var(--black); }
 .nav-link:hover { color: var(--accent-gold); }
-
-/* remove browser focus outline which can appear as white background */
 .nav-link:focus { outline: none; }
 .site-header.scrolled .nav-link:hover { color: var(--primary); }
 .nav-link::after {
   content:'';
   position:absolute;
-  bottom: 0; /* sit flush with the link’s baseline to avoid adding any
-                 extra height when the underline appears */
+  bottom: 0;
   left:.9rem; right:.9rem;
   height:1.5px;
   background: var(--accent-gold);
@@ -268,26 +256,59 @@
 .nav-item-has-dropdown:hover .nav-arrow { transform:rotate(90deg); }
 
 /* ── DESKTOP MEGA DROPDOWN ──────────────────────────── */
+
+/* FIX: The nav item needs position:relative (already had it via .nav-list li)
+   and a transparent hover-bridge pseudo so the cursor can travel from the
+   nav link into the dropdown without triggering mouseleave. */
+.nav-item-has-dropdown {
+  position: relative;
+}
+
+/* Transparent bridge between nav-link bottom edge and dropdown top edge.
+   Without this, moving the mouse even 1px outside the <li> hides the panel. */
+.nav-item-has-dropdown::before {
+  content: '';
+  position: absolute;
+  top: 100%;       /* flush with the bottom of the <li> */
+  left: -20px;
+  right: -20px;
+  height: 16px;    /* covers any sub-pixel gap */
+  background: transparent;
+  display: none;
+  z-index: 9400;
+}
+.nav-item-has-dropdown:hover::before {
+  display: block;
+}
+
 .nav-dropdown {
   position: absolute;
-  top: 100%; left: 50%;
-  /* no vertical translation so the dropdown sits flush with the header
-     even when hidden; removes the 8px ‘‘gap’’ that was briefly visible
-     during the hover animation */
-  transform: translateX(-50%);
+  top: 100%;       /* sits flush — no gap between header and panel */
+  left: 50%;
+  /* FIX: start slightly above final position for slide-in feel;
+     old code used translateY which created a visible gap */
+  transform: translateX(-50%) translateY(-8px);
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0,0,0,.15), 0 0 0 1px rgba(0,0,0,.05);
   min-width: 480px;
-  opacity: 0; visibility: hidden; pointer-events: none;
-  transition: opacity .3s cubic-bezier(.34,1.56,.64,1),
-              transform .3s cubic-bezier(.34,1.56,.64,1);
-  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .25s ease,
+              transform .25s ease,
+              visibility .25s ease;
+  /* FIX: must be above hero sections and parallax layers */
+  z-index: 9500;
 }
+
 .nav-item-has-dropdown:hover .nav-dropdown {
-  opacity:1; visibility:visible; pointer-events:all;
-  transform:translateX(-50%); /* no vertical shift */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
 }
+
 .dropdown-inner { display:grid; grid-template-columns:1fr 1fr auto; padding:1.5rem; gap:0; }
 .dropdown-group { padding:.5rem; }
 .dropdown-label { font-size:.65rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:.75rem; }
@@ -350,7 +371,6 @@
   cursor: pointer;
   flex-shrink: 0;
   transition: background .25s, border-color .25s;
-  /* CRITICAL: high z-index so it's always clickable */
   z-index: 9999;
   position: relative;
   margin-left: auto;
@@ -384,13 +404,11 @@
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.52);
-  /* CRITICAL: must sit above hero transforms but below flyout */
   z-index: 9100;
   opacity: 0;
   pointer-events: none;
   transition: opacity .35s ease;
   backdrop-filter: blur(3px);
-  /* Hidden by default — shown only when active */
   visibility: hidden;
 }
 .mobile-overlay.active {
@@ -407,17 +425,14 @@
   top: 0; left: 0; bottom: 0;
   width: min(320px, 88vw);
   background: #fff;
-  /* CRITICAL: must be highest z-index on the page */
   z-index: 9200;
   display: flex;
   flex-direction: column;
-  /* Start off-screen to the LEFT */
   transform: translateX(-100%);
   transition: transform .38s cubic-bezier(.25,.46,.45,.94);
   box-shadow: 4px 0 40px rgba(0,0,0,.18);
   overflow-y: auto;
   overflow-x: hidden;
-  /* Always in the DOM, visibility controlled by transform */
   will-change: transform;
 }
 .mobile-flyout.active {
