@@ -95,6 +95,8 @@ body {
   color: #1a1a1a;
   background: white;
   padding-top: 80px;
+  padding-bottom: 0;
+  margin: 0;
   transition: padding-top 0.3s ease;
   overflow-x: hidden;
 }
@@ -4553,30 +4555,36 @@ img.placeholder-image {
   position: relative;
 }
 
-/* indicator is placed inside the header rather than below it; previous
-   bottom:-5px created a visible strip of body background when the header
-   was transparent/transitional, which appeared as a white gap under the
-   navigation. matching the hover underline keeps the layout stable. */
+.site-header.scrolled .nav-link.active {
+  color: var(--primary);
+}
+
+/* Show active indicator using the same ::after underline as hover,
+   positioned flush with nav-link bottom edge to avoid white gap */
 .nav-link.active::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: .9rem;
+  right: .9rem;
   height: 1.5px; /* same thickness as the hover underline */
   background: var(--accent-gold);
   border-radius: 1px;
+  transform: scaleX(1);
+  transform-origin: left;
   animation: slideIn 0.3s ease;
+}
+
+.site-header.scrolled .nav-link.active::after {
+  background: var(--primary);
 }
 
 @keyframes slideIn {
   from {
-    width: 0;
-    left: 50%;
+    transform: scaleX(0);
   }
   to {
-    width: 100%;
-    left: 0;
+    transform: scaleX(1);
   }
 }
 

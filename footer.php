@@ -229,8 +229,19 @@
       <div class="gwi-footer-brand">
 
         <a href="index.php" class="gwi-footer-logo-link">
-          <img src="img/geneva-logo.svg">
+          <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
         </a>
+        <script>
+          (function() {
+            var footerLogo = document.querySelector('.gwi-footer-logo-link img');
+            if (footerLogo && (window.location.pathname.includes('/blog/') || window.location.pathname.includes('/blog-category/'))) {
+              var src = footerLogo.getAttribute('src');
+              if (src && !src.startsWith('../')) {
+                footerLogo.setAttribute('src', '../' + src);
+              }
+            }
+          })();
+        </script>
 
         <p class="gwi-footer-desc">
           Transformative aesthetic and wellness treatments designed for your unique beauty and confidence.

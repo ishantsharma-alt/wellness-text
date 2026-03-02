@@ -14,7 +14,7 @@
 
     <!-- Logo -->
     <a href="index.php" class="nav-logo" aria-label="Geneva Wellness Institute - Home">
-        <img src="img/geneva-logo.svg">
+        <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
     </a>
 
     <!-- Desktop Nav Links -->
@@ -97,7 +97,7 @@
   <!-- Panel Header -->
   <div class="flyout-header">
     <a href="index.php" class="flyout-logo" tabindex="-1">
-      <img src="img/geneva-logo.svg">
+      <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
     </a>
     <button class="flyout-close" id="flyout-close" aria-label="Close menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -269,7 +269,7 @@
 .nav-item-has-dropdown::before {
   content: '';
   position: absolute;
-  top: 100%;       /* flush with the bottom of the <li> */
+  top: calc(100% - 8px);  /* overlaps slightly with dropdown to avoid visible gap */
   left: -20px;
   right: -20px;
   height: 16px;    /* covers any sub-pixel gap */
@@ -283,15 +283,18 @@
 
 .nav-dropdown {
   position: absolute;
-  top: 100%;       /* sits flush — no gap between header and panel */
+  top: calc(100% - 8px);  /* sits slightly above to eliminate white gap */
   left: 50%;
   /* FIX: start slightly above final position for slide-in feel;
      old code used translateY which created a visible gap */
-  transform: translateX(-50%) translateY(-8px);
+  transform: translateX(-50%) translateY(0);
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0,0,0,.15), 0 0 0 1px rgba(0,0,0,.05);
-  min-width: 480px;
+  /* FIXED: Increased width to accommodate Treatments text without wrapping */
+  min-width: 580px;
+  width: 90vw;
+  max-width: 580px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -307,6 +310,14 @@
   visibility: visible;
   pointer-events: all;
   transform: translateX(-50%) translateY(0);
+}
+
+/* Active nav link with scrolled state support */
+.nav-link.active {
+  color: var(--accent-gold);
+}
+.site-header.scrolled .nav-link.active {
+  color: var(--primary);
 }
 
 .dropdown-inner { display:grid; grid-template-columns:1fr 1fr auto; padding:1.5rem; gap:0; }
@@ -562,6 +573,8 @@
   .nav-actions { display: none; }
   .nav-toggle  { display: flex; }
   .nav-logo { margin-right: auto; }
+  /* Adjust nav height on tablet */
+  .nav { height: 70px; gap: 0.3rem; }
 }
 
 /* Skip link */
@@ -581,6 +594,7 @@
   .logo-name { font-size: 1.1rem; }
   .logo-tagline { font-size: 0.5rem; }
   .logo-emblem { width: 40px; height: 40px; }
+  body { padding-top: 60px; }
 }
 
 @media (max-width: 480px) {
@@ -595,6 +609,7 @@
   .flyout-header { padding: 1rem; }
   .flyout-link { padding: 0.75rem 1.25rem; font-size: 0.9rem; }
   .flyout-sub-link { padding: 0.5rem 1.75rem 0.5rem 2rem; font-size: 0.8rem; }
+  body { padding-top: 55px; }
 }
 </style>
 
@@ -613,6 +628,94 @@
     var overlay  = document.getElementById('mobile-overlay');
     var closeBtn = document.getElementById('flyout-close');
     var progress = document.getElementById('nav-progress');
+
+    /* ─── Set Active Nav State ──────────────── */
+    function setActiveNavLink() {
+      var currentPath = window.location.pathname;
+      var filename = currentPath.split('/').pop() || 'index.php';
+      
+      // Get all nav links (desktop and mobile)
+      var allLinks = document.querySelectorAll('.nav-link, .flyout-link');
+      
+      allLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (!href) return;
+        
+        // Extract filename from href
+        var linkFilename = href.split('/').pop();
+        
+        // Handle index.php and root path
+        if ((filename === '' || filename === 'index.php') && 
+            (linkFilename === 'index.php' || href === '/')) {
+          link.classList.add('active');
+        }
+        // Match other pages
+        else if (linkFilename === filename && linkFilename !== 'index.php') {
+          link.classList.add('active');
+        }
+        // Handle blog pages - mark Blog link as active
+        else if ((currentPath.includes('/blog/') || currentPath.includes('/blog-category/')) && 
+                 (linkFilename === 'blog.php')) {
+          link.classList.add('active');
+        }
+        else {
+          link.classList.remove('active');
+        }
+      });
+    }
+    
+    /* ─── Fix relative paths for nested pages ──────────────── */
+    function fixNavigationPaths() {
+      var currentPath = window.location.pathname;
+      // If we're in a subdirectory (blog/, blog-category/), prepend ../
+      if (currentPath.includes('/blog/') || currentPath.includes('/blog-category/')) {
+        var navLinks = document.querySelectorAll('.nav-link, .flyout-link, .dropdown-link, .flyout-sub-link');
+        navLinks.forEach(function(link) {
+          var href = link.getAttribute('href');
+          if (href && !href.startsWith('./') && !href.startsWith('../') && !href.startsWith('/') && !href.startsWith('http')) {
+            // This is a relative path like "treatments.php", convert to "../treatments.php"
+            link.setAttribute('href', '../' + href);
+          }
+        });
+        
+        // Also fix promo button
+        var promoBtn = document.querySelector('.promo-btn');
+        if (promoBtn) {
+          var href = promoBtn.getAttribute('href');
+          if (href && !href.startsWith('./') && !href.startsWith('../') && !href.startsWith('/') && !href.startsWith('http')) {
+            promoBtn.setAttribute('href', '../' + href);
+          }
+        }
+        
+        // Fix header logo image path
+        if (header) {
+          var logoImg = header.querySelector('.nav-logo img');
+          if (logoImg) {
+            var src = logoImg.getAttribute('src');
+            if (src && !src.startsWith('../') && !src.startsWith('/')) {
+              logoImg.setAttribute('src', '../' + src);
+            }
+          }
+        }
+        
+        // Fix flyout logo image path
+        if (flyout) {
+          var flyoutLogoImg = flyout.querySelector('.flyout-logo img');
+          if (flyoutLogoImg) {
+            var src = flyoutLogoImg.getAttribute('src');
+            if (src && !src.startsWith('../') && !src.startsWith('/')) {
+              flyoutLogoImg.setAttribute('src', '../' + src);
+            }
+          }
+        }
+      }
+    }
+    
+    // Call on init
+    fixNavigationPaths();
+    setActiveNavLink();
+    // Re-run on page visibility change
+    document.addEventListener('visibilitychange', setActiveNavLink);
 
     /* ─── Sticky header + scroll progress ─────── */
     function onScroll() {

@@ -176,8 +176,8 @@ $breadcrumb = [
 
   </main>
 
-  <!-- ── DYNAMIC FOOTER ───────────────────────────────────────── -->
-  <div id="dynamic-footer"></div>
+  <!-- ── UNIFIED FOOTER ───────────────────────────────────────── -->
+  <?php include '../footer.php'; ?>
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 

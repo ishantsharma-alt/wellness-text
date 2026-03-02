@@ -234,8 +234,8 @@ if ($search_query) {
 
   </main>
 
-  <!-- ── DYNAMIC FOOTER ───────────────────────────────────────── -->
-  <div id="dynamic-footer"></div>
+  <!-- ── FOOTER ───────────────────────────────────────── -->
+  <?php include 'footer.php'; ?>
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
