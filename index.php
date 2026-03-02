@@ -829,7 +829,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/advanced-skin-care.jpg" alt="Skin care detail" loading="lazy" />
+              <img src="img/hifu-treatment-home.jpg" alt="Skin care detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -870,7 +870,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent ts-img-accent-left">
-              <img src="img/advanced-skin-care.jpg" alt="CO2 detail" loading="lazy" />
+              <img src="img/co2-laser-home.jpg" alt="CO2 detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-right" data-aos-delay="150">
@@ -911,7 +911,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/advanced-skin-care.jpg" alt="Carbon treatment detail" loading="lazy" />
+              <img src="img/carbon-laser-home.jpg" alt="Carbon treatment detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -1009,7 +1009,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             </video>
           </div>
           <div class="about-img-secondary">
-            <img src="img/advanced-skin-care.jpg" alt="Advanced skin care treatment" loading="lazy" />
+            <img src="img/wellness-treatment-new.jpg" alt="Advanced skin care treatment" loading="lazy" />
           </div>
           <div class="about-floating-badge">
             <div class="afb-icon">🏆</div>
