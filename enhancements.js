@@ -221,10 +221,10 @@ document.querySelectorAll('.ba-card').forEach(card => {
 });
 
 /* ── PARALLAX HERO ELEMENTS ──────────────────────────────────────────────── */
-/* 
+/*
  * CRITICAL FIX: Only apply parallax to the background ORBs (which are
  * already absolutely positioned inside .hero-bg-layer).
- * 
+ *
  * NEVER apply transform to .hero-content-col or any foreground element —
  * CSS transform creates a new stacking context which traps the mobile
  * flyout behind it, making it invisible even when z-index is high.
@@ -235,18 +235,14 @@ window.addEventListener('scroll', () => {
     requestAnimationFrame(() => {
       const scrollY = window.scrollY;
 
-      /* Only move background orbs — these are inside hero-bg-layer
-         which already has its own stacking context, safe to transform */
       const orb1 = document.querySelector('.hero-orb-1');
       const orb2 = document.querySelector('.hero-orb-2');
       if (orb1) orb1.style.transform = `translateY(${scrollY * 0.15}px)`;
       if (orb2) orb2.style.transform = `translateY(${scrollY * -0.1}px)`;
 
       /* REMOVED: heroContent transform — was creating a stacking context
-         that trapped the mobile flyout behind it on the home page.
-         The hero content stays static; only background parallaxes. */
+         that trapped the mobile flyout behind it on the home page. */
 
-      /* Scroll down indicator fade */
       const scrollHint = document.querySelector('.hero-scroll-hint');
       if (scrollHint) {
         scrollHint.style.opacity = Math.max(0, 1 - scrollY / 200);
@@ -376,8 +372,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 /* ── STICKY HEADER SCROLL ────────────────────────────────────────────────── */
-/* NOTE: header.php IIFE also handles this — but it's safe to run twice
-   since it's just a classList toggle with no side-effects */
+/* NOTE: header.php IIFE also handles this — safe to run twice as it's just
+   a classList toggle with no side-effects */
 const siteHeader = document.getElementById('site-header');
 window.addEventListener('scroll', () => {
   const isScrolled = window.scrollY > 80;
@@ -417,7 +413,6 @@ function initPopup() {
   form?.addEventListener('submit', e => {
     e.preventDefault();
     const btn = form.querySelector('[type="submit"]');
-    const originalText = btn.textContent;
     btn.textContent = 'Processing...';
     btn.disabled = true;
     setTimeout(() => {
@@ -477,23 +472,24 @@ window.addEventListener('load', () => {
   }
 });
 
-/* ── ANNOUNCEMENT BAR CLOSE ──────────────────────────────────────────────── */
-const annClose = document.getElementById('announcement-close');
-if (annClose) {
-  annClose.addEventListener('click', () => {
-    const bar = document.querySelector('.announcement-bar');
-    if (bar) {
-      bar.style.transition = 'height 0.3s ease, opacity 0.3s ease';
-      bar.style.height = bar.offsetHeight + 'px';
-      bar.style.overflow = 'hidden';
-      requestAnimationFrame(() => {
-        bar.style.height = '0';
-        bar.style.opacity = '0';
-        setTimeout(() => bar.remove(), 300);
-      });
-    }
-  });
-}
+/* ── ANNOUNCEMENT BAR CLOSE — REMOVED ───────────────────────────────────── */
+/*
+ * This block has been intentionally deleted in its entirety.
+ *
+ * It was the root cause of the white-space gap that appeared in the header
+ * whenever a nav item or button was hovered:
+ *
+ *   1. Both enhancements.js and components.js had registered a click listener
+ *      on #announcement-close — two handlers firing at the same time.
+ *
+ *   2. The handler here called `bar.style.height = bar.offsetHeight + 'px'`
+ *      which forces a synchronous layout reflow, jolting surrounding elements
+ *      (including the header) and producing a visible white flash / gap.
+ *
+ * Fix: the announcement bar HTML element should be removed from all PHP/HTML
+ * templates. All JS references to #announcement-bar and #announcement-close
+ * have been stripped from both this file and components.js.
+ */
 
 /* ── GALLERY MASONRY HOVER ────────────────────────────────────────────────── */
 document.querySelectorAll('.gallery-masonry').forEach(masonry => {

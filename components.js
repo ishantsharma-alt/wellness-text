@@ -225,12 +225,9 @@ function injectFooter() {
   const footerContainer = document.getElementById('dynamic-footer');
   if (footerContainer && footerContainer.innerHTML.trim() === '') {
     let footerHTML = FOOTER_TEMPLATE;
-
-    // Adjust image paths for subdirectories
     if (window.location.pathname.includes('/blog/') || window.location.pathname.includes('/blog-category/')) {
       footerHTML = footerHTML.replace(/src="img\//g, 'src="../img/');
     }
-
     footerContainer.innerHTML = footerHTML;
   }
 }
@@ -242,19 +239,15 @@ function injectFooter() {
 function injectSidebar() {
   const sidebarContainer = document.getElementById('dynamic-sidebar');
   if (sidebarContainer && sidebarContainer.innerHTML.trim() === '') {
-    // Check if we're in a subdirectory (blog or blog-category)
     const isSubdirectory = window.location.pathname.includes('/blog/') || window.location.pathname.includes('/blog-category/');
     let sidebarHTML = SIDEBAR_TEMPLATE;
-
     if (isSubdirectory) {
-      // Replace relative paths with ../ for subdirectory pages
       sidebarHTML = sidebarHTML
         .replace(/href="blog\.php/g, 'href="../blog.php')
         .replace(/href="blog-category\//g, 'href="../blog-category/')
         .replace(/href="contact-us\.php/g, 'href="../contact-us.php')
         .replace(/href="blog\//g, 'href="../blog/');
     }
-
     sidebarContainer.innerHTML = sidebarHTML;
   }
 }
@@ -275,11 +268,8 @@ function injectInnerBanner(title, subtitle, gradient = "135deg, #B00E09 0%, #CAA
  * Usage: injectBreadcrumb([{label: 'Home', url: '/'}, {label: 'About', url: '/about-us.html'}])
  */
 function injectBreadcrumb(items) {
-  // Don't show breadcrumb on home page
   const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.php';
   if (isHomePage) return;
-
-  // Insert breadcrumb after banner-content, at the bottom of hero section
   const bannerContent = document.querySelector('.banner-content');
   if (bannerContent) {
     bannerContent.insertAdjacentHTML('afterend', createBreadcrumb(items));
@@ -297,43 +287,31 @@ function injectBreadcrumb(items) {
  * on every click — the net effect is the flyout opens and immediately closes.
  *
  * Fix: if window.__gwiHeaderInit is truthy, skip all toggle/flyout wiring
- * and only handle the parts components.js exclusively owns (announcement bar,
- * active nav link). This resolves the home-page flyout bug without breaking
- * any other page.
+ * and only handle active nav link highlighting.
+ *
+ * NOTE: The announcement bar (#announcement-bar / #announcement-close) has
+ * been completely removed from this file. Remove the announcement bar element
+ * from your HTML templates as well to eliminate the hover white-space bug.
  */
 function initHeaderFunctionality() {
 
   // ── GUARD ────────────────────────────────────────────────────────────────
   // header.php's IIFE already wired up the flyout on this page.
-  // Only do the lightweight work that belongs to components.js.
+  // Only handle active nav-link highlighting here.
   if (window.__gwiHeaderInit) {
-    // Announcement bar close (components.js owns this)
-    const closeBtn  = document.getElementById('announcement-close');
-    const annBar    = document.getElementById('announcement-bar');
-    if (closeBtn && annBar) {
-      closeBtn.addEventListener('click', () => {
-        annBar.classList.add('hidden');
-        document.body.classList.add('announcement-hidden');
-      });
-    }
-
-    // Active nav-link highlighting
     updateActiveNavLink();
     window.addEventListener('hashchange', updateActiveNavLink);
-
     return; // ← EXIT: do NOT add any more listeners to #nav-toggle
   }
   // ── END GUARD ────────────────────────────────────────────────────────────
 
   // Fallback path: header.php IIFE did not run (e.g. server-side error or
   // a page that uses a different header include). Wire everything up here.
-  const toggle   = document.getElementById('nav-toggle');
-  const menu     = document.getElementById('nav-menu') || document.getElementById('mobile-flyout');
-  const overlay  = document.getElementById('mobile-overlay');
-  const header   = document.getElementById('site-header');
-  const annBar   = document.getElementById('announcement-bar');
-  const closeBtn = document.getElementById('announcement-close');
-  const links    = document.querySelectorAll('.nav-link');
+  const toggle  = document.getElementById('nav-toggle');
+  const menu    = document.getElementById('nav-menu') || document.getElementById('mobile-flyout');
+  const overlay = document.getElementById('mobile-overlay');
+  const header  = document.getElementById('site-header');
+  const links   = document.querySelectorAll('.nav-link');
 
   const closeMenu = () => {
     if (!toggle || !menu) return;
@@ -344,16 +322,7 @@ function initHeaderFunctionality() {
     document.body.style.overflow = '';
   };
 
-  // Announcement bar close
-  if (closeBtn && annBar) {
-    closeBtn.addEventListener('click', () => {
-      annBar.classList.add('hidden');
-      document.body.classList.add('announcement-hidden');
-    });
-  }
-
   if (toggle && menu) {
-    // Hamburger toggle
     toggle.addEventListener('click', () => {
       const isOpen   = toggle.getAttribute('aria-expanded') === 'true';
       const nextOpen = !isOpen;
@@ -364,20 +333,15 @@ function initHeaderFunctionality() {
       document.body.style.overflow = nextOpen ? 'hidden' : '';
     });
 
-    // Close when overlay is clicked
     if (overlay) overlay.addEventListener('click', closeMenu);
-
-    // Close on nav-link click
     links.forEach(link => link.addEventListener('click', closeMenu));
 
-    // Close when clicking outside header + menu
     document.addEventListener('click', (e) => {
       if (header && !header.contains(e.target) && !menu.contains(e.target)) {
         closeMenu();
       }
     });
 
-    // Reset on resize to desktop
     window.addEventListener('resize', () => {
       if (window.innerWidth > 1024) closeMenu();
     });
@@ -406,9 +370,8 @@ function updateActiveNavLink() {
   const links           = document.querySelectorAll('.nav-link');
 
   links.forEach(link => {
-    let href    = link.getAttribute('href');
+    let href     = link.getAttribute('href');
     let isActive = false;
-
     if (!href) return;
 
     const hrefBase = href.split('#')[0];
@@ -441,7 +404,6 @@ function updateActiveNavLink() {
       }
     }
 
-    // Apply active state
     if (isActive) {
       link.setAttribute('aria-current', 'page');
       link.classList.add('active');
@@ -459,16 +421,13 @@ function updateActiveNavLink() {
  * Call this once document is loaded
  */
 function initDynamicComponents() {
-  // Inject footer (all pages)
   injectFooter();
 
-  // Inject sidebar only on blog pages
   const isBlogPage = window.location.pathname.includes('/blog');
   if (isBlogPage) {
     injectSidebar();
   }
 
-  // Initialize header interactivity
   initHeaderFunctionality();
 }
 
@@ -482,8 +441,6 @@ if (document.readyState === 'loading') {
 }
 
 // ── EXPORTS FOR USE IN PAGES ────────────────────────────────────
-
-// These functions are available globally for use in page-specific scripts
 window.ComponentManager = {
   injectFooter,
   injectSidebar,
