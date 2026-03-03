@@ -58,9 +58,9 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ── VIDEO SECTION ───────────────────────────────────────────────── */
+    /* ── VIDEO SHOWCASE SECTION — light warm palette ────────────────── */
     .video-showcase-section {
-      background: linear-gradient(135deg, #0d0202 0%, #1a0303 40%, #2a0505 100%);
+      background: linear-gradient(135deg, #fef9f3 0%, #fdeeda 40%, #f9f0e2 100%);
       padding: clamp(4rem, 8vw, 7rem) 0;
       position: relative;
       overflow: hidden;
@@ -69,13 +69,14 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 30% 50%, rgba(202,174,95,0.08) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 20%, rgba(176,14,9,0.12) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 30% 50%, rgba(202,174,95,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 20%, rgba(253,238,218,0.5) 0%, transparent 50%);
       pointer-events: none;
     }
-    .video-showcase-section .section-header h2 { color: white; }
-    .video-showcase-section .eyebrow { color: #CAAE5F; background: rgba(202,174,95,0.1); border-color: rgba(202,174,95,0.3); }
-    .video-showcase-section .section-desc { color: rgba(255,255,255,0.6); }
+    /* Section header text uses dark colors on light bg */
+    .video-showcase-section .section-header h2 { color: #1a1a1a; }
+    .video-showcase-section .eyebrow { color: #B8955C; background: rgba(202,174,95,0.1); border-color: rgba(202,174,95,0.3); }
+    .video-showcase-section .section-desc { color: #666666; }
 
     .video-player-wrap {
       position: relative;
@@ -83,13 +84,13 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       margin: 0 auto;
       border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(202,174,95,0.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(202,174,95,0.2);
       cursor: pointer;
     }
     .video-thumbnail {
       position: relative;
       aspect-ratio: 16/9;
-      background: #000;
+      background: #e5ddd5;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -99,17 +100,17 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.75;
+      opacity: 0.85;
       transition: opacity 0.4s ease, transform 0.6s ease;
     }
     .video-player-wrap:hover .video-thumbnail img {
-      opacity: 0.6;
+      opacity: 0.75;
       transform: scale(1.03);
     }
     .video-thumbnail-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(176,14,9,0.35) 0%, rgba(0,0,0,0.4) 100%);
+      background: linear-gradient(135deg, rgba(202,174,95,0.25) 0%, rgba(249,240,226,0.3) 100%);
     }
     .video-play-btn {
       position: absolute;
@@ -125,38 +126,42 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      border: 2px solid rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.75);
+      border: 2px solid rgba(202,174,95,0.6);
       backdrop-filter: blur(12px);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
       position: relative;
+      box-shadow: 0 8px 30px rgba(202,174,95,0.25);
     }
     .video-play-circle::before {
       content: '';
       position: absolute;
       inset: -8px;
       border-radius: 50%;
-      border: 1px solid rgba(202,174,95,0.3);
+      border: 1px solid rgba(202,174,95,0.35);
       animation: videoPulse 2.5s ease-in-out infinite;
     }
     @keyframes videoPulse {
       0%, 100% { transform: scale(1); opacity: 0.6; }
       50% { transform: scale(1.15); opacity: 0; }
     }
-    .video-play-circle svg { margin-left: 6px; }
+    .video-play-circle svg { margin-left: 6px; fill: #B8955C; }
     .video-player-wrap:hover .video-play-circle {
-      background: rgba(202,174,95,0.3);
-      border-color: rgba(202,174,95,0.8);
+      background: rgba(202,174,95,0.9);
+      border-color: #CAAE5F;
+      box-shadow: 0 12px 40px rgba(202,174,95,0.4);
     }
+    .video-player-wrap:hover .video-play-circle svg { fill: #fff; }
     .video-play-label {
-      color: rgba(255,255,255,0.85);
+      color: #1a1a1a;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.8);
     }
     .video-bottom-bar {
       position: absolute;
@@ -164,22 +169,22 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       left: 0;
       right: 0;
       padding: 1.5rem 2rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      background: linear-gradient(to top, rgba(249,240,226,0.9), transparent);
       display: flex;
       align-items: center;
       justify-content: space-between;
       z-index: 2;
     }
     .video-bottom-bar span {
-      color: rgba(255,255,255,0.8);
+      color: #1a1a1a;
       font-size: 0.85rem;
       font-family: "Lora", serif;
       font-style: italic;
     }
     .video-bottom-bar .video-duration {
-      background: rgba(202,174,95,0.2);
+      background: rgba(202,174,95,0.15);
       border: 1px solid rgba(202,174,95,0.4);
-      color: #CAAE5F;
+      color: #B8955C;
       padding: 0.3rem 0.75rem;
       border-radius: 20px;
       font-size: 0.75rem;
@@ -188,7 +193,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       font-family: "Inter", sans-serif;
     }
 
-    /* VIDEO MODAL */
+    /* VIDEO MODAL — overlay stays dark (functional UI, not a section bg) */
     .video-modal-overlay {
       position: fixed;
       inset: 0;
@@ -247,7 +252,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       transform: rotate(90deg) scale(1.1);
     }
 
-    /* ── HOW IT WORKS SECTION ───────────────────────────────────────── */
+    /* ── HOW IT WORKS SECTION — already uses light palette, keep ────── */
     .how-it-works-section {
       background: linear-gradient(160deg, #fef9f3 0%, #f5ede2 50%, #fef9f3 100%);
       padding: clamp(4rem, 8vw, 7rem) 0;
@@ -257,10 +262,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     .how-it-works-section::before {
       content: '';
       position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(202,174,95,0.08) 0%, transparent 70%);
       pointer-events: none;
@@ -268,12 +271,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     .how-it-works-section::after {
       content: '';
       position: absolute;
-      bottom: -150px;
-      left: -150px;
-      width: 500px;
-      height: 500px;
+      bottom: -150px; left: -150px;
+      width: 500px; height: 500px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(176,14,9,0.05) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(253,238,218,0.5) 0%, transparent 70%);
       pointer-events: none;
     }
     .hiw-steps-grid {
@@ -296,9 +297,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     .hiw-connector::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
+      top: 50%; left: 0; right: 0;
       height: 1px;
       background: repeating-linear-gradient(90deg, #CAAE5F 0, #CAAE5F 8px, transparent 8px, transparent 18px);
       transform: translateY(-50%);
@@ -317,8 +316,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       margin-bottom: 1.75rem;
     }
     .hiw-step-num-outer {
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       border-radius: 50%;
       background: white;
       border: 2px solid rgba(202,174,95,0.25);
@@ -335,17 +333,16 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       transform: translateY(-4px);
     }
     .hiw-step-num-inner {
-      width: 56px;
-      height: 56px;
+      width: 56px; height: 56px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #B00E09, #8a0b07);
+      background: linear-gradient(135deg, #CAAE5F, #B8955C);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.4s ease;
     }
     .hiw-step:hover .hiw-step-num-inner {
-      background: linear-gradient(135deg, #CAAE5F, #B8955C);
+      background: linear-gradient(135deg, #B8955C, #CAAE5F);
     }
     .hiw-step-num-text {
       font-family: "Lora", serif;
@@ -355,10 +352,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     }
     .hiw-step-icon {
       position: absolute;
-      top: -6px;
-      right: -6px;
-      width: 28px;
-      height: 28px;
+      top: -6px; right: -6px;
+      width: 28px; height: 28px;
       border-radius: 50%;
       background: #CAAE5F;
       border: 2px solid white;
@@ -380,7 +375,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #CAAE5F;
+      color: #B8955C;
       margin-bottom: 0.85rem;
     }
     .hiw-step-desc {
@@ -393,7 +388,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       margin-top: 3.5rem;
     }
 
-    /* ── UPDATED TESTIMONIALS ───────────────────────────────────────── */
+    /* ── TESTIMONIAL CARD HOVER BORDER ──────────────────────────────── */
     .testimonial-card {
       border-top: 3px solid transparent;
       transition: all 0.4s ease;
@@ -411,15 +406,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     }
     .achievements-section::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(249,246,241,0.5) 0%, white 30%);
       pointer-events: none;
     }
-    .achievements-inner {
-      position: relative;
-      z-index: 1;
-    }
+    .achievements-inner { position: relative; z-index: 1; }
     .achievements-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -439,23 +430,21 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     }
     .achievement-card::before {
       content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(202,174,95,0.06), rgba(176,14,9,0.04));
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(202,174,95,0.06), rgba(253,238,218,0.08));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
     .achievement-card:hover::before { opacity: 1; }
     .achievement-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
       border-color: rgba(202,174,95,0.4);
     }
     .achievement-icon-wrap {
-      width: 72px;
-      height: 72px;
+      width: 72px; height: 72px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(176,14,9,0.08), rgba(202,174,95,0.08));
+      background: linear-gradient(135deg, rgba(202,174,95,0.1), rgba(253,238,218,0.4));
       margin: 0 auto 1.5rem;
       display: flex;
       align-items: center;
@@ -466,14 +455,14 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       z-index: 1;
     }
     .achievement-card:hover .achievement-icon-wrap {
-      background: linear-gradient(135deg, #B00E09, #CAAE5F);
+      background: linear-gradient(135deg, #CAAE5F, #B8955C);
       transform: scale(1.1) rotate(5deg);
     }
     .achievement-num {
       font-family: "Lora", serif;
       font-size: clamp(2.5rem, 4vw, 3.5rem);
       font-weight: 600;
-      background: linear-gradient(135deg, #B00E09, #CAAE5F);
+      background: linear-gradient(135deg, #B8955C, #CAAE5F);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -499,7 +488,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       z-index: 1;
     }
 
-    /* ── VIDEO SECTION RESPONSIVE ───────────────────────────────────── */
+    /* ── RESPONSIVE ─────────────────────────────────────────────────── */
     @media (max-width: 768px) {
       .hiw-steps-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
       .hiw-connector { display: none; }
@@ -512,7 +501,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       .video-bottom-bar { padding: 1rem; }
     }
 
-    /* ── BLOG LINK HOVER ENHANCEMENT ───────────────────────────────── */
+    /* ── BLOG LINK HOVER ────────────────────────────────────────────── */
     .blog-card .blog-link:hover { gap: 0.75rem; }
 
     /* ── SECTION DIVIDER ORNAMENT ───────────────────────────────────── */
@@ -580,8 +569,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           </div>
           <h1 class="hero-title" data-delay="1">
             <span class="hero-title-line">Transformative </span>
-            <span class="hero-title-line hero-title-italic">Wellness and  Aesthetic Treatments </span>
-            <span class="hero-title-line">or Everyone</span>
+            <span class="hero-title-line hero-title-italic">Wellness and Aesthetic Treatments </span>
+            <span class="hero-title-line">for Everyone</span>
           </h1>
           <p class="hero-subtitle" data-delay="2">
             Premium non-invasive aesthetic treatments crafted for your unique skin goals. Backed by 15+ years of expertise and cutting-edge technology.
@@ -602,10 +591,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <!-- Trust proof -->
           <div class="hero-proof" data-delay="4">
             <div class="hero-avatars">
-              <div class="hero-avatar" style="background: linear-gradient(135deg, #B00E09, #e03030)">M</div>
-              <div class="hero-avatar" style="background: linear-gradient(135deg, #CAAE5F, #a88a3a)">G</div>
-              <div class="hero-avatar" style="background: linear-gradient(135deg, #FAD2B8, #B00E09)">R</div>
-              <div class="hero-avatar" style="background: linear-gradient(135deg, #8a0b07, #CAAE5F)">A</div>
+              <div class="hero-avatar" style="background: linear-gradient(135deg, #CAAE5F, #B8955C)">M</div>
+              <div class="hero-avatar" style="background: linear-gradient(135deg, #B8955C, #a07840)">G</div>
+              <div class="hero-avatar" style="background: linear-gradient(135deg, #FAD2B8, #d4956e)">R</div>
+              <div class="hero-avatar" style="background: linear-gradient(135deg, #CAAE5F, #e5d5a0)">A</div>
               <div class="hero-avatar hero-avatar-more">+</div>
             </div>
             <div class="hero-proof-text">
@@ -687,57 +676,42 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       </div>
     </section>
 
+    
+
+    
+
     <!-- ═══════════════════════════════════════════════
-         VIDEO SHOWCASE SECTION (NEW — after hero)
+         TRUST BAR
     ═══════════════════════════════════════════════ -->
-    <section class="video-showcase-section" id="video-showcase">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <p class="eyebrow">Watch Our Story</p>
-          <h2>Experience <em style="color:#CAAE5F">Geneva Wellness</em> in action</h2>
-          <p class="section-desc" style="color:rgba(255,255,255,0.6);">See how we transform lives through science-backed beauty and wellness treatments.</p>
-          <div class="section-ornament" style="justify-content:center; margin-top:1rem;">
-            <div class="section-ornament-line"></div>
-            <div class="section-ornament-diamond"></div>
-            <div class="section-ornament-line right"></div>
+    <section class="trust-bar-enhanced" aria-label="Trust indicators">
+      <div class="container trust-grid">
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="trust-card-icon">🏆</div>
+          <div class="trust-card-content">
+            <strong>Award-Winning Clinic</strong>
+            <span>Recognized for excellence in aesthetic care</span>
           </div>
         </div>
-
-        <div class="video-player-wrap" data-aos="fade-up" data-aos-delay="150" id="videoThumbnailWrap">
-          <div class="video-thumbnail">
-            <!-- YouTube default thumbnail -->
-            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.jpg'" />
-            <div class="video-thumbnail-overlay"></div>
-            <div class="video-play-btn" id="videoPlayBtn">
-              <div class="video-play-circle">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              <span class="video-play-label">Watch Now</span>
-            </div>
-            <div class="video-bottom-bar">
-              <span>Geneva Wellness Institute — Our Story</span>
-              <span class="video-duration">✦ Full Tour</span>
-            </div>
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="trust-card-icon">🔬</div>
+          <div class="trust-card-content">
+            <strong>Innovative Technology</strong>
+            <span>Latest FDA-approved devices &amp; equipment</span>
           </div>
         </div>
-      </div>
-
-      <!-- VIDEO MODAL -->
-      <div class="video-modal-overlay" id="videoModal">
-        <div class="video-modal-inner">
-          <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
-          <iframe
-            id="videoIframe"
-            width="560"
-            height="315"
-            src=""
-            data-src="https://www.youtube.com/embed/bD7H1rx4nOw?si=in7SM0y-i5vqDhVu&autoplay=1"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="trust-card-icon">👩‍⚕️</div>
+          <div class="trust-card-content">
+            <strong>Certified Professionals</strong>
+            <span>Licensed doctors &amp; expert estheticians</span>
+          </div>
+        </div>
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="240">
+          <div class="trust-card-icon">💆</div>
+          <div class="trust-card-content">
+            <strong>Personalized Care</strong>
+            <span>Customized treatment plans for every client</span>
+          </div>
         </div>
       </div>
     </section>
@@ -767,181 +741,146 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     </div>
 
     <!-- ═══════════════════════════════════════════════
-         TRUST BAR
-    ═══════════════════════════════════════════════ -->
-    <section class="trust-bar-enhanced" aria-label="Trust indicators">
-      <div class="container trust-grid">
-        <div class="trust-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="trust-card-icon">🏆</div>
-          <div class="trust-card-content">
-            <strong>Award-Winning Clinic</strong>
-            <span>Recognized for excellence in aesthetic care</span>
-          </div>
-        </div>
-        <div class="trust-card" data-aos="fade-up" data-aos-delay="80">
-          <div class="trust-card-icon">🔬</div>
-          <div class="trust-card-content">
-            <strong>Innovative Technology</strong>
-            <span>Latest FDA-approved devices & equipment</span>
-          </div>
-        </div>
-        <div class="trust-card" data-aos="fade-up" data-aos-delay="160">
-          <div class="trust-card-icon">👩‍⚕️</div>
-          <div class="trust-card-content">
-            <strong>Certified Professionals</strong>
-            <span>Licensed doctors & expert estheticians</span>
-          </div>
-        </div>
-        <div class="trust-card" data-aos="fade-up" data-aos-delay="240">
-          <div class="trust-card-icon">💆</div>
-          <div class="trust-card-content">
-            <strong>Personalized Care</strong>
-            <span>Customized treatment plans for every client</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════
-         FEATURED TREATMENTS
+         FEATURED TREATMENTS — Hair & Scalp
     ═══════════════════════════════════════════════ -->
     <section class="treatments-showcase section" id="featured-treatments">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <p class="eyebrow">Signature Treatments</p>
           <h2>Our <em>advanced procedures</em></h2>
-          <p class="section-desc">Clinically proven, non-invasive treatments tailored for your skin goals.</p>
+          <p class="section-desc">Clinically proven, non-invasive treatments tailored for your hair and scalp goals.</p>
         </div>
 
-        <!-- Treatment 1: HIFU -->
-        <div class="treatment-showcase-row" id="hifu" data-aos="fade-up">
+        <!-- Treatment 1: Hair Restoration -->
+        <div class="treatment-showcase-row" id="hair-restoration" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img/facial-treatment-clinic.jpg" alt="HIFU Treatment at Geneva Wellness" loading="lazy" />
+              <img src="img\services\hair-restoratial.jpg" alt="Hair Restoration at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Non-Invasive</div>
               <div class="ts-results-card">
-                <div class="ts-results-icon">📈</div>
+                <div class="ts-results-icon">🌱</div>
                 <div>
-                  <strong>95% Satisfaction</strong>
-                  <span>Visible lift in 4–8 weeks</span>
+                  <strong>Thicker Hair</strong>
+                  <span>Visible regrowth in weeks</span>
                 </div>
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/hifu-treatment-home.jpg" alt="Skin care detail" loading="lazy" />
+              <img src="img/home-hair-1.jpg" alt="Hair restoration detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
-            <p class="eyebrow">Face & Neck Lifting</p>
-            <h3>HIFU — Achieve a youthful, firmer appearance <em>without surgery</em></h3>
-            <p class="ts-desc">Experience the power of HIFU (High-Intensity Focused Ultrasound), a non-invasive treatment designed to lift and tighten your skin naturally. HIFU targets deep layers of the skin, stimulating collagen production to reduce wrinkles.</p>
+            <p class="eyebrow">Restore Hair Density</p>
+            <h3>Hair Restoration — Regain your confidence with <em>thicker, healthier hair</em></h3>
+            <p class="ts-desc">Our Hair Restoration treatments stimulate hair growth and improve scalp health, addressing hair thinning and loss. We offer PRP therapy, laser therapy, and topical solutions to promote natural hair regrowth. These non-invasive treatments are tailored to your specific needs, providing noticeable improvements in hair density and quality.</p>
             <div class="ts-benefits">
-              <div class="ts-benefit"><span class="ts-check">✓</span> Forehead & brow lifting</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Cheek & jawline firming</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Neck tightening</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> No anesthesia needed</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Stimulates natural hair growth</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Improves overall scalp condition</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Comfortable, non-surgical treatments</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Customized plans for your needs</div>
             </div>
             <div class="treatment-tags">
-              <span class="tag">No Downtime</span>
-              <span class="tag">Long-Lasting</span>
-              <span class="tag">Collagen Boost</span>
+              <span class="tag">Thicker Hair</span>
+              <span class="tag">Scalp Health</span>
+              <span class="tag">Personalized Care</span>
             </div>
             <div class="ts-cta-row">
-              <a href="contact-us.php#contact-form" class="btn btn-primary">Book HIFU Treatment</a>
-              <a href="treatments.php#hifu" class="ts-learn-more">Learn more →</a>
+              <a href="contact-us.php#contact-form" class="btn btn-primary">Book Hair Restoration</a>
+              <a href="treatments.php#hair-restoration" class="ts-learn-more">Learn more →</a>
             </div>
           </div>
         </div>
 
-        <!-- Treatment 2: CO2 Laser -->
-        <div class="treatment-showcase-row ts-row-reverse" id="co2-laser" data-aos="fade-up">
+        <!-- Treatment 2: Flaky Scalp Therapy -->
+        <div class="treatment-showcase-row ts-row-reverse" id="flaky-scalp" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-left" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img/co2-laser-treatement.jpg" alt="CO2 Laser Treatment" loading="lazy" />
+              <img src="img\services\flaky-scalp.jpg" alt="Flaky Scalp Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
-              <div class="ts-badge">Advanced Laser</div>
+              <div class="ts-badge">Soothing Treatment</div>
               <div class="ts-results-card">
-                <div class="ts-results-icon">🌟</div>
+                <div class="ts-results-icon">❄️</div>
                 <div>
-                  <strong>3 Sessions</strong>
-                  <span>Dramatic scar improvement</span>
+                  <strong>Flake-Free</strong>
+                  <span>Healthy, refreshed scalp</span>
                 </div>
               </div>
             </div>
             <div class="ts-img-accent ts-img-accent-left">
-              <img src="img/co2-laser-home.jpg" alt="CO2 detail" loading="lazy" />
+              <img src="img/home-service-2.jpg" alt="Scalp therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-right" data-aos-delay="150">
-            <p class="eyebrow">Skin Renewal</p>
-            <h3>CO2 Laser — Rejuvenate your skin with <em>advanced laser therapy</em></h3>
-            <p class="ts-desc">Rejuvenate your skin with our CO2 Laser treatment. This powerful laser therapy targets acne scars, fine lines, and pigmentation, promoting smoother texture and a more even tone with long-lasting results.</p>
+            <p class="eyebrow">Soothe and Strengthen</p>
+            <h3>Flaky Scalp Therapy — Soothe and <em>revitalize your scalp</em></h3>
+            <p class="ts-desc">Flaky Scalp Therapy targets dandruff and other scalp conditions, offering deep cleansing and intense hydration. It removes dead skin cells and excess oil, leaving the scalp healthier and more comfortable. This therapy strengthens hair follicles and promotes shiny, healthy hair.</p>
             <div class="ts-benefits">
-              <div class="ts-benefit"><span class="ts-check">✓</span> Acne scar reduction</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Fine lines & wrinkles</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Pigmentation correction</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Skin texture improvement</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Treats and prevents dandruff</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Moisturizes and nourishes the scalp</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Removes impurities for a healthy scalp</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Promotes stronger, shinier hair</div>
             </div>
             <div class="treatment-tags">
-              <span class="tag">Acne Scars</span>
-              <span class="tag">Fine Lines</span>
-              <span class="tag">Pigmentation</span>
+              <span class="tag">Dandruff Control</span>
+              <span class="tag">Deep Cleansing</span>
+              <span class="tag">Scalp Hydration</span>
             </div>
             <div class="ts-cta-row">
-              <a href="contact-us.php#contact-form" class="btn btn-primary">Book CO2 Laser</a>
-              <a href="treatments.php#co2-laser" class="ts-learn-more">Learn more →</a>
+              <a href="contact-us.php#contact-form" class="btn btn-primary">Book Flaky Scalp Therapy</a>
+              <a href="treatments.php#flaky-scalp" class="ts-learn-more">Learn more →</a>
             </div>
           </div>
         </div>
 
-        <!-- Treatment 3: Carbon Laser -->
-        <div class="treatment-showcase-row" id="carbon-laser" data-aos="fade-up">
+        <!-- Treatment 3: Scalp Psoriasis Therapy -->
+        <div class="treatment-showcase-row" id="scalp-psoriasis" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img/carbon-laser.jpg" alt="Carbon Laser Treatment" loading="lazy" />
+              <img src="img\services\scalp-img.jpg" alt="Scalp Psoriasis Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
-              <div class="ts-badge">Non-Invasive</div>
+              <div class="ts-badge">Medicated Care</div>
               <div class="ts-results-card">
-                <div class="ts-results-icon">💎</div>
+                <div class="ts-results-icon">🩺</div>
                 <div>
-                  <strong>Instant Glow</strong>
-                  <span>No downtime treatment</span>
+                  <strong>Lasting Relief</strong>
+                  <span>Reduced itching &amp; flaking</span>
                 </div>
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/carbon-laser-home.jpg" alt="Carbon treatment detail" loading="lazy" />
+              <img src="img/home-service-3.jpg" alt="Psoriasis therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
-            <p class="eyebrow">Pore Refinement</p>
-            <h3>Carbon Laser — Smoother, clearer skin <em>without discomfort</em></h3>
-            <p class="ts-desc">Achieve clearer, smoother skin with our non-invasive Carbon Laser treatment. This innovative procedure uses carbon lotion and laser to remove impurities, dead skin cells, and excess oil while stimulating collagen production.</p>
+            <p class="eyebrow">Manage and Relieve Psoriasis</p>
+            <h3>Scalp Psoriasis Therapy — Relief for <em>a healthier scalp</em></h3>
+            <p class="ts-desc">Scalp Psoriasis Therapy reduces the symptoms of psoriasis, such as itching and flakiness. This treatment combines medicated products and therapeutic techniques to soothe the scalp and promote healthy skin cell turnover. Regular therapy helps manage psoriasis symptoms, providing lasting relief and improving scalp health.</p>
             <div class="ts-benefits">
-              <div class="ts-benefit"><span class="ts-check">✓</span> Acne & blemish control</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Pore size reduction</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Even skin tone</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Oil control</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Soothes itching and flakiness</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Reduces inflammation for a healthier scalp</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Uses specialized products for psoriasis</div>
+              <div class="ts-benefit"><span class="ts-check">✓</span> Promotes healthy skin cell turnover</div>
             </div>
             <div class="treatment-tags">
-              <span class="tag">Acne Control</span>
-              <span class="tag">Pore Reduction</span>
-              <span class="tag">Even Skin Tone</span>
+              <span class="tag">Symptom Relief</span>
+              <span class="tag">Anti-Inflammatory</span>
+              <span class="tag">Medicated Care</span>
             </div>
             <div class="ts-cta-row">
-              <a href="contact-us.php#contact-form" class="btn btn-primary">Book Carbon Laser</a>
-              <a href="treatments.php#carbon-laser" class="ts-learn-more">Learn more →</a>
+              <a href="contact-us.php#contact-form" class="btn btn-primary">Book Scalp Psoriasis Therapy</a>
+              <a href="treatments.php#scalp-psoriasis" class="ts-learn-more">Learn more →</a>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════════
          TREATMENTS GRID (MORE)
     ═══════════════════════════════════════════════ -->
-    <section class="more-treatments section" style="background: var(--cream);">
+    <section class="more-treatments section" style="background: var(--ivory);">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <p class="eyebrow">More Treatments</p>
@@ -1063,7 +1002,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="section-header" data-aos="fade-up">
           <p class="eyebrow">Real Results</p>
           <h2>See the <em>transformation</em></h2>
-          <p class="section-desc">Witness the transformative power of our treatments with real client before & after results.</p>
+          <p class="section-desc">Witness the transformative power of our treatments with real client before &amp; after results.</p>
         </div>
 
         <div class="ba-grid">
@@ -1115,9 +1054,63 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     </section>
 
     <!-- ═══════════════════════════════════════════════
+         VIDEO SHOWCASE SECTION
+    ═══════════════════════════════════════════════ -->
+    <section class="video-showcase-section" id="video-showcase">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <p class="eyebrow">Watch Our Story</p>
+          <h2>Experience <em style="color:#B8955C">Geneva Wellness</em> in action</h2>
+          <p class="section-desc">See how we transform lives through science-backed beauty and wellness treatments.</p>
+          <div class="section-ornament" style="justify-content:center; margin-top:1rem;">
+            <div class="section-ornament-line"></div>
+            <div class="section-ornament-diamond"></div>
+            <div class="section-ornament-line right"></div>
+          </div>
+        </div>
+
+        <div class="video-player-wrap" data-aos="fade-up" data-aos-delay="150" id="videoThumbnailWrap">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.jpg'" />
+            <div class="video-thumbnail-overlay"></div>
+            <div class="video-play-btn" id="videoPlayBtn">
+              <div class="video-play-circle">
+                <svg width="28" height="28" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="video-play-label">Watch Now</span>
+            </div>
+            <div class="video-bottom-bar">
+              <span>Geneva Wellness Institute — Our Story</span>
+              <span class="video-duration">✦ Full Tour</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO MODAL -->
+      <div class="video-modal-overlay" id="videoModal">
+        <div class="video-modal-inner">
+          <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
+          <iframe
+            id="videoIframe"
+            width="560"
+            height="315"
+            src=""
+            data-src="https://www.youtube.com/embed/bD7H1rx4nOw?si=in7SM0y-i5vqDhVu&autoplay=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
          GALLERY
     ═══════════════════════════════════════════════ -->
-    <section class="gallery-section section" id="gallery" style="background: var(--cream);">
+    <section class="gallery-section section" id="gallery" style="background: #ffffff;">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <p class="eyebrow">Our Advanced Treatments</p>
@@ -1153,8 +1146,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       </div>
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <p class="eyebrow" style="color: var(--accent-gold); background: rgba(202,174,95,0.1); border-color: rgba(202,174,95,0.3);">Our Achievements</p>
-          <h2 style="color: white;">Proudly showcasing our excellence in <em style="color:var(--accent-gold)">beauty and wellness</em></h2>
+          <p class="eyebrow">Our Achievements</p>
+          <h2>Proudly showcasing our excellence in <em>beauty and wellness</em></h2>
         </div>
         <div class="stats-grid-enhanced">
           <div class="stat-card-enhanced" data-aos="fade-up" data-aos-delay="0">
@@ -1197,7 +1190,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="testimonial-stars">★★★★★</div>
                 <blockquote><p>"Geneva Wellness Institute is my go-to place for all my skincare needs. Their advanced facial therapies have transformed my skin, making it smoother and more radiant. The team is knowledgeable and always makes me feel comfortable. I can't imagine going anywhere else!"</p></blockquote>
                 <footer class="testimonial-author">
-                  <div class="author-avatar" style="background: linear-gradient(135deg, var(--primary), var(--accent-gold))">G</div>
+                  <div class="author-avatar" style="background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark))">G</div>
                   <div><strong>Gerryl Peñaflor</strong><span>Advanced Facial Client</span></div>
                 </footer>
               </article>
@@ -1208,7 +1201,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="testimonial-stars">★★★★★</div>
                 <blockquote><p>"The body contouring treatments at Geneva Wellness Institute are amazing. I saw noticeable results after just a few sessions. The staff is incredibly supportive and guided me through the entire process. I feel more confident and happy with my body now."</p></blockquote>
                 <footer class="testimonial-author">
-                  <div class="author-avatar" style="background: linear-gradient(135deg, #CAAE5F, var(--primary))">M</div>
+                  <div class="author-avatar" style="background: linear-gradient(135deg, #CAAE5F, #B8955C)">M</div>
                   <div><strong>Madelle Ocenar</strong><span>Body Contouring Client</span></div>
                 </footer>
               </article>
@@ -1219,7 +1212,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="testimonial-stars">★★★★★</div>
                 <blockquote><p>"I had been struggling with hair loss for years until I discovered Geneva Wellness Institute. Their hair and scalp treatments have made a huge difference. My hair feels thicker and healthier, and I couldn't be happier with the results."</p></blockquote>
                 <footer class="testimonial-author">
-                  <div class="author-avatar" style="background: linear-gradient(135deg, #8a0b07, #CAAE5F)">B</div>
+                  <div class="author-avatar" style="background: linear-gradient(135deg, #B8955C, #CAAE5F)">B</div>
                   <div><strong>Benedict Aydalla</strong><span>Hair Restoration Client</span></div>
                 </footer>
               </article>
@@ -1236,13 +1229,13 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     </section>
 
     <!-- ═══════════════════════════════════════════════
-         HOW IT WORKS — NEW SECTION (after testimonials)
+         HOW IT WORKS
     ═══════════════════════════════════════════════ -->
     <section class="how-it-works-section" id="how-it-works">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <p class="eyebrow">Our Achievements</p>
-          <h2>Proudly showcasing our excellence in <em>beauty and wellness</em></h2>
+          <p class="eyebrow">Your Journey With Us</p>
+          <h2>Getting started is <em>simple</em></h2>
           <p class="section-desc">From your first message to your first treatment — here's how easy it is to start your transformation.</p>
           <div class="section-ornament">
             <div class="section-ornament-line"></div>
@@ -1255,43 +1248,34 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="hiw-connector"></div>
           <div class="hiw-steps-grid">
 
-            <!-- Step 01 -->
             <div class="hiw-step" data-aos="fade-up" data-aos-delay="0">
               <div class="hiw-step-number-wrap">
                 <div class="hiw-step-num-outer">
-                  <div class="hiw-step-num-inner">
-                    <span class="hiw-step-num-text">01</span>
-                  </div>
+                  <div class="hiw-step-num-inner"><span class="hiw-step-num-text">01</span></div>
                 </div>
                 <div class="hiw-step-icon">💬</div>
               </div>
-              <p class="hiw-step-subtitle">Hair & Scalp Treatment</p>
+              <p class="hiw-step-subtitle">Get in Touch</p>
               <h3 class="hiw-step-title">Reach out via phone, email, or message</h3>
               <p class="hiw-step-desc">Send us a message through our contact number, email, or social media channels. Let us know the treatment you're interested in and any preferred dates and times.</p>
             </div>
 
-            <!-- Step 02 -->
             <div class="hiw-step" data-aos="fade-up" data-aos-delay="100">
               <div class="hiw-step-number-wrap">
                 <div class="hiw-step-num-outer">
-                  <div class="hiw-step-num-inner">
-                    <span class="hiw-step-num-text">02</span>
-                  </div>
+                  <div class="hiw-step-num-inner"><span class="hiw-step-num-text">02</span></div>
                 </div>
                 <div class="hiw-step-icon">✨</div>
               </div>
               <p class="hiw-step-subtitle">Choose Your Treatment</p>
               <h3 class="hiw-step-title">Select the service that suits your needs</h3>
-              <p class="hiw-step-desc">Send us a message through our contact number, email, or social media channels. Let us know the treatment you're interested in and any preferred dates and times.</p>
+              <p class="hiw-step-desc">Browse our range of treatments and let our experts guide you toward the best option for your skin type, concerns, and goals.</p>
             </div>
 
-            <!-- Step 03 -->
             <div class="hiw-step" data-aos="fade-up" data-aos-delay="200">
               <div class="hiw-step-number-wrap">
                 <div class="hiw-step-num-outer">
-                  <div class="hiw-step-num-inner">
-                    <span class="hiw-step-num-text">03</span>
-                  </div>
+                  <div class="hiw-step-num-inner"><span class="hiw-step-num-text">03</span></div>
                 </div>
                 <div class="hiw-step-icon">📅</div>
               </div>
@@ -1300,13 +1284,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <p class="hiw-step-desc">Our team will help you find a convenient slot for your appointment. Confirm the date and time that works best for you, and we will reserve your spot.</p>
             </div>
 
-            <!-- Step 04 -->
             <div class="hiw-step" data-aos="fade-up" data-aos-delay="300">
               <div class="hiw-step-number-wrap">
                 <div class="hiw-step-num-outer">
-                  <div class="hiw-step-num-inner">
-                    <span class="hiw-step-num-text">04</span>
-                  </div>
+                  <div class="hiw-step-num-inner"><span class="hiw-step-num-text">04</span></div>
                 </div>
                 <div class="hiw-step-icon">🌟</div>
               </div>
@@ -1330,7 +1311,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     <!-- ═══════════════════════════════════════════════
          BLOG
     ═══════════════════════════════════════════════ -->
-    <section class="blog section" id="blog" style="background: var(--ivory);">
+    <section class="blog section" id="blog" style="background: #ffffff;">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <p class="eyebrow">Our Blog</p>

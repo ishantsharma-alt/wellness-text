@@ -75,75 +75,71 @@ function sanitize_input($input) {
     :root {
       --gold:       #CAAE5F;
       --gold-light: #e0ca8a;
-      --gold-dark:  #a88e45;
-      --red:        #B00E09;
-      --red-light:  #d41410;
+      --gold-dark:  #B8955C;
       --cream:      #FAF7F2;
+      --ivory:      #fef9f3;
+      --sand:       #e5ddd5;
+      --cream-alt:  #f9f6f1;
       --dark:       #1a1a1a;
       --mid:        #444;
       --muted:      #777;
-      --border:     #e8e0d0;
+      --border:     rgba(202,174,95,0.2);
+      --border-soft: #ede8df;
       --white:      #ffffff;
-      --shadow-sm:  0 2px 12px rgba(0,0,0,.06);
-      --shadow-md:  0 8px 32px rgba(0,0,0,.10);
-      --shadow-lg:  0 20px 60px rgba(0,0,0,.14);
+      --shadow-sm:  0 2px 12px rgba(0,0,0,.05);
+      --shadow-md:  0 8px 32px rgba(0,0,0,.08);
+      --shadow-lg:  0 20px 60px rgba(0,0,0,.10);
       --radius:     14px;
       --radius-sm:  8px;
       --transition: 0.3s cubic-bezier(.4,0,.2,1);
     }
 
-    /* ── GLOBAL RESETS ─────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
       color: var(--dark);
-      background: var(--cream);
+      background: var(--cream-alt);
       margin: 0;
     }
 
-    /* ── INNER BANNER ──────────────────────────────── */
+    /* ── INNER BANNER — light palette ──────────────── */
     .inner-banner {
       position: relative;
       padding: 100px 0 70px;
       overflow: hidden;
       text-align: center;
+      background: linear-gradient(135deg, #fdeeda 0%, #f9f0e2 50%, #e5ddd5 100%);
     }
-
     .inner-banner::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(255,255,255,.08) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,0,0,.12) 0%, transparent 50%);
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(202,174,95,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(253,238,218,0.5) 0%, transparent 50%);
       pointer-events: none;
     }
-
-    /* decorative circle */
     .inner-banner::after {
       content: '';
       position: absolute;
       width: 400px;
       height: 400px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.15);
+      border: 1px solid rgba(202,174,95,0.2);
       right: -80px;
       top: -80px;
       pointer-events: none;
     }
-
     .inner-banner-content h1 {
       font-family: 'Lora', serif;
       font-size: clamp(2.2rem, 5vw, 3.5rem);
-      color: var(--white);
+      color: var(--dark);
       margin: 0 0 .5rem;
       letter-spacing: -.5px;
-      text-shadow: 0 2px 20px rgba(0,0,0,.2);
     }
-
     .inner-banner-subtitle {
-      color: rgba(255,255,255,.85);
+      color: #666;
       font-size: 1.1rem;
       font-weight: 300;
       letter-spacing: .5px;
@@ -152,24 +148,18 @@ function sanitize_input($input) {
 
     /* ── BREADCRUMB ────────────────────────────────── */
     .breadcrumb {
-      display: flex;
-      align-items: center;
-      text-align:center;
-      gap: .5rem;
-      padding: 14px 0;
+      display: block;
+      padding-top: 20px !important;
+      text-align: center;
       font-size: .85rem;
       color: var(--muted);
-          display: block;
-    padding-top: 20px !important;
     }
-
     .breadcrumb a {
       color: var(--gold-dark);
       text-decoration: none;
       transition: color var(--transition);
     }
-
-    .breadcrumb a:hover { color: var(--red); }
+    .breadcrumb a:hover { color: var(--gold); }
     .breadcrumb span[aria-current] { color: var(--dark); font-weight: 500; }
 
     /* ── CONTAINER ─────────────────────────────────── */
@@ -182,6 +172,7 @@ function sanitize_input($input) {
     /* ── SECTION ───────────────────────────────────── */
     .section {
       padding: 80px 0;
+      background: var(--ivory);
     }
 
     /* ── CONTACT LAYOUT ────────────────────────────── */
@@ -191,63 +182,56 @@ function sanitize_input($input) {
       gap: 60px;
       align-items: start;
     }
-
     @media (max-width: 900px) {
       .contact-layout { grid-template-columns: 1fr; gap: 40px; }
     }
 
-    /* ── CONTACT INFO SECTION ──────────────────────── */
+    /* ── CONTACT INFO ──────────────────────────────── */
     .contact-info-section h2 {
       font-family: 'Lora', serif;
       font-size: 2rem;
       color: var(--dark);
       margin: 0 0 .75rem;
     }
-
     .contact-info-grid {
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
-
     .contact-info-card {
       display: grid;
       grid-template-columns: 52px 1fr;
       column-gap: 18px;
       align-items: start;
       background: var(--white);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-soft);
       border-radius: var(--radius);
       padding: 22px 24px;
       transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
     }
-
     .contact-info-card:hover {
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 8px 30px rgba(202,174,95,0.15);
       transform: translateY(-3px);
-      border-color: var(--gold);
+      border-color: rgba(202,174,95,0.4);
     }
-
     .info-icon {
       width: 52px;
       height: 52px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      background: linear-gradient(135deg, #fdeeda 0%, #e5ddd5 100%);
+      border: 1px solid rgba(202,174,95,0.3);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(202,174,95,.3);
     }
-
     .contact-info-card h3 {
       font-family: 'Lora', serif;
       font-size: 1rem;
       color: var(--dark);
       margin: 0 0 6px;
     }
-
     .contact-info-card p,
     .contact-info-card address {
       font-style: normal;
@@ -256,15 +240,12 @@ function sanitize_input($input) {
       line-height: 1.7;
       margin: 0;
     }
-
     .contact-info-card a {
       color: var(--mid);
       text-decoration: none;
       transition: color var(--transition);
     }
-
-    .contact-info-card a:hover { color: var(--red); }
-
+    .contact-info-card a:hover { color: var(--gold-dark); }
     .contact-info-card small {
       display: block;
       margin-top: 4px;
@@ -277,37 +258,32 @@ function sanitize_input($input) {
     .form-container {
       background: var(--white);
       border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
+      box-shadow: 0 20px 60px rgba(202,174,95,0.12), 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border-soft);
       overflow: hidden;
     }
 
+    /* Form header — warm cream gradient instead of red/gold */
     .form-header {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      background: linear-gradient(135deg, #fdeeda 0%, #f9f0e2 100%);
+      border-bottom: 1px solid rgba(202,174,95,0.2);
       padding: 30px 36px;
     }
-
     .form-header h3 {
       font-family: 'Lora', serif;
       font-size: 1.45rem;
-      color: var(--white);
+      color: var(--dark);
       margin: 0 0 6px;
     }
-
     .form-header p {
-      color: rgba(255,255,255,.85);
+      color: #666;
       font-size: .88rem;
       margin: 0;
       line-height: 1.6;
     }
 
-    /* inner form padding */
-    .contact-form {
-      padding: 32px 36px 36px;
-    }
-
+  
     @media (max-width: 540px) {
-      .contact-form { padding: 24px 20px 28px; }
       .form-header  { padding: 24px 20px; }
     }
 
@@ -316,7 +292,6 @@ function sanitize_input($input) {
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-
     @media (max-width: 540px) {
       .form-row { grid-template-columns: 1fr; }
     }
@@ -326,7 +301,6 @@ function sanitize_input($input) {
       flex-direction: column;
       margin-bottom: 18px;
     }
-
     .form-group label {
       font-size: .8rem;
       font-weight: 600;
@@ -335,40 +309,35 @@ function sanitize_input($input) {
       text-transform: uppercase;
       margin-bottom: 7px;
     }
-
     .form-group input,
     .form-group select,
     .form-group textarea {
-      border: 1.5px solid var(--border);
+      border: 1.5px solid var(--border-soft);
       border-radius: var(--radius-sm);
       padding: 11px 14px;
       font-size: .92rem;
       font-family: 'Inter', sans-serif;
       color: var(--dark);
-      background: var(--cream);
+      background: #fef9f3;
       transition: border-color var(--transition), box-shadow var(--transition);
       outline: none;
       width: 100%;
     }
-
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(202,174,95,.18);
+      box-shadow: 0 0 0 3px rgba(202,174,95,0.15);
       background: var(--white);
     }
-
     .form-group textarea { resize: vertical; min-height: 120px; }
 
-    /* checkbox row */
     .form-group.checkbox {
       flex-direction: row;
       align-items: flex-start;
       gap: 10px;
       margin-bottom: 22px;
     }
-
     .form-group.checkbox input[type="checkbox"] {
       width: 18px;
       height: 18px;
@@ -377,18 +346,17 @@ function sanitize_input($input) {
       accent-color: var(--gold-dark);
       cursor: pointer;
     }
-
     .form-group.checkbox label {
       font-size: .85rem;
       font-weight: 400;
       text-transform: none;
       letter-spacing: 0;
-      color: var(--mid);
+      color: var(--muted);
       line-height: 1.5;
       cursor: pointer;
     }
 
-    /* ── BUTTONS ───────────────────────────────────── */
+    /* ── SUBMIT BUTTON — gold instead of red ───────── */
     .btn {
       display: inline-block;
       font-family: 'Inter', sans-serif;
@@ -401,20 +369,17 @@ function sanitize_input($input) {
       cursor: pointer;
       transition: all var(--transition);
     }
-
     .btn-primary {
-      background: linear-gradient(135deg, var(--red) 0%, var(--red-light) 100%);
+      background: linear-gradient(135deg, #CAAE5F 0%, #B8955C 100%);
       color: var(--white);
       padding: 14px 28px;
-      box-shadow: 0 4px 18px rgba(176,14,9,.25);
+      box-shadow: 0 4px 18px rgba(202,174,95,0.3);
     }
-
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(176,14,9,.35);
-      background: linear-gradient(135deg, #8f0b07 0%, var(--red) 100%);
+      box-shadow: 0 8px 28px rgba(202,174,95,0.45);
+      background: linear-gradient(135deg, #B8955C 0%, #CAAE5F 100%);
     }
-
     .btn-block { width: 100%; text-align: center; }
 
     .form-note {
@@ -427,8 +392,8 @@ function sanitize_input($input) {
 
     /* ── SUCCESS MESSAGE ───────────────────────────── */
     .form-success-message {
-      background: linear-gradient(135deg, rgba(202,174,95,.15), rgba(202,174,95,.05));
-      border: 1.5px solid var(--gold);
+      background: linear-gradient(135deg, rgba(202,174,95,.12), rgba(202,174,95,.05));
+      border: 1.5px solid rgba(202,174,95,0.4);
       border-radius: var(--radius-sm);
       padding: 16px 20px;
       color: var(--gold-dark);
@@ -436,50 +401,13 @@ function sanitize_input($input) {
       margin: 0 36px 20px;
     }
 
-    /* ── MAP SECTION ───────────────────────────────── */
-    .map-section { padding: 54px 0 80px; }
-
-    .map-section-heading {
-      font-family: 'Lora', serif;
-      font-size: 2rem;
-      text-align: center;
-      color: var(--dark);
-      margin: 0 0 2rem;
-    }
-
-    .map-wrapper {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-    }
-
-    /* gold accent bar on top of map */
-    .map-wrapper::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--gold) 0%, var(--red) 100%);
-      z-index: 1;
-    }
-
-    .map-wrapper iframe {
-      display: block;
-      width: 100%;
-      height: 480px;
-      border: 0;
-    }
-
-    /* ── TRUSTED BY SECTION ───────────────────────── */
+    /* ── TRUSTED BY ────────────────────────────────── */
     .trusted-section {
       padding: 48px 0;
       background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
     }
-
     .trusted-label {
       text-align: center;
       font-size: .78rem;
@@ -489,7 +417,6 @@ function sanitize_input($input) {
       color: var(--muted);
       margin: 0 0 28px;
     }
-
     .trusted-logos {
       display: flex;
       align-items: center;
@@ -497,50 +424,33 @@ function sanitize_input($input) {
       flex-wrap: wrap;
       gap: 40px 56px;
     }
-
     .logo-item {
-      color: #b0a898;
-      opacity: .7;
+      color: #c0b49a;
+      opacity: .75;
       transition: opacity var(--transition), color var(--transition);
       height: 36px;
       display: flex;
       align-items: center;
     }
-
-    .logo-item svg {
-      height: 100%;
-      width: auto;
-      max-width: 130px;
-    }
-
-    .logo-item:hover {
-      opacity: 1;
-      color: var(--gold-dark);
-    }
+    .logo-item svg { height: 100%; width: auto; max-width: 130px; }
+    .logo-item:hover { opacity: 1; color: var(--gold-dark); }
 
     /* ── CONTACT CHANNELS ──────────────────────────── */
     .channels-section {
       padding: 72px 0;
-      background: linear-gradient(135deg, rgba(202,174,95,.06) 0%, rgba(176,14,9,.04) 100%);
+      background: linear-gradient(135deg, #fef9f3 0%, #fdeeda 50%, #f9f6f1 100%);
     }
-
     .channels-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
-
-    @media (max-width: 1000px) {
-      .channels-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 540px) {
-      .channels-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 1000px) { .channels-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px)  { .channels-grid { grid-template-columns: 1fr; } }
 
     .channel-card {
       background: var(--white);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-soft);
       border-radius: var(--radius);
       padding: 28px 24px;
       display: flex;
@@ -548,76 +458,77 @@ function sanitize_input($input) {
       gap: 10px;
       transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
     }
-
     .channel-card:hover {
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 12px 40px rgba(202,174,95,0.15);
       transform: translateY(-4px);
-      border-color: var(--gold);
+      border-color: rgba(202,174,95,0.4);
     }
-
     .channel-icon {
       width: 50px;
       height: 50px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      background: linear-gradient(135deg, #fdeeda 0%, #e5ddd5 100%);
+      border: 1px solid rgba(202,174,95,0.3);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--white);
+      color: var(--gold-dark);
       margin-bottom: 4px;
-      box-shadow: 0 4px 14px rgba(202,174,95,.28);
     }
-
-    .channel-icon svg {
-      width: 22px;
-      height: 22px;
-    }
-
+    .channel-icon svg { width: 22px; height: 22px; }
     .channel-card h4 {
       font-family: 'Lora', serif;
       font-size: 1.05rem;
       color: var(--dark);
       margin: 0;
     }
-
     .channel-card p {
       font-size: .86rem;
       color: var(--muted);
       line-height: 1.6;
       margin: 0;
     }
-
     .channel-link {
       display: block;
       font-size: .86rem;
       font-weight: 600;
-      color: var(--red);
+      color: var(--gold-dark);
       text-decoration: none;
       transition: color var(--transition);
       line-height: 1.5;
       word-break: break-all;
     }
+    .channel-link:hover { color: var(--gold); }
+    .channel-phones { display: flex; flex-direction: column; gap: 4px; }
+    .channel-address { font-style: normal; display: flex; flex-direction: column; gap: 6px; }
+    .channel-link-static { font-size: .84rem; color: var(--mid); line-height: 1.55; }
 
-    .channel-link:hover { color: var(--gold-dark); }
-
-    .channel-phones {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    /* ── MAP SECTION ───────────────────────────────── */
+    .map-section { padding: 54px 0 80px; background: var(--cream-alt); }
+    .map-section-heading {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      text-align: center;
+      color: var(--dark);
+      margin: 0 0 2rem;
     }
-
-    .channel-address {
-      font-style: normal;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .map-wrapper {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(202,174,95,0.12), 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid var(--border-soft);
     }
-
-    .channel-link-static {
-      font-size: .84rem;
-      color: var(--mid);
-      line-height: 1.55;
+    /* Gold accent bar — no red */
+    .map-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #CAAE5F 0%, #B8955C 100%);
+      z-index: 1;
     }
+    .map-wrapper iframe { display: block; width: 100%; height: 480px; border: 0; }
 
     /* ── BACK TO TOP ───────────────────────────────── */
     .back-to-top {
@@ -627,7 +538,7 @@ function sanitize_input($input) {
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      background: linear-gradient(135deg, #CAAE5F 0%, #B8955C 100%);
       color: var(--white);
       border: none;
       font-size: 1.1rem;
@@ -639,12 +550,10 @@ function sanitize_input($input) {
       transition: all var(--transition);
       z-index: 999;
     }
-
     .back-to-top:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 24px rgba(202,174,95,.5);
     }
-
     .back-to-top.visible { display: flex; }
   </style>
 </head>
@@ -653,30 +562,13 @@ function sanitize_input($input) {
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <!-- Header -->
   <?php include 'header.php'; ?>
-
-  <!-- ── INNER BANNER ─────────────────────────────── -->
-  <section class="inner-banner" style="background: linear-gradient(135deg, #CAAE5F 0%, #B00E09 100%);">
-    <div class="inner-banner-content container">
-      <h1 data-aos="fade-up">Get In Touch</h1>
-      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">We're Here to Help</p>
-
-       <!-- ── BREADCRUMB ───────────────────────────────── -->
-  <nav class="breadcrumb container" aria-label="Breadcrumb">
-    <a href="index.php">Home</a>
-    <span>/</span>
-    <span aria-current="page">Contact Us</span>
-  </nav>
-    </div>
-  </section>
-
- 
+  <?php include 'hero-section.php'; ?>
 
   <main>
 
     <!-- ── CONTACT INFO & FORM ──────────────────────── -->
-    <section class="section">
+    <section class="section" id="contact-form">
       <div class="container">
         <div class="contact-layout">
 
@@ -831,7 +723,6 @@ function sanitize_input($input) {
           </div>
           <div class="logo-item">
             <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Chanel">
-              <!-- interlocking C mark approximation -->
               <text x="0" y="30" font-family="Georgia,serif" font-size="22" font-weight="700" letter-spacing="-1" fill="currentColor">CHANEL</text>
             </svg>
           </div>
@@ -915,19 +806,14 @@ function sanitize_input($input) {
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
-  <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Dynamic component loader (loads header, footer, etc.) -->
   <script src="components.js"></script>
   <script src="script.js"></script>
   <script src="enhancements.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Init AOS
       AOS.init({ once: true, duration: 700, offset: 60 });
-
-      // Back to top
       const btn = document.getElementById('back-to-top');
       window.addEventListener('scroll', () => {
         btn.classList.toggle('visible', window.scrollY > 400);

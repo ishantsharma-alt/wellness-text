@@ -1,6 +1,6 @@
 <?php 
-$page_title = 'Client Testimonials'; 
-$page_subtitle = 'Stories of Transformation & Satisfaction'; 
+$page_title = 'What Our Clients Say'; 
+$page_subtitle = 'Hear from those who have experienced the transformative power of Geneva Wellness Institute. Our clients share their stories of rejuvenation, confidence, and beauty. Let their words inspire your own journey to wellness'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,21 +120,22 @@ $page_subtitle = 'Stories of Transformation & Satisfaction';
 
   <?php include 'header.php'; ?>
 
+   <?php include 'hero-section.php'; ?>
+
   <!-- ── INNER PAGE BANNER ────────────────────────────– -->
-  <section class="inner-banner" style="background: linear-gradient(135deg, #B00E09 0%, #FAD2B8 100%);">
+  <!-- <section class="inner-banner" style="background: linear-gradient(135deg, #B00E09 0%, #FAD2B8 100%);">
     <div class="inner-banner-content container">
       <h1 data-aos="fade-up">What Our Clients Say</h1>
       <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Hear from those who have experienced the transformative power of Geneva Wellness Institute. Our clients share their stories of rejuvenation, confidence, and beauty. Let their words inspire your own journey to wellness
 
 </p>
-      <!-- ── BREADCRUMB ────────────────────────────────– -->
   <nav class="breadcrumb container" aria-label="Breadcrumb">
     <a href="index.php">Home</a>
     <span>/</span>
     <span aria-current="page">Testimonials</span>
   </nav>
     </div>
-  </section>
+  </section> -->
 
   
 

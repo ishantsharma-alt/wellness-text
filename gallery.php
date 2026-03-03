@@ -1,6 +1,6 @@
 <?php 
-$page_title = 'Gallery'; 
-$page_subtitle = 'See Real Results & Transformations'; 
+$page_title = 'Explore Our Transformations'; 
+$page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness Institute. From rejuvenated skin to revitalized hair, see the remarkable results our treatments have achieved. Let these transformations inspire your own path to beauty and wellness.'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,96 +41,211 @@ $page_subtitle = 'See Real Results & Transformations';
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ===== AUTO GRID GALLERY ===== */
 
-.gallery-section {
-  padding: 90px 0;
-}
+    /* ===== GALLERY SECTION ===== */
+    .gallery-section {
+      padding: 90px 0;
+      background: #ffffff;
+      position: relative;
+    }
+    .gallery-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(202,174,95,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(253,238,218,0.5) 0%, transparent 50%);
+      pointer-events: none;
+    }
 
-.gallery8_component {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 28px;
-}
+    /* ===== GRID ===== */
+    .gallery8_component {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
 
-/* Gallery Card */
-.gallery-item {
-  overflow: hidden;
-  border-radius: 22px;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
+    /* ── GALLERY CARD ── */
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 20px;
+      cursor: pointer;
+      background: #ffffff;
+      border: 1px solid rgba(202,174,95,0.18);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),
+                  box-shadow 0.4s ease,
+                  border-color 0.3s ease;
+      position: relative;
+    }
 
-.gallery-item img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  transition: transform 0.7s ease, filter 0.5s ease;
-  display: block;
-}
+    /* Gold shimmer on hover */
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(202,174,95,0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      border-radius: 20px;
+      pointer-events: none;
+    }
 
-/* Hover */
-.gallery-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
-}
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(202,174,95,0.2), 0 4px 20px rgba(0,0,0,0.07);
+      border-color: rgba(202,174,95,0.45);
+    }
+    .gallery-item:hover::after { opacity: 1; }
 
-.gallery-item:hover img {
-  transform: scale(1.08);
-  filter: brightness(85%);
-}
+    .gallery-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  filter 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(88%);
+    }
 
-/* ===== LIGHTBOX ===== */
+    /* Zoom icon overlay */
+    .gallery-item-zoom {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.6);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      border: 2px solid rgba(202,174,95,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+      z-index: 2;
+      pointer-events: none;
+      box-shadow: 0 4px 16px rgba(202,174,95,0.2);
+    }
+    .gallery-item:hover .gallery-item-zoom {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
 
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 40px;
-}
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 7, 3, 0.92);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 40px;
+    }
+    .lightbox.active { display: flex; }
 
-.lightbox.active {
-  display: flex;
-}
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 18px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(202,174,95,0.2);
+      animation: lbZoomIn 0.38s cubic-bezier(0.25,0.46,0.45,0.94);
+      display: block;
+    }
+    @keyframes lbZoomIn {
+      from { transform: scale(0.75); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
 
-.lightbox-img {
-  max-width: 90%;
-  max-height: 85vh;
-  border-radius: 18px;
-  animation: zoomIn 0.4s ease;
-}
+    .lightbox-close {
+      position: absolute;
+      top: 28px;
+      right: 36px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.28);
+      color: #fff;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      line-height: 1;
+    }
+    .lightbox-close:hover {
+      background: rgba(202,174,95,0.3);
+      border-color: rgba(202,174,95,0.6);
+      transform: rotate(90deg) scale(1.1);
+    }
 
-.lightbox-close {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  font-size: 40px;
-  color: #fff;
-  cursor: pointer;
-}
+    /* Prev / Next arrows */
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      color: #fff;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    .lightbox-arrow:hover {
+      background: rgba(202,174,95,0.25);
+      border-color: rgba(202,174,95,0.5);
+    }
+    .lightbox-arrow.prev { left: 28px; }
+    .lightbox-arrow.next { right: 28px; }
 
-/* Zoom animation */
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-/* ===== MOBILE 2x2 GRID ===== */
-@media (max-width: 768px) {
-  .gallery8_component {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
+    /* Counter */
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+      font-family: "Inter", sans-serif;
+    }
 
-  .gallery-item img {
-    height: 180px;
-  }
-}
-    </style>
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .gallery8_component {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .gallery-item img { height: 180px; }
+      .lightbox-arrow { display: none; }
+    }
+    @media (max-width: 480px) {
+      .gallery8_component {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .gallery-item img { height: 240px; }
+    }
+
+  </style>
 </head>
 <body>
 
@@ -139,101 +254,115 @@ $page_subtitle = 'See Real Results & Transformations';
 
   <?php include 'header.php'; ?>
 
-  <!-- ── INNER PAGE BANNER ────────────────────────────– -->
-  <section class="inner-banner" style="background: linear-gradient(90deg,rgba(176, 14, 9, 1) 0%, rgba(130, 42, 42, 1) 100%);">
+  <!-- ── INNER PAGE BANNER ─────────────────────────── -->
+
+  <?php include 'hero-section.php'; ?>
+  <!-- <section class="inner-banner">
     <div class="inner-banner-content container">
-      <h1 data-aos="fade-up">Explore Our Transformations
-</h1>
-      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Discover the beauty journeys of our clients at Geneva Wellness Institute. From rejuvenated skin to revitalized hair, see the remarkable results our treatments have achieved. Let these transformations inspire your own path to beauty and wellness.
-
-</p>
- <!-- ── BREADCRUMB ────────────────────────────────– -->
-  <nav class="breadcrumb container" aria-label="Breadcrumb">
-    <a href="index.php">Home</a>
-    <span>/</span>
-    <span aria-current="page">Gallery</span>
-  </nav>
+      <h1 data-aos="fade-up">Explore Our Transformations</h1>
+      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Discover the beauty journeys of our clients at Geneva Wellness Institute. From rejuvenated skin to revitalized hair, see the remarkable results our treatments have achieved. Let these transformations inspire your own path to beauty and wellness.</p>
+      <nav class="breadcrumb container" aria-label="Breadcrumb">
+        <a href="index.php">Home</a>
+        <span>/</span>
+        <span aria-current="page">Gallery</span>
+      </nav>
     </div>
-    
-  </section>
-
- 
+  </section> -->
 
   <main>
 
-    <!-- ── GALLERY SECTION ────────────────────────────– -->
-      
+    <!-- ── GALLERY SECTION ──────────────────────────── -->
     <section class="section gallery-section">
-  <div class="container">
+      <div class="container">
 
-    <div class="gallery8_component">
+        <div class="gallery8_component">
 
-      <!-- 13 Images -->
-      <div class="gallery-item"><img src="img\gallery-img-1.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-2.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-3.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-4.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-5.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-6.jpg" alt="Gallery Image"></div>
-       <div class="gallery-item"><img src="img\gallery-img-7.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-8.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-9.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-10.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-11.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-12.jpg" alt="Gallery Image"></div>
-<div class="gallery-item"><img src="img\gallery-img-13.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-14.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-15.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-16.jpg" alt="Gallery Image"></div>
-      <div class="gallery-item"><img src="img\gallery-img-17.jpg" alt="Gallery Image"></div>
+          <div class="gallery-item"><img src="img/gallery-img-1.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-2.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-3.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-4.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-5.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-6.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-7.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-8.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-9.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-10.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-11.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-12.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-13.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-14.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-15.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-16.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-17.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
 
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── LIGHTBOX ──────────────────────────────────── -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+      <button class="lightbox-arrow prev" id="lightboxPrev" aria-label="Previous">‹</button>
+      <img class="lightbox-img" src="" alt="Expanded Image" id="lightboxImg" />
+      <button class="lightbox-arrow next" id="lightboxNext" aria-label="Next">›</button>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
     </div>
 
-  </div>
-</section>
-
-<!-- Lightbox Popup -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <img class="lightbox-img" src="" alt="Expanded Image">
-</div>
-
- 
     <?php include 'footer.php'; ?>
 
   </main>
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
-  <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Dynamic Component Manager -->
   <script src="components.js"></script>
-  <!-- Page-specific Scripts -->
   <script src="script.js"></script>
 
   <script>
-const galleryImages = document.querySelectorAll(".gallery-item img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.querySelector(".lightbox-img");
-const closeBtn = document.querySelector(".lightbox-close");
+    (function () {
+      const items      = document.querySelectorAll('.gallery-item');
+      const lightbox   = document.getElementById('lightbox');
+      const lbImg      = document.getElementById('lightboxImg');
+      const lbClose    = document.getElementById('lightboxClose');
+      const lbPrev     = document.getElementById('lightboxPrev');
+      const lbNext     = document.getElementById('lightboxNext');
+      const lbCounter  = document.getElementById('lightboxCounter');
+      let current = 0;
 
-galleryImages.forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.classList.add("active");
-    lightboxImg.src = img.src;
-  });
-});
+      function open(index) {
+        current = index;
+        lbImg.src = items[current].querySelector('img').src;
+        lbCounter.textContent = (current + 1) + ' / ' + items.length;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
 
-closeBtn.addEventListener("click", () => {
-  lightbox.classList.remove("active");
-});
+      function close() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }
 
-lightbox.addEventListener("click", (e) => {
-  if (e.target !== lightboxImg) {
-    lightbox.classList.remove("active");
-  }
-});
+      function go(dir) {
+        current = (current + dir + items.length) % items.length;
+        lbImg.src = items[current].querySelector('img').src;
+        lbCounter.textContent = (current + 1) + ' / ' + items.length;
+      }
+
+      items.forEach((item, i) => item.addEventListener('click', () => open(i)));
+      lbClose.addEventListener('click', close);
+      lbPrev.addEventListener('click', () => go(-1));
+      lbNext.addEventListener('click', () => go(1));
+      lightbox.addEventListener('click', e => { if (e.target === lightbox || e.target === lbImg) close(); });
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape')      close();
+        if (e.key === 'ArrowLeft')   go(-1);
+        if (e.key === 'ArrowRight')  go(1);
+      });
+    })();
   </script>
+
 </body>
 </html>
