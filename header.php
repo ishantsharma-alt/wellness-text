@@ -287,7 +287,7 @@
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0,0,0,.12), 0 0 0 1px rgba(202,174,95,.15);
-  min-width: 580px;
+  min-width: 650px;
   width: 90vw;
   max-width: 580px;
   opacity: 0;
@@ -598,6 +598,7 @@
   .logo-tagline { font-size: 0.5rem; }
   .logo-emblem { width: 40px; height: 40px; }
   body { padding-top: 60px; }
+  .gw-hero__eyebrow span{font-size: 0.5rem;}
 }
 
 @media (max-width: 480px) {

@@ -507,7 +507,9 @@ a:hover {
   flex: 1;
   padding-block: clamp(8rem, 6vh, 4rem);
 }
-
+.site-header .container{
+max-width: 1800px!important;
+}
 /* Hero Content */
 .hero-content-col {
   color: var(--black);

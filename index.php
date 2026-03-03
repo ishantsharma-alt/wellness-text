@@ -516,8 +516,860 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     .section-ornament-line.right { background: linear-gradient(90deg, rgba(202,174,95,0.5), transparent); }
     .section-ornament-diamond { width: 8px; height: 8px; background: #CAAE5F; transform: rotate(45deg); }
   </style>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     GENEVA WELLNESS — CINEMATIC HERO SECTION
+     Drop-in replacement for .hero-enhanced in index.php
+     Uses same img path: img/facial-treatment-clinic.jpg
+═══════════════════════════════════════════════════════════ -->
+
+<style>
+/* ─────────────────────────────────────────────────────────
+   HERO VARIABLES
+───────────────────────────────────────────────────────── */
+:root {
+  --h-gold:      #CAAE5F;
+  --h-gold-dim:  #B8955C;
+  --h-gold-pale: rgba(202,174,95,0.18);
+  --h-dark:      #090704;
+  --h-white:     #ffffff;
+  --h-ease:      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ─────────────────────────────────────────────────────────
+   OUTER SHELL
+───────────────────────────────────────────────────────── */
+.gw-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--h-dark);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FULL-BLEED BG IMAGE
+───────────────────────────────────────────────────────── */
+.gw-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.gw-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% center;
+  display: block;
+  animation: gwHeroBgReveal 2.2s var(--h-ease) both;
+  transform-origin: center;
+}
+@keyframes gwHeroBgReveal {
+  from { transform: scale(1.12); filter: brightness(0.3); }
+  to   { transform: scale(1.0);  filter: brightness(1); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   OVERLAY STACK  (4 layers for cinematic depth)
+───────────────────────────────────────────────────────── */
+/* 1. Global dark veil */
+.gw-hero__veil {
+  position: absolute; inset: 0; z-index: 1;
+  background: rgba(9,7,4,0.38);
+}
+/* 2. Strong left panel for text */
+.gw-hero__panel {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(
+    108deg,
+    rgba(9,7,4,0.92)  0%,
+    rgba(9,7,4,0.80)  28%,
+    rgba(9,7,4,0.45)  52%,
+    rgba(9,7,4,0.05)  70%,
+    transparent       82%
+  );
+}
+/* 3. Bottom fade for stats */
+.gw-hero__bottom-fade {
+  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+  height: 42%;
+  background: linear-gradient(to top, rgba(9,7,4,0.75) 0%, transparent 100%);
+}
+/* 4. Atmospheric gold glow top-right */
+.gw-hero__glow {
+  position: absolute; z-index: 2;
+  top: -15%; right: -8%;
+  width: 70vw; height: 90vh;
+  background: radial-gradient(ellipse 55% 55% at 65% 35%,
+    rgba(202,174,95,0.22) 0%, transparent 68%);
+  pointer-events: none;
+  animation: gwGlowPulse 7s ease-in-out infinite alternate;
+}
+@keyframes gwGlowPulse {
+  from { opacity: 0.65; transform: scale(0.97); }
+  to   { opacity: 1;    transform: scale(1.04); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   FLOATING PARTICLES  (pure CSS)
+───────────────────────────────────────────────────────── */
+.gw-hero__particles {
+  position: absolute; inset: 0; z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+.gw-p {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--h-gold);
+  animation: gwParticleDrift linear infinite;
+}
+.gw-p:nth-child(1){width:3px;height:3px;top:18%;left:62%;opacity:.5;animation-duration:9s;animation-delay:0s;}
+.gw-p:nth-child(2){width:2px;height:2px;top:44%;left:74%;opacity:.35;animation-duration:12s;animation-delay:1.5s;}
+.gw-p:nth-child(3){width:4px;height:4px;top:30%;left:55%;opacity:.6;animation-duration:7s;animation-delay:3s;}
+.gw-p:nth-child(4){width:2px;height:2px;top:60%;left:82%;opacity:.4;animation-duration:10s;animation-delay:0.8s;}
+.gw-p:nth-child(5){width:3px;height:3px;top:72%;left:58%;opacity:.45;animation-duration:14s;animation-delay:2.2s;}
+.gw-p:nth-child(6){width:2px;height:2px;top:25%;left:88%;opacity:.3;animation-duration:11s;animation-delay:4s;}
+.gw-p:nth-child(7){width:5px;height:5px;top:52%;left:67%;opacity:.25;animation-duration:8s;animation-delay:1s;}
+@keyframes gwParticleDrift {
+  0%   { transform: translateY(0)    scale(1);   box-shadow: 0 0 0 rgba(202,174,95,0); }
+  50%  { transform: translateY(-28px) scale(1.4); box-shadow: 0 0 10px rgba(202,174,95,0.7); }
+  100% { transform: translateY(0)    scale(1);   box-shadow: 0 0 0 rgba(202,174,95,0); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   DECORATIVE GEOMETRY
+───────────────────────────────────────────────────────── */
+/* Thin vertical gold rule — left edge marker */
+.gw-hero__rule {
+  position: absolute;
+  left: clamp(2.5rem, 5.5vw, 5.5rem);
+  top: 14%; bottom: 18%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(202,174,95,0.55) 15%,
+    rgba(202,174,95,0.55) 85%,
+    transparent 100%
+  );
+  z-index: 5;
+  transform-origin: top;
+  animation: gwRuleReveal 1.6s var(--h-ease) 0.4s both;
+}
+.gw-hero__rule::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(45deg);
+  width: 6px; height: 6px;
+  background: var(--h-gold);
+  box-shadow: 0 0 10px rgba(202,174,95,0.9);
+}
+@keyframes gwRuleReveal {
+  from { transform: scaleY(0); opacity: 0; }
+  to   { transform: scaleY(1); opacity: 1; }
+}
+
+/* Elegant corner frame — top right of the image area */
+.gw-hero__corner {
+  position: absolute;
+  top: clamp(1.5rem, 4vh, 3.5rem);
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  z-index: 5;
+  pointer-events: none;
+}
+.gw-hero__corner-svg {
+  width: clamp(80px,10vw,140px);
+  height: clamp(80px,10vw,140px);
+  opacity: 0;
+  animation: gwFadeScale 1.2s var(--h-ease) 1.4s both;
+}
+@keyframes gwFadeScale {
+  from { opacity: 0; transform: scale(0.6) rotate(-15deg); }
+  to   { opacity: 1; transform: scale(1)   rotate(0deg); }
+}
+
+/* Rotating ring ornament */
+.gw-hero__ring {
+  position: absolute;
+  right: clamp(5%,14vw,18%);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: clamp(180px,22vw,300px);
+  height: clamp(180px,22vw,300px);
+  pointer-events: none;
+}
+.gw-hero__ring-outer {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(202,174,95,0.2);
+  animation: gwRingSpin 30s linear infinite;
+  opacity: 0;
+  animation: gwRingAppear 1.5s var(--h-ease) 1.8s both,
+             gwRingSpin 30s linear 3.3s infinite;
+}
+.gw-hero__ring-inner {
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  border: 1px dashed rgba(202,174,95,0.15);
+  animation: gwRingAppear 1.5s var(--h-ease) 2s both,
+             gwRingSpinRev 18s linear 3.5s infinite;
+}
+@keyframes gwRingSpin    { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes gwRingSpinRev { from { transform: rotate(0deg); }   to { transform: rotate(-360deg); } }
+@keyframes gwRingAppear  { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+
+/* ─────────────────────────────────────────────────────────
+   MAIN CONTENT
+───────────────────────────────────────────────────────── */
+.gw-hero__body {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: clamp(6rem, 14vh, 10rem) clamp(1.5rem, 5vw, 3rem) clamp(5rem, 10vh, 7rem);
+  padding-left: clamp(4.5rem, 9.5vw, 9rem); /* clear the rule */
+}
+
+.gw-hero__content {
+  max-width: min(800px, 52vw);
+}
+@media (max-width: 768px) {
+  .gw-hero__content { max-width: 100%; }
+}
+
+/* ── EYEBROW PILL ── */
+.gw-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(202,174,95,0.35);
+  border-radius: 40px;
+  padding: 0.38rem 1rem 0.38rem 0.55rem;
+  background: rgba(202,174,95,0.08);
+  backdrop-filter: blur(6px);
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: gwSlideUp 0.9s var(--h-ease) 0.7s both;
+}
+.gw-hero__eyebrow-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--h-gold);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(202,174,95,0.3);
+  animation: gwDotPulse 2.5s ease-in-out infinite;
+}
+@keyframes gwDotPulse {
+  0%,100% { box-shadow: 0 0 0   2px rgba(202,174,95,0.3); }
+  50%      { box-shadow: 0 0 12px 4px rgba(202,174,95,0.7); }
+}
+.gw-hero__eyebrow span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--h-gold);
+}
+
+/* ── HEADLINE ── */
+.gw-hero__title {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 5.5vw, 5.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--h-white);
+  margin: 0 0 1.6rem;
+}
+.gw-hero__title em {
+  font-style: italic;
+  color: var(--h-gold);
+  display: block;
+}
+.gw-hero__title-line {
+  display: block;
+  overflow: hidden;
+}
+.gw-hero__title-line-inner {
+  display: block;
+  opacity: 0;
+  animation: gwTitleReveal 1s var(--h-ease) both;
+}
+.gw-hero__title-line:nth-child(1) .gw-hero__title-line-inner { animation-delay: 0.9s; }
+.gw-hero__title-line:nth-child(2) .gw-hero__title-line-inner { animation-delay: 1.05s; }
+.gw-hero__title-line:nth-child(3) .gw-hero__title-line-inner { animation-delay: 1.2s; }
+@keyframes gwTitleReveal {
+  from { opacity: 0; transform: translateY(110%) skewY(2deg); }
+  to   { opacity: 1; transform: translateY(0)    skewY(0deg); }
+}
+
+/* ── SUBTITLE ── */
+.gw-hero__sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.65);
+  max-width: 460px;
+  margin: 0 0 2.4rem;
+  opacity: 0;
+  animation: gwSlideUp 0.9s var(--h-ease) 1.35s both;
+}
+
+/* ── CTA BUTTONS ── */
+.gw-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.8rem;
+  opacity: 0;
+  animation: gwSlideUp 0.9s var(--h-ease) 1.5s both;
+}
+
+.gw-hero__btn-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 2.2rem;
+  background: linear-gradient(135deg, #CAAE5F 0%, #B8955C 100%);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 60px;
+  text-decoration: none;
+  box-shadow:
+    0 8px 28px rgba(202,174,95,0.45),
+    0 2px 6px  rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: all 0.35s var(--h-ease);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+.gw-hero__btn-book:hover{
+  color:#ffffff;
+}
+.gw-hero__btn-book::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gw-hero__btn-book:hover::before { opacity: 1; }
+.gw-hero__btn-book:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 16px 44px rgba(202,174,95,0.55),
+    0 4px 12px  rgba(0,0,0,0.4);
+}
+.gw-hero__btn-book svg {
+  transition: transform 0.3s var(--h-ease);
+  flex-shrink: 0;
+}
+.gw-hero__btn-book:hover svg { transform: translateX(5px); }
+
+.gw-hero__btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem;
+  border: 1.5px solid rgba(255,255,255,0.22);
+  border-radius: 60px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.88);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.gw-hero__btn-explore:hover {
+  border-color: rgba(202,174,95,0.5);
+  background: rgba(202,174,95,0.1);
+  color: var(--h-gold);
+  transform: translateY(-2px);
+}
+.gw-hero__btn-play {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(202,174,95,0.18);
+  border: 1px solid rgba(202,174,95,0.35);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+}
+.gw-hero__btn-explore:hover .gw-hero__btn-play {
+  background: rgba(202,174,95,0.3);
+}
+
+/* ── SOCIAL PROOF ── */
+.gw-hero__proof {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  opacity: 0;
+  animation: gwSlideUp 0.9s var(--h-ease) 1.65s both;
+}
+.gw-hero__avatars {
+  display: flex;
+  align-items: center;
+}
+.gw-hero__avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #fff;
+  margin-right: -9px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.gw-hero__avatars:hover .gw-hero__avatar { margin-right: -3px; }
+.gw-hero__proof-sep {
+  width: 1px; height: 30px;
+  background: rgba(255,255,255,0.18);
+  flex-shrink: 0;
+  margin-left: 9px;
+}
+.gw-hero__proof-copy {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.gw-hero__stars {
+  color: var(--h-gold);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+.gw-hero__proof-copy span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+}
+.gw-hero__proof-copy strong { color: rgba(255,255,255,0.9); }
+
+/* ─────────────────────────────────────────────────────────
+   FLOATING GLASS CARDS  (desktop only)
+───────────────────────────────────────────────────────── */
+.gw-hero__cards {
+  position: absolute;
+  z-index: 10;
+  right: clamp(2rem, 5vw, 5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.gw-hero__card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.2rem;
+  background: rgba(9,7,4,0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(202,174,95,0.22);
+  border-radius: 14px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  opacity: 0;
+  animation: gwCardReveal 0.9s var(--h-ease) both;
+  white-space: nowrap;
+  min-width: 190px;
+}
+.gw-hero__card:nth-child(1) { animation-delay: 1.7s; }
+.gw-hero__card:nth-child(2) { animation-delay: 1.9s; }
+.gw-hero__card:nth-child(3) { animation-delay: 2.1s; }
+@keyframes gwCardReveal {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Idle float after reveal */
+.gw-hero__card:nth-child(1) { animation: gwCardReveal 0.9s var(--h-ease) 1.7s both, gwFloat1 5s ease-in-out 2.8s infinite alternate; }
+.gw-hero__card:nth-child(2) { animation: gwCardReveal 0.9s var(--h-ease) 1.9s both, gwFloat2 6s ease-in-out 3.2s infinite alternate; }
+.gw-hero__card:nth-child(3) { animation: gwCardReveal 0.9s var(--h-ease) 2.1s both, gwFloat3 4.5s ease-in-out 3.6s infinite alternate; }
+@keyframes gwFloat1 { from { transform: translateY(0); }  to { transform: translateY(-10px); } }
+@keyframes gwFloat2 { from { transform: translateY(0); }  to { transform: translateY(-7px); } }
+@keyframes gwFloat3 { from { transform: translateY(0); }  to { transform: translateY(-12px); } }
+
+.gw-hero__card-emoji {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.gw-hero__card-num {
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--h-gold);
+  flex-shrink: 0;
+}
+.gw-hero__card-info strong {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #fff;
+}
+.gw-hero__card-info span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.52);
+}
+
+/* ─────────────────────────────────────────────────────────
+   BOTTOM STATS BAR
+───────────────────────────────────────────────────────── */
+.gw-hero__stats {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  opacity: 0;
+  animation: gwSlideUp 1s var(--h-ease) 2s both;
+}
+.gw-hero__stats-inner {
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid rgba(202,174,95,0.18);
+  background: rgba(9,7,4,0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.gw-hero__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 0.75rem;
+  gap: 0.18rem;
+  position: relative;
+  cursor: default;
+  transition: background 0.3s ease;
+}
+.gw-hero__stat:hover { background: rgba(202,174,95,0.06); }
+.gw-hero__stat + .gw-hero__stat::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 22%; bottom: 22%;
+  width: 1px;
+  background: rgba(202,174,95,0.18);
+}
+.gw-hero__stat-num {
+  font-family: 'Lora', serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 600;
+  color: var(--h-gold);
+  line-height: 1;
+}
+.gw-hero__stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCROLL CUE
+───────────────────────────────────────────────────────── */
+.gw-hero__scroll {
+  position: absolute;
+  /* Sits just above the stats bar; adjust if stats bar height changes */
+  bottom: calc(68px + 1.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: gwSlideUp 1s var(--h-ease) 2.2s both;
+}
+.gw-hero__scroll-mouse {
+  width: 21px; height: 34px;
+  border: 1.5px solid rgba(202,174,95,0.4);
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 5px;
+}
+.gw-hero__scroll-wheel {
+  width: 2.5px; height: 7px;
+  background: var(--h-gold);
+  border-radius: 3px;
+  animation: gwScrollWheel 2s ease-in-out infinite;
+}
+@keyframes gwScrollWheel {
+  0%   { transform: translateY(0);    opacity: 1; }
+  55%  { transform: translateY(11px); opacity: 0; }
+  56%  { transform: translateY(0);    opacity: 0; }
+  100% { opacity: 1; }
+}
+.gw-hero__scroll-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  writing-mode: vertical-rl;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SHARED KEYFRAME
+───────────────────────────────────────────────────────── */
+@keyframes gwSlideUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .gw-hero__cards { display: none; }
+  .gw-hero__ring  { display: none; }
+  .gw-hero__panel {
+    background: linear-gradient(
+      160deg,
+      rgba(9,7,4,0.88) 0%,
+      rgba(9,7,4,0.70) 50%,
+      rgba(9,7,4,0.15) 80%,
+      transparent 100%
+    );
+  }
+}
+@media (max-width: 768px) {
+  .gw-hero__bg img { object-position: 72% center; }
+  .gw-hero__title  { font-size: clamp(2.4rem, 9vw, 3.4rem); }
+  .gw-hero__rule   { display: none; }
+  .gw-hero__scroll { display: none; }
+  .gw-hero__body   { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .gw-hero__content{ max-width: 100%; }
+  .gw-hero__stats-inner { flex-wrap: wrap; }
+  .gw-hero__stat   { min-width: 50%; }
+  .gw-hero__panel  {
+    background: linear-gradient(
+      180deg,
+      rgba(9,7,4,0.82) 0%,
+      rgba(9,7,4,0.65) 55%,
+      rgba(9,7,4,0.25) 100%
+    );
+  }
+}
+@media (max-width: 480px) {
+  .gw-hero__title  { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .gw-hero__actions{ gap: 0.7rem; }
+  .gw-hero__btn-book,
+  .gw-hero__btn-explore { font-size: 0.82rem; padding: 0.85rem 1.4rem; }
+  .gw-hero__btn-explore .gw-hero__btn-play { display: none; }
+  .gw-hero__stat   { min-width: 50%; padding: 1rem 0.5rem; }
+  .gw-hero__corner { display: none; }
+}
+</style>
 </head>
 <body class="home-page">
+
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO MARKUP
+══════════════════════════════════════════════════════════ -->
+<section class="gw-hero" id="hero" aria-label="Hero — Geneva Wellness Institute">
+
+  <!-- Full-bleed photo -->
+  <div class="gw-hero__bg" aria-hidden="true">
+    <img
+      src="img/home-hero-updated-new.png"
+      alt="Premium facial treatment at Geneva Wellness Institute"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Overlays -->
+  <div class="gw-hero__veil"        aria-hidden="true"></div>
+  <div class="gw-hero__panel"       aria-hidden="true"></div>
+  <div class="gw-hero__bottom-fade" aria-hidden="true"></div>
+  <div class="gw-hero__glow"        aria-hidden="true"></div>
+
+  <!-- Particles -->
+  <div class="gw-hero__particles" aria-hidden="true">
+    <span class="gw-p"></span><span class="gw-p"></span>
+    <span class="gw-p"></span><span class="gw-p"></span>
+    <span class="gw-p"></span><span class="gw-p"></span>
+    <span class="gw-p"></span>
+  </div>
+
+  <!-- Geometry -->
+  <div class="gw-hero__rule" aria-hidden="true"></div>
+
+  <div class="gw-hero__corner" aria-hidden="true">
+    <svg class="gw-hero__corner-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="57" stroke="rgba(202,174,95,0.22)" stroke-width="1"/>
+      <circle cx="60" cy="60" r="44" stroke="rgba(202,174,95,0.12)" stroke-width="1" stroke-dasharray="3 5"/>
+      <path d="M60 20 L65 55 L100 60 L65 65 L60 100 L55 65 L20 60 L55 55 Z" fill="rgba(202,174,95,0.15)" stroke="rgba(202,174,95,0.4)" stroke-width="0.8"/>
+    </svg>
+  </div>
+
+  <div class="gw-hero__ring" aria-hidden="true">
+    <div class="gw-hero__ring-outer"></div>
+    <div class="gw-hero__ring-inner"></div>
+  </div>
+
+  <!-- ── MAIN BODY ── -->
+  <div class="gw-hero__body">
+    <div class="gw-hero__content">
+
+      <!-- Eyebrow -->
+      <div class="gw-hero__eyebrow" role="text">
+        <span class="gw-hero__eyebrow-dot"></span>
+        <span>Award-Winning Clinic &nbsp;·&nbsp; Alabang, Philippines</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="gw-hero__title">
+        <span class="gw-hero__title-line">
+          <span class="gw-hero__title-line-inner">Transformative</span>
+        </span>
+        <span class="gw-hero__title-line">
+          <span class="gw-hero__title-line-inner"><em>Wellness &amp; Aesthetic</em></span>
+        </span>
+        <span class="gw-hero__title-line">
+          <span class="gw-hero__title-line-inner">Treatments for Everyone</span>
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="gw-hero__sub">
+        Premium non-invasive treatments crafted for your unique skin and hair goals —
+        backed by 15&plus; years of expertise and cutting-edge technology.
+      </p>
+
+      <!-- CTAs -->
+      <div class="gw-hero__actions">
+        <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
+          <span>Book Free Consultation</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="treatments.php" class="gw-hero__btn-explore">
+          <span class="gw-hero__btn-play" aria-hidden="true">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span>Explore Treatments</span>
+        </a>
+      </div>
+
+      <!-- Social proof -->
+      <div class="gw-hero__proof">
+        <div class="gw-hero__avatars" aria-label="Client avatars">
+          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">M</div>
+          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">G</div>
+          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">R</div>
+          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">A</div>
+          <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
+        </div>
+        <div class="gw-hero__proof-sep" aria-hidden="true"></div>
+        <div class="gw-hero__proof-copy">
+          <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
+          <span>Trusted by <strong>10,000+</strong> clients</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /.gw-hero__body -->
+
+  <!-- Floating stat cards (hidden on small screens) -->
+  <div class="gw-hero__cards" aria-hidden="true">
+    <div class="gw-hero__card">
+      <span class="gw-hero__card-emoji">⭐</span>
+      <div class="gw-hero__card-info">
+        <strong>5.0 Rating</strong>
+        <span>500+ Google Reviews</span>
+      </div>
+    </div>
+    <div class="gw-hero__card">
+      <span class="gw-hero__card-num">15+</span>
+      <div class="gw-hero__card-info">
+        <strong>Years of Excellence</strong>
+        <span>Certified Professionals</span>
+      </div>
+    </div>
+    <div class="gw-hero__card">
+      <span class="gw-hero__card-emoji">✨</span>
+      <div class="gw-hero__card-info">
+        <strong>Non-Invasive</strong>
+        <span>Zero Downtime</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="gw-hero__scroll" aria-hidden="true">
+    <div class="gw-hero__scroll-mouse">
+      <div class="gw-hero__scroll-wheel"></div>
+    </div>
+    <span class="gw-hero__scroll-text">Scroll</span>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="gw-hero__stats">
+    <div class="gw-hero__stats-inner">
+      <div class="gw-hero__stat">
+        <strong class="gw-hero__stat-num">10,000+</strong>
+        <span class="gw-hero__stat-label">Happy Clients</span>
+      </div>
+      <div class="gw-hero__stat">
+        <strong class="gw-hero__stat-num">15+</strong>
+        <span class="gw-hero__stat-label">Years Experience</span>
+      </div>
+      <div class="gw-hero__stat">
+        <strong class="gw-hero__stat-num">20+</strong>
+        <span class="gw-hero__stat-label">Treatments</span>
+      </div>
+      <div class="gw-hero__stat">
+        <strong class="gw-hero__stat-num">5&#9733;</strong>
+        <span class="gw-hero__stat-label">Google Rating</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
 
   <!-- ── CURSOR ──────────────────────────────────────── -->
   <div class="cursor" id="cursor"></div>
@@ -546,8 +1398,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     <!-- ═══════════════════════════════════════════════
          HERO SECTION
     ═══════════════════════════════════════════════ -->
-    <section class="hero-enhanced" id="hero">
-      <!-- Background Layers -->
+    <!-- <section class="hero-enhanced" id="hero">
       <div class="hero-bg-layer">
         <div class="hero-gradient-mesh"></div>
         <div class="hero-noise"></div>
@@ -561,7 +1412,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       </div>
 
       <div class="container hero-grid">
-        <!-- Content -->
         <div class="hero-content-col">
           <div class="hero-eyebrow" data-delay="0">
             <span class="hero-eyebrow-dot"></span>
@@ -588,7 +1438,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             </a>
           </div>
 
-          <!-- Trust proof -->
           <div class="hero-proof" data-delay="4">
             <div class="hero-avatars">
               <div class="hero-avatar" style="background: linear-gradient(135deg, #CAAE5F, #B8955C)">M</div>
@@ -604,7 +1453,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           </div>
         </div>
 
-        <!-- Visual -->
         <div class="hero-visual-col">
           <div class="hero-img-container">
             <div class="hero-img-ring-outer"></div>
@@ -640,7 +1488,6 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
       </div>
 
-      <!-- Stats bar at bottom -->
       <div class="hero-stats-bar">
         <div class="container">
           <div class="hero-stats-inner">
@@ -667,14 +1514,13 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
       </div>
 
-      <!-- Scroll indicator -->
       <div class="hero-scroll-hint">
         <div class="scroll-mouse">
           <div class="scroll-wheel"></div>
         </div>
         <span>Scroll to discover</span>
       </div>
-    </section>
+    </section> -->
 
     
 
