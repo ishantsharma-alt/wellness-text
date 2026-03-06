@@ -1203,7 +1203,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   <!-- Full-bleed photo -->
   <div class="gw-hero__bg" aria-hidden="true">
     <img
-      src="img/home-hero-updated-new.png"
+      src="img/home-hero-updated-new.webp"
       alt="Premium facial treatment at Geneva Wellness Institute"
       loading="eager"
       fetchpriority="high"
