@@ -18,7 +18,7 @@ $sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false) ? '../' : ''
     <h4>Search Articles</h4>
     <form class="search-form" role="search" action="<?= $sidebar_depth ?>blog-search.php" method="get">
       <input type="search" name="q" placeholder="Search blog..." aria-label="Search blog posts" />
-      <button type="submit" aria-label="Search">🔍</button>
+      <button type="submit" aria-label="Search"><i class="icon-brown fa-solid fa-search"></i></button>
     </form>
   </div>
 

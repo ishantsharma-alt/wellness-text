@@ -43,13 +43,13 @@ $page_title = '404 - Page Not Found';
         <div class="error-suggestions">
           <h3>Helpful Links</h3>
           <ul>
-            <li><a href="index.php">🏠 Home</a></li>
-            <li><a href="about-us.php">ℹ️ About Us</a></li>
-            <li><a href="treatments.php">💊 Treatments</a></li>
-            <li><a href="gallery.php">🖼️ Gallery</a></li>
-            <li><a href="testimonials.php">⭐ Testimonials</a></li>
-            <li><a href="blog.php">📝 Blog</a></li>
-            <li><a href="contact-us.php">📞 Contact</a></li>
+            <li><a href="index.php"><i class="icon-brown fa-solid fa-home"></i> Home</a></li>
+            <li><a href="about-us.php"><i class="icon-brown fa-solid fa-info-circle"></i> About Us</a></li>
+            <li><a href="treatments.php"><i class="icon-brown fa-solid fa-pills"></i> Treatments</a></li>
+            <li><a href="gallery.php"><i class="icon-brown fa-solid fa-image"></i> Gallery</a></li>
+            <li><a href="testimonials.php"><i class="icon-brown fa-solid fa-star"></i> Testimonials</a></li>
+            <li><a href="blog.php"><i class="icon-brown fa-solid fa-pen-nib"></i> Blog</a></li>
+            <li><a href="contact-us.php"><i class="icon-brown fa-solid fa-phone"></i> Contact</a></li>
           </ul>
         </div>
       </div>

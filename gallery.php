@@ -277,23 +277,23 @@ $page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness
 
         <div class="gallery8_component">
 
-          <div class="gallery-item"><img src="img/gallery-img-1.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-2.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-3.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-4.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-5.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-6.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-7.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-8.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-9.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-10.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-11.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-12.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-13.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-14.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-15.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-16.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-17.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-1.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-2.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-3.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-4.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-5.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-6.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-7.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-8.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-9.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-10.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-11.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-12.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-13.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-14.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-15.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-16.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-17.webp" alt="Gallery Image"><div class="gallery-item-zoom"><i class="icon-brown fa-solid fa-search"></i></div></div>
 
         </div>
 
@@ -302,7 +302,7 @@ $page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness
 
     <!-- ── LIGHTBOX ──────────────────────────────────── -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close"><i class="icon-brown fa-solid fa-times"></i></button>
       <button class="lightbox-arrow prev" id="lightboxPrev" aria-label="Previous">‹</button>
       <img class="lightbox-img" src="" alt="Expanded Image" id="lightboxImg" />
       <button class="lightbox-arrow next" id="lightboxNext" aria-label="Next">›</button>
@@ -313,7 +313,7 @@ $page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness
 
   </main>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="icon-brown fa-solid fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="components.js"></script>

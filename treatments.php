@@ -273,11 +273,11 @@ $breadcrumb = [
       <div class="gwi-filter-inner">
         <button class="gwi-filter-btn gwi-active" onclick="gwiFilter(this,'all')">All Treatments</button>
         <div class="gwi-filter-sep"></div>
-        <button class="gwi-filter-btn" onclick="gwiFilter(this,'face')">✦ Face &amp; Skin</button>
+        <button class="gwi-filter-btn" onclick="gwiFilter(this,'face')"><i class="icon-brown fa-solid fa-star"></i> Face &amp; Skin</button>
         <div class="gwi-filter-sep"></div>
-        <button class="gwi-filter-btn" onclick="gwiFilter(this,'body')">✦ Body &amp; Contouring</button>
+        <button class="gwi-filter-btn" onclick="gwiFilter(this,'body')"><i class="icon-brown fa-solid fa-star"></i> Body &amp; Contouring</button>
         <div class="gwi-filter-sep"></div>
-        <button class="gwi-filter-btn" onclick="gwiFilter(this,'hair')">✦ Hair &amp; Scalp</button>
+        <button class="gwi-filter-btn" onclick="gwiFilter(this,'hair')"><i class="icon-brown fa-solid fa-star"></i> Hair &amp; Scalp</button>
       </div>
     </nav>
 
@@ -292,7 +292,7 @@ $breadcrumb = [
         ─────────────────────────────────────────────────── -->
         <div class="gwi-cat-block gwi-visible" id="gwi-block-face">
           <div class="gwi-cat-head">
-            <div class="gwi-cat-icon">✨</div>
+            <div class="gwi-cat-icon"><i class="icon-brown fa-solid fa-sparkles"></i></div>
             <div><div class="gwi-cat-title">Face &amp; Skin Treatments</div><div class="gwi-cat-count">7 Treatments Available</div></div>
             <div class="gwi-cat-line"></div>
           </div>
@@ -412,7 +412,7 @@ $breadcrumb = [
         ─────────────────────────────────────────────────── -->
         <div class="gwi-cat-block gwi-visible" id="gwi-block-body">
           <div class="gwi-cat-head">
-            <div class="gwi-cat-icon">💎</div>
+            <div class="gwi-cat-icon"><i class="icon-brown fa-solid fa-gem"></i></div>
             <div><div class="gwi-cat-title">Body &amp; Contouring</div><div class="gwi-cat-count">4 Treatments Available</div></div>
             <div class="gwi-cat-line"></div>
           </div>
@@ -487,7 +487,7 @@ $breadcrumb = [
         ─────────────────────────────────────────────────── -->
         <div class="gwi-cat-block gwi-visible" id="gwi-block-hair">
           <div class="gwi-cat-head">
-            <div class="gwi-cat-icon">🌿</div>
+            <div class="gwi-cat-icon"><i class="icon-brown fa-solid fa-leaf"></i></div>
             <div><div class="gwi-cat-title">Hair &amp; Scalp Care</div><div class="gwi-cat-count">3 Treatments Available</div></div>
             <div class="gwi-cat-line"></div>
           </div>
@@ -558,7 +558,7 @@ $breadcrumb = [
 
         <button class="gwi-modal-close"
                 onclick="gwiCloseModal()"
-                aria-label="Close">✕</button>
+                aria-label="Close"><i class="icon-brown fa-solid fa-times"></i></button>
 
         <div class="gwi-modal-body">
 
@@ -599,12 +599,12 @@ $breadcrumb = [
         </div>
         <div class="advantages-grid">
           <div class="advantage-item" data-aos="fade-up">
-            <div class="advantage-icon">🎯</div>
+            <div class="advantage-icon"><i class="icon-brown fa-solid fa-bullseye"></i></div>
             <h3>Personalized Care</h3>
             <p>Tailored treatments designed to meet your unique beauty and wellness goals</p>
           </div>
           <div class="advantage-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="advantage-icon">⚙️</div>
+            <div class="advantage-icon"><i class="icon-brown fa-solid fa-cog"></i></div>
             <h3>Advanced Technology</h3>
             <p>State-of-the-art equipment and techniques for optimal results</p>
           </div>
@@ -620,7 +620,7 @@ $breadcrumb = [
   </main>
 
   <?php include 'footer.php'; ?>
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="icon-brown fa-solid fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="components.js"></script>

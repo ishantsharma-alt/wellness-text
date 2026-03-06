@@ -457,7 +457,7 @@ function initPopup() {
     btn.textContent = 'Processing...';
     btn.disabled = true;
     setTimeout(() => {
-      btn.textContent = '✓ Request Submitted!';
+      btn.textContent = '<i class="icon-brown fa-solid fa-check"></i> Request Submitted!';
       setTimeout(closePopup, 1500);
     }, 900);
   });
@@ -501,7 +501,7 @@ document.querySelectorAll('img[src*="freepik"]').forEach((img, i) => {
   img.addEventListener('error', () => {
     const div = document.createElement('div');
     div.style.cssText = `width:100%;height:100%;background:${gradients[i % gradients.length]};display:flex;align-items:center;justify-content:center;`;
-    div.innerHTML = `<span style="font-size:3rem;opacity:.3;color:white">✦</span>`;
+    div.innerHTML = `<span style="font-size:3rem;opacity:.3;color:white"><i class="icon-brown fa-solid fa-star"></i></span>`;
     img.replaceWith(div);
   });
 });
@@ -640,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalContent = popupForm.innerHTML;
       popupForm.innerHTML = `
         <div style="text-align: center; padding: 2rem 0;">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">✓</div>
+          <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="icon-brown fa-solid fa-check"></i></div>
           <h3 style="font-family: 'Lora', serif; color: #1a1a1a; margin-bottom: 0.5rem;">Request Received!</h3>
           <p style="color: #666; margin-bottom: 1.5rem;">We'll contact you within 24 hours to confirm your consultation appointment.</p>
           <button type="button" class="popup-btn" onclick="location.reload()">Close</button>

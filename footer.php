@@ -209,11 +209,11 @@
   <!-- Top bar -->
   <div class="gwi-footer-topbar">
     <div class="gwi-footer-topbar-inner">
-      <span class="gwi-footer-tagline">✦ Excellence in Aesthetic &amp; Wellness Care ✦</span>
+      <span class="gwi-footer-tagline"><i class="icon-brown fa-solid fa-star"></i> Excellence in Aesthetic &amp; Wellness Care <i class="icon-brown fa-solid fa-star"></i></span>
       <div class="gwi-footer-badges">
-        <div class="gwi-footer-badge"><span>🏅</span> Certified Practitioners</div>
-        <div class="gwi-footer-badge"><span>⚕️</span> Medical Grade Treatments</div>
-        <div class="gwi-footer-badge"><span>🌟</span> Award-Winning Clinic</div>
+        <div class="gwi-footer-badge"><span><i class="icon-brown fa-solid fa-medal"></i></span> Certified Practitioners</div>
+        <div class="gwi-footer-badge"><span><i class="icon-brown fa-solid fa-stethoscope"></i></span> Medical Grade Treatments</div>
+        <div class="gwi-footer-badge"><span><i class="icon-brown fa-solid fa-star"></i></span> Award-Winning Clinic</div>
       </div>
     </div>
   </div>
@@ -247,15 +247,15 @@
 
         <div class="gwi-footer-contacts">
           <div class="gwi-footer-contact-row">
-            <span class="ico">📞</span>
+            <span class="ico"><i class="icon-brown fa-solid fa-phone"></i></span>
             <a href="tel:+1234567890">(123) 456-7890</a>
           </div>
           <div class="gwi-footer-contact-row">
-            <span class="ico">✉️</span>
+            <span class="ico"><i class="icon-brown fa-solid fa-envelope"></i></span>
             <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a>
           </div>
           <div class="gwi-footer-contact-row">
-            <span class="ico">📍</span>
+            <span class="ico"><i class="icon-brown fa-solid fa-location-dot"></i></span>
             <span>123 Wellness Ave, Geneva District</span>
           </div>
         </div>
@@ -358,7 +358,7 @@
           <div class="gwi-footer-hour-row"><span class="fhd">Sunday</span>   <span class="fht closed">Closed</span></div>
         </div>
         <a href="https://maps.app.goo.gl/neNdyjEWcqyL7R2aA" target="_blank" rel="noopener" class="gwi-footer-map-link">
-          📍 Get Directions →
+          <i class="icon-brown fa-solid fa-location-dot"></i> Get Directions →
         </a>
       </div>
 
