@@ -15,6 +15,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
 <meta name="author" content="Geneva Wellness Institute">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">
   {
@@ -1530,7 +1532,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     <section class="trust-bar-enhanced" aria-label="Trust indicators">
       <div class="container trust-grid">
         <div class="trust-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="trust-card-icon">🏆</div>
+          <div class="trust-card-icon"><i class="fa-duotone fa-solid fa-award" style="--fa-primary-color: #caae5f; --fa-secondary-color: #caae5f;"></i></div>
           <div class="trust-card-content">
             <strong>Award-Winning Clinic</strong>
             <span>Recognized for excellence in aesthetic care</span>
