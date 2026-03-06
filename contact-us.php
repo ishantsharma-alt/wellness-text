@@ -28,15 +28,15 @@ function sanitize_input($input) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Geneva Wellness Institute for consultations, appointments, and inquiries. Visit us in Alabang, Muntinlupa City." />
-  <meta name="keywords" content="contact, consultation, appointments, Geneva Wellness, phone, email, address" />
+  <meta name="description" content="Get in touch with Geneva Wellness Institute for aesthetic clinic contact details, consultation bookings and treatment inquiries. schedule your appointment today" />
+  <meta name="keywords" content="aesthetic clinic Alabang contact,aesthetic clinic near me,book aesthetic clinic appointment,aesthetic clinic consultation,contact aesthetic clinic Alabang,schedule aesthetic consultation,skin clinic contact details,aesthetic clinic phone number,visit aesthetic clinic today,aesthetic clinic near Alabang" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Contact Us — Geneva Wellness Institute" />
+  <meta property="og:title" content="Geneva Wellness Institute | Aesthetic Clinic Contact" />
   <meta property="og:description" content="Get in touch with our wellness experts. We're here to help." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/contact-us" />
   <link rel="canonical" href="https://genevawellness.com/contact-us" />
-  <title>Contact Us — Geneva Wellness Institute</title>
+  <title>Geneva Wellness Institute | Aesthetic Clinic Contact</title>
 
   <script type="application/ld+json">
   {

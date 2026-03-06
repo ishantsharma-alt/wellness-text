@@ -11,14 +11,14 @@ $breadcrumb = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Explore premium aesthetic treatments at Geneva Wellness Institute. From HIFU to laser therapy, discover advanced procedures for your wellness goals." />
-  <meta name="keywords" content="aesthetic treatments, HIFU, laser therapy, body contouring, skin treatments, Geneva Wellness" />
+  <meta name="keywords" content="aesthetic treatments,aesthetic treatments Alabang,advanced aesthetic treatments,non surgical aesthetic treatments,medical aesthetic treatments,best aesthetic treatments,aesthetic treatments for face,aesthetic treatments for body,laser aesthetic treatments,skin rejuvenation treatments,body contouring treatments,anti aging treatments,facial rejuvenation treatments,skin tightening treatments" />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="Advanced Treatments — Geneva Wellness Institute" />
   <meta property="og:description" content="Premium aesthetic and wellness treatments using state-of-the-art technology." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/treatments" />
   <link rel="canonical" href="https://genevawellness.com/treatments" />
-  <title>Treatments — Geneva Wellness Institute</title>
+  <title>Geneva Wellness Institute | Advanced Aesthetic Treatments</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -7,15 +7,13 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Geneva Wellness Institute — transformative wellness and aesthetic treatments including HIFU, CO2 Laser, Carbon Laser, Hair Restoration and more in Alabang, Muntinlupa City." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Geneva Wellness Institute — Transformative Wellness & Aesthetic Treatments" />
-  <meta property="og:description" content="Discover exceptional beauty and wellness treatments in Alabang, Muntinlupa City." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genevawellness.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://genevawellness.com" />
-  <title>Geneva Wellness Institute — Transformative Wellness & Aesthetic Treatments</title>
+  <title>Geneva Wellness Institute | Advanced Aesthetic Clinic in Alabang</title>
+
+<meta name="description" content="Discover advanced aesthetic treatments, laser skin therapies, anti-aging solutions and body contouring services at Geneva Wellness Institute in Alabang, Muntinlupa City. Book your consultation today.">
+
+<meta name="keywords" content="aesthetic clinic, aesthetic clinic Alabang, best aesthetic clinic Alabang, aesthetic clinic in Alabang, aesthetic clinic near me, skin clinic Alabang, laser skin clinic Alabang, medical aesthetic clinic Alabang, advanced aesthetic clinic Alabang, non surgical aesthetic treatments, non invasive aesthetic treatments, anti aging clinic Alabang, skin rejuvenation clinic Alabang, body contouring clinic Alabang, best skin clinic in Alabang, laser treatment clinic Alabang">
+
+<meta name="author" content="Geneva Wellness Institute">
 
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">

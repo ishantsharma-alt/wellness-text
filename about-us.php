@@ -10,15 +10,15 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About Geneva Wellness Institute. Founded with excellence in aesthetics and wellness, serving the Philippines community with state-of-the-art treatments." />
-  <meta name="keywords" content="Geneva Wellness, about us, medical spa, aesthetic treatments, Muntinlupa" />
+  <meta name="description" content="Meet the experienced specialists at Geneva Wellness Institute delivering advanced aesthetic treatments and personalized care focused on safety. Book today." />
+  <meta name="keywords" content="aesthetic clinic experts,aesthetic clinic experts Alabang,experienced aesthetic doctors Alabang,certified aesthetic specialists Alabang,professional skin specialists Alabang,medical aesthetic clinic team,expert skin and laser specialists,trusted aesthetic clinic Alabang,best aesthetic clinic team,licensed aesthetic professionals,aesthetic consultation with experts,experienced cosmetic doctors,advanced aesthetic clinic team" />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="About Geneva Wellness Institute" />
   <meta property="og:description" content="Discover our story, mission, and commitment to transformative wellness treatments." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/about-us" />
   <link rel="canonical" href="https://genevawellness.com/about-us" />
-  <title>About Us — Geneva Wellness Institute</title>
+  <title>Geneva Wellness Institute | Trusted Aesthetic Clinic Experts/title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

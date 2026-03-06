@@ -7,15 +7,15 @@ $page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="View our gallery of before and after results, treatment outcomes, and facility highlights at Geneva Wellness Institute." />
+  <meta name="description" content="View real aesthetic treatment results including laser procedures, skin rejuvenation and body contouring at Geneva Wellness Institute. Explore the gallery today." />
   <meta name="keywords" content="before and after, gallery, results, aesthetic treatments, Geneva Wellness" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Gallery — Geneva Wellness Institute" />
+  <meta property="og:title" content="GALLERY PAGE	Geneva Wellness Institute | Aesthetic Treatment Results" />
   <meta property="og:description" content="See real results from our clients and treatments." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/gallery" />
   <link rel="canonical" href="https://genevawellness.com/gallery" />
-  <title>Gallery — Geneva Wellness Institute</title>
+  <title>GALLERY PAGE	Geneva Wellness Institute | Aesthetic Treatment Results</title>
 
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">
