@@ -17,6 +17,9 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="img/geneva-favicon.svg" sizes="512x512" href="img/geneva-favicon.svg">
+
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">
   {
@@ -1921,7 +1924,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="video-thumbnail-overlay"></div>
             <div class="video-play-btn" id="videoPlayBtn">
               <div class="video-play-circle">
-                <svg width="28" height="28" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg width="28" height="28" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
               </div>
               <span class="video-play-label">Watch Now</span>
             </div>
