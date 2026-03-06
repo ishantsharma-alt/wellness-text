@@ -20,6 +20,11 @@
   --section-light: #fef9f3;       /* Ivory - lightest section bg */
 }
 
+/* ── ICON CLASSES ───────────────────────────────────────────────────────── */
+.red-red {
+  color: #caae5f;
+}
+
 /* ── ACCESSIBILITY: Respect prefers-reduced-motion ─────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   * {

@@ -108,22 +108,22 @@ $breadcrumb = [
         </div>
         <div class="values-grid">
           <div class="value-card" data-aos="fade-up">
-            <div class="value-icon"><i class="icon-brown fa-solid fa-sparkles"></i></div>
+            <div class="value-icon"><i class="red-red fa-solid fa-sparkles"></i></div>
             <h3>Excellence</h3>
             <p>We maintain the highest standards in every aspect of care, from equipment to expertise to client experience.</p>
           </div>
           <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="value-icon"><i class="icon-brown fa-solid fa-handshake"></i></div>
+            <div class="value-icon"><i class="red-red fa-solid fa-handshake"></i></div>
             <h3>Integrity</h3>
             <p>Honest consultations, transparent procedures, and genuine care for every client's wellbeing and satisfaction.</p>
           </div>
           <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="value-icon"><i class="icon-brown fa-solid fa-bullseye"></i></div>
+            <div class="value-icon"><i class="red-red fa-solid fa-bullseye"></i></div>
             <h3>Innovation</h3>
             <p>Continuously updating our techniques and technology to offer the latest advancements in aesthetic medicine.</p>
           </div>
           <div class="value-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="value-icon"><i class="icon-brown fa-solid fa-heart"></i></div>
+            <div class="value-icon"><i class="red-red fa-solid fa-heart"></i></div>
             <h3>Empowerment</h3>
             <p>Helping clients feel confident, beautiful, and comfortable in their own skin through personalized wellness journeys.</p>
           </div>
@@ -200,7 +200,7 @@ $breadcrumb = [
   <!-- ── DYNAMIC FOOTER ───────────────────────────────────────── -->
   <?php include 'footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="icon-brown fa-solid fa-arrow-up"></i></button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="red-red fa-solid fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

@@ -150,7 +150,7 @@ if ($search_query) {
           <?php else: ?>
             <div class="no-results" data-aos="fade-up">
               <div class="no-results-content">
-                <div class="no-results-icon"><i class="icon-brown fa-solid fa-search"></i></div>
+                <div class="no-results-icon"><i class="red-red fa-solid fa-search"></i></div>
                 <h3>No Articles Found</h3>
                 <p>We couldn't find articles matching your search. Try different keywords or browse our categories below.</p>
                 <div class="search-suggestions">
@@ -176,7 +176,7 @@ if ($search_query) {
             <h3>Search Articles</h3>
             <form class="search-form" action="blog-search.php" method="get">
               <input type="search" name="q" placeholder="Search blog..." value="<?php echo htmlspecialchars($search_query); ?>" />
-              <button type="submit" aria-label="Search"><i class="icon-brown fa-solid fa-search"></i></button>
+              <button type="submit" aria-label="Search"><i class="red-red fa-solid fa-search"></i></button>
             </form>
           </div>
 
@@ -237,7 +237,7 @@ if ($search_query) {
   <!-- ── FOOTER ───────────────────────────────────────── -->
   <?php include 'footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="icon-brown fa-solid fa-arrow-up"></i></button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="red-red fa-solid fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

@@ -27,18 +27,18 @@
           <div class="dropdown-inner">
             <div class="dropdown-group">
               <p class="dropdown-label">Face</p>
-              <a href="treatments.php#hifu" class="dropdown-link"><span><i class="icon-brown fa-solid fa-star"></i></span> HIFU Lift</a>
-              <a href="treatments.php#co2" class="dropdown-link"><span><i class="icon-brown fa-solid fa-star"></i></span> CO2 Laser</a>
-              <a href="treatments.php#carbon" class="dropdown-link"><span><i class="icon-brown fa-solid fa-star"></i></span> Carbon Laser</a>
-              <a href="treatments.php#hydrafacial" class="dropdown-link"><span><i class="icon-brown fa-solid fa-star"></i></span> HYDRA 7D</a>
+              <a href="treatments.php#hifu" class="dropdown-link"><span><i class="red-red fa-solid fa-star"></i></span> HIFU Lift</a>
+              <a href="treatments.php#co2" class="dropdown-link"><span><i class="red-red fa-solid fa-star"></i></span> CO2 Laser</a>
+              <a href="treatments.php#carbon" class="dropdown-link"><span><i class="red-red fa-solid fa-star"></i></span> Carbon Laser</a>
+              <a href="treatments.php#hydrafacial" class="dropdown-link"><span><i class="red-red fa-solid fa-star"></i></span> HYDRA 7D</a>
             </div>
             <div class="dropdown-group">
               <p class="dropdown-label">Body</p>
-              <a href="treatments.php#exilis-face" class="dropdown-link"><span><i class="icon-brown fa-solid fa-star"></i></span> Exilis</a>
-              <a href="treatments.php#pico" class="dropdown-link"><span><i class="icon-brown fa-solid fa-star"></i></span> Pico Laser</a>
+              <a href="treatments.php#exilis-face" class="dropdown-link"><span><i class="red-red fa-solid fa-star"></i></span> Exilis</a>
+              <a href="treatments.php#pico" class="dropdown-link"><span><i class="red-red fa-solid fa-star"></i></span> Pico Laser</a>
             </div>
             <div class="dropdown-promo">
-              <p class="promo-tag"><i class="icon-brown fa-solid fa-star"></i> New</p>
+              <p class="promo-tag"><i class="red-red fa-solid fa-star"></i> New</p>
               <strong>Free Consultation</strong>
               <p>Book your personalized skin assessment today</p>
               <a href="contact-us.php" class="promo-btn">Book Now</a>
@@ -125,14 +125,14 @@
         </button>
         <ul class="flyout-sub" aria-hidden="true">
           <li class="flyout-sub-label">Face</li>
-          <li><a href="treatments.php#hifu"        class="flyout-sub-link"><i class="icon-brown fa-solid fa-star"></i> HIFU Lift</a></li>
-          <li><a href="treatments.php#co2-laser"   class="flyout-sub-link"><i class="icon-brown fa-solid fa-star"></i> CO2 Laser</a></li>
-          <li><a href="treatments.php#carbon-laser" class="flyout-sub-link"><i class="icon-brown fa-solid fa-star"></i> Carbon Laser</a></li>
-          <li><a href="treatments.php#hydra-7d"    class="flyout-sub-link"><i class="icon-brown fa-solid fa-star"></i> HYDRA 7D</a></li>
+          <li><a href="treatments.php#hifu"        class="flyout-sub-link"><i class="red-red fa-solid fa-star"></i> HIFU Lift</a></li>
+          <li><a href="treatments.php#co2-laser"   class="flyout-sub-link"><i class="red-red fa-solid fa-star"></i> CO2 Laser</a></li>
+          <li><a href="treatments.php#carbon-laser" class="flyout-sub-link"><i class="red-red fa-solid fa-star"></i> Carbon Laser</a></li>
+          <li><a href="treatments.php#hydra-7d"    class="flyout-sub-link"><i class="red-red fa-solid fa-star"></i> HYDRA 7D</a></li>
           <li class="flyout-sub-label">Body</li>
-          <li><a href="treatments.php#exilis"      class="flyout-sub-link"><i class="icon-brown fa-solid fa-star"></i> Exilis</a></li>
-          <li><a href="treatments.php#hair"        class="flyout-sub-link"><i class="icon-brown fa-solid fa-star"></i> Hair Restoration</a></li>
-          <li><a href="treatments.php#pico"        class="flyout-sub-link"><i class="icon-brown fa-solid fa-star"></i> Pico Laser</a></li>
+          <li><a href="treatments.php#exilis"      class="flyout-sub-link"><i class="red-red fa-solid fa-star"></i> Exilis</a></li>
+          <li><a href="treatments.php#hair"        class="flyout-sub-link"><i class="red-red fa-solid fa-star"></i> Hair Restoration</a></li>
+          <li><a href="treatments.php#pico"        class="flyout-sub-link"><i class="red-red fa-solid fa-star"></i> Pico Laser</a></li>
         </ul>
       </li>
 
@@ -147,8 +147,8 @@
   <div class="flyout-cta">
     <a href="contact-us.php#contact-form" class="flyout-cta-btn">Book Consultation</a>
     <div class="flyout-cta-links">
-      <a href="tel:+639XXXXXXXXX"><i class="icon-brown fa-solid fa-phone"></i> Call Us</a>
-      <a href="https://wa.me/639XXXXXXXXX"><i class="icon-brown fa-solid fa-comments"></i> WhatsApp</a>
+      <a href="tel:+639XXXXXXXXX"><i class="red-red fa-solid fa-phone"></i> Call Us</a>
+      <a href="https://wa.me/639XXXXXXXXX"><i class="red-red fa-solid fa-comments"></i> WhatsApp</a>
     </div>
   </div>
 

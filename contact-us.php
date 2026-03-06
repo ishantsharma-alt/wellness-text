@@ -583,7 +583,7 @@ function sanitize_input($input) {
             <div class="contact-info-grid">
 
               <div class="contact-info-card">
-                <div class="info-icon"><i class="icon-brown fa-solid fa-location-dot"></i></div>
+                <div class="info-icon"><i class="red-red fa-solid fa-location-dot"></i></div>
                 <div>
                   <h3>Visit Us</h3>
                   <address>
@@ -598,7 +598,7 @@ function sanitize_input($input) {
               </div>
 
               <div class="contact-info-card">
-                <div class="info-icon"><i class="icon-brown fa-solid fa-phone"></i></div>
+                <div class="info-icon"><i class="red-red fa-solid fa-phone"></i></div>
                 <div>
                   <h3>Call Us</h3>
                   <p>
@@ -610,7 +610,7 @@ function sanitize_input($input) {
               </div>
 
               <div class="contact-info-card">
-                <div class="info-icon"><i class="icon-brown fa-solid fa-envelope"></i></div>
+                <div class="info-icon"><i class="red-red fa-solid fa-envelope"></i></div>
                 <div>
                   <h3>Email Us</h3>
                   <p>
@@ -635,7 +635,7 @@ function sanitize_input($input) {
 
               <?php if ($form_submitted): ?>
                 <div class="form-success-message">
-                  <strong><i class="icon-brown fa-solid fa-check"></i> <?php echo htmlspecialchars($form_message); ?></strong>
+                  <strong><i class="red-red fa-solid fa-check"></i> <?php echo htmlspecialchars($form_message); ?></strong>
                 </div>
               <?php endif; ?>
 
@@ -804,7 +804,7 @@ function sanitize_input($input) {
 
   </main>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="icon-brown fa-solid fa-arrow-up"></i></button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="red-red fa-solid fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="components.js"></script>

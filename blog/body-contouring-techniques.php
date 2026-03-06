@@ -215,7 +215,7 @@ $breadcrumb = [
 
   <?php include '../footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="icon-brown fa-solid fa-arrow-up"></i></button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="red-red fa-solid fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="../components.js"></script>

@@ -239,7 +239,7 @@ $breadcrumb = [
             <h3>Search Articles</h3>
             <form class="search-form" action="../blog-search.php" method="get">
               <input type="search" name="q" placeholder="Search blog..." />
-              <button type="submit" aria-label="Search"><i class="icon-brown fa-solid fa-search"></i></button>
+              <button type="submit" aria-label="Search"><i class="red-red fa-solid fa-search"></i></button>
             </form>
           </div>
 
@@ -286,7 +286,7 @@ $breadcrumb = [
   <!-- ── UNIFIED FOOTER ───────────────────────────────────────── -->
   <?php include '../footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="icon-brown fa-solid fa-arrow-up"></i></button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="red-red fa-solid fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
