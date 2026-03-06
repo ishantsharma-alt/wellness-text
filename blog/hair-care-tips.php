@@ -72,7 +72,7 @@ $breadcrumb = [
         <div class="blog-single-main">
 
           <figure class="single-featured-image" data-aos="fade-up">
-            <img src="../img/blog-1-new.jpg" alt="Woman with healthy, vibrant hair" loading="lazy" width="800" height="450" />
+            <img src="../img/blog-1-new.webp" alt="Woman with healthy, vibrant hair" loading="lazy" width="800" height="450" />
           </figure>
 
           <header class="article-header" data-aos="fade-up">
@@ -164,7 +164,7 @@ $breadcrumb = [
             <div class="related-posts-grid">
               <article class="blog-post" data-aos="fade-up">
                 <div class="post-image">
-                  <img src="../img/blog-03.jpg" alt="Hair restoration article" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-03.webp" alt="Hair restoration article" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
@@ -178,7 +178,7 @@ $breadcrumb = [
               </article>
               <article class="blog-post" data-aos="fade-up" data-aos-delay="100">
                 <div class="post-image">
-                  <img src="../img/blog-02.jpg" alt="Post-treatment skincare article" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-02.webp" alt="Post-treatment skincare article" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">

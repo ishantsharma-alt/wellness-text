@@ -68,7 +68,7 @@ $breadcrumb = [
             
             <article class="blog-post" data-aos="fade-up">
               <div class="post-image">
-                <img src="../img/blog-01.jpg" alt="Blog post" loading="lazy" width="400" height="250" />
+                <img src="../img/blog-01.webp" alt="Blog post" loading="lazy" width="400" height="250" />
               </div>
               <div class="post-content">
                 <div class="post-meta">
@@ -83,7 +83,7 @@ $breadcrumb = [
 
             <article class="blog-post" data-aos="fade-up" data-aos-delay="50">
               <div class="post-image">
-                <img src="../img/blog-02.jpg" alt="Blog post" loading="lazy" width="400" height="250" />
+                <img src="../img/blog-02.webp" alt="Blog post" loading="lazy" width="400" height="250" />
               </div>
               <div class="post-content">
                 <div class="post-meta">
@@ -98,7 +98,7 @@ $breadcrumb = [
 
             <article class="blog-post" data-aos="fade-up" data-aos-delay="100">
               <div class="post-image">
-                <img src="../img/blog-03.jpg" alt="Blog post" loading="lazy" width="400" height="250" />
+                <img src="../img/blog-03.webp" alt="Blog post" loading="lazy" width="400" height="250" />
               </div>
               <div class="post-content">
                 <div class="post-meta">

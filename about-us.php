@@ -18,7 +18,7 @@ $breadcrumb = [
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/about-us" />
   <link rel="canonical" href="https://genevawellness.com/about-us" />
-  <title>Geneva Wellness Institute | Trusted Aesthetic Clinic Experts/title>
+  <title>Geneva Wellness Institute | Trusted Aesthetic Clinic Experts</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -142,7 +142,7 @@ $breadcrumb = [
         <div class="team-grid">
           <div class="team-card" data-aos="fade-up">
             <div class="team-image">
-              <img src="img/team-member-1.jpg" alt="Medical professional" loading="lazy" width="300" height="350" />
+              <img src="img/team-member-1.webp" alt="Medical professional" loading="lazy" width="300" height="350" />
             </div>
             <h3>Dr. Rafael Santos</h3>
             <p class="team-role">Lead Aesthetic Doctor</p>
@@ -150,7 +150,7 @@ $breadcrumb = [
           </div>
           <div class="team-card" data-aos="fade-up" data-aos-delay="100">
             <div class="team-image">
-              <img src="img/team-member-2.jpg" alt="Medical professional" loading="lazy" width="300" height="350" />
+              <img src="img/team-member-2.webp" alt="Medical professional" loading="lazy" width="300" height="350" />
             </div>
             <h3>Maria Cruz</h3>
             <p class="team-role">Wellness Specialist</p>
@@ -158,7 +158,7 @@ $breadcrumb = [
           </div>
           <div class="team-card" data-aos="fade-up" data-aos-delay="200">
             <div class="team-image">
-              <img src="img/team-member-3.jpg" alt="Medical professional" loading="lazy" width="300" height="350" />
+              <img src="img/team-member-3.webp" alt="Medical professional" loading="lazy" width="300" height="350" />
             </div>
             <h3>Dr. Stephanie Lee</h3>
             <p class="team-role">Technology Specialist</p>

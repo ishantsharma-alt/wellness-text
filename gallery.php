@@ -277,23 +277,23 @@ $page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness
 
         <div class="gallery8_component">
 
-          <div class="gallery-item"><img src="img/gallery-img-1.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-2.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-3.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-4.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-5.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-6.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-7.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-8.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-9.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-10.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-11.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-12.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-13.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-14.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-15.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-16.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-17.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-1.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-2.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-3.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-4.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-5.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-6.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-7.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-8.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-9.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-10.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-11.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-12.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-13.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-14.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-15.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-16.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-17.webp" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
 
         </div>
 

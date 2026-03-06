@@ -77,7 +77,7 @@ $breadcrumb = [
           
           <!-- Featured Image -->
           <figure class="single-featured-image" data-aos="fade-up">
-            <img src="../img/blog-featured.jpg" alt="Article featured image" loading="lazy" width="800" height="450" />
+            <img src="../img/blog-featured.webp" alt="Article featured image" loading="lazy" width="800" height="450" />
           </figure>
 
           <!-- Article Header -->
@@ -192,7 +192,7 @@ $breadcrumb = [
             <div class="related-posts-grid">
               <article class="blog-post" data-aos="fade-up">
                 <div class="post-image">
-                  <img src="../img/blog-02.jpg" alt="Related post" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-02.webp" alt="Related post" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
@@ -207,7 +207,7 @@ $breadcrumb = [
 
               <article class="blog-post" data-aos="fade-up" data-aos-delay="100">
                 <div class="post-image">
-                  <img src="../img/blog-03.jpg" alt="Related post" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-03.webp" alt="Related post" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
@@ -246,7 +246,7 @@ $breadcrumb = [
           <div class="sidebar-widget" data-aos="fade-up" data-aos-delay="50">
             <h3>About the Author</h3>
             <div class="author-box">
-              <img src="../img/team-member-1.jpg" alt="Dr. Rafael Santos" loading="lazy" width="100" height="100" />
+              <img src="../img/team-member-1.webp" alt="Dr. Rafael Santos" loading="lazy" width="100" height="100" />
               <h4>Dr. Rafael Santos</h4>
               <p class="author-title">Lead Aesthetic Doctor</p>
               <p class="author-bio">15+ years of experience in advanced aesthetic treatments. Board-certified dermatologist with international fellowship.</p>

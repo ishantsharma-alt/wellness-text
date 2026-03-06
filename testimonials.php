@@ -155,47 +155,47 @@ $page_subtitle = 'Hear from those who have experienced the transformative power 
     <div class="video-grid">
 
      <div class="video-card" data-video="ww-OefRLgiQ">
-    <img src="https://img.youtube.com/vi/ww-OefRLgiQ/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/ww-OefRLgiQ/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="xMq9w8a81bo">
-    <img src="https://img.youtube.com/vi/xMq9w8a81bo/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/xMq9w8a81bo/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="8ER__ofvhEQ">
-    <img src="https://img.youtube.com/vi/8ER__ofvhEQ/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/8ER__ofvhEQ/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="PYHIzG4w2HY">
-    <img src="https://img.youtube.com/vi/PYHIzG4w2HY/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/PYHIzG4w2HY/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="sUaxQuCmmXg">
-    <img src="https://img.youtube.com/vi/sUaxQuCmmXg/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/sUaxQuCmmXg/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="BN-SkkUI7jE">
-    <img src="https://img.youtube.com/vi/BN-SkkUI7jE/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/BN-SkkUI7jE/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="A-0R_S9fliw">
-    <img src="https://img.youtube.com/vi/A-0R_S9fliw/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/A-0R_S9fliw/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="w-dkEQi-LTE">
-    <img src="https://img.youtube.com/vi/w-dkEQi-LTE/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/w-dkEQi-LTE/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="PXNpnWjP3DM">
-    <img src="https://img.youtube.com/vi/PXNpnWjP3DM/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/PXNpnWjP3DM/hqdefault.webp" alt="Video Testimonial">
     <div class="play-btn">▶</div>
   </div>
     </div>

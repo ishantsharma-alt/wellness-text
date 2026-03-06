@@ -518,7 +518,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   <!-- ═══════════════════════════════════════════════════════════
      GENEVA WELLNESS — CINEMATIC HERO SECTION
      Drop-in replacement for .hero-enhanced in index.php
-     Uses same img path: img/facial-treatment-clinic.jpg
+     Uses same img path: img/facial-treatment-clinic.webp
 ═══════════════════════════════════════════════════════════ -->
 
 <style>
@@ -1456,7 +1456,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="hero-img-ring-outer"></div>
             <div class="hero-img-ring-inner"></div>
             <div class="hero-img-frame">
-              <img src="img/facial-treatment-clinic.jpg" alt="Geneva Wellness Institute Premium Facial Treatment" class="hero-main-img" loading="eager" />
+              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute Premium Facial Treatment" class="hero-main-img" loading="eager" />
               <div class="hero-img-overlay-grad"></div>
             </div>
             <div class="hero-card hero-card-1">
@@ -1599,7 +1599,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row" id="hair-restoration" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\hair-restoratial.jpg" alt="Hair Restoration at Geneva Wellness" loading="lazy" />
+              <img src="img\services\hair-restoratial.webp" alt="Hair Restoration at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Non-Invasive</div>
               <div class="ts-results-card">
@@ -1611,7 +1611,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/home-hair-1.jpg" alt="Hair restoration detail" loading="lazy" />
+              <img src="img/home-hair-1.webp" alt="Hair restoration detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -1640,7 +1640,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row ts-row-reverse" id="flaky-scalp" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-left" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\flaky-scalp.jpg" alt="Flaky Scalp Therapy at Geneva Wellness" loading="lazy" />
+              <img src="img\services\flaky-scalp.webp" alt="Flaky Scalp Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Soothing Treatment</div>
               <div class="ts-results-card">
@@ -1652,7 +1652,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent ts-img-accent-left">
-              <img src="img/home-service-2.jpg" alt="Scalp therapy detail" loading="lazy" />
+              <img src="img/home-service-2.webp" alt="Scalp therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-right" data-aos-delay="150">
@@ -1681,7 +1681,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row" id="scalp-psoriasis" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\scalp-img.jpg" alt="Scalp Psoriasis Therapy at Geneva Wellness" loading="lazy" />
+              <img src="img\services\scalp-img.webp" alt="Scalp Psoriasis Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Medicated Care</div>
               <div class="ts-results-card">
@@ -1693,7 +1693,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/home-service-3.jpg" alt="Psoriasis therapy detail" loading="lazy" />
+              <img src="img/home-service-3.webp" alt="Psoriasis therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -1788,11 +1788,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="about-img-primary">
             <video autoplay muted loop playsinline>
               <source src="img/about-video.mp4" type="video/mp4">
-              <img src="img/facial-treatment-clinic.jpg" alt="Geneva Wellness Institute" />
+              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute" />
             </video>
           </div>
           <div class="about-img-secondary">
-            <img src="img/wellness-treatment-new.jpg" alt="Advanced skin care treatment" loading="lazy" />
+            <img src="img/wellness-treatment-new.webp" alt="Advanced skin care treatment" loading="lazy" />
           </div>
           <div class="about-floating-badge">
             <div class="afb-icon">🏆</div>
@@ -1853,11 +1853,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="ba-card" data-aos="fade-up" data-aos-delay="0">
             <div class="ba-slider-wrap">
               <div class="ba-before">
-                <img src="https://img.freepik.com/free-photo/woman-skin-before-treatment_53876-128520.jpg" alt="Before HIFU treatment" loading="lazy" />
+                <img src="https://img.freepik.com/free-photo/woman-skin-before-treatment_53876-128520.webp" alt="Before HIFU treatment" loading="lazy" />
                 <span class="ba-label ba-label-before">Before</span>
               </div>
               <div class="ba-after">
-                <img src="https://img.freepik.com/free-photo/woman-skin-after-treatment_53876-128518.jpg" alt="After HIFU treatment" loading="lazy" />
+                <img src="https://img.freepik.com/free-photo/woman-skin-after-treatment_53876-128518.webp" alt="After HIFU treatment" loading="lazy" />
                 <span class="ba-label ba-label-after">After</span>
               </div>
               <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Before/After slider" />
@@ -1873,11 +1873,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="ba-card" data-aos="fade-up" data-aos-delay="150">
             <div class="ba-slider-wrap">
               <div class="ba-before">
-                <img src="https://img.freepik.com/free-photo/woman-acne-skin-before-treatment_53876-128522.jpg" alt="Before CO2 Laser" loading="lazy" />
+                <img src="https://img.freepik.com/free-photo/woman-acne-skin-before-treatment_53876-128522.webp" alt="Before CO2 Laser" loading="lazy" />
                 <span class="ba-label ba-label-before">Before</span>
               </div>
               <div class="ba-after">
-                <img src="https://img.freepik.com/free-photo/woman-clear-skin-after-treatment_53876-128516.jpg" alt="After CO2 Laser" loading="lazy" />
+                <img src="https://img.freepik.com/free-photo/woman-clear-skin-after-treatment_53876-128516.webp" alt="After CO2 Laser" loading="lazy" />
                 <span class="ba-label ba-label-after">After</span>
               </div>
               <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Before/After slider" />
@@ -1915,7 +1915,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
         <div class="video-player-wrap" data-aos="fade-up" data-aos-delay="150" id="videoThumbnailWrap">
           <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.jpg'" />
+            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.webp" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.webp'" />
             <div class="video-thumbnail-overlay"></div>
             <div class="video-play-btn" id="videoPlayBtn">
               <div class="video-play-circle">
@@ -1962,15 +1962,15 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
         <div class="gallery-masonry" data-aos="fade-up" data-aos-delay="200">
           <div class="gallery-item g-tall">
-            <img src="img/advanced-treatement-1.jpg" alt="HYDRA 7D facial treatment" loading="lazy" />
+            <img src="img/advanced-treatement-1.webp" alt="HYDRA 7D facial treatment" loading="lazy" />
             <div class="gallery-overlay"><span>HYDRA 7D</span></div>
           </div>
           <div class="gallery-item">
-            <img src="img/advanced-treatement-2.jpg" alt="CO2 Laser treatment" loading="lazy" />
+            <img src="img/advanced-treatement-2.webp" alt="CO2 Laser treatment" loading="lazy" />
             <div class="gallery-overlay"><span>CO2 Laser</span></div>
           </div>
           <div class="gallery-item">
-            <img src="img/advanced-treatement-3.jpg" alt="Carbon Laser treatment" loading="lazy" />
+            <img src="img/advanced-treatement-3.webp" alt="Carbon Laser treatment" loading="lazy" />
             <div class="gallery-overlay"><span>Carbon Laser</span></div>
           </div>
         </div>
@@ -2164,7 +2164,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="blog-grid">
           <article class="blog-card" data-aos="fade-up" data-aos-delay="0">
             <div class="blog-img-wrap">
-              <img src="img/blog-1.jpg" alt="Benefits of Regular Facials" loading="lazy" />
+              <img src="img/blog-1.webp" alt="Benefits of Regular Facials" loading="lazy" />
               <span class="blog-category-badge">Skincare</span>
             </div>
             <div class="blog-content">
@@ -2176,7 +2176,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
             <div class="blog-img-wrap">
-              <img src="img/blog-2.jpg" alt="Body Contouring Techniques" loading="lazy" />
+              <img src="img/blog-2.webp" alt="Body Contouring Techniques" loading="lazy" />
               <span class="blog-category-badge">Body</span>
             </div>
             <div class="blog-content">
@@ -2188,7 +2188,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
             <div class="blog-img-wrap">
-              <img src="img/blog-3.jpg" alt="Hair Care Tips" loading="lazy" />
+              <img src="img/blog-3.webp" alt="Hair Care Tips" loading="lazy" />
               <span class="blog-category-badge">Hair Care</span>
             </div>
             <div class="blog-content">

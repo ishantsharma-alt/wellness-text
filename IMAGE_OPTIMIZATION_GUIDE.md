@@ -27,7 +27,7 @@ This document outlines the image optimization requirements and best practices fo
 ```html
 <picture>
   <source srcset="image.webp" type="image/webp">
-  <img src="image.jpg" alt="Description" loading="lazy" width="400" height="300">
+  <img src="image.webp" alt="Description" loading="lazy" width="400" height="300">
 </picture>
 ```
 
@@ -260,11 +260,11 @@ Consider using a CDN for:
       type="image/webp"
     >
     <img 
-      src="img/gallery-01-400.jpg"
+      src="img/gallery-01-400.webp"
       srcset="
-        img/gallery-01-400.jpg 400w,
-        img/gallery-01-600.jpg 600w,
-        img/gallery-01-800.jpg 800w
+        img/gallery-01-400.webp 400w,
+        img/gallery-01-600.webp 600w,
+        img/gallery-01-800.webp 800w
       "
       sizes="(max-width: 480px) 100vw, (max-width: 768px) 80vw, 400px"
       alt="Treatment result - facial skin improvement"
@@ -290,11 +290,11 @@ Consider using a CDN for:
       type="image/webp"
     >
     <img 
-      src="img/blog-featured-800.jpg"
+      src="img/blog-featured-800.webp"
       srcset="
-        img/blog-featured-600.jpg 600w,
-        img/blog-featured-800.jpg 800w,
-        img/blog-featured-1200.jpg 1200w
+        img/blog-featured-600.webp 600w,
+        img/blog-featured-800.webp 800w,
+        img/blog-featured-1200.webp 1200w
       "
       sizes="(max-width: 480px) 100vw, (max-width: 768px) 90vw, 800px"
       alt="Article featured image"
