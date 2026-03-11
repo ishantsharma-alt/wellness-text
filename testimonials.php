@@ -7,15 +7,15 @@ $page_subtitle = 'Hear from those who have experienced the transformative power 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read testimonials from satisfied clients at Geneva Wellness Institute. See what our clients have to say about their treatment experiences." />
+  <meta name="description" content="Read client reviews and treatment experiences from patients at Geneva Wellness Institute. Discover why many trust our aesthetic clinic for advanced treatments." />
   <meta name="keywords" content="testimonials, client reviews, success stories, Geneva Wellness feedback" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Testimonials — Geneva Wellness Institute" />
+  <meta property="og:title" content="Geneva Wellness Institute | Aesthetic Clinic Reviews" />
   <meta property="og:description" content="Real stories from our satisfied clients." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/testimonials" />
   <link rel="canonical" href="https://genevawellness.com/testimonials" />
-  <title>Testimonials — Geneva Wellness Institute</title>
+  <title>Geneva Wellness Institute | Aesthetic Clinic Reviews</title>
 
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">

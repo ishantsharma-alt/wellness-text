@@ -68,46 +68,46 @@ $breadcrumb = [
             
             <article class="blog-post" data-aos="fade-up">
               <div class="post-image">
-                <img src="../img/blog-01.jpg" alt="Blog post" loading="lazy" width="400" height="250" />
+                <img src="../img/blog-1-new.webp" alt="Blog post" loading="lazy" width="400" height="250" />
               </div>
               <div class="post-content">
                 <div class="post-meta">
                   <span class="category"><?php echo htmlspecialchars($category_title); ?></span>
                   <span class="date">December 15, 2024</span>
                 </div>
-                <h3><a href="../blog/single.php">Article Title Goes Here</a></h3>
-                <p class="post-excerpt">Brief article description and excerpt that entices readers to click and learn more about this topic.</p>
-                <a href="../blog/single.php" class="read-more">Read Full Article →</a>
+                <h3><a href="../blog/benefits-of-regular-facials.php">The Benefits of Regular Facials</a></h3>
+                <p class="post-excerpt">Discover how regular facial treatments can transform your skin, improve texture, and give you long-lasting radiance.</p>
+                <a href="../blog/benefits-of-regular-facials.php" class="read-more">Read Full Article →</a>
               </div>
             </article>
 
             <article class="blog-post" data-aos="fade-up" data-aos-delay="50">
               <div class="post-image">
-                <img src="../img/blog-02.jpg" alt="Blog post" loading="lazy" width="400" height="250" />
+                <img src="../img/blog-2-new.webp" alt="Blog post" loading="lazy" width="400" height="250" />
               </div>
               <div class="post-content">
                 <div class="post-meta">
                   <span class="category"><?php echo htmlspecialchars($category_title); ?></span>
                   <span class="date">December 10, 2024</span>
                 </div>
-                <h3><a href="../blog/single.php">Another Article in This Category</a></h3>
-                <p class="post-excerpt">Discover important information and expert advice on this topic. Learn more by reading the full article.</p>
-                <a href="../blog/single.php" class="read-more">Read More</a>
+                <h3><a href="../blog/body-contouring-techniques.php">Top 5 Body Contouring Techniques</a></h3>
+                <p class="post-excerpt">Learn about the most effective body contouring techniques and find out which is best suited for your goals.</p>
+                <a href="../blog/body-contouring-techniques.php" class="read-more">Read More</a>
               </div>
             </article>
 
             <article class="blog-post" data-aos="fade-up" data-aos-delay="100">
               <div class="post-image">
-                <img src="../img/blog-03.jpg" alt="Blog post" loading="lazy" width="400" height="250" />
+                <img src="../img/blog-3-new.webp" alt="Blog post" loading="lazy" width="400" height="250" />
               </div>
               <div class="post-content">
                 <div class="post-meta">
                   <span class="category"><?php echo htmlspecialchars($category_title); ?></span>
                   <span class="date">December 5, 2024</span>
                 </div>
-                <h3><a href="../blog/single.php">More Articles from This Category</a></h3>
-                <p class="post-excerpt">Explore more related articles on this topic. Our experts share valuable insights and practical advice.</p>
-                <a href="../blog/single.php" class="read-more">Read More</a>
+                <h3><a href="../blog/hair-care-tips.php">Hair Care Tips for a Healthier Scalp</a></h3>
+                <p class="post-excerpt">Explore essential tips for maintaining a healthy scalp and vibrant hair with expert advice from our certified therapists.</p>
+                <a href="../blog/hair-care-tips.php" class="read-more">Read More</a>
               </div>
             </article>
 
@@ -153,9 +153,9 @@ $breadcrumb = [
           <div class="sidebar-widget recent-posts-widget" data-aos="fade-up" data-aos-delay="200">
             <h3>Recent Posts</h3>
             <ul>
-              <li><a href="../blog/hifu-complete-guide.php">The Complete Guide to HIFU Facial Lifting</a></li>
-              <li><a href="../blog/co2-laser-benefits.php">Why CO2 Laser Therapy is Perfect for Acne Scars</a></li>
-              <li><a href="../blog/post-treatment-skincare.php">Post-Treatment Skincare: Maximize Your Results</a></li>
+              <li><a href="../blog/hair-care-tips.php">Hair Care Tips for a Healthier Scalp</a></li>
+              <li><a href="../blog/body-contouring-techniques.php">Top 5 Body Contouring Techniques</a></li>
+              <li><a href="../blog/benefits-of-regular-facials.php">The Benefits of Regular Facials</a></li>
             </ul>
           </div>
 

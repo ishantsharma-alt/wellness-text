@@ -5,6 +5,17 @@
  * Fixed: Dropdown not showing (overflow:hidden removed), white gap removed
  * Updated: Light palette — white header default, no dark/red backgrounds
  */
+
+// Resolve the site root URL dynamically so logo links always point home
+// regardless of which subfolder this header is included from.
+$_protocol  = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+$_site_root = $_protocol . '://' . $_SERVER['HTTP_HOST'] . '/';
+
+// Allow callers (e.g. category-template.php) to override via $header_home_url
+$_home_url  = isset($header_home_url) ? $header_home_url : $_site_root;
+
+// Absolute URL for assets (logo image) — strip trailing slash for use as prefix
+$_asset_base = rtrim($_site_root, '/');
 ?>
 
 <!-- ── SKIP TO CONTENT ─────────────────────────────────── -->
@@ -14,8 +25,8 @@
   <nav class="nav container" aria-label="Primary navigation">
 
     <!-- Logo -->
-    <a href="index.php" class="nav-logo" aria-label="Geneva Wellness Institute - Home">
-        <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
+    <a href="<?php echo htmlspecialchars($_home_url); ?>" class="nav-logo" aria-label="Geneva Wellness Institute - Home">
+        <img src="<?php echo htmlspecialchars($_asset_base); ?>/img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
     </a>
 
     <!-- Desktop Nav Links -->
@@ -97,8 +108,8 @@
 
   <!-- Panel Header -->
   <div class="flyout-header">
-    <a href="index.php" class="flyout-logo" tabindex="-1">
-      <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
+    <a href="<?php echo htmlspecialchars($_home_url); ?>" class="flyout-logo" tabindex="-1">
+      <img src="<?php echo htmlspecialchars($_asset_base); ?>/img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
     </a>
     <button class="flyout-close" id="flyout-close" aria-label="Close menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -680,26 +691,6 @@
           var href = promoBtn.getAttribute('href');
           if (href && !href.startsWith('./') && !href.startsWith('../') && !href.startsWith('/') && !href.startsWith('http')) {
             promoBtn.setAttribute('href', '../' + href);
-          }
-        }
-        
-        if (header) {
-          var logoImg = header.querySelector('.nav-logo img');
-          if (logoImg) {
-            var src = logoImg.getAttribute('src');
-            if (src && !src.startsWith('../') && !src.startsWith('/')) {
-              logoImg.setAttribute('src', '../' + src);
-            }
-          }
-        }
-        
-        if (flyout) {
-          var flyoutLogoImg = flyout.querySelector('.flyout-logo img');
-          if (flyoutLogoImg) {
-            var src = flyoutLogoImg.getAttribute('src');
-            if (src && !src.startsWith('../') && !src.startsWith('/')) {
-              flyoutLogoImg.setAttribute('src', '../' + src);
-            }
           }
         }
       }

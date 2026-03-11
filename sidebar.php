@@ -2,14 +2,9 @@
 /**
  * Sidebar Template
  * Included on blog pages and inner pages
- * Usage: <?php include 'sidebar.php'; ?>
- *        <?php include '../sidebar.php'; ?>  (from blog/ subdirectory)
- *
- * Detects whether we're in a subdirectory to resolve links correctly.
  */
 
-// Determine base path — works from root or one level deep (e.g. blog/)
-$sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false) ? '../' : '';
+$sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false || strpos($_SERVER['PHP_SELF'], '/blog-category/') !== false) ? '../' : '';
 ?>
 <aside class="blog-sidebar" id="page-sidebar">
 
@@ -40,30 +35,6 @@ $sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false) ? '../' : ''
     <h4>Recent Posts</h4>
     <ul class="recent-posts-list">
       <li>
-        <a href="<?= $sidebar_depth ?>blog/hifu-complete-guide.php">
-          <strong>The Complete Guide to HIFU Facial Lifting</strong>
-          <small>Dec 15, 2024</small>
-        </a>
-      </li>
-      <li>
-        <a href="<?= $sidebar_depth ?>blog/co2-laser-benefits.php">
-          <strong>Why CO2 Laser Therapy is Perfect for Acne Scars</strong>
-          <small>Dec 10, 2024</small>
-        </a>
-      </li>
-      <li>
-        <a href="<?= $sidebar_depth ?>blog/post-treatment-skincare.php">
-          <strong>Post-Treatment Skincare: Maximize Your Results</strong>
-          <small>Dec 8, 2024</small>
-        </a>
-      </li>
-      <li>
-        <a href="<?= $sidebar_depth ?>blog/hair-restoration-myths.php">
-          <strong>Hair Restoration: Separating Myth from Reality</strong>
-          <small>Dec 5, 2024</small>
-        </a>
-      </li>
-      <li>
         <a href="<?= $sidebar_depth ?>blog/hair-care-tips.php">
           <strong>Hair Care Tips for a Healthier Scalp</strong>
           <small>Nov 18, 2024</small>
@@ -84,18 +55,18 @@ $sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false) ? '../' : ''
     </ul>
   </div>
 
-  <!-- Tags Cloud Widget -->
+  <!-- Tags Cloud Widget — pointing to existing category pages -->
   <div class="sidebar-widget tags-widget" data-aos="fade-up" data-aos-delay="150">
     <h4>Popular Tags</h4>
     <div class="tags-cloud">
-      <a href="<?= $sidebar_depth ?>blog-tag/skin.php" class="tag">#Skin</a>
-      <a href="<?= $sidebar_depth ?>blog-tag/treatment.php" class="tag">#Treatment</a>
-      <a href="<?= $sidebar_depth ?>blog-tag/anti-aging.php" class="tag">#Anti-Aging</a>
-      <a href="<?= $sidebar_depth ?>blog-tag/laser.php" class="tag">#Laser</a>
-      <a href="<?= $sidebar_depth ?>blog-tag/wellness.php" class="tag">#Wellness</a>
-      <a href="<?= $sidebar_depth ?>blog-tag/beauty.php" class="tag">#Beauty</a>
-      <a href="<?= $sidebar_depth ?>blog-tag/hair-health.php" class="tag">#HairHealth</a>
-      <a href="<?= $sidebar_depth ?>blog-tag/results.php" class="tag">#Results</a>
+      <a href="<?= $sidebar_depth ?>blog-category/skincare.php" class="tag">#Skin</a>
+      <a href="<?= $sidebar_depth ?>blog-category/treatments.php" class="tag">#Treatment</a>
+      <a href="<?= $sidebar_depth ?>blog-category/treatments.php" class="tag">#Anti-Aging</a>
+      <a href="<?= $sidebar_depth ?>blog-category/treatments.php" class="tag">#Laser</a>
+      <a href="<?= $sidebar_depth ?>blog-category/wellness.php" class="tag">#Wellness</a>
+      <a href="<?= $sidebar_depth ?>blog-category/beauty.php" class="tag">#Beauty</a>
+      <a href="<?= $sidebar_depth ?>blog-category/hair-health.php" class="tag">#HairHealth</a>
+      <a href="<?= $sidebar_depth ?>blog-category/skincare.php" class="tag">#Results</a>
     </div>
   </div>
 

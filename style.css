@@ -2667,7 +2667,7 @@ img.placeholder-image {
 .advantage-item p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin: 0; }
 
 /* ── BLOG SINGLE POST LAYOUT ────────────────────────────────────────────── */
-.blog-single-layout { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; }
+.blog-single-layout { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: start; padding: 20px;}
 .blog-single-main { display: flex; flex-direction: column; gap: 2rem; }
 .single-featured-image { width: 100%; border-radius: 12px; overflow: hidden; margin: 0; }
 .single-featured-image img { width: 100%; height: auto; display: block; }

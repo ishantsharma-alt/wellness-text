@@ -7,15 +7,15 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Geneva Wellness Institute — transformative wellness and aesthetic treatments including HIFU, CO2 Laser, Carbon Laser, Hair Restoration and more in Alabang, Muntinlupa City." />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Geneva Wellness Institute — Transformative Wellness & Aesthetic Treatments" />
-  <meta property="og:description" content="Discover exceptional beauty and wellness treatments in Alabang, Muntinlupa City." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genevawellness.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="canonical" href="https://genevawellness.com" />
-  <title>Geneva Wellness Institute — Transformative Wellness & Aesthetic Treatments</title>
+  <title>Geneva Wellness Institute | Advanced Aesthetic Clinic in Alabang</title>
+
+<meta name="description" content="Discover advanced aesthetic treatments, laser skin therapies, anti-aging solutions and body contouring services at Geneva Wellness Institute in Alabang, Muntinlupa City. Book your consultation today.">
+
+<meta name="keywords" content="aesthetic clinic, aesthetic clinic Alabang, best aesthetic clinic Alabang, aesthetic clinic in Alabang, aesthetic clinic near me, skin clinic Alabang, laser skin clinic Alabang, medical aesthetic clinic Alabang, advanced aesthetic clinic Alabang, non surgical aesthetic treatments, non invasive aesthetic treatments, anti aging clinic Alabang, skin rejuvenation clinic Alabang, body contouring clinic Alabang, best skin clinic in Alabang, laser treatment clinic Alabang">
+
+<meta name="author" content="Geneva Wellness Institute">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">
@@ -520,7 +520,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   <!-- ═══════════════════════════════════════════════════════════
      GENEVA WELLNESS — CINEMATIC HERO SECTION
      Drop-in replacement for .hero-enhanced in index.php
-     Uses same img path: img/facial-treatment-clinic.jpg
+     Uses same img path: img/facial-treatment-clinic.webp
 ═══════════════════════════════════════════════════════════ -->
 
 <style>
@@ -534,6 +534,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   --h-dark:      #090704;
   --h-white:     #ffffff;
   --h-ease:      cubic-bezier(0.22, 1, 0.36, 1);
+  --h-slide-duration: 5000; /* ms, used as reference */
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -551,12 +552,22 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 }
 
 /* ─────────────────────────────────────────────────────────
-   FULL-BLEED BG IMAGE
+   SLIDER — BG IMAGES (crossfade)
 ───────────────────────────────────────────────────────── */
-.gw-hero__bg {
+.gw-hero__bgs {
   position: absolute;
   inset: 0;
   z-index: 0;
+}
+.gw-hero__bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s cubic-bezier(0.45, 0, 0.15, 1);
+  will-change: opacity;
+}
+.gw-hero__bg.is-active {
+  opacity: 1;
 }
 .gw-hero__bg img {
   width: 100%;
@@ -564,12 +575,23 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   object-fit: cover;
   object-position: 68% center;
   display: block;
-  animation: gwHeroBgReveal 2.2s var(--h-ease) both;
   transform-origin: center;
+  transition: transform 8s ease-out;
+}
+/* Ken Burns effect on active slide BG */
+.gw-hero__bg.is-active img {
+  transform: scale(1.06);
+}
+.gw-hero__bg:not(.is-active) img {
+  transform: scale(1.0);
+}
+/* Initial entry animation for first bg */
+.gw-hero__bg.is-initial img {
+  animation: gwHeroBgReveal 2.2s var(--h-ease) both;
 }
 @keyframes gwHeroBgReveal {
   from { transform: scale(1.12); filter: brightness(0.3); }
-  to   { transform: scale(1.0);  filter: brightness(1); }
+  to   { transform: scale(1.06); filter: brightness(1); }
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -726,7 +748,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 @keyframes gwRingAppear  { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
 
 /* ─────────────────────────────────────────────────────────
-   MAIN CONTENT
+   MAIN CONTENT  (slider wrapper)
 ───────────────────────────────────────────────────────── */
 .gw-hero__body {
   position: relative;
@@ -736,8 +758,74 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   align-items: center;
   padding: clamp(6rem, 14vh, 10rem) clamp(1.5rem, 5vw, 3rem) clamp(5rem, 10vh, 7rem);
   padding-left: clamp(4.5rem, 9.5vw, 9rem); /* clear the rule */
+  /* needed for absolute slide contents */
+  overflow: hidden;
 }
 
+/* Slide content container — all slides stack here */
+.gw-hero__slides-container {
+  position: relative;
+  width: 100%;
+  max-width: min(800px, 52vw);
+  /* Minimum height so the container doesn't collapse */
+  min-height: clamp(340px, 55vh, 560px);
+}
+
+@media (max-width: 768px) {
+  .gw-hero__slides-container { max-width: 100%; min-height: clamp(320px, 60vh, 460px); }
+}
+
+/* ── Each slide's content — positioned on top of each other ── */
+.gw-hero__slide-content {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  /* Hidden by default */
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.72s ease, transform 0.72s var(--h-ease);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+/* Active = visible */
+.gw-hero__slide-content.is-active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Exiting = slide out to the left */
+.gw-hero__slide-content.is-leaving {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+
+/* ── INITIAL SLIDE — children keep their own staggered entry animations ── */
+.gw-hero__slide-content.is-initial {
+  opacity: 1;          /* container is immediately visible */
+  transform: none;
+  transition: none;    /* children drive their own entry */
+}
+
+/* ── Non-initial slides: children appear at full opacity (no keyframe replay) ── */
+.gw-hero__slide-content:not(.is-initial) .gw-hero__eyebrow,
+.gw-hero__slide-content:not(.is-initial) .gw-hero__sub,
+.gw-hero__slide-content:not(.is-initial) .gw-hero__actions,
+.gw-hero__slide-content:not(.is-initial) .gw-hero__proof {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+}
+.gw-hero__slide-content:not(.is-initial) .gw-hero__title-line-inner {
+  opacity: 1 !important;
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Legacy .gw-hero__content kept for floating cards reference */
 .gw-hero__content {
   max-width: min(800px, 52vw);
 }
@@ -1148,6 +1236,115 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 }
 
 /* ─────────────────────────────────────────────────────────
+   SLIDER NAVIGATION — ARROWS
+───────────────────────────────────────────────────────── */
+.gw-hero__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-62%);  /* slightly above center, accounting for stats bar */
+  z-index: 20;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(9,7,4,0.50);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(202,174,95,0.28);
+  color: rgba(255,255,255,0.82);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--h-ease);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.07);
+  outline: none;
+}
+.gw-hero__nav:hover {
+  background: rgba(202,174,95,0.2);
+  border-color: rgba(202,174,95,0.65);
+  color: var(--h-gold);
+  box-shadow: 0 8px 32px rgba(202,174,95,0.22), 0 4px 24px rgba(0,0,0,0.3);
+  transform: translateY(-62%) scale(1.1);
+}
+.gw-hero__nav--prev { left: clamp(0.75rem, 2.5vw, 2rem); }
+.gw-hero__nav--next { right: clamp(0.75rem, 2.5vw, 2rem); }
+.gw-hero__nav svg {
+  pointer-events: none;
+  transition: transform 0.25s var(--h-ease);
+  flex-shrink: 0;
+}
+.gw-hero__nav--prev:hover svg { transform: translateX(-2px); }
+.gw-hero__nav--next:hover svg { transform: translateX(2px); }
+
+/* ─────────────────────────────────────────────────────────
+   SLIDER NAVIGATION — DOTS + PROGRESS
+───────────────────────────────────────────────────────── */
+.gw-hero__dots {
+  position: absolute;
+  bottom: calc(68px + 1.6rem);
+  left: clamp(4.5rem, 9.5vw, 9rem); /* aligned with text */
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.gw-hero__dot {
+  position: relative;
+  width: 8px; height: 8px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.26);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.4s var(--h-ease);
+  outline: none;
+  overflow: hidden;
+}
+.gw-hero__dot:hover {
+  background: rgba(255,255,255,0.52);
+  transform: scaleY(1.2);
+}
+.gw-hero__dot.is-active {
+  width: 38px;
+  background: rgba(202,174,95,0.3);
+  border: 1px solid rgba(202,174,95,0.5);
+}
+.gw-hero__dot.is-active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--h-gold) 0%, #e0cc90 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: gwDotFill 5s linear forwards;
+}
+@keyframes gwDotFill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Slide counter */
+.gw-hero__slide-counter {
+  position: absolute;
+  bottom: calc(68px + 1.8rem);
+  right: clamp(1rem, 3vw, 2.5rem);
+  z-index: 20;
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.38);
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  animation: gwSlideUp 1s var(--h-ease) 2.2s both;
+}
+.gw-hero__slide-counter strong {
+  font-size: 1.3rem;
+  color: var(--h-gold);
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* ─────────────────────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
@@ -1180,6 +1377,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       rgba(9,7,4,0.25) 100%
     );
   }
+  .gw-hero__nav    { width: 42px; height: 42px; }
+  .gw-hero__nav--prev { left: 0.5rem; }
+  .gw-hero__nav--next { right: 0.5rem; }
+  .gw-hero__dots   { left: 1.5rem; }
+  .gw-hero__slide-counter { display: none; }
 }
 @media (max-width: 480px) {
   .gw-hero__title  { font-size: clamp(2rem, 8vw, 2.8rem); }
@@ -1189,6 +1391,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
   .gw-hero__btn-explore .gw-hero__btn-play { display: none; }
   .gw-hero__stat   { min-width: 50%; padding: 1rem 0.5rem; }
   .gw-hero__corner { display: none; }
+  .gw-hero__nav    { width: 36px; height: 36px; }
+  .gw-hero__nav svg { width: 16px; height: 16px; }
 }
 </style>
 </head>
@@ -1196,27 +1400,59 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
 
 <!-- ═══════════════════════════════════════════════════════
-     HERO MARKUP
+     HERO SLIDER MARKUP
 ══════════════════════════════════════════════════════════ -->
 <section class="gw-hero" id="hero" aria-label="Hero — Geneva Wellness Institute">
 
-  <!-- Full-bleed photo -->
-  <div class="gw-hero__bg" aria-hidden="true">
-    <img
-      src="img/home-hero-updated-new.png"
-      alt="Premium facial treatment at Geneva Wellness Institute"
-      loading="eager"
-      fetchpriority="high"
-    />
-  </div>
+  <!-- ══ BACKGROUND IMAGES — one per slide (crossfade) ══ -->
+  <div class="gw-hero__bgs" aria-hidden="true">
 
-  <!-- Overlays -->
+    <!-- Slide 1 BG -->
+    <div class="gw-hero__bg is-active is-initial">
+      <img
+        src="img/home-hero-updated-new.webp"
+        alt="Premium facial treatment at Geneva Wellness Institute"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <!-- Slide 2 BG — Laser Treatment (placeholder) -->
+    <div class="gw-hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1920&q=80"
+        alt="Advanced laser skin treatment"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Slide 3 BG — Anti-Aging (placeholder) -->
+    <div class="gw-hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1920&q=80"
+        alt="Non-surgical anti-aging treatment"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Slide 4 BG — Body Contouring (placeholder) -->
+    <div class="gw-hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1920&q=80"
+        alt="Body contouring and wellness treatment"
+        loading="lazy"
+      />
+    </div>
+
+  </div><!-- /.gw-hero__bgs -->
+
+  <!-- Fixed overlays -->
   <div class="gw-hero__veil"        aria-hidden="true"></div>
   <div class="gw-hero__panel"       aria-hidden="true"></div>
   <div class="gw-hero__bottom-fade" aria-hidden="true"></div>
   <div class="gw-hero__glow"        aria-hidden="true"></div>
 
-  <!-- Particles -->
+  <!-- Particles (fixed) -->
   <div class="gw-hero__particles" aria-hidden="true">
     <span class="gw-p"></span><span class="gw-p"></span>
     <span class="gw-p"></span><span class="gw-p"></span>
@@ -1224,7 +1460,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     <span class="gw-p"></span>
   </div>
 
-  <!-- Geometry -->
+  <!-- Geometry (fixed) -->
   <div class="gw-hero__rule" aria-hidden="true"></div>
 
   <div class="gw-hero__corner" aria-hidden="true">
@@ -1240,74 +1476,245 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     <div class="gw-hero__ring-inner"></div>
   </div>
 
-  <!-- ── MAIN BODY ── -->
+  <!-- ══ MAIN BODY — Slide contents ══ -->
   <div class="gw-hero__body">
-    <div class="gw-hero__content">
+    <div class="gw-hero__slides-container">
 
-      <!-- Eyebrow -->
-      <div class="gw-hero__eyebrow" role="text">
-        <span class="gw-hero__eyebrow-dot"></span>
-        <span>Award-Winning Clinic &nbsp;·&nbsp; Alabang, Philippines</span>
-      </div>
+      <!-- ── SLIDE 1: Brand / Wellness ── -->
+      <div class="gw-hero__slide-content is-active is-initial" data-slide="0">
 
-      <!-- Title -->
-      <h1 class="gw-hero__title">
-        <span class="gw-hero__title-line">
-          <span class="gw-hero__title-line-inner">Transformative</span>
-        </span>
-        <span class="gw-hero__title-line">
-          <span class="gw-hero__title-line-inner"><em>Wellness &amp; Aesthetic</em></span>
-        </span>
-        <span class="gw-hero__title-line">
-          <span class="gw-hero__title-line-inner">Treatments for Everyone</span>
-        </span>
-      </h1>
+        <div class="gw-hero__eyebrow" role="text">
+          <span class="gw-hero__eyebrow-dot"></span>
+          <span>Award-Winning Clinic &nbsp;·&nbsp; Alabang, Philippines</span>
+        </div>
 
-      <!-- Subtitle -->
-      <p class="gw-hero__sub">
-        Premium non-invasive treatments crafted for your unique skin and hair goals —
-        backed by 15&plus; years of expertise and cutting-edge technology.
-      </p>
-
-      <!-- CTAs -->
-      <div class="gw-hero__actions">
-        <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
-          <span>Book Free Consultation</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-        <a href="treatments.php" class="gw-hero__btn-explore">
-          <span class="gw-hero__btn-play" aria-hidden="true">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <h1 class="gw-hero__title">
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Transformative</span>
           </span>
-          <span>Explore Treatments</span>
-        </a>
-      </div>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner"><em>Wellness &amp; Aesthetic</em></span>
+          </span>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Treatments </span>
+          </span>
+        </h1>
 
-      <!-- Social proof -->
-      <div class="gw-hero__proof">
-        <div class="gw-hero__avatars" aria-label="Client avatars">
-          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">M</div>
-          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">G</div>
-          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">R</div>
-          <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">A</div>
-          <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
-        </div>
-        <div class="gw-hero__proof-sep" aria-hidden="true"></div>
-        <div class="gw-hero__proof-copy">
-          <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
-          <span>Trusted by <strong>10,000+</strong> clients</span>
-        </div>
-      </div>
+        <p class="gw-hero__sub">
+          Premium non-invasive treatments crafted for your unique skin and hair goals —
+          backed by 15&plus; years of expertise and cutting-edge technology.
+        </p>
 
-    </div>
+        <div class="gw-hero__actions">
+          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
+            <span>Book Free Consultation</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="treatments.php" class="gw-hero__btn-explore">
+            <span class="gw-hero__btn-play" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span>Explore Treatments</span>
+          </a>
+        </div>
+
+        <div class="gw-hero__proof">
+          <div class="gw-hero__avatars" aria-label="Client avatars">
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">M</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">G</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">R</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">A</div>
+            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
+          </div>
+          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
+          <div class="gw-hero__proof-copy">
+            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
+            <span>Trusted by <strong>10,000+</strong> clients</span>
+          </div>
+        </div>
+
+      </div><!-- /slide 1 -->
+
+      <!-- ── SLIDE 2: Laser Treatments ── -->
+      <div class="gw-hero__slide-content" data-slide="1">
+
+        <div class="gw-hero__eyebrow" role="text">
+          <span class="gw-hero__eyebrow-dot"></span>
+          <span>Advanced Laser Technology &nbsp;·&nbsp; Proven Results</span>
+        </div>
+
+        <h2 class="gw-hero__title">
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Reveal Radiant Skin</span>
+          </span>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner"><em>with Advanced</em></span>
+          </span>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Laser Treatments</span>
+          </span>
+        </h2>
+
+        <p class="gw-hero__sub">
+          State-of-the-art CO2, Carbon &amp; Pico laser therapies designed to restore
+          clarity, reduce pigmentation, and rejuvenate your skin from within.
+        </p>
+
+        <div class="gw-hero__actions">
+          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
+            <span>Book a Laser Session</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="treatments.php" class="gw-hero__btn-explore">
+            <span class="gw-hero__btn-play" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span>View Laser Treatments</span>
+          </a>
+        </div>
+
+        <div class="gw-hero__proof">
+          <div class="gw-hero__avatars" aria-label="Client avatars">
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">S</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">L</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">J</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">K</div>
+            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
+          </div>
+          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
+          <div class="gw-hero__proof-copy">
+            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
+            <span>Over <strong>5,000+</strong> laser sessions</span>
+          </div>
+        </div>
+
+      </div><!-- /slide 2 -->
+
+      <!-- ── SLIDE 3: Anti-Aging ── -->
+      <div class="gw-hero__slide-content" data-slide="2">
+
+        <div class="gw-hero__eyebrow" role="text">
+          <span class="gw-hero__eyebrow-dot"></span>
+          <span>Non-Surgical Solutions &nbsp;·&nbsp; Zero Downtime</span>
+        </div>
+
+        <h2 class="gw-hero__title">
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Turn Back Time</span>
+          </span>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner"><em>with Anti-Aging</em></span>
+          </span>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Solutions</span>
+          </span>
+        </h2>
+
+        <p class="gw-hero__sub">
+          Experience the power of HIFU, bio-stimulation &amp; regenerative therapies
+          that lift, firm, and restore your youthful glow — naturally and safely.
+        </p>
+
+        <div class="gw-hero__actions">
+          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
+            <span>Discover Anti-Aging</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="treatments.php" class="gw-hero__btn-explore">
+            <span class="gw-hero__btn-play" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span>View Before &amp; After</span>
+          </a>
+        </div>
+
+        <div class="gw-hero__proof">
+          <div class="gw-hero__avatars" aria-label="Client avatars">
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">C</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">V</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">N</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">P</div>
+            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
+          </div>
+          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
+          <div class="gw-hero__proof-copy">
+            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
+            <span><strong>15+ years</strong> of excellence</span>
+          </div>
+        </div>
+
+      </div><!-- /slide 3 -->
+
+      <!-- ── SLIDE 4: Body Contouring ── -->
+      <div class="gw-hero__slide-content" data-slide="3">
+
+        <div class="gw-hero__eyebrow" role="text">
+          <span class="gw-hero__eyebrow-dot"></span>
+          <span>Body Transformation &nbsp;·&nbsp; Expert Care</span>
+        </div>
+
+        <h2 class="gw-hero__title">
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Transform Body &,</span>
+          </span>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner"><em>Elevate Your</em></span>
+          </span>
+          <span class="gw-hero__title-line">
+            <span class="gw-hero__title-line-inner">Confidence</span>
+          </span>
+        </h2>
+
+        <p class="gw-hero__sub">
+          Targeted body contouring &amp; slimming treatments using Exilis and RF
+          technology to sculpt the figure you've always desired — no surgery required.
+        </p>
+
+        <div class="gw-hero__actions">
+          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
+            <span>Book Consultation</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="treatments.php" class="gw-hero__btn-explore">
+            <span class="gw-hero__btn-play" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <span>Body Treatments</span>
+          </a>
+        </div>
+
+        <div class="gw-hero__proof">
+          <div class="gw-hero__avatars" aria-label="Client avatars">
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">D</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">E</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">F</div>
+            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">H</div>
+            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
+          </div>
+          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
+          <div class="gw-hero__proof-copy">
+            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
+            <span><strong>20+</strong> body treatments offered</span>
+          </div>
+        </div>
+
+      </div><!-- /slide 4 -->
+
+    </div><!-- /.gw-hero__slides-container -->
   </div><!-- /.gw-hero__body -->
 
   <!-- Floating stat cards (hidden on small screens) -->
   <div class="gw-hero__cards" aria-hidden="true">
     <div class="gw-hero__card">
-      <span class="gw-hero__card-emoji">⭐</span>
+      <span class="gw-hero__card-emoji"><i class="red-red fa-solid fa-star"></i></span>
       <div class="gw-hero__card-info">
         <strong>5.0 Rating</strong>
         <span>500+ Google Reviews</span>
@@ -1321,7 +1728,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       </div>
     </div>
     <div class="gw-hero__card">
-      <span class="gw-hero__card-emoji">✨</span>
+      <span class="gw-hero__card-emoji"><i class="red-red fa-solid fa-sparkles"></i></span>
       <div class="gw-hero__card-info">
         <strong>Non-Invasive</strong>
         <span>Zero Downtime</span>
@@ -1335,6 +1742,32 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       <div class="gw-hero__scroll-wheel"></div>
     </div>
     <span class="gw-hero__scroll-text">Scroll</span>
+  </div>
+
+  <!-- ══ SLIDER NAV ARROWS ══ -->
+  <button class="gw-hero__nav gw-hero__nav--prev" id="gwHeroPrev" aria-label="Previous slide" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+  <button class="gw-hero__nav gw-hero__nav--next" id="gwHeroNext" aria-label="Next slide" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+
+  <!-- ══ SLIDER DOTS ══ -->
+  <div class="gw-hero__dots" role="tablist" aria-label="Hero slider navigation">
+    <button class="gw-hero__dot is-active" data-slide="0" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+    <button class="gw-hero__dot"           data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+    <button class="gw-hero__dot"           data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+    <button class="gw-hero__dot"           data-slide="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+  </div>
+
+  <!-- Slide counter -->
+  <div class="gw-hero__slide-counter" aria-hidden="true">
+    <strong id="gwSlideNum">01</strong>
+    <span>&nbsp;/&nbsp;04</span>
   </div>
 
   <!-- Stats bar -->
@@ -1458,18 +1891,18 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="hero-img-ring-outer"></div>
             <div class="hero-img-ring-inner"></div>
             <div class="hero-img-frame">
-              <img src="img/facial-treatment-clinic.jpg" alt="Geneva Wellness Institute Premium Facial Treatment" class="hero-main-img" loading="eager" />
+              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute Premium Facial Treatment" class="hero-main-img" loading="eager" />
               <div class="hero-img-overlay-grad"></div>
             </div>
             <div class="hero-card hero-card-1">
-              <div class="hero-card-icon">⭐</div>
+              <div class="hero-card-icon"><i class="red-red fa-solid fa-star"></i></div>
               <div class="hero-card-info">
                 <strong>5.0 Rating</strong>
                 <span>500+ Reviews</span>
               </div>
             </div>
             <div class="hero-card hero-card-2">
-              <div class="hero-card-icon">✨</div>
+              <div class="hero-card-icon"><i class="red-red fa-solid fa-sparkles"></i></div>
               <div class="hero-card-info">
                 <strong>Non-Invasive</strong>
                 <span>Zero Downtime</span>
@@ -1482,7 +1915,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <span>Certified Professionals</span>
               </div>
             </div>
-            <div class="hero-img-deco-1">✦</div>
+            <div class="hero-img-deco-1"><i class="red-red fa-solid fa-star"></i></div>
             <div class="hero-img-deco-2">○</div>
           </div>
         </div>
@@ -1532,28 +1965,28 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     <section class="trust-bar-enhanced" aria-label="Trust indicators">
       <div class="container trust-grid">
         <div class="trust-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="trust-card-icon">🏆</div>
+          <div class="trust-card-icon"><i class="red-red fa-solid fa-award"></i></div>
           <div class="trust-card-content">
             <strong>Award-Winning Clinic</strong>
             <span>Recognized for excellence in aesthetic care</span>
           </div>
         </div>
         <div class="trust-card" data-aos="fade-up" data-aos-delay="80">
-          <div class="trust-card-icon">🔬</div>
+          <div class="trust-card-icon"><i class="red-red fa-solid fa-microscope"></i></div>
           <div class="trust-card-content">
             <strong>Innovative Technology</strong>
             <span>Latest FDA-approved devices &amp; equipment</span>
           </div>
         </div>
         <div class="trust-card" data-aos="fade-up" data-aos-delay="160">
-          <div class="trust-card-icon">👩‍⚕️</div>
+          <div class="trust-card-icon"><i class="red-red fa-solid fa-user-md"></i></div>
           <div class="trust-card-content">
             <strong>Certified Professionals</strong>
             <span>Licensed doctors &amp; expert estheticians</span>
           </div>
         </div>
         <div class="trust-card" data-aos="fade-up" data-aos-delay="240">
-          <div class="trust-card-icon">💆</div>
+          <div class="trust-card-icon"><i class="red-red fa-solid fa-user-spa"></i></div>
           <div class="trust-card-content">
             <strong>Personalized Care</strong>
             <span>Customized treatment plans for every client</span>
@@ -1567,22 +2000,22 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     ═══════════════════════════════════════════════ -->
     <div class="marquee-strip" aria-hidden="true">
       <div class="marquee-track">
-        <span>HIFU Lift</span><span class="marquee-sep">✦</span>
-        <span>CO2 Laser</span><span class="marquee-sep">✦</span>
-        <span>Carbon Laser</span><span class="marquee-sep">✦</span>
-        <span>HYDRA 7D</span><span class="marquee-sep">✦</span>
-        <span>Hair Restoration</span><span class="marquee-sep">✦</span>
-        <span>Exilis</span><span class="marquee-sep">✦</span>
-        <span>Pico Laser</span><span class="marquee-sep">✦</span>
-        <span>Body Contouring</span><span class="marquee-sep">✦</span>
-        <span>HIFU Lift</span><span class="marquee-sep">✦</span>
-        <span>CO2 Laser</span><span class="marquee-sep">✦</span>
-        <span>Carbon Laser</span><span class="marquee-sep">✦</span>
-        <span>HYDRA 7D</span><span class="marquee-sep">✦</span>
-        <span>Hair Restoration</span><span class="marquee-sep">✦</span>
-        <span>Exilis</span><span class="marquee-sep">✦</span>
-        <span>Pico Laser</span><span class="marquee-sep">✦</span>
-        <span>Body Contouring</span><span class="marquee-sep">✦</span>
+        <span>HIFU Lift</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>CO2 Laser</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Carbon Laser</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>HYDRA 7D</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Hair Restoration</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Exilis</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Pico Laser</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Body Contouring</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>HIFU Lift</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>CO2 Laser</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Carbon Laser</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>HYDRA 7D</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Hair Restoration</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Exilis</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Pico Laser</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
+        <span>Body Contouring</span><span class="marquee-sep"><i class="red-red fa-solid fa-star"></i></span>
       </div>
     </div>
 
@@ -1601,11 +2034,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row" id="hair-restoration" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\hair-restoratial.jpg" alt="Hair Restoration at Geneva Wellness" loading="lazy" />
+              <img src="img\services\hair-restoratial.webp" alt="Hair Restoration at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Non-Invasive</div>
               <div class="ts-results-card">
-                <div class="ts-results-icon">🌱</div>
+                <div class="ts-results-icon"><i class="red-red fa-solid fa-seedling"></i></div>
                 <div>
                   <strong>Thicker Hair</strong>
                   <span>Visible regrowth in weeks</span>
@@ -1613,7 +2046,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/home-hair-1.jpg" alt="Hair restoration detail" loading="lazy" />
+              <img src="img/home-hair-1.webp" alt="Hair restoration detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -1621,10 +2054,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <h3>Hair Restoration — Regain your confidence with <em>thicker, healthier hair</em></h3>
             <p class="ts-desc">Our Hair Restoration treatments stimulate hair growth and improve scalp health, addressing hair thinning and loss. We offer PRP therapy, laser therapy, and topical solutions to promote natural hair regrowth. These non-invasive treatments are tailored to your specific needs, providing noticeable improvements in hair density and quality.</p>
             <div class="ts-benefits">
-              <div class="ts-benefit"><span class="ts-check">✓</span> Stimulates natural hair growth</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Improves overall scalp condition</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Comfortable, non-surgical treatments</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Customized plans for your needs</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Stimulates natural hair growth</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Improves overall scalp condition</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Comfortable, non-surgical treatments</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Customized plans for your needs</div>
             </div>
             <div class="treatment-tags">
               <span class="tag">Thicker Hair</span>
@@ -1642,11 +2075,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row ts-row-reverse" id="flaky-scalp" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-left" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\flaky-scalp.jpg" alt="Flaky Scalp Therapy at Geneva Wellness" loading="lazy" />
+              <img src="img\services\flaky-scalp.webp" alt="Flaky Scalp Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Soothing Treatment</div>
               <div class="ts-results-card">
-                <div class="ts-results-icon">❄️</div>
+                <div class="ts-results-icon"><i class="red-red fa-solid fa-snowflake"></i></div>
                 <div>
                   <strong>Flake-Free</strong>
                   <span>Healthy, refreshed scalp</span>
@@ -1654,7 +2087,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent ts-img-accent-left">
-              <img src="img/home-service-2.jpg" alt="Scalp therapy detail" loading="lazy" />
+              <img src="img/home-service-2.webp" alt="Scalp therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-right" data-aos-delay="150">
@@ -1662,10 +2095,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <h3>Flaky Scalp Therapy — Soothe and <em>revitalize your scalp</em></h3>
             <p class="ts-desc">Flaky Scalp Therapy targets dandruff and other scalp conditions, offering deep cleansing and intense hydration. It removes dead skin cells and excess oil, leaving the scalp healthier and more comfortable. This therapy strengthens hair follicles and promotes shiny, healthy hair.</p>
             <div class="ts-benefits">
-              <div class="ts-benefit"><span class="ts-check">✓</span> Treats and prevents dandruff</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Moisturizes and nourishes the scalp</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Removes impurities for a healthy scalp</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Promotes stronger, shinier hair</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Treats and prevents dandruff</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Moisturizes and nourishes the scalp</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Removes impurities for a healthy scalp</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Promotes stronger, shinier hair</div>
             </div>
             <div class="treatment-tags">
               <span class="tag">Dandruff Control</span>
@@ -1683,7 +2116,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row" id="scalp-psoriasis" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\scalp-img.jpg" alt="Scalp Psoriasis Therapy at Geneva Wellness" loading="lazy" />
+              <img src="img\services\scalp-img.webp" alt="Scalp Psoriasis Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Medicated Care</div>
               <div class="ts-results-card">
@@ -1695,7 +2128,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/home-service-3.jpg" alt="Psoriasis therapy detail" loading="lazy" />
+              <img src="img/home-service-3.webp" alt="Psoriasis therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -1703,10 +2136,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <h3>Scalp Psoriasis Therapy — Relief for <em>a healthier scalp</em></h3>
             <p class="ts-desc">Scalp Psoriasis Therapy reduces the symptoms of psoriasis, such as itching and flakiness. This treatment combines medicated products and therapeutic techniques to soothe the scalp and promote healthy skin cell turnover. Regular therapy helps manage psoriasis symptoms, providing lasting relief and improving scalp health.</p>
             <div class="ts-benefits">
-              <div class="ts-benefit"><span class="ts-check">✓</span> Soothes itching and flakiness</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Reduces inflammation for a healthier scalp</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Uses specialized products for psoriasis</div>
-              <div class="ts-benefit"><span class="ts-check">✓</span> Promotes healthy skin cell turnover</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Soothes itching and flakiness</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Reduces inflammation for a healthier scalp</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Uses specialized products for psoriasis</div>
+              <div class="ts-benefit"><span class="ts-check"><i class="red-red fa-solid fa-check"></i></span> Promotes healthy skin cell turnover</div>
             </div>
             <div class="treatment-tags">
               <span class="tag">Symptom Relief</span>
@@ -1781,7 +2214,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="about-deco-quote">
             <span>"Where science meets beauty"</span>
           </div>
-          <div class="about-deco-pattern" aria-hidden="true">✦ ✦ ✦</div>
+          <div class="about-deco-pattern" aria-hidden="true"><i class="red-red fa-solid fa-star"></i> <i class="red-red fa-solid fa-star"></i> <i class="red-red fa-solid fa-star"></i></div>
         </div>
       </div>
 
@@ -1790,14 +2223,14 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="about-img-primary">
             <video autoplay muted loop playsinline>
               <source src="img/about-video.mp4" type="video/mp4">
-              <img src="img/facial-treatment-clinic.jpg" alt="Geneva Wellness Institute" />
+              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute" />
             </video>
           </div>
           <div class="about-img-secondary">
-            <img src="img/wellness-treatment-new.jpg" alt="Advanced skin care treatment" loading="lazy" />
+            <img src="img/wellness-treatment-new.webp" alt="Advanced skin care treatment" loading="lazy" />
           </div>
           <div class="about-floating-badge">
-            <div class="afb-icon">🏆</div>
+            <div class="afb-icon"><i class="red-red fa-solid fa-trophy"></i></div>
             <div class="afb-text">
               <strong>Award Winning</strong>
               <span>Best Aesthetic Clinic 2024</span>
@@ -1813,21 +2246,21 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
           <div class="about-pillars">
             <div class="about-pillar">
-              <span class="pillar-icon">🔬</span>
+              <span class="pillar-icon"><i class="red-red fa-solid fa-microscope"></i></span>
               <div>
                 <strong>Advanced Facial Therapies</strong>
                 <p>State-of-the-art facials tailored to every skin concern.</p>
               </div>
             </div>
             <div class="about-pillar">
-              <span class="pillar-icon">💆</span>
+              <span class="pillar-icon"><i class="red-red fa-solid fa-user-spa"></i></span>
               <div>
                 <strong>Body Contouring Treatments</strong>
                 <p>Non-invasive sculpting and rejuvenation for your body.</p>
               </div>
             </div>
             <div class="about-pillar">
-              <span class="pillar-icon">👩‍⚕️</span>
+              <span class="pillar-icon"><i class="red-red fa-solid fa-user-md"></i></span>
               <div>
                 <strong>Certified Expert Team</strong>
                 <p>Licensed professionals with years of specialized training.</p>
@@ -1855,11 +2288,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="ba-card" data-aos="fade-up" data-aos-delay="0">
             <div class="ba-slider-wrap">
               <div class="ba-before">
-                <img src="https://img.freepik.com/free-photo/woman-skin-before-treatment_53876-128520.jpg" alt="Before HIFU treatment" loading="lazy" />
+                <img src="img/before/clientbefore.png" alt="Before HIFU treatment" loading="lazy" />
                 <span class="ba-label ba-label-before">Before</span>
               </div>
               <div class="ba-after">
-                <img src="https://img.freepik.com/free-photo/woman-skin-after-treatment_53876-128518.jpg" alt="After HIFU treatment" loading="lazy" />
+                <img src="img/before/clientafter.png" alt="After HIFU treatment" loading="lazy" />
                 <span class="ba-label ba-label-after">After</span>
               </div>
               <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Before/After slider" />
@@ -1875,11 +2308,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="ba-card" data-aos="fade-up" data-aos-delay="150">
             <div class="ba-slider-wrap">
               <div class="ba-before">
-                <img src="https://img.freepik.com/free-photo/woman-acne-skin-before-treatment_53876-128522.jpg" alt="Before CO2 Laser" loading="lazy" />
+                <img src="img/before/before.png" alt="Before CO2 Laser" loading="lazy" />
                 <span class="ba-label ba-label-before">Before</span>
               </div>
               <div class="ba-after">
-                <img src="https://img.freepik.com/free-photo/woman-clear-skin-after-treatment_53876-128516.jpg" alt="After CO2 Laser" loading="lazy" />
+                <img src="img/before/after.png" alt="After CO2 Laser" loading="lazy" />
                 <span class="ba-label ba-label-after">After</span>
               </div>
               <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Before/After slider" />
@@ -1917,7 +2350,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
         <div class="video-player-wrap" data-aos="fade-up" data-aos-delay="150" id="videoThumbnailWrap">
           <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.jpg'" />
+            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.webp'" />
             <div class="video-thumbnail-overlay"></div>
             <div class="video-play-btn" id="videoPlayBtn">
               <div class="video-play-circle">
@@ -1927,7 +2360,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             </div>
             <div class="video-bottom-bar">
               <span>Geneva Wellness Institute — Our Story</span>
-              <span class="video-duration">✦ Full Tour</span>
+              <span class="video-duration"><i class="red-red fa-solid fa-star"></i> Full Tour</span>
             </div>
           </div>
         </div>
@@ -1936,7 +2369,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       <!-- VIDEO MODAL -->
       <div class="video-modal-overlay" id="videoModal">
         <div class="video-modal-inner">
-          <button class="video-modal-close" id="videoModalClose" aria-label="Close video">✕</button>
+          <button class="video-modal-close" id="videoModalClose" aria-label="Close video"><i class="red-red fa-solid fa-times"></i></button>
           <iframe
             id="videoIframe"
             width="560"
@@ -1964,15 +2397,15 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
         <div class="gallery-masonry" data-aos="fade-up" data-aos-delay="200">
           <div class="gallery-item g-tall">
-            <img src="img/advanced-treatement-1.jpg" alt="HYDRA 7D facial treatment" loading="lazy" />
+            <img src="img/advanced-treatement-1.webp" alt="HYDRA 7D facial treatment" loading="lazy" />
             <div class="gallery-overlay"><span>HYDRA 7D</span></div>
           </div>
           <div class="gallery-item">
-            <img src="img/advanced-treatement-2.jpg" alt="CO2 Laser treatment" loading="lazy" />
+            <img src="img/advanced-treatement-2.webp" alt="CO2 Laser treatment" loading="lazy" />
             <div class="gallery-overlay"><span>CO2 Laser</span></div>
           </div>
           <div class="gallery-item">
-            <img src="img/advanced-treatement-3.jpg" alt="Carbon Laser treatment" loading="lazy" />
+            <img src="img/advanced-treatement-3.webp" alt="Carbon Laser treatment" loading="lazy" />
             <div class="gallery-overlay"><span>Carbon Laser</span></div>
           </div>
         </div>
@@ -1997,19 +2430,19 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
         <div class="stats-grid-enhanced">
           <div class="stat-card-enhanced" data-aos="fade-up" data-aos-delay="0">
-            <div class="sce-icon">😊</div>
+            <div class="sce-icon"><i class="red-red fa-solid fa-smile"></i></div>
             <div class="stat-num" data-target="10000" data-suffix="+">0+</div>
             <div class="sce-label">Satisfied Clients</div>
             <p>Serving over 10,000 satisfied clients with top-notch treatments and personalized care.</p>
           </div>
           <div class="stat-card-enhanced sce-featured" data-aos="fade-up" data-aos-delay="100">
-            <div class="sce-icon">⭐</div>
+            <div class="sce-icon"><i class="red-red fa-solid fa-star"></i></div>
             <div class="stat-num" data-target="5" data-suffix="-Star">0-Star</div>
             <div class="sce-label">Client Rating</div>
             <p>Consistent 5-star rating from our valued clients across all platforms.</p>
           </div>
           <div class="stat-card-enhanced" data-aos="fade-up" data-aos-delay="200">
-            <div class="sce-icon">🏆</div>
+            <div class="sce-icon"><i class="red-red fa-solid fa-trophy"></i></div>
             <div class="stat-num" data-target="15" data-suffix=" Yrs">0 Yrs</div>
             <div class="sce-label">Industry Experience</div>
             <p>Unparalleled knowledge and skill built over 15 years of dedicated practice.</p>
@@ -2032,7 +2465,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <article class="testimonial-card enhanced-testimonial">
-                <div class="testimonial-quote">❝</div>
+                <div class="testimonial-quote"><i class="red-red fa-solid fa-quote-left"></i></div>
                 <div class="testimonial-stars">★★★★★</div>
                 <blockquote><p>"Geneva Wellness Institute is my go-to place for all my skincare needs. Their advanced facial therapies have transformed my skin, making it smoother and more radiant. The team is knowledgeable and always makes me feel comfortable. I can't imagine going anywhere else!"</p></blockquote>
                 <footer class="testimonial-author">
@@ -2043,7 +2476,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             </div>
             <div class="swiper-slide">
               <article class="testimonial-card enhanced-testimonial">
-                <div class="testimonial-quote">❝</div>
+                <div class="testimonial-quote"><i class="red-red fa-solid fa-quote-left"></i></div>
                 <div class="testimonial-stars">★★★★★</div>
                 <blockquote><p>"The body contouring treatments at Geneva Wellness Institute are amazing. I saw noticeable results after just a few sessions. The staff is incredibly supportive and guided me through the entire process. I feel more confident and happy with my body now."</p></blockquote>
                 <footer class="testimonial-author">
@@ -2054,7 +2487,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             </div>
             <div class="swiper-slide">
               <article class="testimonial-card enhanced-testimonial">
-                <div class="testimonial-quote">❝</div>
+                <div class="testimonial-quote"><i class="red-red fa-solid fa-quote-left"></i></div>
                 <div class="testimonial-stars">★★★★★</div>
                 <blockquote><p>"I had been struggling with hair loss for years until I discovered Geneva Wellness Institute. Their hair and scalp treatments have made a huge difference. My hair feels thicker and healthier, and I couldn't be happier with the results."</p></blockquote>
                 <footer class="testimonial-author">
@@ -2099,7 +2532,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="hiw-step-num-outer">
                   <div class="hiw-step-num-inner"><span class="hiw-step-num-text">01</span></div>
                 </div>
-                <div class="hiw-step-icon">💬</div>
+                <div class="hiw-step-icon"><i class="red-red fa-solid fa-comments"></i></div>
               </div>
               <p class="hiw-step-subtitle">Get in Touch</p>
               <h3 class="hiw-step-title">Reach out via phone, email, or message</h3>
@@ -2111,7 +2544,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="hiw-step-num-outer">
                   <div class="hiw-step-num-inner"><span class="hiw-step-num-text">02</span></div>
                 </div>
-                <div class="hiw-step-icon">✨</div>
+                <div class="hiw-step-icon"><i class="red-red fa-solid fa-sparkles"></i></div>
               </div>
               <p class="hiw-step-subtitle">Choose Your Treatment</p>
               <h3 class="hiw-step-title">Select the service that suits your needs</h3>
@@ -2123,7 +2556,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="hiw-step-num-outer">
                   <div class="hiw-step-num-inner"><span class="hiw-step-num-text">03</span></div>
                 </div>
-                <div class="hiw-step-icon">📅</div>
+                <div class="hiw-step-icon"><i class="red-red fa-solid fa-calendar-day"></i></div>
               </div>
               <p class="hiw-step-subtitle">Confirm Your Appointment</p>
               <h3 class="hiw-step-title">Settle on a date and time</h3>
@@ -2135,7 +2568,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="hiw-step-num-outer">
                   <div class="hiw-step-num-inner"><span class="hiw-step-num-text">04</span></div>
                 </div>
-                <div class="hiw-step-icon">🌟</div>
+                <div class="hiw-step-icon"><i class="red-red fa-solid fa-star"></i></div>
               </div>
               <p class="hiw-step-subtitle">Visit Us</p>
               <h3 class="hiw-step-title">Enjoy your treatment at Geneva Wellness</h3>
@@ -2166,7 +2599,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="blog-grid">
           <article class="blog-card" data-aos="fade-up" data-aos-delay="0">
             <div class="blog-img-wrap">
-              <img src="img/blog-1.jpg" alt="Benefits of Regular Facials" loading="lazy" />
+              <img src="img/blog-1.webp" alt="Benefits of Regular Facials" loading="lazy" />
               <span class="blog-category-badge">Skincare</span>
             </div>
             <div class="blog-content">
@@ -2178,7 +2611,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
             <div class="blog-img-wrap">
-              <img src="img/blog-2.jpg" alt="Body Contouring Techniques" loading="lazy" />
+              <img src="img/blog-2.webp" alt="Body Contouring Techniques" loading="lazy" />
               <span class="blog-category-badge">Body</span>
             </div>
             <div class="blog-content">
@@ -2190,7 +2623,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
             <div class="blog-img-wrap">
-              <img src="img/blog-3.jpg" alt="Hair Care Tips" loading="lazy" />
+              <img src="img/blog-3.webp" alt="Hair Care Tips" loading="lazy" />
               <span class="blog-category-badge">Hair Care</span>
             </div>
             <div class="blog-content">
@@ -2211,7 +2644,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
   </main>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="red-red fa-solid fa-arrow-up"></i></button>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -2251,6 +2684,144 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         if (e.key === 'Escape' && modal.classList.contains('active')) closeVideo();
       });
     })();
+  </script>
+
+  <!-- ── HERO SLIDER SCRIPT ──────────────────────────── -->
+  <script>
+  (function () {
+    'use strict';
+
+    var hero        = document.querySelector('.gw-hero');
+    if (!hero) return;
+
+    var bgs         = hero.querySelectorAll('.gw-hero__bg');
+    var slides      = hero.querySelectorAll('.gw-hero__slide-content');
+    var dots        = hero.querySelectorAll('.gw-hero__dot');
+    var prevBtn     = document.getElementById('gwHeroPrev');
+    var nextBtn     = document.getElementById('gwHeroNext');
+    var counterEl   = document.getElementById('gwSlideNum');
+
+    var current       = 0;
+    var total         = slides.length;
+    var autoTimer     = null;
+    var isTransiting  = false;
+    var AUTO_MS       = 5000;
+    var LEAVE_MS      = 480;
+    var ENTER_DELAY   = 120;
+
+    /* ── Pad number helper ── */
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    /* ── Core transition ── */
+    function goTo(index) {
+      if (isTransiting) return;
+      var next = ((index % total) + total) % total;
+      if (next === current) return;
+      isTransiting = true;
+
+      var prevIdx = current;
+      current = next;
+
+      /* 1. Crossfade backgrounds */
+      bgs[prevIdx].classList.remove('is-active');
+      bgs[current].classList.add('is-active');
+
+      /* 2. Exit current content */
+      var leavingSlide = slides[prevIdx];
+      leavingSlide.classList.add('is-leaving');
+      leavingSlide.classList.remove('is-active');
+
+      /* 3. Enter new content (slight delay for cleaner feel) */
+      setTimeout(function () {
+        var enteringSlide = slides[current];
+        enteringSlide.classList.add('is-active');
+      }, ENTER_DELAY);
+
+      /* 4. Clean up leaving slide */
+      setTimeout(function () {
+        leavingSlide.classList.remove('is-leaving');
+        isTransiting = false;
+      }, LEAVE_MS + ENTER_DELAY);
+
+      /* 5. Update dots */
+      dots.forEach(function (dot, i) {
+        /* Remove & re-add active to restart the progress animation */
+        dot.classList.remove('is-active');
+        dot.setAttribute('aria-selected', 'false');
+        if (i === current) {
+          /* Force reflow so animation restarts */
+          void dot.offsetWidth;
+          dot.classList.add('is-active');
+          dot.setAttribute('aria-selected', 'true');
+        }
+      });
+
+      /* 6. Update counter */
+      if (counterEl) counterEl.textContent = pad(current + 1);
+    }
+
+    /* ── Auto-play ── */
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(function () { goTo(current + 1); }, AUTO_MS);
+    }
+    function stopAuto() {
+      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    }
+
+    /* ── Controls ── */
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        stopAuto(); goTo(current + 1); startAuto();
+      });
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        stopAuto(); goTo(current - 1); startAuto();
+      });
+    }
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var idx = parseInt(dot.getAttribute('data-slide'), 10);
+        stopAuto(); goTo(idx); startAuto();
+      });
+    });
+
+    /* ── Pause on hover ── */
+    hero.addEventListener('mouseenter', stopAuto);
+    hero.addEventListener('mouseleave', startAuto);
+
+    /* ── Touch / swipe support ── */
+    var touchX = 0;
+    hero.addEventListener('touchstart', function (e) {
+      touchX = e.touches[0].clientX;
+      stopAuto();
+    }, { passive: true });
+    hero.addEventListener('touchend', function (e) {
+      var diff = touchX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 48) {
+        goTo(diff > 0 ? current + 1 : current - 1);
+      }
+      startAuto();
+    }, { passive: true });
+
+    /* ── Keyboard navigation ── */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
+      if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); startAuto(); }
+    });
+
+    /* ── Strip is-initial after entry anims finish (≈ 3 s) ── */
+    setTimeout(function () {
+      hero.querySelectorAll('.is-initial').forEach(function (el) {
+        el.classList.remove('is-initial');
+      });
+    }, 3200);
+
+    /* ── Kick off auto-play ── */
+    startAuto();
+
+  })();
   </script>
 </body>
 </html>
