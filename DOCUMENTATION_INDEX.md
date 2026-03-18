@@ -96,7 +96,7 @@ Complete reference to all documentation files for the Geneva Wellness website.
 ### 6. **IMAGE_OPTIMIZATION_GUIDE.md**
 **Purpose:** Detailed guide for optimizing and implementing images  
 **Contents:**
-- 🖼️ Image format specifications (WebP, JPG)
+- 🖼️ Image format specifications (WebP, webp)
 - 📏 Responsive image sizing with srcset
 - 💾 Image dimensions by section
 - 🚀 Lazy loading implementation

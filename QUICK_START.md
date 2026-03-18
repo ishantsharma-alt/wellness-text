@@ -102,7 +102,7 @@ See DEPLOYMENT_GUIDE.md → Database Setup section
 ```html
 <!-- Find .treatments-grid and add new card -->
 <div class="treatment-card">
-  <img src="img/treatment-new.jpg" alt="Treatment Name" loading="lazy" width="300" height="300" />
+  <img src="img/treatment-new.webp" alt="Treatment Name" loading="lazy" width="300" height="300" />
   <h3>Treatment Name</h3>
   <p>Treatment description goes here</p>
   <ul class="treatment-benefits">
@@ -120,7 +120,7 @@ See DEPLOYMENT_GUIDE.md → Database Setup section
 ```html
 <!-- Find .gallery-grid and add new item -->
 <figure class="gallery-item">
-  <img src="img/gallery-NEW.jpg" alt="Descriptive text" loading="lazy" width="400" height="400" />
+  <img src="img/gallery-NEW.webp" alt="Descriptive text" loading="lazy" width="400" height="400" />
   <figcaption>Result Title</figcaption>
 </figure>
 ```
@@ -132,7 +132,7 @@ See DEPLOYMENT_GUIDE.md → Database Setup section
 <!-- Find .testimonials-featured section and add -->
 <div class="testimonial-card">
   <div class="testimonial-header">
-    <img src="img/client-avatar.jpg" alt="Client Name" class="avatar" width="60" height="60" />
+    <img src="img/client-avatar.webp" alt="Client Name" class="avatar" width="60" height="60" />
     <div class="testimonial-author">
       <h4>Client Name</h4>
       <p>Treatment received</p>
@@ -152,7 +152,7 @@ See DEPLOYMENT_GUIDE.md → Database Setup section
 ```html
 <!-- Find .team-grid and add new member -->
 <div class="team-card">
-  <img src="img/team-member.jpg" alt="Dr. Name" width="250" height="250" loading="lazy" />
+  <img src="img/team-member.webp" alt="Dr. Name" width="250" height="250" loading="lazy" />
   <h3>Dr. Name</h3>
   <p class="role">Position/Specialism</p>
   <p class="bio">Short bio describing expertise and approach...</p>
@@ -188,21 +188,21 @@ img/
 ├── hero.webp                    # Homepage hero
 ├── gallery-01.webp thru -12.webp  # Gallery items
 ├── treatment-01.webp through -11.webp  # Treatment images
-├── testimonial-01.jpg           # Client avatars
+├── testimonial-01.webp           # Client avatars
 ├── team-members/                # Team photos
 ├── blog/                        # Blog featured images
 └── icons/                       # SVG icons
 ```
 
 ### Image Guidelines
-- **Format:** WebP primary, JPG fallback
+- **Format:** WebP primary, webp fallback
 - **Max Sizes:** See IMAGE_OPTIMIZATION_GUIDE.md
 - **Must Include:** `loading="lazy"` and explicit width/height
 - **Format in HTML:**
 ```html
 <picture>
   <source srcset="img/photo.webp" type="image/webp" />
-  <img src="img/photo.jpg" alt="Description" loading="lazy" width="400" height="300" />
+  <img src="img/photo.webp" alt="Description" loading="lazy" width="400" height="300" />
 </picture>
 ```
 
@@ -329,7 +329,7 @@ img/
 
 ### Quick Optimization Wins
 1. **Compress Images**
-   - Use TinyPNG.com
+   - Use Tinywebp.com
    - Convert to WebP format
    - Target sizes in IMAGE_OPTIMIZATION_GUIDE.md
 

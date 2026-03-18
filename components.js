@@ -16,13 +16,13 @@ const FOOTER_TEMPLATE = `
       <!-- Brand Column -->
       <div class="footer-column">
         <div class="footer-logo">
-          <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo" class="logo-mark" />
+          <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo" title="Geneva Wellness Institute Logo" class="logo-mark" />
           <span>Geneva Wellness</span>
         </div>
         <p class="footer-desc">Transformative wellness and aesthetic treatments designed for your unique beauty and confidence.</p>
         <div class="footer-socials">
           <a href="#" aria-label="Facebook" title="Follow on Facebook">f</a>
-          <a href="#" aria-label="Instagram" title="Follow on Instagram">📷</a>
+          <a href="#" aria-label="Instagram" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" aria-label="LinkedIn" title="Connect on LinkedIn">in</a>
         </div>
       </div>
@@ -55,11 +55,11 @@ const FOOTER_TEMPLATE = `
         <div class="footer-contact">
           <p>
             <strong>Phone:</strong><br>
-            <a href="tel:+1234567890">(123) 456-7890</a>
+            <a href="tel:+1234567890" title="Call us at (123) 456-7890">(123) 456-7890</a>
           </p>
           <p>
             <strong>Email:</strong><br>
-            <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a>
+            <a href="mailto:hello@genevawellness.com" title="Email us at hello@genevawellness.com">hello@genevawellness.com</a>
           </p>
           <p>
             <strong>Hours:</strong><br>
@@ -90,7 +90,7 @@ const SIDEBAR_TEMPLATE = `
     <h4>Search Articles</h4>
     <form class="search-form" role="search">
       <input type="search" placeholder="Search blog..." aria-label="Search blog posts" />
-      <button type="submit" aria-label="Search">🔍</button>
+      <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
     </form>
   </div>
 
@@ -170,10 +170,10 @@ const SIDEBAR_TEMPLATE = `
   <div class="sidebar-widget social-media-widget" id="social-media-widget">
     <div class="social-media_messenger-wrapper">
       <a href="http://m.me/genevawellnessinstitute?ref=website" target="_blank" class="w-inline-block" title="Message us on Messenger">
-        <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f748ec6aca41df9b913a2_Company%3DMessenger%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="Messenger" class="social-media_icon">
+        <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f748ec6aca41df9b913a2_Company%3DMessenger%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="Messenger" title="Messenger" class="social-media_icon">
       </a>
       <a href="https://wa.me/+639153960593?text=Hello,%20I%20came%20from%20the%20website" target="_blank" class="w-inline-block" title="Chat with us on WhatsApp">
-        <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f7485800c13b6c96360b1_Company%3DWhatsapp%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="WhatsApp" class="social-media_icon">
+        <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f7485800c13b6c96360b1_Company%3DWhatsapp%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="WhatsApp" title="WhatsApp" class="social-media_icon">
       </a>
     </div>
   </div>

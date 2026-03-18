@@ -13,7 +13,7 @@
       <h2 style="color: #1a1a1a; margin-bottom: 1rem;">Ready to Transform Your Wellness Journey?</h2>
       <p style="color: #666666; font-size: 1.1rem; margin-bottom: 0;">Schedule a free consultation with our experts today. Let's discuss your goals and create a personalized treatment plan.</p>
     </div>
-    <button class="btn btn-primary popup-trigger" data-popup="consultation-popup">Book Your Consultation</button>
+    <button class="btn btn-primary" data-bk-open="consultation">Book Your Consultation</button>
   </div>
 </section>
 
@@ -225,8 +225,8 @@
       <!-- ── COL 1: BRAND ── -->
       <div class="gwi-footer-brand">
 
-        <a href="index.php" class="gwi-footer-logo-link">
-          <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
+        <a href="index.php" class="gwi-footer-logo-link" title="Back to Home">
+          <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo" title="Geneva Wellness Institute Logo">
         </a>
         <script>
           (function() {
@@ -248,11 +248,11 @@
         <div class="gwi-footer-contacts">
           <div class="gwi-footer-contact-row">
             <span class="ico">📞</span>
-            <a href="tel:+1234567890">(123) 456-7890</a>
+            <a href="tel:+1234567890" title="Call us at (123) 456-7890">(123) 456-7890</a>
           </div>
           <div class="gwi-footer-contact-row">
             <span class="ico">✉️</span>
-            <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a>
+            <a href="mailto:hello@genevawellness.com" title="Email us at hello@genevawellness.com">hello@genevawellness.com</a>
           </div>
           <div class="gwi-footer-contact-row">
             <span class="ico">📍</span>
@@ -267,7 +267,7 @@
 
             <!-- Facebook -->
             <a href="https://www.facebook.com/genevawellnessinstitute"
-               target="_blank" rel="noopener" class="gwi-fsoc fb" aria-label="Facebook">
+               target="_blank" rel="noopener" class="gwi-fsoc fb" aria-label="Facebook" title="Follow us on Facebook">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12Z" fill="#1877F2"/>
                 <path d="M18 12C18 8.7 15.3 6 12 6C8.7 6 6 8.7 6 12C6 15 8.175 17.475 11.025 17.925V13.725H9.525V12H11.025V10.65C11.025 9.15 11.925 8.325 13.275 8.325C13.95 8.325 14.625 8.475 14.625 8.475V9.975H13.875C13.125 9.975 12.9 10.425 12.9 10.875V12H14.55L14.25 13.725H12.825V18C15.825 17.55 18 15 18 12Z" fill="white"/>
@@ -276,7 +276,7 @@
 
             <!-- Instagram -->
             <a href="https://www.instagram.com/genevawellnessinstitute/"
-               target="_blank" rel="noopener" class="gwi-fsoc ig" aria-label="Instagram">
+               target="_blank" rel="noopener" class="gwi-fsoc ig" aria-label="Instagram" title="Follow us on Instagram">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12Z" fill="#F00073"/>
                 <path d="M12 6.9C13.65 6.9 13.875 6.9 14.55 6.9C15.15 6.9 15.45 7.05 15.675 7.125C15.975 7.275 16.2 7.35 16.425 7.575C16.65 7.8 16.8 8.025 16.875 8.325C16.95 8.55 17.025 8.85 17.1 9.45C17.1 10.125 17.1 10.275 17.1 12C17.1 13.725 17.1 13.875 17.1 14.55C17.1 15.15 16.95 15.45 16.875 15.675C16.725 15.975 16.65 16.2 16.425 16.425C16.2 16.65 15.975 16.8 15.675 16.875C15.45 16.95 15.15 17.025 14.55 17.1C13.875 17.1 13.725 17.1 12 17.1C10.275 17.1 10.125 17.1 9.45 17.1C8.85 17.1 8.55 16.95 8.325 16.875C8.025 16.725 7.8 16.65 7.575 16.425C7.35 16.2 7.2 15.975 7.125 15.675C7.05 15.45 6.975 15.15 6.9 14.55C6.9 13.875 6.9 13.725 6.9 12C6.9 10.275 6.9 10.125 6.9 9.45C6.9 8.85 7.05 8.55 7.125 8.325C7.275 8.025 7.35 7.8 7.575 7.575C7.8 7.35 8.025 7.2 8.325 7.125C8.55 7.05 8.85 6.975 9.45 6.9C10.125 6.9 10.35 6.9 12 6.9ZM12 5.775C10.275 5.775 10.125 5.775 9.45 5.775C8.775 5.775 8.325 5.925 7.95 6.075C7.575 6.225 7.2 6.45 6.825 6.825C6.45 7.2 6.3 7.5 6.075 7.95C5.925 8.325 5.85 8.775 5.775 9.45C5.775 10.125 5.775 10.35 5.775 12C5.775 13.725 5.775 13.875 5.775 14.55C5.775 15.225 5.925 15.675 6.075 16.05C6.225 16.425 6.45 16.8 6.825 17.175C7.2 17.55 7.5 17.7 7.95 17.925C8.325 18.075 8.775 18.15 9.45 18.225C10.125 18.225 10.35 18.225 12 18.225C13.65 18.225 13.875 18.225 14.55 18.225C15.225 18.225 15.675 18.075 16.05 17.925C16.425 17.775 16.8 17.55 17.175 17.175C17.55 16.8 17.7 16.5 17.925 16.05C18.075 15.675 18.15 15.225 18.225 14.55C18.225 13.875 18.225 13.65 18.225 12C18.225 10.35 18.225 10.125 18.225 9.45C18.225 8.775 18.075 8.325 17.925 7.95C17.775 7.575 17.55 7.2 17.175 6.825C16.8 6.45 16.5 6.3 16.05 6.075C15.675 5.925 15.225 5.85 14.55 5.775C13.875 5.775 13.725 5.775 12 5.775Z" fill="white"/>
@@ -287,7 +287,7 @@
 
             <!-- YouTube -->
             <a href="https://www.youtube.com/@GenevaWellnessInstitute"
-               target="_blank" rel="noopener" class="gwi-fsoc yt" aria-label="YouTube">
+               target="_blank" rel="noopener" class="gwi-fsoc yt" aria-label="YouTube" title="Subscribe to our YouTube channel">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12Z" fill="#FF0000"/>
                 <path d="M17.7 9.075C17.55 8.55 17.175 8.175 16.65 8.025C15.75 7.8 11.925 7.8 11.925 7.8C11.925 7.8 8.175 7.8 7.2 8.025C6.675 8.175 6.3 8.55 6.15 9.075C6 10.05 6 12 6 12C6 12 6 13.95 6.225 14.925C6.375 15.45 6.75 15.825 7.275 15.975C8.175 16.2 12 16.2 12 16.2C12 16.2 15.75 16.2 16.725 15.975C17.25 15.825 17.625 15.45 17.775 14.925C18 13.95 18 12 18 12C18 12 18 10.05 17.7 9.075ZM10.8 13.8V10.2L13.95 12L10.8 13.8Z" fill="white"/>
@@ -296,7 +296,7 @@
 
             <!-- TikTok -->
             <a href="https://www.tiktok.com/@genevawellnessinstitute"
-               target="_blank" rel="noopener" class="gwi-fsoc tk" aria-label="TikTok">
+               target="_blank" rel="noopener" class="gwi-fsoc tk" aria-label="TikTok" title="Follow us on TikTok">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" fill="black"/>
                 <path d="M10.8738 10.7252V10.2581C10.7137 10.2367 10.551 10.2233 10.383 10.2233C8.37977 10.2207 6.75 11.8518 6.75 13.8594C6.75 15.0901 7.3635 16.1793 8.30242 16.8387C7.69692 16.19 7.32615 15.317 7.32615 14.3613C7.32615 12.3831 8.91058 10.7706 10.8738 10.7252Z" fill="#25F4EE"/>
@@ -319,13 +319,13 @@
       <div>
         <h4 class="gwi-footer-col-title">Quick Links</h4>
         <ul class="gwi-footer-nav">
-          <li><a href="index.php"><span class="arr">›</span> Home</a></li>
-          <li><a href="about-us.php"><span class="arr">›</span> About Us</a></li>
-          <li><a href="treatments.php"><span class="arr">›</span> All Treatments</a></li>
-          <li><a href="gallery.php"><span class="arr">›</span> Gallery</a></li>
-          <li><a href="testimonials.php"><span class="arr">›</span> Testimonials</a></li>
-          <li><a href="blog.php"><span class="arr">›</span> Blog</a></li>
-          <li><a href="contact-us.php"><span class="arr">›</span> Contact Us</a></li>
+          <li><a href="index.php" title="Back to Home"><span class="arr">›</span> Home</a></li>
+          <li><a href="about-us.php" title="Learn About Our Institute"><span class="arr">›</span> About Us</a></li>
+          <li><a href="treatments.php" title="View Our Treatments"><span class="arr">›</span> All Treatments</a></li>
+          <li><a href="gallery.php" title="View Our Gallery"><span class="arr">›</span> Gallery</a></li>
+          <li><a href="testimonials.php" title="Read Client Testimonials"><span class="arr">›</span> Testimonials</a></li>
+          <li><a href="blog.php" title="Read Our Blog"><span class="arr">›</span> Blog</a></li>
+          <li><a href="contact-us.php" title="Contact Us"><span class="arr">›</span> Contact Us</a></li>
         </ul>
       </div>
 
@@ -334,13 +334,13 @@
       <div>
         <h4 class="gwi-footer-col-title">Treatments</h4>
         <ul class="gwi-footer-nav">
-          <li><a href="treatments.php#hydrafacial"><span class="arr">›</span> HYDRA 7D</a></li>
-          <li><a href="treatments.php#co2"><span class="arr">›</span> CO2 Laser</a></li>
-          <li><a href="treatments.php#carbon"><span class="arr">›</span> Carbon Laser</a></li>
-          <li><a href="treatments.php#pico"><span class="arr">›</span> Pico Laser</a></li>
-          <li><a href="treatments.php#exilis-face"><span class="arr">›</span> Exilis Face &amp; Neck</a></li>
-          <li><a href="treatments.php#cryotherapy"><span class="arr">›</span> Cryotherapy</a></li>
-          <li><a href="treatments.php#hifu"><span class="arr">›</span> HIFU</a></li>
+          <li><a href="treatments.php#hydrafacial" title="HYDRA 7D Facials"><span class="arr">›</span> HYDRA 7D</a></li>
+          <li><a href="treatments.php#co2" title="CO2 Laser Treatment"><span class="arr">›</span> CO2 Laser</a></li>
+          <li><a href="treatments.php#carbon" title="Carbon Laser Peel Treatment"><span class="arr">›</span> Carbon Laser</a></li>
+          <li><a href="treatments.php#pico" title="Pico Laser Treatment"><span class="arr">›</span> Pico Laser</a></li>
+          <li><a href="treatments.php#exilis-face" title="Exilis Skin Tightening"><span class="arr">›</span> Exilis Face &amp; Neck</a></li>
+          <li><a href="treatments.php#cryotherapy" title="Cryotherapy Treatment"><span class="arr">›</span> Cryotherapy</a></li>
+          <li><a href="treatments.php#hifu" title="HIFU Lift Treatment"><span class="arr">›</span> HIFU</a></li>
         </ul>
       </div>
 
@@ -357,7 +357,7 @@
           <div class="gwi-footer-hour-row"><span class="fhd">Saturday</span> <span class="fht">10:00 AM – 4:00 PM</span></div>
           <div class="gwi-footer-hour-row"><span class="fhd">Sunday</span>   <span class="fht closed">Closed</span></div>
         </div>
-        <a href="https://maps.app.goo.gl/neNdyjEWcqyL7R2aA" target="_blank" rel="noopener" class="gwi-footer-map-link">
+        <a href="https://maps.app.goo.gl/neNdyjEWcqyL7R2aA" target="_blank" rel="noopener" class="gwi-footer-map-link" title="Get directions to our clinic">
           📍 Get Directions →
         </a>
       </div>
@@ -375,10 +375,10 @@
         &copy; <?php echo date('Y'); ?> <strong>Geneva Wellness Institute</strong>. All rights reserved.
       </p>
       <nav class="gwi-footer-legal" aria-label="Legal links">
-        <a href="privacy-policy.php">Privacy Policy</a>
-        <a href="terms.php">Terms of Service</a>
-        <a href="cookie-policy.php">Cookie Policy</a>
-        <a href="sitemap.php">Sitemap</a>
+        <a href="privacy-policy.php" title="Read our Privacy Policy">Privacy Policy</a>
+        <a href="terms.php" title="Read our Terms of Service">Terms of Service</a>
+        <a href="cookie-policy.php" title="Read our Cookie Policy">Cookie Policy</a>
+        <a href="sitemap.php" title="View our Sitemap">Sitemap</a>
       </nav>
     </div>
   </div>
@@ -388,18 +388,16 @@
 <!-- sitewide fixed messenger/whatsapp buttons -->
 <div class="social-media_messenger-wrapper">
   <a href="http://m.me/genevawellnessinstitute?ref=website" target="_blank" class="w-inline-block" title="Message us on Messenger">
-    <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f748ec6aca41df9b913a2_Company%3DMessenger%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="Messenger" class="social-media_icon">
+    <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f748ec6aca41df9b913a2_Company%3DMessenger%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="Messenger" class="social-media_icon" title="Messenger">
   </a>
   <a href="https://wa.me/+639153960593?text=Hello,%20I%20came%20from%20the%20website" target="_blank" class="w-inline-block" title="Chat with us on WhatsApp">
-    <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f7485800c13b6c96360b1_Company%3DWhatsapp%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="WhatsApp" class="social-media_icon">
+    <img src="https://cdn.prod.website-files.com/666fb632420e69e2710c8201/668f7485800c13b6c96360b1_Company%3DWhatsapp%2C%20Style%3DColour%2C%20Background%3DCircular.svg" loading="lazy" alt="WhatsApp" class="social-media_icon" title="WhatsApp">
   </a>
 </div>
 
 
-<!-- ════════════════════════════════════════════════════
-     CONSULTATION POPUP
-════════════════════════════════════════════════════ -->
-<div class="popup-overlay" id="consultation-popup">
+<!-- DEPRECATED: Old consultation popup - use popup-booking.php instead -->
+<div class="popup-overlay" id="consultation-popup" style="display: none !important;">
   <div class="popup-content">
     <button class="popup-close" aria-label="Close popup">×</button>
     <div class="popup-header">
@@ -459,3 +457,6 @@
     </form>
   </div>
 </div>
+
+<!-- Include the Popup Booking Component -->
+<?php require_once __DIR__ . '/popup-booking.php'; ?>

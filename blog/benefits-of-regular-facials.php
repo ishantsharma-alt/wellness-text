@@ -11,6 +11,7 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../img/geneva-favicon.svg" type="image/svg+xml">
   <meta name="description" content="Unlock the secret to glowing, youthful skin with regular facials. Discover how this essential beauty treatment can transform your complexion with deep cleansing, exfoliation, and anti-aging benefits." />
   <meta name="keywords" content="regular facials, facial benefits, deep cleansing, exfoliation, anti-aging facial, skin health, facials for glowing skin, professional skincare" />
   <meta name="robots" content="index, follow" />
@@ -72,7 +73,7 @@ $breadcrumb = [
         <div class="blog-single-main">
 
           <figure class="single-featured-image" data-aos="fade-up">
-            <img src="../img/blog-3-new.jpg" alt="Woman enjoying a relaxing facial treatment" loading="lazy" width="800" height="450" />
+            <img src="../img/blog-3-new.webp" alt="Woman enjoying a relaxing facial treatment" loading="lazy" width="800" height="450" />
           </figure>
 
           <header class="article-header" data-aos="fade-up">
@@ -162,7 +163,7 @@ $breadcrumb = [
             <div class="related-posts-grid">
               <article class="blog-post" data-aos="fade-up">
                 <div class="post-image">
-                  <img src="../img/blog-06.jpg" alt="Chemical peels article" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-06.webp" alt="Chemical peels article" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
@@ -176,7 +177,7 @@ $breadcrumb = [
               </article>
               <article class="blog-post" data-aos="fade-up" data-aos-delay="100">
                 <div class="post-image">
-                  <img src="../img/blog-02.jpg" alt="Post-treatment skincare article" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-02.webp" alt="Post-treatment skincare article" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
@@ -208,7 +209,7 @@ $breadcrumb = [
 
   <?php include '../footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="../components.js"></script>

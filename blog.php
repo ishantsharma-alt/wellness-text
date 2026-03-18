@@ -1,6 +1,6 @@
 <?php
-$page_title = 'Geneva Wellness Institute Blog';
-$page_subtitle = 'Welcome to our blog, your ultimate resource for beauty, wellness, and self-care insights. Explore expert advice, treatment guides, and the latest trends to help you look and feel your best. Dive into our articles and discover how you can enhance your natural beauty and overall well-being';
+$page_title = 'Wellness & Skincare Blog';
+$page_subtitle = 'Expert advice on laser treatments, anti-aging, body contouring, and beauty tips from our aesthetic specialists';
 $breadcrumb = [
   ['label' => 'Blog', 'url' => null]
 ];
@@ -10,18 +10,23 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read our latest articles on wellness, beauty treatments, skincare tips, and industry insights. Expert advice from the Geneva Wellness team." />
-  <meta name="keywords" content="blog, wellness, skincare, beauty tips, aesthetic treatments, health, articles, expert advice" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Explore wellness and skincare articles featuring expert advice on laser treatments, anti-aging, body contouring, and beauty tips from Geneva Wellness Institute specialists." />
+  <meta name="keywords" content="wellness blog, skincare articles, laser treatment guides, anti-aging tips, beauty treatments, aesthetic advice, health insights" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Blog — Geneva Wellness Institute" />
-  <meta property="og:description" content="Latest articles on wellness, beauty, and aesthetic treatments." />
+  <meta property="og:title" content="Wellness & Skincare Blog | Expert Beauty Advice" />
+  <meta property="og:description" content="Read expert articles on aesthetic treatments, skincare, and wellness from certified specialists." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://genevawellness.com/blog.php" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Blog — Geneva Wellness Institute" />
-  <meta name="twitter:description" content="Expert articles on wellness, skincare, and aesthetic treatments." />
+<meta property="og:image" content="img/feature-img/blog.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Wellness & Skincare Blog | Geneva Wellness" />
+<meta name="twitter:description" content="Expert articles on beauty treatments, skincare, and wellness." />
+<meta name="twitter:image" content="img/feature-img/blog.webp" />
   <link rel="canonical" href="https://genevawellness.com/blog.php" />
-  <title>Blog — Geneva Wellness Institute</title>
+  <title>Wellness & Skincare Blog | Expert Advice</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -79,7 +84,7 @@ $breadcrumb = [
               </div>
               <h2><a href="blog/hifu-complete-guide.php">The Complete Guide to HIFU Facial Lifting</a></h2>
               <p class="post-excerpt">Discover how HIFU (High-Intensity Focused Ultrasound) technology is revolutionizing non-invasive facial treatments. Learn about the benefits, what to expect, and real patient results.</p>
-              <a href="blog/hifu-complete-guide.php" class="read-more">Read Full Article →</a>
+              <a href="blog/hifu-complete-guide.php" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
             </div>
           </article> -->
 
@@ -187,9 +192,9 @@ $breadcrumb = [
                   <span class="category">Hair Health</span>
                   <span class="date">November 18, 2024</span>
                 </div>
-                <h3><a href="blog/hair-care-tips.php">Hair Care Tips for a Healthier Scalp</a></h3>
+                <h3><a href="blog/hair-care-tips.php" title="Read: Hair Care Tips for a Healthier Scalp">Hair Care Tips for a Healthier Scalp</a></h3>
                 <p class="post-excerpt">Explore essential tips for maintaining a healthy scalp and vibrant hair. Our expert advice covers daily routines, product recommendations, and effective scalp treatments.</p>
-                <a href="blog/hair-care-tips.php" class="read-more">Read More</a>
+                <a href="blog/hair-care-tips.php" class="read-more" title="Read: Hair Care Tips for a Healthier Scalp">Read More</a>
               </div>
             </article>
 
@@ -202,9 +207,9 @@ $breadcrumb = [
                   <span class="category">Treatment</span>
                   <span class="date">November 14, 2024</span>
                 </div>
-                <h3><a href="blog/body-contouring-techniques.php">Top 5 Body Contouring Techniques</a></h3>
+                <h3><a href="blog/body-contouring-techniques.php" title="Read: Top 5 Body Contouring Techniques">Top 5 Body Contouring Techniques</a></h3>
                 <p class="post-excerpt">Discover the most effective body contouring techniques to achieve your ideal figure — from CoolSculpting and laser treatments to RF and ultrasonic cavitation.</p>
-                <a href="blog/body-contouring-techniques.php" class="read-more">Read More</a>
+                <a href="blog/body-contouring-techniques.php" class="read-more" title="Read: Top 5 Body Contouring Techniques">Read More</a>
               </div>
             </article>
 
@@ -217,9 +222,9 @@ $breadcrumb = [
                   <span class="category">Beauty</span>
                   <span class="date">November 10, 2024</span>
                 </div>
-                <h3><a href="blog/benefits-of-regular-facials.php">The Benefits of Regular Facials</a></h3>
+                <h3><a href="blog/benefits-of-regular-facials.php" title="Read: The Benefits of Regular Facials">The Benefits of Regular Facials</a></h3>
                 <p class="post-excerpt">Unlock the secret to glowing, youthful skin with regular facials. Discover how this essential beauty treatment can transform your complexion and boost your confidence.</p>
-                <a href="blog/benefits-of-regular-facials.php" class="read-more">Read More</a>
+                <a href="blog/benefits-of-regular-facials.php" class="read-more" title="Read: The Benefits of Regular Facials">Read More</a>
               </div>
             </article>
 
@@ -227,11 +232,11 @@ $breadcrumb = [
 
           <!-- Pagination -->
           <!-- <nav class="pagination" data-aos="fade-up" aria-label="Blog pagination">
-            <a href="#" class="prev disabled" aria-disabled="true">← Previous</a>
+            <a href="#" class="prev disabled" aria-disabled="true"><i class="fas fa-arrow-left"></i> Previous</a>
             <a href="#" class="page active" aria-current="page">1</a>
             <a href="blog-page-2.php" class="page">2</a>
             <a href="blog-page-3.php" class="page">3</a>
-            <a href="blog-page-2.php" class="next">Next →</a>
+            <a href="blog-page-2.php" class="next">Next <i class="fas fa-arrow-right"></i></a>
           </nav> -->
 
         </div>
@@ -247,7 +252,7 @@ $breadcrumb = [
   <!-- ── FOOTER ───────────────────────────────────────── -->
   <?php include 'footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

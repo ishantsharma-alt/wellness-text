@@ -1,6 +1,6 @@
 <?php
-$page_title = 'About Us';
-$page_subtitle = 'At Geneva Wellness Institute, we are dedicated to enhancing your natural beauty and well-being through personalized care and advanced treatments. Our expert team combines innovative technologies with a deep commitment to your satisfaction, helping you achieve your beauty and wellness goals in a supportive and luxurious environment.';
+$page_title = 'Meet Our Aesthetic Specialists';
+$page_subtitle = 'Expert aesthetic doctors and specialists dedicated to advanced treatments and personalized care in Alabang.';
 $breadcrumb = [
   ['label' => 'About Us', 'url' => null]
 ];
@@ -10,15 +10,20 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Meet the experienced specialists at Geneva Wellness Institute delivering advanced aesthetic treatments and personalized care focused on safety. Book today." />
-  <meta name="keywords" content="aesthetic clinic experts,aesthetic clinic experts Alabang,experienced aesthetic doctors Alabang,certified aesthetic specialists Alabang,professional skin specialists Alabang,medical aesthetic clinic team,expert skin and laser specialists,trusted aesthetic clinic Alabang,best aesthetic clinic team,licensed aesthetic professionals,aesthetic consultation with experts,experienced cosmetic doctors,advanced aesthetic clinic team" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Meet our expert aesthetic doctors and specialists delivering advanced laser treatments, HIFU, anti-aging & body contouring in Alabang. Board-certified professionals." />
+  <meta name="keywords" content="aesthetic doctors, laser specialists, anti-aging treatment experts, HIFU treatment doctors, body contouring specialists, certified aesthetic physicians" />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="About Geneva Wellness Institute" />
   <meta property="og:description" content="Discover our story, mission, and commitment to transformative wellness treatments." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genevawellness.com/about-us" />
-  <link rel="canonical" href="https://genevawellness.com/about-us" />
-  <title>Geneva Wellness Institute | Trusted Aesthetic Clinic Experts</title>
+  <meta property="og:url" content="https://genevawellness.com/about-us" /><meta property="og:image" content="img/feature-img/about.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="img/feature-img/about.webp" />
+<link rel="canonical" href="https://genevawellness.com/about-us" />
+  <title>Aesthetic Expertise | Geneva Wellness Doctors</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,7 +78,7 @@ $breadcrumb = [
  <!-- VIDEO SECTION -->
 <div class="video-wrapper">
     <div class="video-thumbnail" id="videoThumb">
-        <img src="img/about-video.png" alt="About Video">
+        <img src="img/about-video.webp" alt="About Video" title="About Geneva Wellness Institute Video">
         <div class="play-button"></div>
     </div>
 </div>
@@ -86,7 +91,7 @@ $breadcrumb = [
         <iframe 
             id="youtubeVideo"
             src=""
-            title="YouTube video player"
+            title="About Geneva Wellness Institute - YouTube Video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
@@ -108,7 +113,7 @@ $breadcrumb = [
         </div>
         <div class="values-grid">
           <div class="value-card" data-aos="fade-up">
-            <div class="value-icon">✨</div>
+            <div class="value-icon"><i class="fas fa-sparkles"></i></div>
             <h3>Excellence</h3>
             <p>We maintain the highest standards in every aspect of care, from equipment to expertise to client experience.</p>
           </div>
@@ -118,7 +123,7 @@ $breadcrumb = [
             <p>Honest consultations, transparent procedures, and genuine care for every client's wellbeing and satisfaction.</p>
           </div>
           <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="value-icon">🎯</div>
+            <div class="value-icon"><i class="fas fa-bullseye"></i></div>
             <h3>Innovation</h3>
             <p>Continuously updating our techniques and technology to offer the latest advancements in aesthetic medicine.</p>
           </div>
@@ -142,7 +147,7 @@ $breadcrumb = [
         <div class="team-grid">
           <div class="team-card" data-aos="fade-up">
             <div class="team-image">
-              <img src="img/team-member-1.jpg" alt="Medical professional" loading="lazy" width="300" height="350" />
+              <img src="img/team-member-1.webp" alt="Dr. Rafael Santos - Lead Aesthetic Doctor" loading="lazy" width="300" height="350" title="Dr. Rafael Santos - Lead Aesthetic Doctor" />
             </div>
             <h3>Dr. Rafael Santos</h3>
             <p class="team-role">Lead Aesthetic Doctor</p>
@@ -150,7 +155,7 @@ $breadcrumb = [
           </div>
           <div class="team-card" data-aos="fade-up" data-aos-delay="100">
             <div class="team-image">
-              <img src="img/team-member-2.jpg" alt="Medical professional" loading="lazy" width="300" height="350" />
+              <img src="img/team-member-2.webp" alt="Maria Cruz - Wellness Specialist" loading="lazy" width="300" height="350" title="Maria Cruz - Wellness Specialist" />
             </div>
             <h3>Maria Cruz</h3>
             <p class="team-role">Wellness Specialist</p>
@@ -158,7 +163,7 @@ $breadcrumb = [
           </div>
           <div class="team-card" data-aos="fade-up" data-aos-delay="200">
             <div class="team-image">
-              <img src="img/team-member-3.jpg" alt="Medical professional" loading="lazy" width="300" height="350" />
+              <img src="img/team-member-3.webp" alt="Dr. Stephanie Lee - Technology Specialist" loading="lazy" width="300" height="350" title="Dr. Stephanie Lee - Technology Specialist" />
             </div>
             <h3>Dr. Stephanie Lee</h3>
             <p class="team-role">Technology Specialist</p>
@@ -200,7 +205,7 @@ $breadcrumb = [
   <!-- ── DYNAMIC FOOTER ───────────────────────────────────────── -->
   <?php include 'footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

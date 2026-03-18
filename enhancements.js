@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
           padding: 20px;
           box-sizing: border-box;
         `;
-        placeholder.textContent = '📷 Image not available';
+        placeholder.innerHTML = '<i class="fas fa-image"></i> Image not available';
         this.parentNode.insertBefore(placeholder, this);
       }
     });
@@ -416,7 +416,7 @@ function initPopup() {
     btn.textContent = 'Processing...';
     btn.disabled = true;
     setTimeout(() => {
-      btn.textContent = '✓ Request Submitted!';
+      btn.textContent = ''; btn.innerHTML = '<i class="fas fa-check"></i> Request Submitted!';
       setTimeout(closePopup, 1500);
     }, 900);
   });
@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const originalContent = popupForm.innerHTML;
       popupForm.innerHTML = `
         <div style="text-align: center; padding: 2rem 0;">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">✓</div>
+          <div style="font-size: 3rem; margin-bottom: 1rem;"><i class="fas fa-check"></i></div>
           <h3 style="font-family: 'Lora', serif; color: #1a1a1a; margin-bottom: 0.5rem;">Request Received!</h3>
           <p style="color: #666; margin-bottom: 1.5rem;">We'll contact you within 24 hours to confirm your consultation appointment.</p>
           <button type="button" class="popup-btn" onclick="location.reload()">Close</button>

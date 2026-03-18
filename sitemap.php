@@ -11,8 +11,10 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
   <meta name="description" content="Sitemap for Geneva Wellness Institute. Find all pages and sections of our website." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://genevawellness.com/sitemap" />
   <title>Sitemap — Geneva Wellness Institute</title>
 
   <!-- Fonts -->
@@ -43,37 +45,37 @@ $breadcrumb = [
 
           <h2>Main Pages</h2>
           <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="about.php">About Us</a></li>
-            <li><a href="gallery.php">Gallery</a></li>
-            <li><a href="testimonials.php">Testimonials</a></li>
-            <li><a href="blog.php">Blog</a></li>
-            <li><a href="contact-us.php">Contact Us</a></li>
+            <li><a href="index.php" title="Back to Home">Home</a></li>
+            <li><a href="about.php" title="Learn About Our Institute">About Us</a></li>
+            <li><a href="gallery.php" title="View Our Gallery">Gallery</a></li>
+            <li><a href="testimonials.php" title="Read Client Testimonials">Testimonials</a></li>
+            <li><a href="blog.php" title="Read Our Blog">Blog</a></li>
+            <li><a href="contact-us.php" title="Contact Us">Contact Us</a></li>
           </ul>
 
           <h2>Treatments</h2>
           <ul>
-            <li><a href="treatments.php">All Treatments</a></li>
-            <li><a href="treatments.php#hydra-7d">HYDRA 7D</a></li>
-            <li><a href="treatments.php#co2-laser">CO2 Laser</a></li>
-            <li><a href="treatments.php#carbon-laser">Carbon Laser</a></li>
-            <li><a href="treatments.php#pico-laser">Pico Laser</a></li>
-            <li><a href="treatments.php#exilis-face-neck">Exilis Face &amp; Neck</a></li>
-            <li><a href="treatments.php#cryotherapy">Cryotherapy</a></li>
-            <li><a href="treatments.php#hifu">HIFU</a></li>
+            <li><a href="treatments.php" title="View All Treatments">All Treatments</a></li>
+            <li><a href="treatments.php#hydra-7d" title="HYDRA 7D Facials">HYDRA 7D</a></li>
+            <li><a href="treatments.php#co2-laser" title="CO2 Laser Treatment">CO2 Laser</a></li>
+            <li><a href="treatments.php#carbon-laser" title="Carbon Laser Peel Treatment">Carbon Laser</a></li>
+            <li><a href="treatments.php#pico-laser" title="Pico Laser Treatment">Pico Laser</a></li>
+            <li><a href="treatments.php#exilis-face-neck" title="Exilis Face & Neck Treatment">Exilis Face &amp; Neck</a></li>
+            <li><a href="treatments.php#cryotherapy" title="Cryotherapy Treatment">Cryotherapy</a></li>
+            <li><a href="treatments.php#hifu" title="HIFU Non-Surgical Facelift">HIFU</a></li>
           </ul>
 
           <h2>Legal &amp; Policies</h2>
           <ul>
-            <li><a href="privacy-policy.php">Privacy Policy</a></li>
-            <li><a href="terms.php">Terms of Service</a></li>
-            <li><a href="cookie-policy.php">Cookie Policy</a></li>
-            <li><a href="sitemap.php">Sitemap</a></li>
+            <li><a href="privacy-policy.php" title="Read our Privacy Policy">Privacy Policy</a></li>
+            <li><a href="terms.php" title="Read our Terms of Service">Terms of Service</a></li>
+            <li><a href="cookie-policy.php" title="Read our Cookie Policy">Cookie Policy</a></li>
+            <li><a href="sitemap.php" title="View our Sitemap">Sitemap</a></li>
           </ul>
 
           <h2>Contact &amp; Location</h2>
           <ul>
-            <li><a href="contact-us.php">Contact Us</a></li>
+            <li><a href="contact-us.php" title="Contact Us">Contact Us</a></li>
             <li>
               <strong>Geneva Wellness Institute</strong><br>
               Email: <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a><br>

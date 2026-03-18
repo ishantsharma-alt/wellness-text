@@ -7,13 +7,25 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geneva Wellness Institute | Advanced Aesthetic Clinic in Alabang</title>
+  <title>Aesthetic Clinic Alabang | Laser & Anti-Aging</title>
 
-<meta name="description" content="Discover advanced aesthetic treatments, laser skin therapies, anti-aging solutions and body contouring services at Geneva Wellness Institute in Alabang, Muntinlupa City. Book your consultation today.">
+<meta name="description" content="Advanced aesthetic clinic in Alabang offering laser treatments, HIFU, anti-aging & body contouring. Expert specialists. Book your transformation today.">
 
 <meta name="keywords" content="aesthetic clinic, aesthetic clinic Alabang, best aesthetic clinic Alabang, aesthetic clinic in Alabang, aesthetic clinic near me, skin clinic Alabang, laser skin clinic Alabang, medical aesthetic clinic Alabang, advanced aesthetic clinic Alabang, non surgical aesthetic treatments, non invasive aesthetic treatments, anti aging clinic Alabang, skin rejuvenation clinic Alabang, body contouring clinic Alabang, best skin clinic in Alabang, laser treatment clinic Alabang">
 
 <meta name="author" content="Geneva Wellness Institute">
+
+<!-- Open Graph Meta Tags for Social Sharing -->
+<meta property="og:title" content="Aesthetic Clinic Alabang | Laser & Anti-Aging" />
+<meta property="og:description" content="Advanced aesthetic clinic in Alabang offering laser treatments, HIFU, anti-aging & body contouring. Expert specialists. Book your transformation today." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://genevawellness.com" />
+<meta property="og:image" content="img/feature-img/home.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="img/feature-img/home.webp" />
+<link rel="canonical" href="https://genevawellness.com" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -32,7 +44,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       "streetAddress": "Alabang, Muntinlupa City",
       "addressCountry": "PH"
     },
-    "image": "https://genevawellness.com/img/logo.png",
+    "image": "https://genevawellness.com/img/logo.webp",
     "priceRange": "$$$",
     "areaServed": "PH",
     "serviceType": "Wellness and Aesthetic Services",
@@ -42,6 +54,9 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
     ]
   }
   </script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -191,6 +206,10 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       font-weight: 700;
       font-style: normal;
       font-family: "Inter", sans-serif;
+    }
+
+    #testimonials .section-header h2{
+      color: #ffffff;
     }
 
     /* VIDEO MODAL — overlay stays dark (functional UI, not a section bg) */
@@ -524,875 +543,470 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 ═══════════════════════════════════════════════════════════ -->
 
 <style>
-/* ─────────────────────────────────────────────────────────
-   HERO VARIABLES
-───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #000; }
+ 
 :root {
-  --h-gold:      #CAAE5F;
-  --h-gold-dim:  #B8955C;
-  --h-gold-pale: rgba(202,174,95,0.18);
-  --h-dark:      #090704;
-  --h-white:     #ffffff;
-  --h-ease:      cubic-bezier(0.22, 1, 0.36, 1);
-  --h-slide-duration: 5000; /* ms, used as reference */
+  --gold:        #CAAE5F;
+  --gold-dim:    #B8955C;
+  --gold-border: rgba(202,174,95,0.38);
+  --dark:        #090704;
+  --ease:        cubic-bezier(0.22, 1, 0.36, 1);
+  --dur:         750ms;
 }
-
-/* ─────────────────────────────────────────────────────────
-   OUTER SHELL
-───────────────────────────────────────────────────────── */
+ 
+/* ════════════════════════════
+   HERO SHELL
+════════════════════════════ */
 .gw-hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
+  height: 100vh;
+  min-height: 600px;
+  background: var(--dark);
   overflow: hidden;
-  background: var(--h-dark);
   display: flex;
   flex-direction: column;
 }
-
-/* ─────────────────────────────────────────────────────────
-   SLIDER — BG IMAGES (crossfade)
-───────────────────────────────────────────────────────── */
-.gw-hero__bgs {
+ 
+/* ════════════════════════════
+   SLIDE BACKGROUNDS
+   Each slide is absolutely positioned and fills the full hero.
+   Slide 1 uses your local file; slides 2-4 use Unsplash CDN.
+   background-color on slide 1 is a fallback so it's never blank.
+════════════════════════════ */
+.gw-track {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
-.gw-hero__bg {
+ 
+.gw-bg {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 1.6s cubic-bezier(0.45, 0, 0.15, 1);
-  will-change: opacity;
-}
-.gw-hero__bg.is-active {
-  opacity: 1;
-}
-.gw-hero__bg img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 68% center;
-  display: block;
-  transform-origin: center;
-  transition: transform 8s ease-out;
-}
-/* Ken Burns effect on active slide BG */
-.gw-hero__bg.is-active img {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
   transform: scale(1.06);
-}
-.gw-hero__bg:not(.is-active) img {
-  transform: scale(1.0);
-}
-/* Initial entry animation for first bg */
-.gw-hero__bg.is-initial img {
-  animation: gwHeroBgReveal 2.2s var(--h-ease) both;
-}
-@keyframes gwHeroBgReveal {
-  from { transform: scale(1.12); filter: brightness(0.3); }
-  to   { transform: scale(1.06); filter: brightness(1); }
-}
-
-/* ─────────────────────────────────────────────────────────
-   OVERLAY STACK  (4 layers for cinematic depth)
-───────────────────────────────────────────────────────── */
-/* 1. Global dark veil */
-.gw-hero__veil {
-  position: absolute; inset: 0; z-index: 1;
-  background: rgba(9,7,4,0.38);
-}
-/* 2. Strong left panel for text */
-.gw-hero__panel {
-  position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(
-    108deg,
-    rgba(9,7,4,0.92)  0%,
-    rgba(9,7,4,0.80)  28%,
-    rgba(9,7,4,0.45)  52%,
-    rgba(9,7,4,0.05)  70%,
-    transparent       82%
-  );
-}
-/* 3. Bottom fade for stats */
-.gw-hero__bottom-fade {
-  position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-  height: 42%;
-  background: linear-gradient(to top, rgba(9,7,4,0.75) 0%, transparent 100%);
-}
-/* 4. Atmospheric gold glow top-right */
-.gw-hero__glow {
-  position: absolute; z-index: 2;
-  top: -15%; right: -8%;
-  width: 70vw; height: 90vh;
-  background: radial-gradient(ellipse 55% 55% at 65% 35%,
-    rgba(202,174,95,0.22) 0%, transparent 68%);
-  pointer-events: none;
-  animation: gwGlowPulse 7s ease-in-out infinite alternate;
-}
-@keyframes gwGlowPulse {
-  from { opacity: 0.65; transform: scale(0.97); }
-  to   { opacity: 1;    transform: scale(1.04); }
-}
-
-/* ─────────────────────────────────────────────────────────
-   FLOATING PARTICLES  (pure CSS)
-───────────────────────────────────────────────────────── */
-.gw-hero__particles {
-  position: absolute; inset: 0; z-index: 3;
-  pointer-events: none;
-  overflow: hidden;
-}
-.gw-p {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--h-gold);
-  animation: gwParticleDrift linear infinite;
-}
-.gw-p:nth-child(1){width:3px;height:3px;top:18%;left:62%;opacity:.5;animation-duration:9s;animation-delay:0s;}
-.gw-p:nth-child(2){width:2px;height:2px;top:44%;left:74%;opacity:.35;animation-duration:12s;animation-delay:1.5s;}
-.gw-p:nth-child(3){width:4px;height:4px;top:30%;left:55%;opacity:.6;animation-duration:7s;animation-delay:3s;}
-.gw-p:nth-child(4){width:2px;height:2px;top:60%;left:82%;opacity:.4;animation-duration:10s;animation-delay:0.8s;}
-.gw-p:nth-child(5){width:3px;height:3px;top:72%;left:58%;opacity:.45;animation-duration:14s;animation-delay:2.2s;}
-.gw-p:nth-child(6){width:2px;height:2px;top:25%;left:88%;opacity:.3;animation-duration:11s;animation-delay:4s;}
-.gw-p:nth-child(7){width:5px;height:5px;top:52%;left:67%;opacity:.25;animation-duration:8s;animation-delay:1s;}
-@keyframes gwParticleDrift {
-  0%   { transform: translateY(0)    scale(1);   box-shadow: 0 0 0 rgba(202,174,95,0); }
-  50%  { transform: translateY(-28px) scale(1.4); box-shadow: 0 0 10px rgba(202,174,95,0.7); }
-  100% { transform: translateY(0)    scale(1);   box-shadow: 0 0 0 rgba(202,174,95,0); }
-}
-
-/* ─────────────────────────────────────────────────────────
-   DECORATIVE GEOMETRY
-───────────────────────────────────────────────────────── */
-/* Thin vertical gold rule — left edge marker */
-.gw-hero__rule {
-  position: absolute;
-  left: clamp(2.5rem, 5.5vw, 5.5rem);
-  top: 14%; bottom: 18%;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(202,174,95,0.55) 15%,
-    rgba(202,174,95,0.55) 85%,
-    transparent 100%
-  );
-  z-index: 5;
-  transform-origin: top;
-  animation: gwRuleReveal 1.6s var(--h-ease) 0.4s both;
-}
-.gw-hero__rule::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%) rotate(45deg);
-  width: 6px; height: 6px;
-  background: var(--h-gold);
-  box-shadow: 0 0 10px rgba(202,174,95,0.9);
-}
-@keyframes gwRuleReveal {
-  from { transform: scaleY(0); opacity: 0; }
-  to   { transform: scaleY(1); opacity: 1; }
-}
-
-/* Elegant corner frame — top right of the image area */
-.gw-hero__corner {
-  position: absolute;
-  top: clamp(1.5rem, 4vh, 3.5rem);
-  right: clamp(1.5rem, 4vw, 3.5rem);
-  z-index: 5;
-  pointer-events: none;
-}
-.gw-hero__corner-svg {
-  width: clamp(80px,10vw,140px);
-  height: clamp(80px,10vw,140px);
-  opacity: 0;
-  animation: gwFadeScale 1.2s var(--h-ease) 1.4s both;
-}
-@keyframes gwFadeScale {
-  from { opacity: 0; transform: scale(0.6) rotate(-15deg); }
-  to   { opacity: 1; transform: scale(1)   rotate(0deg); }
-}
-
-/* Rotating ring ornament */
-.gw-hero__ring {
-  position: absolute;
-  right: clamp(5%,14vw,18%);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 4;
-  width: clamp(180px,22vw,300px);
-  height: clamp(180px,22vw,300px);
-  pointer-events: none;
-}
-.gw-hero__ring-outer {
-  position: absolute; inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(202,174,95,0.2);
-  animation: gwRingSpin 30s linear infinite;
-  opacity: 0;
-  animation: gwRingAppear 1.5s var(--h-ease) 1.8s both,
-             gwRingSpin 30s linear 3.3s infinite;
-}
-.gw-hero__ring-inner {
-  position: absolute;
-  inset: 22%;
-  border-radius: 50%;
-  border: 1px dashed rgba(202,174,95,0.15);
-  animation: gwRingAppear 1.5s var(--h-ease) 2s both,
-             gwRingSpinRev 18s linear 3.5s infinite;
-}
-@keyframes gwRingSpin    { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
-@keyframes gwRingSpinRev { from { transform: rotate(0deg); }   to { transform: rotate(-360deg); } }
-@keyframes gwRingAppear  { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-
-/* ─────────────────────────────────────────────────────────
-   MAIN CONTENT  (slider wrapper)
-───────────────────────────────────────────────────────── */
-.gw-hero__body {
-  position: relative;
-  z-index: 10;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  padding: clamp(6rem, 14vh, 10rem) clamp(1.5rem, 5vw, 3rem) clamp(5rem, 10vh, 7rem);
-  padding-left: clamp(4.5rem, 9.5vw, 9rem); /* clear the rule */
-  /* needed for absolute slide contents */
-  overflow: hidden;
-}
-
-/* Slide content container — all slides stack here */
-.gw-hero__slides-container {
-  position: relative;
-  width: 100%;
-  max-width: min(800px, 52vw);
-  /* Minimum height so the container doesn't collapse */
-  min-height: clamp(340px, 55vh, 560px);
-}
-
-@media (max-width: 768px) {
-  .gw-hero__slides-container { max-width: 100%; min-height: clamp(320px, 60vh, 460px); }
-}
-
-/* ── Each slide's content — positioned on top of each other ── */
-.gw-hero__slide-content {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  /* Hidden by default */
-  opacity: 0;
-  transform: translateX(50px);
-  transition: opacity 0.72s ease, transform 0.72s var(--h-ease);
-  pointer-events: none;
+  transition:
+    opacity  var(--dur) cubic-bezier(0.4,0,0.2,1),
+    transform 8s linear;
   will-change: opacity, transform;
 }
-
-/* Active = visible */
-.gw-hero__slide-content.is-active {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
+.gw-bg.is-active  { opacity:1; transform:scale(1.0); z-index:1; }
+.gw-bg.is-leaving { opacity:0; transform:scale(1.03); z-index:2;
+  transition: opacity calc(var(--dur)*.8) ease, transform calc(var(--dur)*.8) ease; }
+ 
+/* SLIDE IMAGE ASSIGNMENTS */
+.gw-bg[data-slide="0"] {
+  background-image: url('img/home-hero-updated-new.webp');
+  background-color: #1c1510; /* rich dark fallback when local img not found */
 }
-
-/* Exiting = slide out to the left */
-.gw-hero__slide-content.is-leaving {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-  pointer-events: none;
-}
-
-/* ── INITIAL SLIDE — children keep their own staggered entry animations ── */
-.gw-hero__slide-content.is-initial {
-  opacity: 1;          /* container is immediately visible */
-  transform: none;
-  transition: none;    /* children drive their own entry */
-}
-
-/* ── Non-initial slides: children appear at full opacity (no keyframe replay) ── */
-.gw-hero__slide-content:not(.is-initial) .gw-hero__eyebrow,
-.gw-hero__slide-content:not(.is-initial) .gw-hero__sub,
-.gw-hero__slide-content:not(.is-initial) .gw-hero__actions,
-.gw-hero__slide-content:not(.is-initial) .gw-hero__proof {
-  opacity: 1 !important;
-  animation: none !important;
-  transform: none !important;
-}
-.gw-hero__slide-content:not(.is-initial) .gw-hero__title-line-inner {
-  opacity: 1 !important;
-  animation: none !important;
-  transform: none !important;
-}
-
-/* Legacy .gw-hero__content kept for floating cards reference */
-.gw-hero__content {
-  max-width: min(800px, 52vw);
-}
-@media (max-width: 768px) {
-  .gw-hero__content { max-width: 100%; }
-}
-
-/* ── EYEBROW PILL ── */
-.gw-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  border: 1px solid rgba(202,174,95,0.35);
-  border-radius: 40px;
-  padding: 0.38rem 1rem 0.38rem 0.55rem;
-  background: rgba(202,174,95,0.08);
-  backdrop-filter: blur(6px);
-  margin-bottom: 1.8rem;
-  opacity: 0;
-  animation: gwSlideUp 0.9s var(--h-ease) 0.7s both;
-}
-.gw-hero__eyebrow-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--h-gold);
-  flex-shrink: 0;
-  box-shadow: 0 0 0 2px rgba(202,174,95,0.3);
-  animation: gwDotPulse 2.5s ease-in-out infinite;
-}
-@keyframes gwDotPulse {
-  0%,100% { box-shadow: 0 0 0   2px rgba(202,174,95,0.3); }
-  50%      { box-shadow: 0 0 12px 4px rgba(202,174,95,0.7); }
-}
-.gw-hero__eyebrow span {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--h-gold);
-}
-
-/* ── HEADLINE ── */
-.gw-hero__title {
-  font-family: 'Lora', serif;
-  font-weight: 400;
-  font-size: clamp(2.8rem, 5.5vw, 5.4rem);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: var(--h-white);
-  margin: 0 0 1.6rem;
-}
-.gw-hero__title em {
-  font-style: italic;
-  color: var(--h-gold);
-  display: block;
-}
-.gw-hero__title-line {
-  display: block;
-  overflow: hidden;
-}
-.gw-hero__title-line-inner {
-  display: block;
-  opacity: 0;
-  animation: gwTitleReveal 1s var(--h-ease) both;
-}
-.gw-hero__title-line:nth-child(1) .gw-hero__title-line-inner { animation-delay: 0.9s; }
-.gw-hero__title-line:nth-child(2) .gw-hero__title-line-inner { animation-delay: 1.05s; }
-.gw-hero__title-line:nth-child(3) .gw-hero__title-line-inner { animation-delay: 1.2s; }
-@keyframes gwTitleReveal {
-  from { opacity: 0; transform: translateY(110%) skewY(2deg); }
-  to   { opacity: 1; transform: translateY(0)    skewY(0deg); }
-}
-
-/* ── SUBTITLE ── */
-.gw-hero__sub {
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(0.9rem, 1.5vw, 1.08rem);
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.65);
-  max-width: 460px;
-  margin: 0 0 2.4rem;
-  opacity: 0;
-  animation: gwSlideUp 0.9s var(--h-ease) 1.35s both;
-}
-
-/* ── CTA BUTTONS ── */
-.gw-hero__actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.8rem;
-  opacity: 0;
-  animation: gwSlideUp 0.9s var(--h-ease) 1.5s both;
-}
-
-.gw-hero__btn-book {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 1rem 2.2rem;
-  background: linear-gradient(135deg, #CAAE5F 0%, #B8955C 100%);
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  border-radius: 60px;
-  text-decoration: none;
-  box-shadow:
-    0 8px 28px rgba(202,174,95,0.45),
-    0 2px 6px  rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.25);
-  transition: all 0.35s var(--h-ease);
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-}
-.gw-hero__btn-book:hover{
-  color:#ffffff;
-}
-.gw-hero__btn-book::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.gw-hero__btn-book:hover::before { opacity: 1; }
-.gw-hero__btn-book:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow:
-    0 16px 44px rgba(202,174,95,0.55),
-    0 4px 12px  rgba(0,0,0,0.4);
-}
-.gw-hero__btn-book svg {
-  transition: transform 0.3s var(--h-ease);
-  flex-shrink: 0;
-}
-.gw-hero__btn-book:hover svg { transform: translateX(5px); }
-
-.gw-hero__btn-explore {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.75rem;
-  border: 1.5px solid rgba(255,255,255,0.22);
-  border-radius: 60px;
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.88);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-.gw-hero__btn-explore:hover {
-  border-color: rgba(202,174,95,0.5);
-  background: rgba(202,174,95,0.1);
-  color: var(--h-gold);
-  transform: translateY(-2px);
-}
-.gw-hero__btn-play {
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  background: rgba(202,174,95,0.18);
-  border: 1px solid rgba(202,174,95,0.35);
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.3s ease;
-  flex-shrink: 0;
-}
-.gw-hero__btn-explore:hover .gw-hero__btn-play {
-  background: rgba(202,174,95,0.3);
-}
-
-/* ── SOCIAL PROOF ── */
-.gw-hero__proof {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  opacity: 0;
-  animation: gwSlideUp 0.9s var(--h-ease) 1.65s both;
-}
-.gw-hero__avatars {
-  display: flex;
-  align-items: center;
-}
-.gw-hero__avatar {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.4);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #fff;
-  margin-right: -9px;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-.gw-hero__avatars:hover .gw-hero__avatar { margin-right: -3px; }
-.gw-hero__proof-sep {
-  width: 1px; height: 30px;
-  background: rgba(255,255,255,0.18);
-  flex-shrink: 0;
-  margin-left: 9px;
-}
-.gw-hero__proof-copy {
-  display: flex; flex-direction: column; gap: 2px;
-}
-.gw-hero__stars {
-  color: var(--h-gold);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-}
-.gw-hero__proof-copy span {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.6);
-}
-.gw-hero__proof-copy strong { color: rgba(255,255,255,0.9); }
-
-/* ─────────────────────────────────────────────────────────
-   FLOATING GLASS CARDS  (desktop only)
-───────────────────────────────────────────────────────── */
-.gw-hero__cards {
-  position: absolute;
-  z-index: 10;
-  right: clamp(2rem, 5vw, 5rem);
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  pointer-events: none;
-}
-
-.gw-hero__card {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.9rem 1.2rem;
-  background: rgba(9,7,4,0.45);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(202,174,95,0.22);
-  border-radius: 14px;
-  box-shadow:
-    0 8px 32px rgba(0,0,0,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.08);
-  opacity: 0;
-  animation: gwCardReveal 0.9s var(--h-ease) both;
-  white-space: nowrap;
-  min-width: 190px;
-}
-.gw-hero__card:nth-child(1) { animation-delay: 1.7s; }
-.gw-hero__card:nth-child(2) { animation-delay: 1.9s; }
-.gw-hero__card:nth-child(3) { animation-delay: 2.1s; }
-@keyframes gwCardReveal {
-  from { opacity: 0; transform: translateX(30px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-/* Idle float after reveal */
-.gw-hero__card:nth-child(1) { animation: gwCardReveal 0.9s var(--h-ease) 1.7s both, gwFloat1 5s ease-in-out 2.8s infinite alternate; }
-.gw-hero__card:nth-child(2) { animation: gwCardReveal 0.9s var(--h-ease) 1.9s both, gwFloat2 6s ease-in-out 3.2s infinite alternate; }
-.gw-hero__card:nth-child(3) { animation: gwCardReveal 0.9s var(--h-ease) 2.1s both, gwFloat3 4.5s ease-in-out 3.6s infinite alternate; }
-@keyframes gwFloat1 { from { transform: translateY(0); }  to { transform: translateY(-10px); } }
-@keyframes gwFloat2 { from { transform: translateY(0); }  to { transform: translateY(-7px); } }
-@keyframes gwFloat3 { from { transform: translateY(0); }  to { transform: translateY(-12px); } }
-
-.gw-hero__card-emoji {
-  font-size: 1.4rem;
-  flex-shrink: 0;
-}
-.gw-hero__card-num {
-  font-family: 'Lora', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--h-gold);
-  flex-shrink: 0;
-}
-.gw-hero__card-info strong {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.83rem;
-  font-weight: 700;
-  color: #fff;
-}
-.gw-hero__card-info span {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.52);
-}
-
-/* ─────────────────────────────────────────────────────────
-   BOTTOM STATS BAR
-───────────────────────────────────────────────────────── */
-.gw-hero__stats {
-  position: relative;
-  z-index: 10;
-  flex-shrink: 0;
-  opacity: 0;
-  animation: gwSlideUp 1s var(--h-ease) 2s both;
-}
-.gw-hero__stats-inner {
-  display: flex;
-  align-items: stretch;
-  border-top: 1px solid rgba(202,174,95,0.18);
-  background: rgba(9,7,4,0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-.gw-hero__stat {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.2rem 0.75rem;
-  gap: 0.18rem;
-  position: relative;
-  cursor: default;
-  transition: background 0.3s ease;
-}
-.gw-hero__stat:hover { background: rgba(202,174,95,0.06); }
-.gw-hero__stat + .gw-hero__stat::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 22%; bottom: 22%;
-  width: 1px;
-  background: rgba(202,174,95,0.18);
-}
-.gw-hero__stat-num {
-  font-family: 'Lora', serif;
-  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
-  font-weight: 600;
-  color: var(--h-gold);
-  line-height: 1;
-}
-.gw-hero__stat-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-}
-
-/* ─────────────────────────────────────────────────────────
-   SCROLL CUE
-───────────────────────────────────────────────────────── */
-.gw-hero__scroll {
-  position: absolute;
-  /* Sits just above the stats bar; adjust if stats bar height changes */
-  bottom: calc(68px + 1.4rem);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0;
-  animation: gwSlideUp 1s var(--h-ease) 2.2s both;
-}
-.gw-hero__scroll-mouse {
-  width: 21px; height: 34px;
-  border: 1.5px solid rgba(202,174,95,0.4);
-  border-radius: 12px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 5px;
-}
-.gw-hero__scroll-wheel {
-  width: 2.5px; height: 7px;
-  background: var(--h-gold);
-  border-radius: 3px;
-  animation: gwScrollWheel 2s ease-in-out infinite;
-}
-@keyframes gwScrollWheel {
-  0%   { transform: translateY(0);    opacity: 1; }
-  55%  { transform: translateY(11px); opacity: 0; }
-  56%  { transform: translateY(0);    opacity: 0; }
-  100% { opacity: 1; }
-}
-.gw-hero__scroll-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  writing-mode: vertical-rl;
-}
-
-/* ─────────────────────────────────────────────────────────
-   SHARED KEYFRAME
-───────────────────────────────────────────────────────── */
-@keyframes gwSlideUp {
-  from { opacity: 0; transform: translateY(26px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ─────────────────────────────────────────────────────────
-   SLIDER NAVIGATION — ARROWS
-───────────────────────────────────────────────────────── */
-.gw-hero__nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-62%);  /* slightly above center, accounting for stats bar */
-  z-index: 20;
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: rgba(9,7,4,0.50);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(202,174,95,0.28);
-  color: rgba(255,255,255,0.82);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--h-ease);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.07);
-  outline: none;
-}
-.gw-hero__nav:hover {
-  background: rgba(202,174,95,0.2);
-  border-color: rgba(202,174,95,0.65);
-  color: var(--h-gold);
-  box-shadow: 0 8px 32px rgba(202,174,95,0.22), 0 4px 24px rgba(0,0,0,0.3);
-  transform: translateY(-62%) scale(1.1);
-}
-.gw-hero__nav--prev { left: clamp(0.75rem, 2.5vw, 2rem); }
-.gw-hero__nav--next { right: clamp(0.75rem, 2.5vw, 2rem); }
-.gw-hero__nav svg {
-  pointer-events: none;
-  transition: transform 0.25s var(--h-ease);
-  flex-shrink: 0;
-}
-.gw-hero__nav--prev:hover svg { transform: translateX(-2px); }
-.gw-hero__nav--next:hover svg { transform: translateX(2px); }
-
-/* ─────────────────────────────────────────────────────────
-   SLIDER NAVIGATION — DOTS + PROGRESS
-───────────────────────────────────────────────────────── */
-.gw-hero__dots {
-  position: absolute;
-  bottom: calc(68px + 1.6rem);
-  left: clamp(4.5rem, 9.5vw, 9rem); /* aligned with text */
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.gw-hero__dot {
-  position: relative;
-  width: 8px; height: 8px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.26);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.4s var(--h-ease);
-  outline: none;
-  overflow: hidden;
-}
-.gw-hero__dot:hover {
-  background: rgba(255,255,255,0.52);
-  transform: scaleY(1.2);
-}
-.gw-hero__dot.is-active {
-  width: 38px;
-  background: rgba(202,174,95,0.3);
-  border: 1px solid rgba(202,174,95,0.5);
-}
-.gw-hero__dot.is-active::after {
-  content: '';
+.gw-bg[data-slide="1"] { background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1920&q=80'); }
+.gw-bg[data-slide="2"] { background-image: url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1920&q=80'); }
+.gw-bg[data-slide="3"] { background-image: url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1920&q=80'); }
+ 
+/* ════════════════════════════
+   OVERLAYS — 3 stacked layers for maximum readability
+ 
+   Layer A: Strong left-column dark panel (text lives here)
+   Layer B: Top + bottom cinematic vignette
+   Layer C: Extra scrim only for slide 2-4 (applied via JS class)
+════════════════════════════ */
+.gw-overlay {
   position: absolute;
   inset: 0;
-  border-radius: 20px;
-  background: linear-gradient(90deg, var(--h-gold) 0%, #e0cc90 100%);
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: gwDotFill 5s linear forwards;
+  z-index: 3;
+  pointer-events: none;
 }
-@keyframes gwDotFill {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+/* Layer A — left gradient: 92% opacity column that fades out right */
+.gw-overlay::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(9,7,4,0.94)  0%,
+      rgba(9,7,4,0.82)  28%,
+      rgba(9,7,4,0.52)  52%,
+      rgba(9,7,4,0.18)  70%,
+      rgba(9,7,4,0.04) 100%
+    );
 }
-
-/* Slide counter */
-.gw-hero__slide-counter {
+/* Layer B — top + bottom vignette */
+.gw-overlay::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(9,7,4,0.45)  0%,
+      rgba(9,7,4,0.00) 20%,
+      rgba(9,7,4,0.00) 55%,
+      rgba(9,7,4,0.72) 85%,
+      rgba(9,7,4,0.90) 100%
+    );
+}
+ 
+/* Thin cinematic bars */
+.gw-bar { position:absolute;left:0;right:0;height:70px;z-index:4;pointer-events:none; }
+.gw-bar--top    { top:0;    background:linear-gradient(to bottom,rgba(9,7,4,.55),transparent); }
+.gw-bar--bottom { bottom:0; background:linear-gradient(to top,   rgba(9,7,4,.65),transparent); }
+ 
+/* ════════════════════════════
+   DECORATIVE ELEMENTS
+════════════════════════════ */
+.gw-glow {
+  position:absolute;z-index:4;top:15%;left:-6%;
+  width:720px;height:720px;border-radius:50%;
+  background:radial-gradient(circle,rgba(202,174,95,.07) 0%,transparent 60%);
+  pointer-events:none;
+  animation:glowPulse 9s ease-in-out infinite alternate;
+}
+@keyframes glowPulse{from{opacity:.5;transform:scale(.88);}to{opacity:.9;transform:scale(1.1);}}
+ 
+.gw-vrule {
+  position:absolute;left:clamp(2rem,7.5vw,7rem);top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,transparent 0%,rgba(202,174,95,.35) 20%,rgba(202,174,95,.35) 80%,transparent 100%);
+  z-index:5;pointer-events:none;opacity:0;
+  animation:fadeIn 1.2s var(--ease) 1.2s both;
+}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+ 
+.gw-particles{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden;}
+.gw-p{position:absolute;border-radius:50%;background:var(--gold);animation:pdrift linear infinite;}
+.gw-p:nth-child(1){width:2px;height:2px;top:22%;left:18%;opacity:.28;animation-duration:9s;}
+.gw-p:nth-child(2){width:1px;height:1px;top:55%;left:12%;opacity:.18;animation-duration:11s;animation-delay:1.3s;}
+.gw-p:nth-child(3){width:2px;height:2px;top:68%;left:30%;opacity:.32;animation-duration:13s;animation-delay:2.5s;}
+.gw-p:nth-child(4){width:1px;height:1px;top:35%;left:8%; opacity:.16;animation-duration:8s;animation-delay:.8s;}
+.gw-p:nth-child(5){width:2px;height:2px;top:48%;left:44%;opacity:.20;animation-duration:10s;animation-delay:1.8s;}
+@keyframes pdrift{0%{transform:translateY(0) scale(1);}50%{transform:translateY(-22px) scale(1.5);}100%{transform:translateY(0) scale(1);}}
+ 
+.gw-ring {
+  position:absolute;right:clamp(4%,13vw,17%);top:50%;transform:translateY(-50%);
+  z-index:5;width:clamp(130px,14vw,200px);height:clamp(130px,14vw,200px);
+  pointer-events:none;opacity:0;
+  animation:ringIn 1s var(--ease) 2.2s both;
+}
+@keyframes ringIn{from{opacity:0;transform:translateY(-50%) scale(.4);}to{opacity:.38;transform:translateY(-50%) scale(1);}}
+.gw-ring-outer{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(202,174,95,.22);animation:rCW 28s linear infinite;}
+.gw-ring-inner{position:absolute;inset:22%;border-radius:50%;border:1px dashed rgba(202,174,95,.13);animation:rCCW 16s linear infinite;}
+@keyframes rCW {to{transform:rotate( 360deg);}}
+@keyframes rCCW{to{transform:rotate(-360deg);}}
+ 
+/* ════════════════════════════
+   SLIDE CONTENT PANELS
+   All 4 sit in the same wrapper, absolutely stacked.
+   They crossfade/slide independently of the bg.
+════════════════════════════ */
+.gw-slides-wrap {
   position: absolute;
-  bottom: calc(68px + 1.8rem);
-  right: clamp(1rem, 3vw, 2.5rem);
-  z-index: 20;
-  font-family: 'Lora', serif;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.38);
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+ 
+.gw-content {
+  position: absolute;
+  inset: 0;
   display: flex;
-  align-items: baseline;
-  gap: 0.2rem;
-  letter-spacing: 0.04em;
+  align-items: center;
+  /* clear the vrule with left indent */
+  padding: clamp(6rem,11vh,10rem)
+           clamp(3rem,8.5vw,9rem)
+           clamp(6rem,11vh,8rem)
+           calc(clamp(2rem,7.5vw,7rem) + 2.8rem);
+ 
   opacity: 0;
-  animation: gwSlideUp 1s var(--h-ease) 2.2s both;
+  transform: translateX(44px);
+  transition:
+    opacity  var(--dur) cubic-bezier(0.4,0,0.2,1),
+    transform var(--dur) var(--ease);
+  will-change: opacity, transform;
+  pointer-events: none;
 }
-.gw-hero__slide-counter strong {
-  font-size: 1.3rem;
-  color: var(--h-gold);
-  font-weight: 400;
-  line-height: 1;
+.gw-content.is-active  { opacity:1; transform:translateX(0); pointer-events:auto; }
+.gw-content.is-leaving { opacity:0; transform:translateX(-32px); pointer-events:none;
+  transition: opacity calc(var(--dur)*.65) ease, transform calc(var(--dur)*.65) ease; }
+ 
+/* Entry animations for slide 1 only */
+.gw-content.is-initial .gw-eyebrow { animation:slideUp .8s var(--ease) .65s  both; }
+.gw-content.is-initial .gw-title   { animation:slideUp 1s  var(--ease) .8s   both; }
+.gw-content.is-initial .gw-sub     { animation:slideUp .8s var(--ease) 1.05s both; }
+.gw-content.is-initial .gw-pills   { animation:slideUp .8s var(--ease) 1.18s both; }
+.gw-content.is-initial .gw-actions { animation:slideUp .8s var(--ease) 1.32s both; }
+.gw-content.is-initial .gw-proof   { animation:slideUp .8s var(--ease) 1.46s both; }
+.gw-content.is-initial .gw-certs   { animation:slideUp .8s var(--ease) 1.6s  both; }
+/* Non-initial slides skip per-child animation */
+.gw-content:not(.is-initial) .gw-eyebrow,
+.gw-content:not(.is-initial) .gw-title,
+.gw-content:not(.is-initial) .gw-sub,
+.gw-content:not(.is-initial) .gw-pills,
+.gw-content:not(.is-initial) .gw-actions,
+.gw-content:not(.is-initial) .gw-proof,
+.gw-content:not(.is-initial) .gw-certs {
+  opacity:1!important; animation:none!important; transform:none!important;
 }
-
-/* ─────────────────────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .gw-hero__cards { display: none; }
-  .gw-hero__ring  { display: none; }
-  .gw-hero__panel {
-    background: linear-gradient(
-      160deg,
-      rgba(9,7,4,0.88) 0%,
-      rgba(9,7,4,0.70) 50%,
-      rgba(9,7,4,0.15) 80%,
-      transparent 100%
-    );
-  }
+@keyframes slideUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+ 
+.gw-inner { max-width: 880px; }
+ 
+/* EYEBROW */
+.gw-eyebrow {
+  display:inline-flex;align-items:center;gap:.55rem;
+  border:1px solid var(--gold-border);border-radius:40px;
+  padding:.38rem 1rem .38rem .6rem;
+  background:rgba(202,174,95,.09);backdrop-filter:blur(8px);
+  margin-bottom:1.5rem;
 }
-@media (max-width: 768px) {
-  .gw-hero__bg img { object-position: 72% center; }
-  .gw-hero__title  { font-size: clamp(2.4rem, 9vw, 3.4rem); }
-  .gw-hero__rule   { display: none; }
-  .gw-hero__scroll { display: none; }
-  .gw-hero__body   { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .gw-hero__content{ max-width: 100%; }
-  .gw-hero__stats-inner { flex-wrap: wrap; }
-  .gw-hero__stat   { min-width: 50%; }
-  .gw-hero__panel  {
-    background: linear-gradient(
-      180deg,
-      rgba(9,7,4,0.82) 0%,
-      rgba(9,7,4,0.65) 55%,
-      rgba(9,7,4,0.25) 100%
-    );
-  }
-  .gw-hero__nav    { width: 42px; height: 42px; }
-  .gw-hero__nav--prev { left: 0.5rem; }
-  .gw-hero__nav--next { right: 0.5rem; }
-  .gw-hero__dots   { left: 1.5rem; }
-  .gw-hero__slide-counter { display: none; }
+.gw-eyebrow__dot{
+  width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;
+  box-shadow:0 0 0 2px rgba(202,174,95,.3);
+  animation:dotPulse 2.5s ease-in-out infinite;
 }
-@media (max-width: 480px) {
-  .gw-hero__title  { font-size: clamp(2rem, 8vw, 2.8rem); }
-  .gw-hero__actions{ gap: 0.7rem; }
-  .gw-hero__btn-book,
-  .gw-hero__btn-explore { font-size: 0.82rem; padding: 0.85rem 1.4rem; }
-  .gw-hero__btn-explore .gw-hero__btn-play { display: none; }
-  .gw-hero__stat   { min-width: 50%; padding: 1rem 0.5rem; }
-  .gw-hero__corner { display: none; }
-  .gw-hero__nav    { width: 36px; height: 36px; }
-  .gw-hero__nav svg { width: 16px; height: 16px; }
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0  2px rgba(202,174,95,.3);}50%{box-shadow:0 0 10px 4px rgba(202,174,95,.75);}}
+.gw-eyebrow span{font-size:.68rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);}
+ 
+/* HEADLINE
+   text-shadow is the key fix for readability on bright images */
+.gw-title {
+  font-family:'Lora',serif;font-weight:400;
+  font-size:clamp(2.8rem,5.2vw,5rem);
+  line-height:1.08;letter-spacing:-.02em;
+  color:#fff;margin:0 0 1.4rem;
+  text-shadow:
+    0 2px 18px rgba(0,0,0,0.7),
+    0 4px 40px rgba(0,0,0,0.5);
+}
+.gw-title em{
+  font-style:italic;color:var(--gold);display:block;
+  text-shadow:0 2px 18px rgba(0,0,0,0.55),0 0 30px rgba(202,174,95,.15);
+}
+ 
+/* SUBTITLE */
+.gw-sub {
+  font-size:clamp(.9rem,1.4vw,1.06rem);font-weight:300;line-height:1.8;
+  color:rgba(255,255,255,0.82); /* raised from .62 → .82 */
+  max-width:450px;margin:0 0 1.8rem;
+  text-shadow:0 1px 12px rgba(0,0,0,0.75);
+}
+ 
+/* BENEFIT PILLS */
+.gw-pills{display:flex;gap:.7rem;flex-wrap:wrap;margin:0 0 2rem;}
+.gw-pill{
+  display:flex;align-items:center;gap:.4rem;padding:.5rem .95rem;
+  border:1px solid rgba(202,174,95,.25);border-radius:30px;
+  background:rgba(9,7,4,.5);backdrop-filter:blur(12px);
+  font-size:.78rem;color:rgba(255,255,255,.84);
+  transition:all .25s ease;cursor:default;
+}
+.gw-pill:hover{background:rgba(202,174,95,.14);border-color:rgba(202,174,95,.45);color:var(--gold);}
+ 
+/* CTA BUTTONS */
+.gw-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:0 0 2.2rem;}
+.gw-btn-primary{
+  display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2.2rem;
+  background:linear-gradient(135deg,#CAAE5F 0%,#B8955C 100%);
+  color:#fff;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:700;
+  letter-spacing:.04em;border-radius:60px;text-decoration:none;
+  box-shadow:0 8px 30px rgba(202,174,95,.45),0 2px 8px rgba(0,0,0,.55);
+  transition:all .3s var(--ease);white-space:nowrap;position:relative;overflow:hidden;
+}
+.gw-btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.2) 0%,transparent 55%);opacity:0;transition:opacity .25s ease;}
+.gw-btn-primary:hover::before{opacity:1;}
+.gw-btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 45px rgba(202,174,95,.55),0 4px 14px rgba(0,0,0,.5);color:#fff;}
+.gw-btn-primary svg{transition:transform .3s var(--ease);}
+.gw-btn-primary:hover svg{transform:translateX(4px);}
+ 
+.gw-btn-ghost{
+  display:inline-flex;align-items:center;gap:.75rem;padding:1rem 1.75rem;
+  border:1.5px solid rgba(255,255,255,.22);border-radius:60px;
+  background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.88);
+  font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;
+  letter-spacing:.02em;text-decoration:none;backdrop-filter:blur(12px);
+  transition:all .3s ease;white-space:nowrap;
+}
+.gw-btn-ghost:hover{border-color:rgba(202,174,95,.5);background:rgba(202,174,95,.1);color:var(--gold);transform:translateY(-2px);}
+.gw-btn-ghost__play{width:28px;height:28px;border-radius:50%;background:rgba(202,174,95,.16);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+ 
+/* SOCIAL PROOF */
+.gw-proof{display:flex;align-items:center;gap:1rem;margin:0 0 1.8rem;}
+.gw-avatars{display:flex;align-items:center;}
+.gw-avatar{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;margin-right:-9px;transition:margin-right .25s ease;}
+.gw-avatars:hover .gw-avatar{margin-right:-3px;}
+.gw-proof-sep{width:1px;height:28px;background:rgba(255,255,255,.2);flex-shrink:0;margin-left:10px;}
+.gw-proof-copy{display:flex;flex-direction:column;gap:2px;}
+.gw-proof-stars{color:var(--gold);font-size:.7rem;letter-spacing:.05em;}
+.gw-proof-copy span{font-size:.8rem;color:rgba(255,255,255,.65);}
+.gw-proof-copy strong{color:rgba(255,255,255,.92);}
+ 
+/* CERT BADGES */
+.gw-certs{display:flex;gap:.7rem;flex-wrap:wrap;}
+.gw-cert{display:flex;align-items:center;gap:.45rem;padding:.5rem .95rem;border:1px solid rgba(202,174,95,.18);border-radius:10px;background:rgba(9,7,4,.5);backdrop-filter:blur(10px);transition:all .25s ease;cursor:default;}
+.gw-cert:hover{background:rgba(202,174,95,.09);border-color:var(--gold-border);}
+.gw-cert-ico{font-size:1rem;}
+.gw-cert-txt{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.65);letter-spacing:.03em;}
+ 
+/* ════════════════════════════
+   FLOATING CARDS (desktop)
+════════════════════════════ */
+.gw-fcards {
+  position:absolute;z-index:20;
+  right:clamp(2rem,4.5vw,4rem);top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:1rem;pointer-events:none;
+}
+.gw-fcard {
+  display:flex;align-items:center;gap:.8rem;padding:1rem 1.3rem;
+  background:rgba(9,7,4,.62);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border:1px solid rgba(202,174,95,.25);border-radius:16px;
+  box-shadow:0 8px 32px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);
+  white-space:nowrap;min-width:200px;opacity:0;
+}
+.gw-fcard:nth-child(1){animation:fcIn .8s var(--ease) 1.9s both,ff1 5s ease-in-out 2.9s infinite alternate;}
+.gw-fcard:nth-child(2){animation:fcIn .8s var(--ease) 2.1s both,ff2 6s ease-in-out 3.2s infinite alternate;}
+.gw-fcard:nth-child(3){animation:fcIn .8s var(--ease) 2.3s both,ff3 4.8s ease-in-out 3.6s infinite alternate;}
+@keyframes fcIn{from{opacity:0;transform:translateX(30px);}to{opacity:1;transform:translateX(0);}}
+@keyframes ff1{from{transform:translateY(0);}to{transform:translateY(-10px);}}
+@keyframes ff2{from{transform:translateY(0);}to{transform:translateY(-7px);}}
+@keyframes ff3{from{transform:translateY(0);}to{transform:translateY(-12px);}}
+.gw-fcard-ico{font-size:1.4rem;flex-shrink:0;}
+.gw-fcard-num{font-family:'Lora',serif;font-size:1.3rem;font-weight:600;color:var(--gold);flex-shrink:0;}
+.gw-fcard-info strong{display:block;font-size:.84rem;font-weight:700;color:#fff;}
+.gw-fcard-info span{font-size:.7rem;color:rgba(255,255,255,.52);}
+ 
+/* ════════════════════════════
+   STATS BAR
+════════════════════════════ */
+.gw-statsbar{
+  position:absolute;bottom:0;left:0;right:0;z-index:20;
+  opacity:0;animation:slideUp 1s var(--ease) 2s both;
+}
+.gw-statsbar-inner{
+  display:flex;align-items:stretch;
+  border-top:1px solid rgba(202,174,95,.2);
+  background:linear-gradient(180deg,rgba(9,7,4,.72) 0%,rgba(9,7,4,.62) 100%);
+  backdrop-filter:blur(24px);
+}
+.gw-stat{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.3rem 1rem;gap:.2rem;cursor:default;position:relative;transition:background .3s ease;}
+.gw-stat:hover{background:rgba(202,174,95,.07);}
+.gw-stat::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s ease;}
+.gw-stat:hover::after{opacity:1;}
+.gw-stat + .gw-stat::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(202,174,95,.15);}
+.gw-stat-num{font-family:'Lora',serif;font-size:clamp(1.3rem,2.4vw,1.65rem);font-weight:600;color:var(--gold);line-height:1;}
+.gw-stat-lbl{font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.42);}
+ 
+/* ════════════════════════════
+   NAV ARROWS
+════════════════════════════ */
+.gw-nav{
+  position:absolute;z-index:25;
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(9,7,4,.4);backdrop-filter:blur(20px);
+  border:1.5px solid var(--gold-border);color:var(--gold);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .3s var(--ease);box-shadow:0 8px 32px rgba(0,0,0,.5);outline:none;
+  top:calc(50% - 36px);transform:translateY(-50%);
+}
+.gw-nav:hover{background:rgba(202,174,95,.22);border-color:var(--gold);color:#fff;transform:translateY(-50%) scale(1.12);box-shadow:0 12px 40px rgba(202,174,95,.35);}
+.gw-nav:active{transform:translateY(-50%) scale(.97);}
+.gw-nav--prev{left:1.25rem;}
+.gw-nav--next{right:1.25rem;}
+.gw-nav svg{pointer-events:none;transition:transform .25s ease;}
+.gw-nav--prev:hover svg{transform:translateX(-3px);}
+.gw-nav--next:hover svg{transform:translateX(3px);}
+ 
+/* ════════════════════════════
+   DOTS + COUNTER + PROGRESS
+════════════════════════════ */
+.gw-progress{position:absolute;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));z-index:30;transition:width .08s linear;}
+ 
+.gw-dots{
+  position:absolute;bottom:calc(68px + 1.4rem);left:50%;transform:translateX(-50%);z-index:25;
+  display:flex;align-items:center;gap:.75rem;padding:.85rem 1.75rem;
+  background:rgba(9,7,4,.52);backdrop-filter:blur(14px);
+  border-radius:50px;border:1px solid rgba(202,174,95,.2);box-shadow:0 8px 32px rgba(0,0,0,.3);
+}
+.gw-dot{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.28);border:2px solid rgba(255,255,255,.18);cursor:pointer;padding:0;transition:all .45s var(--ease);outline:none;flex-shrink:0;}
+.gw-dot:hover{background:rgba(255,255,255,.5);border-color:rgba(202,174,95,.6);transform:scale(1.25);}
+.gw-dot.is-active{width:32px;height:11px;border-radius:20px;background:linear-gradient(90deg,var(--gold) 0%,#dcc880 100%);border-color:var(--gold);box-shadow:0 0 14px rgba(202,174,95,.55);}
+ 
+.gw-counter{
+  position:absolute;bottom:calc(68px + 1.2rem);right:clamp(1.5rem,3vw,2.5rem);z-index:25;
+  font-family:'Lora',serif;font-size:.9rem;color:rgba(255,255,255,.55);
+  display:flex;align-items:baseline;gap:.3rem;
+  padding:.65rem 1.1rem;background:rgba(9,7,4,.48);backdrop-filter:blur(10px);
+  border-radius:30px;border:1px solid rgba(202,174,95,.2);letter-spacing:.06em;
+  opacity:0;animation:slideUp 1s var(--ease) 1.5s both;
+}
+.gw-counter strong{font-size:1.3rem;color:var(--gold);font-weight:400;line-height:1;min-width:32px;text-align:center;}
+ 
+/* Scroll cue */
+.gw-scroll{
+  position:absolute;bottom:calc(68px + 2.2rem);left:calc(clamp(2rem,7.5vw,7rem) + 2.8rem);z-index:20;
+  display:flex;align-items:center;gap:.7rem;opacity:0;animation:slideUp 1s var(--ease) 2.4s both;
+}
+.gw-scroll-mouse{width:22px;height:35px;border:2px solid rgba(202,174,95,.45);border-radius:12px;display:flex;align-items:flex-start;justify-content:center;padding-top:5px;}
+.gw-scroll-wheel{width:2px;height:7px;background:var(--gold);border-radius:3px;animation:sWheel 2s ease-in-out infinite;}
+@keyframes sWheel{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(10px);}}
+.gw-scroll-txt{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(202,174,95,.55);}
+ 
+/* ════════════════════════════
+   MOBILE / TABLET ≤1024px
+   Image on top, text below
+════════════════════════════ */
+@media (max-width:1024px){
+  .gw-hero{height:auto;min-height:auto;flex-direction:column;}
+ 
+  .gw-track{position:relative;inset:auto;width:100%;height:clamp(360px,58vw,540px);flex-shrink:0;overflow:hidden;}
+  .gw-bg{position:absolute;inset:0;width:100%;height:100%;}
+ 
+  .gw-overlay::before{background:linear-gradient(180deg,rgba(9,7,4,.25) 0%,rgba(9,7,4,.6) 75%,rgba(9,7,4,.92) 100%);}
+  .gw-overlay::after{background:linear-gradient(180deg,rgba(9,7,4,.3) 0%,rgba(9,7,4,0) 30%,rgba(9,7,4,0) 60%,rgba(9,7,4,.75) 100%);}
+ 
+  .gw-slides-wrap{position:relative;inset:auto;z-index:5;background:var(--dark);}
+  .gw-content{position:relative;inset:auto;width:100%;padding:2.5rem 1.5rem 2rem;opacity:0;transform:translateY(14px);transition:opacity var(--dur) ease,transform var(--dur) var(--ease);display:none;}
+  .gw-content.is-active{display:flex;opacity:1;transform:none;pointer-events:auto;}
+  .gw-content.is-leaving{display:flex;opacity:0;transform:translateY(-10px);}
+ 
+  .gw-statsbar{position:relative;bottom:auto;animation:none;opacity:1;}
+  .gw-statsbar-inner{flex-wrap:wrap;}
+  .gw-stat{min-width:50%;}
+ 
+  .gw-nav{position:absolute;top:clamp(160px,26vw,240px);transform:translateY(-50%);z-index:30;width:42px;height:42px;}
+  .gw-nav:hover{transform:translateY(-50%) scale(1.1);}
+  .gw-nav--prev{left:.75rem;} .gw-nav--next{right:.75rem;}
+ 
+  .gw-dots{position:absolute;bottom:auto;top:calc(clamp(360px,58vw,540px) - 58px);left:50%;transform:translateX(-50%);z-index:30;padding:.7rem 1.4rem;}
+  .gw-counter{position:absolute;bottom:auto;top:calc(clamp(360px,58vw,540px) - 54px);right:1rem;z-index:30;animation:none;opacity:1;font-size:.8rem;padding:.55rem .9rem;}
+  .gw-counter strong{font-size:1.1rem;}
+  .gw-progress{top:clamp(360px,58vw,540px);}
+ 
+  .gw-fcards,.gw-ring,.gw-glow,.gw-vrule,.gw-particles,.gw-scroll,.gw-bar{display:none;}
+  .gw-title{font-size:clamp(2rem,7vw,3rem);}
+  .gw-sub{font-size:.92rem;max-width:100%;}
+  .gw-inner{max-width:100%;}
+}
+@media (max-width:600px){
+  .gw-track{height:clamp(280px,72vw,400px);}
+  .gw-nav{top:clamp(130px,32vw,190px);width:38px;height:38px;}
+  .gw-nav svg{width:16px;height:16px;}
+  .gw-nav--prev{left:.5rem;}.gw-nav--next{right:.5rem;}
+  .gw-dots{top:calc(clamp(280px,72vw,400px) - 54px);padding:.6rem 1rem;}
+  .gw-dot{width:9px;height:9px;}.gw-dot.is-active{width:22px;height:9px;}
+  .gw-counter{top:calc(clamp(280px,72vw,400px) - 50px);right:.5rem;}
+  .gw-progress{top:clamp(280px,72vw,400px);}
+  .gw-title{font-size:clamp(1.7rem,6.5vw,2.3rem);}
+  .gw-actions{gap:.55rem;}
+  .gw-btn-primary,.gw-btn-ghost{font-size:.6rem;padding:.6rem 1rem;}
+  .gw-btn-ghost__play{display:none;}
+  .gw-stat{min-width:50%;padding:.9rem .4rem;}
+  .gw-stat-num{font-size:clamp(1.1rem,2vw,1.35rem);}
+  .gw-content{padding:2rem 1.2rem 1.5rem;}
+  .gw-eyebrow span{font-size: 0.5rem;}
+  .gw-title{font-size:26px!important;}
 }
 </style>
 </head>
@@ -1402,396 +1016,203 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 <!-- ═══════════════════════════════════════════════════════
      HERO SLIDER MARKUP
 ══════════════════════════════════════════════════════════ -->
-<section class="gw-hero" id="hero" aria-label="Hero — Geneva Wellness Institute">
-
-  <!-- ══ BACKGROUND IMAGES — one per slide (crossfade) ══ -->
-  <div class="gw-hero__bgs" aria-hidden="true">
-
-    <!-- Slide 1 BG -->
-    <div class="gw-hero__bg is-active is-initial">
-      <img
-        src="img/home-hero-updated-new.webp"
-        alt="Premium facial treatment at Geneva Wellness Institute"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </div>
-
-    <!-- Slide 2 BG — Laser Treatment (placeholder) -->
-    <div class="gw-hero__bg">
-      <img
-        src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1920&q=80"
-        alt="Advanced laser skin treatment"
-        loading="lazy"
-      />
-    </div>
-
-    <!-- Slide 3 BG — Anti-Aging (placeholder) -->
-    <div class="gw-hero__bg">
-      <img
-        src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1920&q=80"
-        alt="Non-surgical anti-aging treatment"
-        loading="lazy"
-      />
-    </div>
-
-    <!-- Slide 4 BG — Body Contouring (placeholder) -->
-    <div class="gw-hero__bg">
-      <img
-        src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1920&q=80"
-        alt="Body contouring and wellness treatment"
-        loading="lazy"
-      />
-    </div>
-
-  </div><!-- /.gw-hero__bgs -->
-
-  <!-- Fixed overlays -->
-  <div class="gw-hero__veil"        aria-hidden="true"></div>
-  <div class="gw-hero__panel"       aria-hidden="true"></div>
-  <div class="gw-hero__bottom-fade" aria-hidden="true"></div>
-  <div class="gw-hero__glow"        aria-hidden="true"></div>
-
-  <!-- Particles (fixed) -->
-  <div class="gw-hero__particles" aria-hidden="true">
-    <span class="gw-p"></span><span class="gw-p"></span>
+<section class="gw-hero" id="hero" aria-label="Geneva Wellness Institute Hero">
+ 
+  <div class="gw-progress" id="gwProg"></div>
+ 
+  <!-- ══ SLIDE BG IMAGES ══ -->
+  <div class="gw-track" aria-hidden="true">
+    <div class="gw-bg is-active" data-slide="0"></div>
+    <div class="gw-bg"           data-slide="1"></div>
+    <div class="gw-bg"           data-slide="2"></div>
+    <div class="gw-bg"           data-slide="3"></div>
+  </div>
+ 
+  <!-- ── OVERLAYS ── -->
+  <div class="gw-overlay" aria-hidden="true"></div>
+  <div class="gw-bar gw-bar--top"    aria-hidden="true"></div>
+  <div class="gw-bar gw-bar--bottom" aria-hidden="true"></div>
+ 
+  <!-- ── DECORATIVE ── -->
+  <div class="gw-glow"      aria-hidden="true"></div>
+  <div class="gw-vrule"     aria-hidden="true"></div>
+  <div class="gw-particles" aria-hidden="true">
     <span class="gw-p"></span><span class="gw-p"></span>
     <span class="gw-p"></span><span class="gw-p"></span>
     <span class="gw-p"></span>
   </div>
-
-  <!-- Geometry (fixed) -->
-  <div class="gw-hero__rule" aria-hidden="true"></div>
-
-  <div class="gw-hero__corner" aria-hidden="true">
-    <svg class="gw-hero__corner-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="60" cy="60" r="57" stroke="rgba(202,174,95,0.22)" stroke-width="1"/>
-      <circle cx="60" cy="60" r="44" stroke="rgba(202,174,95,0.12)" stroke-width="1" stroke-dasharray="3 5"/>
-      <path d="M60 20 L65 55 L100 60 L65 65 L60 100 L55 65 L20 60 L55 55 Z" fill="rgba(202,174,95,0.15)" stroke="rgba(202,174,95,0.4)" stroke-width="0.8"/>
-    </svg>
+  <div class="gw-ring" aria-hidden="true">
+    <div class="gw-ring-outer"></div>
+    <div class="gw-ring-inner"></div>
   </div>
-
-  <div class="gw-hero__ring" aria-hidden="true">
-    <div class="gw-hero__ring-outer"></div>
-    <div class="gw-hero__ring-inner"></div>
-  </div>
-
-  <!-- ══ MAIN BODY — Slide contents ══ -->
-  <div class="gw-hero__body">
-    <div class="gw-hero__slides-container">
-
-      <!-- ── SLIDE 1: Brand / Wellness ── -->
-      <div class="gw-hero__slide-content is-active is-initial" data-slide="0">
-
-        <div class="gw-hero__eyebrow" role="text">
-          <span class="gw-hero__eyebrow-dot"></span>
+ 
+  <!-- ══ SLIDE TEXT PANELS ══ -->
+  <div class="gw-slides-wrap">
+ 
+    <!-- SLIDE 1 -->
+    <div class="gw-content is-active is-initial" data-slide="0">
+      <div class="gw-inner">
+        <div class="gw-eyebrow">
+          <span class="gw-eyebrow__dot"></span>
           <span>Award-Winning Clinic &nbsp;·&nbsp; Alabang, Philippines</span>
         </div>
-
-        <h1 class="gw-hero__title">
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Transformative</span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner"><em>Wellness &amp; Aesthetic</em></span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Treatments </span>
-          </span>
+        <h1 class="gw-title">
+          Transformative<br>
+          <em>Wellness &amp; Aesthetic</em>
+          Treatments
         </h1>
-
-        <p class="gw-hero__sub">
-          Premium non-invasive treatments crafted for your unique skin and hair goals —
-          backed by 15&plus; years of expertise and cutting-edge technology.
-        </p>
-
-        <div class="gw-hero__actions">
-          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
+        <p class="gw-sub">Premium non-invasive treatments crafted for your unique skin and hair goals — backed by 15+ years of expertise and cutting-edge technology.</p>
+        <div class="gw-pills">
+          <div class="gw-pill"><i class="fas fa-bolt"></i><span>Fast Results</span></div>
+          <div class="gw-pill"><i class="fas fa-check"></i><span>100% Safe</span></div>
+          <div class="gw-pill"><i class="fas fa-clock"></i><span>Zero Downtime</span></div>
+        </div>
+        <div class="gw-actions">
+          <a href="contact-us.php#contact-form" class="gw-btn-primary">
             <span>Book Free Consultation</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="treatments.php" class="gw-hero__btn-explore">
-            <span class="gw-hero__btn-play" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
+          <a href="treatments.php" class="gw-btn-ghost">
+            <span class="gw-btn-ghost__play"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
             <span>Explore Treatments</span>
           </a>
         </div>
-
-        <div class="gw-hero__proof">
-          <div class="gw-hero__avatars" aria-label="Client avatars">
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">M</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">G</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">R</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">A</div>
-            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
+        <div class="gw-proof">
+          <div class="gw-avatars">
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)">M</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)">G</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)">R</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)">A</div>
+            <div class="gw-avatar" style="background:rgba(202,174,95,.2);color:var(--gold);font-size:.62rem">+</div>
           </div>
-          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
-          <div class="gw-hero__proof-copy">
-            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
-            <span>Trusted by <strong>10,000+</strong> clients</span>
+          <div class="gw-proof-sep"></div>
+          <div class="gw-proof-copy">
+            <div class="gw-proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
           </div>
         </div>
-
-      </div><!-- /slide 1 -->
-
-      <!-- ── SLIDE 2: Laser Treatments ── -->
-      <div class="gw-hero__slide-content" data-slide="1">
-
-        <div class="gw-hero__eyebrow" role="text">
-          <span class="gw-hero__eyebrow-dot"></span>
-          <span>Advanced Laser Technology &nbsp;·&nbsp; Proven Results</span>
+        <div class="gw-certs">
+          <div class="gw-cert"><i class="fas fa-check gw-cert-ico"></i><span class="gw-cert-txt">Medically Accredited</span></div>
+          <div class="gw-cert"><span class="gw-cert-ico">🏆</span><span class="gw-cert-txt">Award Winning</span></div>
+          <div class="gw-cert"><span class="gw-cert-ico">⭐</span><span class="gw-cert-txt">5-Star Rated</span></div>
         </div>
-
-        <h2 class="gw-hero__title">
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Reveal Radiant Skin</span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner"><em>with Advanced</em></span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Laser Treatments</span>
-          </span>
-        </h2>
-
-        <p class="gw-hero__sub">
-          State-of-the-art CO2, Carbon &amp; Pico laser therapies designed to restore
-          clarity, reduce pigmentation, and rejuvenate your skin from within.
-        </p>
-
-        <div class="gw-hero__actions">
-          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
-            <span>Book a Laser Session</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="treatments.php" class="gw-hero__btn-explore">
-            <span class="gw-hero__btn-play" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <span>View Laser Treatments</span>
-          </a>
-        </div>
-
-        <div class="gw-hero__proof">
-          <div class="gw-hero__avatars" aria-label="Client avatars">
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">S</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">L</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">J</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">K</div>
-            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
-          </div>
-          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
-          <div class="gw-hero__proof-copy">
-            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
-            <span>Over <strong>5,000+</strong> laser sessions</span>
-          </div>
-        </div>
-
-      </div><!-- /slide 2 -->
-
-      <!-- ── SLIDE 3: Anti-Aging ── -->
-      <div class="gw-hero__slide-content" data-slide="2">
-
-        <div class="gw-hero__eyebrow" role="text">
-          <span class="gw-hero__eyebrow-dot"></span>
-          <span>Non-Surgical Solutions &nbsp;·&nbsp; Zero Downtime</span>
-        </div>
-
-        <h2 class="gw-hero__title">
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Turn Back Time</span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner"><em>with Anti-Aging</em></span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Solutions</span>
-          </span>
-        </h2>
-
-        <p class="gw-hero__sub">
-          Experience the power of HIFU, bio-stimulation &amp; regenerative therapies
-          that lift, firm, and restore your youthful glow — naturally and safely.
-        </p>
-
-        <div class="gw-hero__actions">
-          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
-            <span>Discover Anti-Aging</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="treatments.php" class="gw-hero__btn-explore">
-            <span class="gw-hero__btn-play" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <span>View Before &amp; After</span>
-          </a>
-        </div>
-
-        <div class="gw-hero__proof">
-          <div class="gw-hero__avatars" aria-label="Client avatars">
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">C</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">V</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">N</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">P</div>
-            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
-          </div>
-          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
-          <div class="gw-hero__proof-copy">
-            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
-            <span><strong>15+ years</strong> of excellence</span>
-          </div>
-        </div>
-
-      </div><!-- /slide 3 -->
-
-      <!-- ── SLIDE 4: Body Contouring ── -->
-      <div class="gw-hero__slide-content" data-slide="3">
-
-        <div class="gw-hero__eyebrow" role="text">
-          <span class="gw-hero__eyebrow-dot"></span>
-          <span>Body Transformation &nbsp;·&nbsp; Expert Care</span>
-        </div>
-
-        <h2 class="gw-hero__title">
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Transform Body &,</span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner"><em>Elevate Your</em></span>
-          </span>
-          <span class="gw-hero__title-line">
-            <span class="gw-hero__title-line-inner">Confidence</span>
-          </span>
-        </h2>
-
-        <p class="gw-hero__sub">
-          Targeted body contouring &amp; slimming treatments using Exilis and RF
-          technology to sculpt the figure you've always desired — no surgery required.
-        </p>
-
-        <div class="gw-hero__actions">
-          <a href="contact-us.php#contact-form" class="gw-hero__btn-book">
-            <span>Book Consultation</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="treatments.php" class="gw-hero__btn-explore">
-            <span class="gw-hero__btn-play" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <span>Body Treatments</span>
-          </a>
-        </div>
-
-        <div class="gw-hero__proof">
-          <div class="gw-hero__avatars" aria-label="Client avatars">
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)" aria-hidden="true">D</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)" aria-hidden="true">E</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)" aria-hidden="true">F</div>
-            <div class="gw-hero__avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)" aria-hidden="true">H</div>
-            <div class="gw-hero__avatar" style="background:rgba(202,174,95,0.2);border-color:rgba(202,174,95,0.4);color:var(--h-gold);font-size:0.62rem" aria-hidden="true">+</div>
-          </div>
-          <div class="gw-hero__proof-sep" aria-hidden="true"></div>
-          <div class="gw-hero__proof-copy">
-            <div class="gw-hero__stars" aria-label="5 star rating">★★★★★</div>
-            <span><strong>20+</strong> body treatments offered</span>
-          </div>
-        </div>
-
-      </div><!-- /slide 4 -->
-
-    </div><!-- /.gw-hero__slides-container -->
-  </div><!-- /.gw-hero__body -->
-
-  <!-- Floating stat cards (hidden on small screens) -->
-  <div class="gw-hero__cards" aria-hidden="true">
-    <div class="gw-hero__card">
-      <span class="gw-hero__card-emoji"><i class="red-red fa-solid fa-star"></i></span>
-      <div class="gw-hero__card-info">
-        <strong>5.0 Rating</strong>
-        <span>500+ Google Reviews</span>
       </div>
     </div>
-    <div class="gw-hero__card">
-      <span class="gw-hero__card-num">15+</span>
-      <div class="gw-hero__card-info">
-        <strong>Years of Excellence</strong>
-        <span>Certified Professionals</span>
+ 
+    <!-- SLIDE 2 -->
+    <div class="gw-content" data-slide="1">
+      <div class="gw-inner">
+        <div class="gw-eyebrow"><span class="gw-eyebrow__dot"></span><span>Advanced Laser Technology &nbsp;·&nbsp; Proven Results</span></div>
+        <h2 class="gw-title">Reveal Radiant Skin<br><em>with Advanced</em>Laser Treatments</h2>
+        <p class="gw-sub">State-of-the-art CO2, Carbon &amp; Pico laser therapies designed to restore clarity, reduce pigmentation, and rejuvenate your skin from within.</p>
+        <div class="gw-actions">
+          <a href="contact-us.php#contact-form" class="gw-btn-primary"><span>Book a Laser Session</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="treatments.php" class="gw-btn-ghost"><span class="gw-btn-ghost__play"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span>View Laser Treatments</span></a>
+        </div>
+        <div class="gw-proof">
+          <div class="gw-avatars">
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)">S</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)">L</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)">J</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)">K</div>
+          </div>
+          <div class="gw-proof-sep"></div>
+          <div class="gw-proof-copy"><div class="gw-proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span>Over <strong>5,000+</strong> laser sessions</span></div>
+        </div>
       </div>
     </div>
-    <div class="gw-hero__card">
-      <span class="gw-hero__card-emoji"><i class="red-red fa-solid fa-sparkles"></i></span>
-      <div class="gw-hero__card-info">
-        <strong>Non-Invasive</strong>
-        <span>Zero Downtime</span>
+ 
+    <!-- SLIDE 3 -->
+    <div class="gw-content" data-slide="2">
+      <div class="gw-inner">
+        <div class="gw-eyebrow"><span class="gw-eyebrow__dot"></span><span>Non-Surgical Solutions &nbsp;·&nbsp; Zero Downtime</span></div>
+        <h2 class="gw-title">Turn Back Time<br><em>with Anti-Aging</em>Solutions</h2>
+        <p class="gw-sub">Experience the power of HIFU, bio-stimulation &amp; regenerative therapies that lift, firm, and restore your youthful glow — naturally and safely.</p>
+        <div class="gw-actions">
+          <a href="contact-us.php#contact-form" class="gw-btn-primary"><span>Discover Anti-Aging</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="treatments.php" class="gw-btn-ghost"><span class="gw-btn-ghost__play"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span>View Before &amp; After</span></a>
+        </div>
+        <div class="gw-proof">
+          <div class="gw-avatars">
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)">C</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)">V</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)">N</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)">P</div>
+          </div>
+          <div class="gw-proof-sep"></div>
+          <div class="gw-proof-copy"><div class="gw-proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span><strong>15+ years</strong> of excellence</span></div>
+        </div>
       </div>
     </div>
+ 
+    <!-- SLIDE 4 -->
+    <div class="gw-content" data-slide="3">
+      <div class="gw-inner">
+        <div class="gw-eyebrow"><span class="gw-eyebrow__dot"></span><span>Body Transformation &nbsp;·&nbsp; Expert Care</span></div>
+        <h2 class="gw-title">Transform Body &amp;<br><em>Elevate Your</em>Confidence</h2>
+        <p class="gw-sub">Targeted body contouring &amp; slimming treatments using Exilis and RF technology to sculpt the figure you've always desired — no surgery required.</p>
+        <div class="gw-actions">
+          <a href="contact-us.php#contact-form" class="gw-btn-primary"><span>Book Consultation</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="treatments.php" class="gw-btn-ghost"><span class="gw-btn-ghost__play"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span>Body Treatments</span></a>
+        </div>
+        <div class="gw-proof">
+          <div class="gw-avatars">
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#B8955C)">D</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#B8955C,#9a7838)">E</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#d4956e,#c07840)">F</div>
+            <div class="gw-avatar" style="background:linear-gradient(135deg,#CAAE5F,#e0cc90)">H</div>
+          </div>
+          <div class="gw-proof-sep"></div>
+          <div class="gw-proof-copy"><div class="gw-proof-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span><strong>20+</strong> body treatments offered</span></div>
+        </div>
+      </div>
+    </div>
+ 
+  </div><!-- /.gw-slides-wrap -->
+ 
+  <!-- ══ FLOATING CARDS ══ -->
+  <div class="gw-fcards" aria-hidden="true">
+    <div class="gw-fcard"><span class="gw-fcard-ico">⭐</span><div class="gw-fcard-info"><strong>5.0 Rating</strong><span>500+ Google Reviews</span></div></div>
+    <div class="gw-fcard"><span class="gw-fcard-num">15+</span><div class="gw-fcard-info"><strong>Years of Excellence</strong><span>Certified Professionals</span></div></div>
+    <div class="gw-fcard"><i class="fas fa-sparkles gw-fcard-ico"></i><div class="gw-fcard-info"><strong>Non-Invasive</strong><span>Zero Downtime</span></div></div>
   </div>
-
-  <!-- Scroll cue -->
-  <div class="gw-hero__scroll" aria-hidden="true">
-    <div class="gw-hero__scroll-mouse">
-      <div class="gw-hero__scroll-wheel"></div>
-    </div>
-    <span class="gw-hero__scroll-text">Scroll</span>
+ 
+  <!-- ══ SCROLL CUE ══ -->
+  <div class="gw-scroll" aria-hidden="true">
+    <div class="gw-scroll-mouse"><div class="gw-scroll-wheel"></div></div>
+    <span class="gw-scroll-txt">Scroll</span>
   </div>
-
-  <!-- ══ SLIDER NAV ARROWS ══ -->
-  <button class="gw-hero__nav gw-hero__nav--prev" id="gwHeroPrev" aria-label="Previous slide" type="button">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M15 18l-6-6 6-6"/>
-    </svg>
+ 
+  <!-- ══ ARROWS ══ -->
+  <button class="gw-nav gw-nav--prev" id="gwPrev" aria-label="Previous slide" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
-  <button class="gw-hero__nav gw-hero__nav--next" id="gwHeroNext" aria-label="Next slide" type="button">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M9 18l6-6-6-6"/>
-    </svg>
+  <button class="gw-nav gw-nav--next" id="gwNext" aria-label="Next slide" type="button">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
   </button>
-
-  <!-- ══ SLIDER DOTS ══ -->
-  <div class="gw-hero__dots" role="tablist" aria-label="Hero slider navigation">
-    <button class="gw-hero__dot is-active" data-slide="0" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
-    <button class="gw-hero__dot"           data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
-    <button class="gw-hero__dot"           data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
-    <button class="gw-hero__dot"           data-slide="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+ 
+  <!-- ══ DOTS ══ -->
+  <div class="gw-dots" role="tablist">
+    <button class="gw-dot is-active" data-slide="0" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+    <button class="gw-dot"           data-slide="1" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+    <button class="gw-dot"           data-slide="2" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+    <button class="gw-dot"           data-slide="3" role="tab" aria-label="Slide 4" aria-selected="false"></button>
   </div>
-
-  <!-- Slide counter -->
-  <div class="gw-hero__slide-counter" aria-hidden="true">
-    <strong id="gwSlideNum">01</strong>
-    <span>&nbsp;/&nbsp;04</span>
+ 
+  <!-- ══ COUNTER ══ -->
+  <div class="gw-counter" aria-live="polite">
+    <strong id="gwNum">01</strong><span>&nbsp;/&nbsp;04</span>
   </div>
-
-  <!-- Stats bar -->
-  <div class="gw-hero__stats">
-    <div class="gw-hero__stats-inner">
-      <div class="gw-hero__stat">
-        <strong class="gw-hero__stat-num">10,000+</strong>
-        <span class="gw-hero__stat-label">Happy Clients</span>
-      </div>
-      <div class="gw-hero__stat">
-        <strong class="gw-hero__stat-num">15+</strong>
-        <span class="gw-hero__stat-label">Years Experience</span>
-      </div>
-      <div class="gw-hero__stat">
-        <strong class="gw-hero__stat-num">20+</strong>
-        <span class="gw-hero__stat-label">Treatments</span>
-      </div>
-      <div class="gw-hero__stat">
-        <strong class="gw-hero__stat-num">5&#9733;</strong>
-        <span class="gw-hero__stat-label">Google Rating</span>
-      </div>
+ 
+  <!-- ══ STATS BAR ══ -->
+  <div class="gw-statsbar">
+    <div class="gw-statsbar-inner">
+      <div class="gw-stat"><span class="gw-stat-num">10,000+</span><span class="gw-stat-lbl">Happy Clients</span></div>
+      <div class="gw-stat"><span class="gw-stat-num">15+</span><span class="gw-stat-lbl">Years Experience</span></div>
+      <div class="gw-stat"><span class="gw-stat-num">20+</span><span class="gw-stat-lbl">Treatments</span></div>
+      <div class="gw-stat"><span class="gw-stat-num"><i class="fas fa-star"></i> 5</span><span class="gw-stat-lbl">Google Rating</span></div>
     </div>
   </div>
-
+ 
 </section>
 
 
@@ -1859,7 +1280,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             Premium non-invasive aesthetic treatments crafted for your unique skin goals. Backed by 15+ years of expertise and cutting-edge technology.
           </p>
           <div class="hero-actions" data-delay="3">
-            <a href="contact-us.php#contact-form" class="hero-btn-primary">
+            <a href="contact-us.php#contact-form" class="hero-btn-primary" title="Book Your Free Consultation">
               <span>Book Free Consultation</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -1880,7 +1301,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <div class="hero-avatar hero-avatar-more">+</div>
             </div>
             <div class="hero-proof-text">
-              <div class="hero-stars">★★★★★</div>
+              <div class="hero-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
               <span>Trusted by <strong>10,000+</strong> clients</span>
             </div>
           </div>
@@ -1891,7 +1312,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="hero-img-ring-outer"></div>
             <div class="hero-img-ring-inner"></div>
             <div class="hero-img-frame">
-              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute Premium Facial Treatment" class="hero-main-img" loading="eager" />
+              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute Premium Facial Treatment" title="Geneva Wellness Institute Premium Facial Treatment" class="hero-main-img" loading="eager" />
               <div class="hero-img-overlay-grad"></div>
             </div>
             <div class="hero-card hero-card-1">
@@ -1940,7 +1361,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             </div>
             <div class="hero-stat-divider"></div>
             <div class="hero-stat">
-              <strong class="hero-stat-num">5★</strong>
+              <strong class="hero-stat-num"><i class="fas fa-star"></i> 5</strong>
               <span>Google Rating</span>
             </div>
           </div>
@@ -2034,7 +1455,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row" id="hair-restoration" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\hair-restoratial.webp" alt="Hair Restoration at Geneva Wellness" loading="lazy" />
+              <img src="img\services\hair-restoratial.webp" alt="Hair Restoration at Geneva Wellness" title="Hair Restoration at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Non-Invasive</div>
               <div class="ts-results-card">
@@ -2046,7 +1467,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/home-hair-1.webp" alt="Hair restoration detail" loading="lazy" />
+              <img src="img/home-hair-1.webp" alt="Hair restoration detail" title="Hair restoration detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -2065,8 +1486,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <span class="tag">Personalized Care</span>
             </div>
             <div class="ts-cta-row">
-              <a href="contact-us.php#contact-form" class="btn btn-primary">Book Hair Restoration</a>
-              <a href="treatments.php#hair-restoration" class="ts-learn-more">Learn more →</a>
+              <a href="contact-us.php#contact-form" class="btn btn-primary" title="Book Hair Restoration Consultation">Book Hair Restoration</a>
+              <a href="treatments.php#hair-restoration" class="ts-learn-more" title="Learn More About Hair Restoration">Learn more <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -2075,7 +1496,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row ts-row-reverse" id="flaky-scalp" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-left" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\flaky-scalp.webp" alt="Flaky Scalp Therapy at Geneva Wellness" loading="lazy" />
+              <img src="img\services\flaky-scalp.webp" alt="Flaky Scalp Therapy at Geneva Wellness" title="Flaky Scalp Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Soothing Treatment</div>
               <div class="ts-results-card">
@@ -2087,7 +1508,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent ts-img-accent-left">
-              <img src="img/home-service-2.webp" alt="Scalp therapy detail" loading="lazy" />
+              <img src="img/home-service-2.webp" alt="Scalp therapy detail" title="Scalp therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-right" data-aos-delay="150">
@@ -2106,8 +1527,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <span class="tag">Scalp Hydration</span>
             </div>
             <div class="ts-cta-row">
-              <a href="contact-us.php#contact-form" class="btn btn-primary">Book Flaky Scalp Therapy</a>
-              <a href="treatments.php#flaky-scalp" class="ts-learn-more">Learn more →</a>
+              <a href="contact-us.php#contact-form" class="btn btn-primary" title="Book Flaky Scalp Therapy Consultation">Book Flaky Scalp Therapy</a>
+              <a href="treatments.php#flaky-scalp" class="ts-learn-more" title="Learn More About Flaky Scalp Therapy">Learn more <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -2116,11 +1537,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="treatment-showcase-row" id="scalp-psoriasis" data-aos="fade-up">
           <div class="ts-visual" data-aos="fade-right" data-aos-delay="100">
             <div class="ts-img-wrap">
-              <img src="img\services\scalp-img.webp" alt="Scalp Psoriasis Therapy at Geneva Wellness" loading="lazy" />
+              <img src="img\services\scalp-img.webp" alt="Scalp Psoriasis Therapy at Geneva Wellness" title="Scalp Psoriasis Therapy at Geneva Wellness" loading="lazy" />
               <div class="ts-img-overlay"></div>
               <div class="ts-badge">Medicated Care</div>
               <div class="ts-results-card">
-                <div class="ts-results-icon">🩺</div>
+                <div class="ts-results-icon"><i class="red-red fa-solid fa-circle-notch"></i></div>
                 <div>
                   <strong>Lasting Relief</strong>
                   <span>Reduced itching &amp; flaking</span>
@@ -2128,7 +1549,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="ts-img-accent">
-              <img src="img/home-service-3.webp" alt="Psoriasis therapy detail" loading="lazy" />
+              <img src="img/home-service-3.webp" alt="Psoriasis therapy detail" title="Psoriasis therapy detail" loading="lazy" />
             </div>
           </div>
           <div class="ts-content" data-aos="fade-left" data-aos-delay="150">
@@ -2147,8 +1568,8 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               <span class="tag">Medicated Care</span>
             </div>
             <div class="ts-cta-row">
-              <a href="contact-us.php#contact-form" class="btn btn-primary">Book Scalp Psoriasis Therapy</a>
-              <a href="treatments.php#scalp-psoriasis" class="ts-learn-more">Learn more →</a>
+              <a href="contact-us.php#contact-form" class="btn btn-primary" title="Book Scalp Psoriasis Therapy Consultation">Book Scalp Psoriasis Therapy</a>
+              <a href="treatments.php#scalp-psoriasis" class="ts-learn-more" title="Learn More About Scalp Psoriasis Therapy">Learn more <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -2167,11 +1588,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
         <div class="more-grid">
           <div class="more-card" data-aos="fade-up" data-aos-delay="0">
-            <div class="more-card-icon">⚡</div>
+            <div class="more-card-icon"><i class="fas fa-bolt"></i></div>
             <div class="more-card-content">
               <h3>HYDRA 7D</h3>
               <p>Advanced hydration and skin revitalization therapy for a glowing, dewy complexion.</p>
-              <a href="treatments.php#hydra-7d" class="more-card-link">Discover →</a>
+              <a href="treatments.php#hydra-7d" class="more-card-link"><i class="fas fa-arrow-right"></i> Discover</a>
             </div>
             <div class="more-card-bg"></div>
           </div>
@@ -2180,7 +1601,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="more-card-content">
               <h3>Exilis</h3>
               <p>Non-invasive body contouring and face tightening with radiofrequency technology.</p>
-              <a href="treatments.php#exilis" class="more-card-link">Discover →</a>
+              <a href="treatments.php#exilis" class="more-card-link"><i class="fas fa-arrow-right"></i> Discover</a>
             </div>
             <div class="more-card-bg"></div>
           </div>
@@ -2189,13 +1610,13 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="more-card-content">
               <h3>Hair Restoration</h3>
               <p>Specialized scalp treatments to restore hair vitality and promote healthy, thick growth.</p>
-              <a href="treatments.php#hair" class="more-card-link">Discover →</a>
+              <a href="treatments.php#hair" class="more-card-link" title="Discover Hair Restoration Treatment"><i class="fas fa-arrow-right"></i> Discover</a>
             </div>
             <div class="more-card-bg"></div>
           </div>
         </div>
         <div style="text-align:center; margin-top: 3rem;" data-aos="fade-up" data-aos-delay="240">
-          <a href="treatments.php" class="btn btn-primary btn-lg">View All Treatments</a>
+          <a href="treatments.php" class="btn btn-primary btn-lg" title="View All Treatments">View All Treatments</a>
         </div>
       </div>
     </section>
@@ -2221,13 +1642,13 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
       <div class="about-main">
         <div class="about-visual-stack" data-aos="fade-right">
           <div class="about-img-primary">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline title="About Geneva Wellness Institute - Facial Treatment Video">
               <source src="img/about-video.mp4" type="video/mp4">
-              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute" />
+              <img src="img/facial-treatment-clinic.webp" alt="Geneva Wellness Institute" title="Geneva Wellness Institute" />
             </video>
           </div>
           <div class="about-img-secondary">
-            <img src="img/wellness-treatment-new.webp" alt="Advanced skin care treatment" loading="lazy" />
+            <img src="img/wellness-treatment-new.webp" alt="Advanced skin care treatment" title="Advanced skin care treatment" loading="lazy" />
           </div>
           <div class="about-floating-badge">
             <div class="afb-icon"><i class="red-red fa-solid fa-trophy"></i></div>
@@ -2253,7 +1674,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
               </div>
             </div>
             <div class="about-pillar">
-              <span class="pillar-icon"><i class="red-red fa-solid fa-user-spa"></i></span>
+              <span class="pillar-icon"><i class="red-red fa-solid fa-wand-magic-sparkles"></i></span>
               <div>
                 <strong>Body Contouring Treatments</strong>
                 <p>Non-invasive sculpting and rejuvenation for your body.</p>
@@ -2288,11 +1709,11 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
           <div class="ba-card" data-aos="fade-up" data-aos-delay="0">
             <div class="ba-slider-wrap">
               <div class="ba-before">
-                <img src="img/before/clientbefore.png" alt="Before HIFU treatment" loading="lazy" />
+                <img src="img/before/clientbefore.webp" alt="Before HIFU treatment" title="Before HIFU treatment" loading="lazy" />
                 <span class="ba-label ba-label-before">Before</span>
               </div>
               <div class="ba-after">
-                <img src="img/before/clientafter.png" alt="After HIFU treatment" loading="lazy" />
+                <img src="img/before/clientafter.webp" alt="After HIFU treatment" title="After HIFU treatment" loading="lazy" />
                 <span class="ba-label ba-label-after">After</span>
               </div>
               <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Before/After slider" />
@@ -2301,18 +1722,18 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="ba-info">
               <h3>HIFU Face Lift</h3>
               <p>6 weeks post-treatment — visible lift and firming</p>
-              <a href="contact-us.php#contact-form" class="btn btn-outline btn-sm">Book This Treatment</a>
+              <a href="contact-us.php#contact-form" class="btn btn-outline btn-sm" title="Book HIFU Facelift Consultation">Book This Treatment</a>
             </div>
           </div>
 
           <div class="ba-card" data-aos="fade-up" data-aos-delay="150">
             <div class="ba-slider-wrap">
               <div class="ba-before">
-                <img src="img/before/before.png" alt="Before CO2 Laser" loading="lazy" />
+                <img src="img/before/before.webp" alt="Before CO2 Laser" title="Before CO2 Laser" loading="lazy" />
                 <span class="ba-label ba-label-before">Before</span>
               </div>
               <div class="ba-after">
-                <img src="img/before/after.png" alt="After CO2 Laser" loading="lazy" />
+                <img src="img/before/after.webp" alt="After CO2 Laser" title="After CO2 Laser" loading="lazy" />
                 <span class="ba-label ba-label-after">After</span>
               </div>
               <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Before/After slider" />
@@ -2321,7 +1742,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="ba-info">
               <h3>CO2 Laser Resurfacing</h3>
               <p>Dramatic acne scar improvement after 3 sessions</p>
-              <a href="contact-us.php#contact-form" class="btn btn-outline btn-sm">Book This Treatment</a>
+              <a href="contact-us.php#contact-form" class="btn btn-outline btn-sm" title="Book CO2 Laser Consultation">Book This Treatment</a>
             </div>
           </div>
         </div>
@@ -2350,7 +1771,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
         <div class="video-player-wrap" data-aos="fade-up" data-aos-delay="150" id="videoThumbnailWrap">
           <div class="video-thumbnail">
-            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.webp'" />
+            <img src="https://img.youtube.com/vi/bD7H1rx4nOw/maxresdefault.jpg" alt="Geneva Wellness Institute Video" title="Geneva Wellness Institute Video" onerror="this.src='https://img.youtube.com/vi/bD7H1rx4nOw/hqdefault.webp'" />
             <div class="video-thumbnail-overlay"></div>
             <div class="video-play-btn" id="videoPlayBtn">
               <div class="video-play-circle">
@@ -2397,15 +1818,15 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
         <div class="gallery-masonry" data-aos="fade-up" data-aos-delay="200">
           <div class="gallery-item g-tall">
-            <img src="img/advanced-treatement-1.webp" alt="HYDRA 7D facial treatment" loading="lazy" />
+            <img src="img/advanced-treatement-1.webp" alt="HYDRA 7D facial treatment" title="HYDRA 7D facial treatment" loading="lazy" />
             <div class="gallery-overlay"><span>HYDRA 7D</span></div>
           </div>
           <div class="gallery-item">
-            <img src="img/advanced-treatement-2.webp" alt="CO2 Laser treatment" loading="lazy" />
+            <img src="img/advanced-treatement-2.webp" alt="CO2 Laser treatment" title="CO2 Laser treatment" loading="lazy" />
             <div class="gallery-overlay"><span>CO2 Laser</span></div>
           </div>
           <div class="gallery-item">
-            <img src="img/advanced-treatement-3.webp" alt="Carbon Laser treatment" loading="lazy" />
+            <img src="img/advanced-treatement-3.webp" alt="Carbon Laser treatment" title="Carbon Laser treatment" loading="lazy" />
             <div class="gallery-overlay"><span>Carbon Laser</span></div>
           </div>
         </div>
@@ -2466,7 +1887,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="swiper-slide">
               <article class="testimonial-card enhanced-testimonial">
                 <div class="testimonial-quote"><i class="red-red fa-solid fa-quote-left"></i></div>
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <blockquote><p>"Geneva Wellness Institute is my go-to place for all my skincare needs. Their advanced facial therapies have transformed my skin, making it smoother and more radiant. The team is knowledgeable and always makes me feel comfortable. I can't imagine going anywhere else!"</p></blockquote>
                 <footer class="testimonial-author">
                   <div class="author-avatar" style="background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark))">G</div>
@@ -2477,7 +1898,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="swiper-slide">
               <article class="testimonial-card enhanced-testimonial">
                 <div class="testimonial-quote"><i class="red-red fa-solid fa-quote-left"></i></div>
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <blockquote><p>"The body contouring treatments at Geneva Wellness Institute are amazing. I saw noticeable results after just a few sessions. The staff is incredibly supportive and guided me through the entire process. I feel more confident and happy with my body now."</p></blockquote>
                 <footer class="testimonial-author">
                   <div class="author-avatar" style="background: linear-gradient(135deg, #CAAE5F, #B8955C)">M</div>
@@ -2488,7 +1909,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
             <div class="swiper-slide">
               <article class="testimonial-card enhanced-testimonial">
                 <div class="testimonial-quote"><i class="red-red fa-solid fa-quote-left"></i></div>
-                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                 <blockquote><p>"I had been struggling with hair loss for years until I discovered Geneva Wellness Institute. Their hair and scalp treatments have made a huge difference. My hair feels thicker and healthier, and I couldn't be happier with the results."</p></blockquote>
                 <footer class="testimonial-author">
                   <div class="author-avatar" style="background: linear-gradient(135deg, #B8955C, #CAAE5F)">B</div>
@@ -2544,7 +1965,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
                 <div class="hiw-step-num-outer">
                   <div class="hiw-step-num-inner"><span class="hiw-step-num-text">02</span></div>
                 </div>
-                <div class="hiw-step-icon"><i class="red-red fa-solid fa-sparkles"></i></div>
+                <div class="hiw-step-icon"><i class="red-red fa-solid fa-star"></i></div>
               </div>
               <p class="hiw-step-subtitle">Choose Your Treatment</p>
               <h3 class="hiw-step-title">Select the service that suits your needs</h3>
@@ -2579,7 +2000,7 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         </div>
 
         <div class="hiw-cta-wrap" data-aos="fade-up" data-aos-delay="350">
-          <a href="contact-us.php#contact-form" class="btn btn-primary btn-lg">
+          <a href="contact-us.php#contact-form" class="btn btn-primary btn-lg" title="Start Your Wellness Journey">
             Start Your Journey
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:0.25rem"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -2599,38 +2020,38 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
         <div class="blog-grid">
           <article class="blog-card" data-aos="fade-up" data-aos-delay="0">
             <div class="blog-img-wrap">
-              <img src="img/blog-1.webp" alt="Benefits of Regular Facials" loading="lazy" />
+              <img src="img/blog-1.webp" alt="Benefits of Regular Facials" title="Benefits of Regular Facials" loading="lazy" />
               <span class="blog-category-badge">Skincare</span>
             </div>
             <div class="blog-content">
               <p class="blog-date">January 15, 2024</p>
               <h3>The Benefits of Regular Facials</h3>
               <p>Discover how regular facial treatments can transform your skin, improve texture, and give you long-lasting radiance.</p>
-              <a href="blog/benefits-of-regular-facials.php" class="blog-link">Read More →</a>
+              <a href="blog/benefits-of-regular-facials.php" class="blog-link" title="Read: The Benefits of Regular Facials">Read More <i class="fas fa-arrow-right"></i></a>
             </div>
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
             <div class="blog-img-wrap">
-              <img src="img/blog-2.webp" alt="Body Contouring Techniques" loading="lazy" />
+              <img src="img/blog-2.webp" alt="Body Contouring Techniques" title="Body Contouring Techniques" loading="lazy" />
               <span class="blog-category-badge">Body</span>
             </div>
             <div class="blog-content">
               <p class="blog-date">February 3, 2024</p>
               <h3>Top 5 Body Contouring Techniques</h3>
               <p>Learn about the most effective body contouring techniques and find out which is best for you.</p>
-              <a href="blog/body-contouring-techniques.php" class="blog-link">Read More →</a>
+              <a href="blog/body-contouring-techniques.php" class="blog-link" title="Read: Top 5 Body Contouring Techniques">Read More <i class="fas fa-arrow-right"></i></a>
             </div>
           </article>
           <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
             <div class="blog-img-wrap">
-              <img src="img/blog-3.webp" alt="Hair Care Tips" loading="lazy" />
+              <img src="img/blog-3.webp" alt="Hair Care Tips" title="Hair Care Tips" loading="lazy" />
               <span class="blog-category-badge">Hair Care</span>
             </div>
             <div class="blog-content">
               <p class="blog-date">March 10, 2024</p>
               <h3>Hair Care Tips for a Healthier Scalp</h3>
               <p>Explore essential tips for maintaining a healthy scalp and vibrant hair with expert advice from our certified therapists.</p>
-              <a href="blog/hair-care-tips.php" class="blog-link">Read More →</a>
+              <a href="blog/hair-care-tips.php" class="blog-link" title="Read: Hair Care Tips for a Healthier Scalp">Read More <i class="fas fa-arrow-right"></i></a>
             </div>
           </article>
         </div>
@@ -2688,140 +2109,106 @@ $page_subtitle = 'Premium Wellness & Aesthetic Treatments';
 
   <!-- ── HERO SLIDER SCRIPT ──────────────────────────── -->
   <script>
-  (function () {
-    'use strict';
-
-    var hero        = document.querySelector('.gw-hero');
-    if (!hero) return;
-
-    var bgs         = hero.querySelectorAll('.gw-hero__bg');
-    var slides      = hero.querySelectorAll('.gw-hero__slide-content');
-    var dots        = hero.querySelectorAll('.gw-hero__dot');
-    var prevBtn     = document.getElementById('gwHeroPrev');
-    var nextBtn     = document.getElementById('gwHeroNext');
-    var counterEl   = document.getElementById('gwSlideNum');
-
-    var current       = 0;
-    var total         = slides.length;
-    var autoTimer     = null;
-    var isTransiting  = false;
-    var AUTO_MS       = 5000;
-    var LEAVE_MS      = 480;
-    var ENTER_DELAY   = 120;
-
-    /* ── Pad number helper ── */
-    function pad(n) { return n < 10 ? '0' + n : '' + n; }
-
-    /* ── Core transition ── */
-    function goTo(index) {
-      if (isTransiting) return;
-      var next = ((index % total) + total) % total;
-      if (next === current) return;
-      isTransiting = true;
-
-      var prevIdx = current;
-      current = next;
-
-      /* 1. Crossfade backgrounds */
-      bgs[prevIdx].classList.remove('is-active');
-      bgs[current].classList.add('is-active');
-
-      /* 2. Exit current content */
-      var leavingSlide = slides[prevIdx];
-      leavingSlide.classList.add('is-leaving');
-      leavingSlide.classList.remove('is-active');
-
-      /* 3. Enter new content (slight delay for cleaner feel) */
-      setTimeout(function () {
-        var enteringSlide = slides[current];
-        enteringSlide.classList.add('is-active');
-      }, ENTER_DELAY);
-
-      /* 4. Clean up leaving slide */
-      setTimeout(function () {
-        leavingSlide.classList.remove('is-leaving');
-        isTransiting = false;
-      }, LEAVE_MS + ENTER_DELAY);
-
-      /* 5. Update dots */
-      dots.forEach(function (dot, i) {
-        /* Remove & re-add active to restart the progress animation */
-        dot.classList.remove('is-active');
-        dot.setAttribute('aria-selected', 'false');
-        if (i === current) {
-          /* Force reflow so animation restarts */
-          void dot.offsetWidth;
-          dot.classList.add('is-active');
-          dot.setAttribute('aria-selected', 'true');
-        }
-      });
-
-      /* 6. Update counter */
-      if (counterEl) counterEl.textContent = pad(current + 1);
-    }
-
-    /* ── Auto-play ── */
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(function () { goTo(current + 1); }, AUTO_MS);
-    }
-    function stopAuto() {
-      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-    }
-
-    /* ── Controls ── */
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function () {
-        stopAuto(); goTo(current + 1); startAuto();
-      });
-    }
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function () {
-        stopAuto(); goTo(current - 1); startAuto();
-      });
-    }
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
-        var idx = parseInt(dot.getAttribute('data-slide'), 10);
-        stopAuto(); goTo(idx); startAuto();
-      });
+(function(){
+  'use strict';
+  var hero=document.querySelector('.gw-hero'); if(!hero)return;
+  var bgs=hero.querySelectorAll('.gw-bg');
+  var panels=hero.querySelectorAll('.gw-content');
+  var dots=hero.querySelectorAll('.gw-dot');
+  var prevBtn=document.getElementById('gwPrev');
+  var nextBtn=document.getElementById('gwNext');
+  var numEl=document.getElementById('gwNum');
+  var progEl=document.getElementById('gwProg');
+  var cur=0,total=bgs.length,moving=false;
+  var autoTimer=null,progTimer=null,elapsed=0;
+  var AUTO=5500,DUR=700,STEP=60;
+ 
+  function pad(n){return n<10?'0'+n:''+n;}
+ 
+  function startProg(){
+    stopProg(); elapsed=0;
+    if(progEl){progEl.style.transition='none';progEl.style.width='0%';}
+    requestAnimationFrame(function(){
+      if(progEl) progEl.style.transition='';
+      progTimer=setInterval(function(){
+        elapsed+=STEP;
+        var pct=Math.min((elapsed/AUTO)*100,100);
+        if(progEl) progEl.style.width=pct+'%';
+      },STEP);
     });
-
-    /* ── Pause on hover ── */
-    hero.addEventListener('mouseenter', stopAuto);
-    hero.addEventListener('mouseleave', startAuto);
-
-    /* ── Touch / swipe support ── */
-    var touchX = 0;
-    hero.addEventListener('touchstart', function (e) {
-      touchX = e.touches[0].clientX;
-      stopAuto();
-    }, { passive: true });
-    hero.addEventListener('touchend', function (e) {
-      var diff = touchX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 48) {
-        goTo(diff > 0 ? current + 1 : current - 1);
-      }
-      startAuto();
-    }, { passive: true });
-
-    /* ── Keyboard navigation ── */
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { stopAuto(); goTo(current + 1); startAuto(); }
-      if (e.key === 'ArrowLeft')  { stopAuto(); goTo(current - 1); startAuto(); }
+  }
+  function stopProg(){
+    if(progTimer){clearInterval(progTimer);progTimer=null;}
+    if(progEl){progEl.style.transition='none';progEl.style.width='0%';}
+  }
+ 
+  function goTo(idx){
+    if(moving)return;
+    var next=((idx%total)+total)%total;
+    if(next===cur)return;
+    moving=true;
+    var prev=cur; cur=next;
+ 
+    bgs[prev].classList.add('is-leaving');   bgs[prev].classList.remove('is-active');
+    bgs[next].classList.add('is-active');
+    panels[prev].classList.add('is-leaving'); panels[prev].classList.remove('is-active');
+    panels[next].classList.add('is-active');
+ 
+    setTimeout(function(){
+      bgs[prev].classList.remove('is-leaving');
+      panels[prev].classList.remove('is-leaving');
+      moving=false;
+    },DUR+100);
+ 
+    dots.forEach(function(d,i){
+      var a=i===cur;
+      d.classList.toggle('is-active',a);
+      d.setAttribute('aria-selected',a?'true':'false');
     });
-
-    /* ── Strip is-initial after entry anims finish (≈ 3 s) ── */
-    setTimeout(function () {
-      hero.querySelectorAll('.is-initial').forEach(function (el) {
-        el.classList.remove('is-initial');
-      });
-    }, 3200);
-
-    /* ── Kick off auto-play ── */
+ 
+    if(numEl){
+      numEl.style.cssText='transform:translateY(-8px);opacity:0;transition:none;';
+      setTimeout(function(){
+        numEl.textContent=pad(cur+1);
+        numEl.style.cssText='transform:translateY(8px);opacity:0;transition:none;';
+        requestAnimationFrame(function(){
+          numEl.style.cssText='transform:translateY(0);opacity:1;transition:transform .35s ease,opacity .35s ease;';
+        });
+      },200);
+    }
+  }
+ 
+  function startAuto(){stopAuto();startProg();autoTimer=setInterval(function(){goTo(cur+1);startProg();},AUTO);}
+  function stopAuto(){if(autoTimer){clearInterval(autoTimer);autoTimer=null;}stopProg();}
+ 
+  if(prevBtn)prevBtn.addEventListener('click',function(){stopAuto();goTo(cur-1);startAuto();});
+  if(nextBtn)nextBtn.addEventListener('click',function(){stopAuto();goTo(cur+1);startAuto();});
+  dots.forEach(function(d){
+    d.addEventListener('click',function(){stopAuto();goTo(parseInt(d.getAttribute('data-slide'),10));startAuto();});
+  });
+ 
+  hero.addEventListener('mouseenter',stopAuto);
+  hero.addEventListener('mouseleave',startAuto);
+ 
+  var tx=0;
+  hero.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;stopAuto();},{passive:true});
+  hero.addEventListener('touchend',function(e){
+    var diff=tx-e.changedTouches[0].clientX;
+    if(Math.abs(diff)>48)goTo(diff>0?cur+1:cur-1);
     startAuto();
-
-  })();
-  </script>
+  },{passive:true});
+ 
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){stopAuto();goTo(cur+1);startAuto();}
+    if(e.key==='ArrowLeft'){stopAuto();goTo(cur-1);startAuto();}
+  });
+ 
+  setTimeout(function(){
+    hero.querySelectorAll('.is-initial').forEach(function(el){el.classList.remove('is-initial');});
+  },3600);
+ 
+  startAuto();
+})();
+</script>
 </body>
 </html>

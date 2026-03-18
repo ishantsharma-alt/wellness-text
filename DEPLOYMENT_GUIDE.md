@@ -14,7 +14,7 @@ Complete step-by-step guide to deploy the website to production.
 - [ ] All placeholder images replaced with actual images
 - [ ] Images optimized to WebP format
 - [ ] Images sized according to IMAGE_OPTIMIZATION_GUIDE.md
-- [ ] Fallback JPG versions created
+- [ ] Fallback webp versions created
 - [ ] All images loaded and displaying correctly
 
 ### Forms & Backend
@@ -135,7 +135,7 @@ Create or update `.htaccess` in root directory:
 </IfModule>
 
 # Browser caching
-<FilesMatch "\.(jpg|jpeg|png|gif|webp|ico)$">
+<FilesMatch "\.(webp|jpeg|webp|gif|webp|ico)$">
   Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
 

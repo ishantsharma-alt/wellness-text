@@ -8,6 +8,7 @@ $page_title = '404 - Page Not Found';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Page not found. The page you're looking for doesn't exist. Return to Geneva Wellness Institute homepage." />
   <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://genevawellness.com/404" />
   <title>404 - Page Not Found — Geneva Wellness Institute</title>
 
   <!-- Fonts -->
@@ -36,20 +37,20 @@ $page_title = '404 - Page Not Found';
         </p>
         
         <div class="error-actions">
-          <a href="index.php" class="btn btn-primary">Back to Home</a>
-          <a href="treatments.php" class="btn btn-secondary">View Treatments</a>
+          <a href="index.php" class="btn btn-primary" title="Back to Home">Back to Home</a>
+          <a href="treatments.php" class="btn btn-secondary" title="View Our Treatments">View Treatments</a>
         </div>
 
         <div class="error-suggestions">
           <h3>Helpful Links</h3>
           <ul>
-            <li><a href="index.php">🏠 Home</a></li>
-            <li><a href="about-us.php">ℹ️ About Us</a></li>
-            <li><a href="treatments.php">💊 Treatments</a></li>
-            <li><a href="gallery.php">🖼️ Gallery</a></li>
-            <li><a href="testimonials.php">⭐ Testimonials</a></li>
-            <li><a href="blog.php">📝 Blog</a></li>
-            <li><a href="contact-us.php">📞 Contact</a></li>
+            <li><a href="index.php" title="Back to Home">🏠 Home</a></li>
+            <li><a href="about-us.php" title="Learn About Our Institute">ℹ️ About Us</a></li>
+            <li><a href="treatments.php" title="View Our Treatments">💊 Treatments</a></li>
+            <li><a href="gallery.php" title="View Our Gallery">🖼️ Gallery</a></li>
+            <li><a href="testimonials.php" title="Read Client Testimonials">⭐ Testimonials</a></li>
+            <li><a href="blog.php" title="Read Our Blog">📝 Blog</a></li>
+            <li><a href="contact-us.php" title="Contact Us">📞 Contact</a></li>
           </ul>
         </div>
       </div>

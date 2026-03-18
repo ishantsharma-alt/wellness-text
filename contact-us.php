@@ -1,7 +1,6 @@
 <?php 
-$page_title = 'Get In Touch'; 
-$page_subtitle = "We're Here to Help";
-
+$page_title = 'Book Your Consultation'; 
+$page_subtitle = "Expert aesthetic consultation in Alabang. Start your transformation today";
 $form_submitted = false;
 $form_message = '';
 
@@ -28,15 +27,20 @@ function sanitize_input($input) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Get in touch with Geneva Wellness Institute for aesthetic clinic contact details, consultation bookings and treatment inquiries. schedule your appointment today" />
-  <meta name="keywords" content="aesthetic clinic Alabang contact,aesthetic clinic near me,book aesthetic clinic appointment,aesthetic clinic consultation,contact aesthetic clinic Alabang,schedule aesthetic consultation,skin clinic contact details,aesthetic clinic phone number,visit aesthetic clinic today,aesthetic clinic near Alabang" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Contact Geneva Wellness aesthetic clinic in Alabang for consultation bookings and treatment inquiries. Expert specialists. Call or book online for your appointment today." />
+  <meta name="keywords" content="contact aesthetic clinic, book consultation, Alabang clinic, schedule appointment, aesthetic treatment inquiry, laser consultation" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Geneva Wellness Institute | Aesthetic Clinic Contact" />
-  <meta property="og:description" content="Get in touch with our wellness experts. We're here to help." />
+  <meta property="og:title" content="Book Aesthetic Consultation | Alabang Clinic" />
+  <meta property="og:description" content="Contact Geneva Wellness for consultation bookings and treatment inquiries. Expert aesthetic specialists in Alabang. Call or book online today." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genevawellness.com/contact-us" />
-  <link rel="canonical" href="https://genevawellness.com/contact-us" />
-  <title>Geneva Wellness Institute | Aesthetic Clinic Contact</title>
+  <meta property="og:url" content="https://genevawellness.com/contact-us" /><meta property="og:image" content="img/feature-img/contact.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="img/feature-img/contact.webp" />
+<link rel="canonical" href="https://genevawellness.com/contact-us" />
+  <title>Book Aesthetic Consultation | Alabang Clinic</title>
 
   <script type="application/ld+json">
   {
@@ -602,8 +606,8 @@ function sanitize_input($input) {
                 <div>
                   <h3>Call Us</h3>
                   <p>
-                    <a href="tel:+639175551234">+63 917 555 1234</a><br/>
-                    <a href="tel:+63245551234">(02) 4555 1234</a><br/>
+                    <a href="tel:+639175551234" title="Call us at +63 917 555 1234">+63 917 555 1234</a><br/>
+                    <a href="tel:+63245551234" title="Call us at (02) 4555 1234">(02) 4555 1234</a><br/>
                     <small>Mon–Sun, 11:00 am – 7:00 pm</small>
                   </p>
                 </div>
@@ -614,8 +618,8 @@ function sanitize_input($input) {
                 <div>
                   <h3>Email Us</h3>
                   <p>
-                    <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a><br/>
-                    <a href="mailto:support@genevawellness.com">support@genevawellness.com</a><br/>
+                    <a href="mailto:hello@genevawellness.com" title="Email us at hello@genevawellness.com">hello@genevawellness.com</a><br/>
+                    <a href="mailto:support@genevawellness.com" title="Email support at support@genevawellness.com">support@genevawellness.com</a><br/>
                     <small>Response within 24 hours</small>
                   </p>
                 </div>
@@ -635,7 +639,7 @@ function sanitize_input($input) {
 
               <?php if ($form_submitted): ?>
                 <div class="form-success-message">
-                  <strong>✓ <?php echo htmlspecialchars($form_message); ?></strong>
+                  <strong><i class="fas fa-check" style="margin-right: 0.5rem;"></i><?php echo htmlspecialchars($form_message); ?></strong>
                 </div>
               <?php endif; ?>
 
@@ -741,7 +745,7 @@ function sanitize_input($input) {
             </div>
             <h4>Email</h4>
             <p>Email us for inquiries or appointments. 24-hour reply.</p>
-            <a href="mailto:geneva.institute23@gmail.com" class="channel-link">geneva.institute23@gmail.com</a>
+            <a href="mailto:geneva.institute23@gmail.com" class="channel-link" title="Email us at geneva.institute23@gmail.com">geneva.institute23@gmail.com</a>
           </div>
 
           <div class="channel-card" data-aos="fade-up" data-aos-delay="100">
@@ -750,7 +754,7 @@ function sanitize_input($input) {
             </div>
             <h4>Live Chat</h4>
             <p>Chat with us live for instant support and answers to your questions.</p>
-            <a href="#" class="channel-link" id="open-live-chat">Start new chat</a>
+            <a href="#" class="channel-link" id="open-live-chat" title="Chat with us now">Start new chat</a>
           </div>
 
           <div class="channel-card" data-aos="fade-up" data-aos-delay="200">
@@ -760,9 +764,9 @@ function sanitize_input($input) {
             <h4>Phone</h4>
             <p>Call us directly for quick assistance and to book your next appointment.</p>
             <div class="channel-phones">
-              <a href="tel:+639153960593" class="channel-link">Anne +63 915 396 0593</a>
-              <a href="tel:+639667642452" class="channel-link">Claire +63 966 764 2452</a>
-              <a href="tel:+639541595764" class="channel-link">Geraldine +63 954 159 5764</a>
+              <a href="tel:+639153960593" class="channel-link" title="Call Anne at +63 915 396 0593">Anne +63 915 396 0593</a>
+              <a href="tel:+639667642452" class="channel-link" title="Call Claire at +63 966 764 2452">Claire +63 966 764 2452</a>
+              <a href="tel:+639541595764" class="channel-link" title="Call Geraldine at +63 954 159 5764">Geraldine +63 954 159 5764</a>
             </div>
           </div>
 
@@ -804,7 +808,7 @@ function sanitize_input($input) {
 
   </main>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="components.js"></script>

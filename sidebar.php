@@ -13,7 +13,7 @@ $sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false || strpos($_S
     <h4>Search Articles</h4>
     <form class="search-form" role="search" action="<?= $sidebar_depth ?>blog-search.php" method="get">
       <input type="search" name="q" placeholder="Search blog..." aria-label="Search blog posts" />
-      <button type="submit" aria-label="Search">🔍</button>
+      <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
     </form>
   </div>
 
@@ -35,19 +35,19 @@ $sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false || strpos($_S
     <h4>Recent Posts</h4>
     <ul class="recent-posts-list">
       <li>
-        <a href="<?= $sidebar_depth ?>blog/hair-care-tips.php">
+        <a href="<?= $sidebar_depth ?>blog/hair-care-tips.php" title="Read: Hair Care Tips for a Healthier Scalp">
           <strong>Hair Care Tips for a Healthier Scalp</strong>
           <small>Nov 18, 2024</small>
         </a>
       </li>
       <li>
-        <a href="<?= $sidebar_depth ?>blog/body-contouring-techniques.php">
+        <a href="<?= $sidebar_depth ?>blog/body-contouring-techniques.php" title="Read: Top 5 Body Contouring Techniques">
           <strong>Top 5 Body Contouring Techniques</strong>
           <small>Nov 14, 2024</small>
         </a>
       </li>
       <li>
-        <a href="<?= $sidebar_depth ?>blog/benefits-of-regular-facials.php">
+        <a href="<?= $sidebar_depth ?>blog/benefits-of-regular-facials.php" title="Read: The Benefits of Regular Facials">
           <strong>The Benefits of Regular Facials</strong>
           <small>Nov 10, 2024</small>
         </a>
@@ -85,7 +85,7 @@ $sidebar_depth = (strpos($_SERVER['PHP_SELF'], '/blog/') !== false || strpos($_S
     <div class="cta-box">
       <h4>Ready to Transform?</h4>
       <p>Book your personalized consultation today.</p>
-      <a href="<?= $sidebar_depth ?>contact-us.php#contact-form" class="btn btn-primary btn-sm btn-block">Book Now</a>
+      <a href="<?= $sidebar_depth ?>contact-us.php#contact-form" class="btn btn-primary btn-sm btn-block" title="Book Your Consultation">Book Now</a>
     </div>
   </div>
 

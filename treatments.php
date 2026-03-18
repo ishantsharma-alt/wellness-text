@@ -1,6 +1,6 @@
 <?php
-$page_title = 'Our Advanced Treatments';
-$page_subtitle = 'At Geneva Wellness Institute, we offer a wide range of innovative treatments to enhance your natural beauty and well-being. From rejuvenating facial therapies to effective slimming solutions and specialized hair and scalp care, our expert team is dedicated to providing personalized care that delivers exceptional results. Explore our treatments and find the perfect solution for your unique needs.';
+$page_title = 'Premium Laser Treatments';
+$page_subtitle = 'Advanced aesthetic procedures for anti-aging, body contouring & hair restoration';
 $breadcrumb = [
   ['label' => 'Treatments', 'url' => null]
 ];
@@ -10,15 +10,20 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Explore premium aesthetic treatments at Geneva Wellness Institute. From HIFU to laser therapy, discover advanced procedures for your wellness goals." />
-  <meta name="keywords" content="aesthetic treatments,aesthetic treatments Alabang,advanced aesthetic treatments,non surgical aesthetic treatments,medical aesthetic treatments,best aesthetic treatments,aesthetic treatments for face,aesthetic treatments for body,laser aesthetic treatments,skin rejuvenation treatments,body contouring treatments,anti aging treatments,facial rejuvenation treatments,skin tightening treatments" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Discover advanced aesthetic treatments including laser therapy, HIFU, anti-aging, body contouring & hair restoration at Geneva Wellness Institute in Alabang." />
+  <meta name="keywords" content="laser treatments, HIFU, anti-aging, body contouring, hair restoration, CO2 laser, aesthetic treatments, Alabang" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Advanced Treatments — Geneva Wellness Institute" />
-  <meta property="og:description" content="Premium aesthetic and wellness treatments using state-of-the-art technology." />
+  <meta property="og:title" content="Premium Laser Treatments | Alabang Clinic" />
+  <meta property="og:description" content="Advanced aesthetic treatments including laser therapy, HIFU, anti-aging, body contouring & hair restoration. Expert specialists. Book consultation today." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genevawellness.com/treatments" />
-  <link rel="canonical" href="https://genevawellness.com/treatments" />
-  <title>Geneva Wellness Institute | Advanced Aesthetic Treatments</title>
+  <meta property="og:url" content="https://genevawellness.com/treatments" /><meta property="og:image" content="img/feature-img/treatments.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="img/feature-img/treatments.webp" />
+<link rel="canonical" href="https://genevawellness.com/treatments" />
+  <title>Premium Laser Treatments | Alabang Clinic</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -292,7 +297,7 @@ $breadcrumb = [
         ─────────────────────────────────────────────────── -->
         <div class="gwi-cat-block gwi-visible" id="gwi-block-face">
           <div class="gwi-cat-head">
-            <div class="gwi-cat-icon">✨</div>
+            <div class="gwi-cat-icon"><i class="fas fa-sparkles"></i></div>
             <div><div class="gwi-cat-title">Face &amp; Skin Treatments</div><div class="gwi-cat-count">7 Treatments Available</div></div>
             <div class="gwi-cat-line"></div>
           </div>
@@ -300,7 +305,7 @@ $breadcrumb = [
 
             <!-- 1. HydraFacial -->
             <article id="hydrafacial" class="gwi-card gwi-featured">
-              <div class="gwi-card-img"><img src="img\services\hydrafacial-img.webp" alt="HydraFacial" onerror="this.style.display='none'" /><span class="gwi-badge">Most Popular</span></div>
+              <div class="gwi-card-img"><img src="img\services\hydrafacial-img.webp" alt="HydraFacial" title="HydraFacial Treatment" onerror="this.style.display='none'" /><span class="gwi-badge">Most Popular</span></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Renew Your Complexion</div>
                 <div class="gwi-card-title">HydraFacial — The Ultimate Skin Rejuvenation</div>
@@ -315,7 +320,7 @@ $breadcrumb = [
 
             <!-- 2. HIFU -->
             <article id="hifu" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\hifu-img.webp" alt="HIFU" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\hifu-img.webp" alt="HIFU" title="HIFU Non-Surgical Facelift" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Lift and Tighten Without Surgery</div>
                 <div class="gwi-card-title">HIFU — Non-Surgical Facelift</div>
@@ -330,7 +335,7 @@ $breadcrumb = [
 
             <!-- 3. CO2 Laser -->
             <article id="co2" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\co2-img.webp" alt="CO2 Laser" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\co2-img.webp" alt="CO2 Laser" title="CO2 Laser Therapy" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Resurface and Rejuvenate</div>
                 <div class="gwi-card-title">CO₂ Laser Therapy</div>
@@ -345,7 +350,7 @@ $breadcrumb = [
 
             <!-- 4. Pico Laser -->
             <article id="pico" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\pico.webp" alt="Pico Laser" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\pico.webp" alt="Pico Laser" title="Pico Laser Precision Treatment" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Target Pigmentation and Scars</div>
                 <div class="gwi-card-title">Pico Laser — Precision Treatment</div>
@@ -360,7 +365,7 @@ $breadcrumb = [
 
             <!-- 5. Carbon Laser -->
             <article id="carbon" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\carbon-img.webp" alt="Carbon Laser Peel" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\carbon-img.webp" alt="Carbon Laser Peel" title="Carbon Laser Hollywood Peel" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Achieve a Hollywood Glow</div>
                 <div class="gwi-card-title">Carbon Laser — Hollywood Peel</div>
@@ -375,7 +380,7 @@ $breadcrumb = [
 
             <!-- 6. Exilis Face & Neck -->
             <article id="exilis-face" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\exilis-img.webp" alt="Exilis Face and Neck" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\exilis-img.webp" alt="Exilis Face and Neck" title="Exilis Face & Neck Treatment" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Tighten and Contour</div>
                 <div class="gwi-card-title">Exilis Face &amp; Neck</div>
@@ -390,7 +395,7 @@ $breadcrumb = [
 
             <!-- 7. Intimate Whitening -->
             <article id="intimate" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\cryotherapy-img.webp" alt="Intimate Whitening" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\cryotherapy-img.webp" alt="Intimate Whitening" title="Intimate Whitening Treatment" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Brighten and Even Skin Tone</div>
                 <div class="gwi-card-title">Intimate Whitening</div>
@@ -412,7 +417,7 @@ $breadcrumb = [
         ─────────────────────────────────────────────────── -->
         <div class="gwi-cat-block gwi-visible" id="gwi-block-body">
           <div class="gwi-cat-head">
-            <div class="gwi-cat-icon">💎</div>
+            <div class="gwi-cat-icon"><i class="fas fa-gem"></i></div>
             <div><div class="gwi-cat-title">Body &amp; Contouring</div><div class="gwi-cat-count">4 Treatments Available</div></div>
             <div class="gwi-cat-line"></div>
           </div>
@@ -420,7 +425,7 @@ $breadcrumb = [
 
             <!-- 8. Cryotherapy -->
             <article id="cryotherapy" class="gwi-card gwi-featured">
-              <div class="gwi-card-img"><img src="img\services\cryotherapy-img.webp" alt="Cryotherapy" onerror="this.style.display='none'" /><span class="gwi-badge">Top Rated</span></div>
+              <div class="gwi-card-img"><img src="img\services\cryotherapy-img.webp" alt="Cryotherapy" title="Cryotherapy Fat Freezing" onerror="this.style.display='none'" /><span class="gwi-badge">Top Rated</span></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Freeze Away Stubborn Fat</div>
                 <div class="gwi-card-title">Cryotherapy — Freeze Away Stubborn Fat</div>
@@ -435,7 +440,7 @@ $breadcrumb = [
 
             <!-- 9. EMS -->
             <article id="ems" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\ems.webp" alt="EMS" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\ems.webp" alt="EMS" title="EMS Electrical Muscle Stimulation" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Tone and Strengthen</div>
                 <div class="gwi-card-title">EMS — Electrical Muscle Stimulation</div>
@@ -450,7 +455,7 @@ $breadcrumb = [
 
             <!-- 10. Exilis Body -->
             <article id="exilis-body" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\exilis-body.webp" alt="Exilis Body" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\exilis-body.webp" alt="Exilis Body" title="Exilis Body Contouring" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Contour and Tighten</div>
                 <div class="gwi-card-title">Exilis Body Contouring</div>
@@ -465,7 +470,7 @@ $breadcrumb = [
 
             <!-- 11. Laser Hair Removal -->
             <article id="laser-hair" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\laser-hair-remove.webp" alt="Laser Hair Removal" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\laser-hair-remove.webp" alt="Laser Hair Removal" title="Laser Hair Removal Treatment" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Achieve Long-Lasting Smoothness</div>
                 <div class="gwi-card-title">Laser Hair Removal</div>
@@ -487,7 +492,7 @@ $breadcrumb = [
         ─────────────────────────────────────────────────── -->
         <div class="gwi-cat-block gwi-visible" id="gwi-block-hair">
           <div class="gwi-cat-head">
-            <div class="gwi-cat-icon">🌿</div>
+            <div class="gwi-cat-icon"><i class="fas fa-leaf"></i></div>
             <div><div class="gwi-cat-title">Hair &amp; Scalp Care</div><div class="gwi-cat-count">3 Treatments Available</div></div>
             <div class="gwi-cat-line"></div>
           </div>
@@ -495,7 +500,7 @@ $breadcrumb = [
 
             <!-- 12. Hair Restoration -->
             <article id="hair-restore" class="gwi-card gwi-featured">
-              <div class="gwi-card-img"><img src="img\services\hair-restoratial.webp" alt="Hair Restoration" onerror="this.style.display='none'" /><span class="gwi-badge">Most Requested</span></div>
+              <div class="gwi-card-img"><img src="img\services\hair-restoratial.webp" alt="Hair Restoration" title="Hair Restoration Treatment" onerror="this.style.display='none'" /><span class="gwi-badge">Most Requested</span></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Restore Hair Density</div>
                 <div class="gwi-card-title">Hair Restoration — Thicker, Healthier Hair</div>
@@ -510,7 +515,7 @@ $breadcrumb = [
 
             <!-- 13. Flaky Scalp Therapy -->
             <article id="scalp-flaky" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\flaky-scalp.webp" alt="Flaky Scalp Therapy" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\flaky-scalp.webp" alt="Flaky Scalp Therapy" title="Flaky Scalp Therapy Treatment" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Soothe and Strengthen</div>
                 <div class="gwi-card-title">Flaky Scalp Therapy</div>
@@ -525,7 +530,7 @@ $breadcrumb = [
 
             <!-- 14. Scalp Psoriasis Therapy -->
             <article id="scalp-psoriasis" class="gwi-card">
-              <div class="gwi-card-img"><img src="img\services\scalp-img.webp" alt="Scalp Psoriasis Therapy" onerror="this.style.display='none'" /></div>
+              <div class="gwi-card-img"><img src="img\services\scalp-img.webp" alt="Scalp Psoriasis Therapy" title="Scalp Psoriasis Therapy Treatment" onerror="this.style.display='none'" /></div>
               <div class="gwi-card-body">
                 <div class="gwi-card-eyebrow">Manage and Relieve Psoriasis</div>
                 <div class="gwi-card-title">Scalp Psoriasis Therapy</div>
@@ -573,7 +578,7 @@ $breadcrumb = [
           <ul class="gwi-modal-benefits" id="gwi-modal-benefits"></ul>
 
           <div class="gwi-modal-foot">
-            <a href="contact-us.php#contact-form" class="gwi-modal-book">
+            <a href="contact-us.php#contact-form" class="gwi-modal-book" title="Book Your Consultation">
               Book Consultation
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -599,17 +604,17 @@ $breadcrumb = [
         </div>
         <div class="advantages-grid">
           <div class="advantage-item" data-aos="fade-up">
-            <div class="advantage-icon">🎯</div>
+            <div class="advantage-icon"><i class="fas fa-bullseye"></i></div>
             <h3>Personalized Care</h3>
             <p>Tailored treatments designed to meet your unique beauty and wellness goals</p>
           </div>
           <div class="advantage-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="advantage-icon">⚙️</div>
+            <div class="advantage-icon"><i class="fas fa-cogs"></i></div>
             <h3>Advanced Technology</h3>
             <p>State-of-the-art equipment and techniques for optimal results</p>
           </div>
           <div class="advantage-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="advantage-icon">🩺</div>
+            <div class="advantage-icon"><i class="fas fa-stethoscope"></i></div>
             <h3>Expert Team</h3>
             <p>Highly skilled professionals dedicated to your well-being</p>
           </div>
@@ -620,7 +625,7 @@ $breadcrumb = [
   </main>
 
   <?php include 'footer.php'; ?>
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="components.js"></script>

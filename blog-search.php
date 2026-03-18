@@ -17,12 +17,12 @@ $breadcrumb = [
 // Mock search results - In a real implementation, this would query a database
 // This simulates searching through blog articles
 $all_blogs = [
-  ['title' => 'The Complete Guide to HIFU Facial Lifting', 'category' => 'Skincare', 'date' => 'December 15, 2024', 'excerpt' => 'Discover how HIFU (High-Intensity Focused Ultrasound) technology is revolutionizing non-invasive facial treatments. Learn about the benefits, what to expect, and real patient results.', 'url' => 'blog/hifu-complete-guide.php', 'image' => 'img/blog-featured.jpg', 'tags' => ['HIFU', 'Facial', 'Anti-Aging', 'NonInvasive']],
-  ['title' => 'Why CO2 Laser Therapy is Perfect for Acne Scars', 'category' => 'Treatment', 'date' => 'December 10, 2024', 'excerpt' => 'Explore how advanced CO2 laser technology can dramatically improve the appearance of acne scars and rejuvenate your skin.', 'url' => 'blog/co2-laser-benefits.php', 'image' => 'img/blog-01.jpg', 'tags' => ['CO2', 'Laser', 'Treatment', 'Acne']],
-  ['title' => 'Post-Treatment Skincare: Maximize Your Results', 'category' => 'Skincare', 'date' => 'December 8, 2024', 'excerpt' => 'Learn the essential aftercare routine to maintain and enhance your treatment results. Expert tips from our wellness specialists.', 'url' => 'blog/post-treatment-skincare.php', 'image' => 'img/blog-02.jpg', 'tags' => ['Skincare', 'Aftercare', 'Results', 'Tips']],
-  ['title' => 'Hair Restoration: Separating Myth from Reality', 'category' => 'Hair', 'date' => 'November 28, 2024', 'excerpt' => 'Everything you need to know about modern hair restoration techniques. Learn which treatments actually work and what to expect.', 'url' => 'blog/hair-restoration.php', 'image' => 'img/blog-04.jpg', 'tags' => ['Hair', 'Restoration', 'Treatment']],
-  ['title' => 'Anti-Aging Treatments: Finding What Works for You', 'category' => 'Treatments', 'date' => 'November 25, 2024', 'excerpt' => 'Discover the most effective anti-aging treatments available and which ones work best for your age and skin type.', 'url' => 'blog/anti-aging-treatments.php', 'image' => 'img/blog-05.jpg', 'tags' => ['Anti-Aging', 'Treatment', 'Skin']],
-  ['title' => 'Chemical Peels Explained: Types, Benefits & Aftercare', 'category' => 'Skincare', 'date' => 'November 22, 2024', 'excerpt' => 'Everything you need to know about chemical peels, from the different strength levels to proper aftercare for optimal results.', 'url' => 'blog/chemical-peels.php', 'image' => 'img/blog-06.jpg', 'tags' => ['Chemical', 'Peels', 'Skincare']],
+  ['title' => 'The Complete Guide to HIFU Facial Lifting', 'category' => 'Skincare', 'date' => 'December 15, 2024', 'excerpt' => 'Discover how HIFU (High-Intensity Focused Ultrasound) technology is revolutionizing non-invasive facial treatments. Learn about the benefits, what to expect, and real patient results.', 'url' => 'blog/hifu-complete-guide.php', 'image' => 'img/blog-featured.webp', 'tags' => ['HIFU', 'Facial', 'Anti-Aging', 'NonInvasive']],
+  ['title' => 'Why CO2 Laser Therapy is Perfect for Acne Scars', 'category' => 'Treatment', 'date' => 'December 10, 2024', 'excerpt' => 'Explore how advanced CO2 laser technology can dramatically improve the appearance of acne scars and rejuvenate your skin.', 'url' => 'blog/co2-laser-benefits.php', 'image' => 'img/blog-01.webp', 'tags' => ['CO2', 'Laser', 'Treatment', 'Acne']],
+  ['title' => 'Post-Treatment Skincare: Maximize Your Results', 'category' => 'Skincare', 'date' => 'December 8, 2024', 'excerpt' => 'Learn the essential aftercare routine to maintain and enhance your treatment results. Expert tips from our wellness specialists.', 'url' => 'blog/post-treatment-skincare.php', 'image' => 'img/blog-02.webp', 'tags' => ['Skincare', 'Aftercare', 'Results', 'Tips']],
+  ['title' => 'Hair Restoration: Separating Myth from Reality', 'category' => 'Hair', 'date' => 'November 28, 2024', 'excerpt' => 'Everything you need to know about modern hair restoration techniques. Learn which treatments actually work and what to expect.', 'url' => 'blog/hair-restoration.php', 'image' => 'img/blog-04.webp', 'tags' => ['Hair', 'Restoration', 'Treatment']],
+  ['title' => 'Anti-Aging Treatments: Finding What Works for You', 'category' => 'Treatments', 'date' => 'November 25, 2024', 'excerpt' => 'Discover the most effective anti-aging treatments available and which ones work best for your age and skin type.', 'url' => 'blog/anti-aging-treatments.php', 'image' => 'img/blog-05.webp', 'tags' => ['Anti-Aging', 'Treatment', 'Skin']],
+  ['title' => 'Chemical Peels Explained: Types, Benefits & Aftercare', 'category' => 'Skincare', 'date' => 'November 22, 2024', 'excerpt' => 'Everything you need to know about chemical peels, from the different strength levels to proper aftercare for optimal results.', 'url' => 'blog/chemical-peels.php', 'image' => 'img/blog-06.webp', 'tags' => ['Chemical', 'Peels', 'Skincare']],
 ];
 
 // Filter results based on search query
@@ -53,6 +53,7 @@ if ($search_query) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
   <meta name="description" content="<?php echo $search_query ? 'Search results for ' . htmlspecialchars($search_query) . ' - Articles on wellness, skincare, beauty treatments. Find expert insights from Geneva Wellness Institute.' : 'Search our wellness blog for articles on skincare, beauty treatments, aesthetic procedures, and health tips.'; ?>" />
   <meta name="keywords" content="blog search, wellness articles, skincare tips, beauty treatments, aesthetic procedures, anti-aging, health, search results" />
   <meta name="robots" content="index, follow" />
@@ -110,7 +111,7 @@ if ($search_query) {
           
           <!-- Search Info -->
           <div class="search-info" data-aos="fade-up">
-            <h2>Search Results</h2>
+            <h1>Search Results</h1>
             <?php if ($search_query): ?>
               <p class="search-query">
                 <?php if (count($results) > 0): ?>
@@ -135,14 +136,14 @@ if ($search_query) {
                       <span class="category"><?php echo htmlspecialchars($blog['category']); ?></span>
                       <span class="date"><?php echo htmlspecialchars($blog['date']); ?></span>
                     </div>
-                    <h3><a href="<?php echo htmlspecialchars($blog['url']); ?>"><?php echo htmlspecialchars($blog['title']); ?></a></h3>
+                    <h3><a href="<?php echo htmlspecialchars($blog['url']); ?>" title="Read: <?php echo htmlspecialchars($blog['title']); ?>"><?php echo htmlspecialchars($blog['title']); ?></a></h3>
                     <p class="post-excerpt"><?php echo htmlspecialchars($blog['excerpt']); ?></p>
                     <div class="post-tags">
                       <?php foreach ($blog['tags'] as $tag): ?>
-                        <a href="blog-tag/<?php echo strtolower(str_replace(' ', '-', $tag)); ?>.php" class="tag-small">#<?php echo htmlspecialchars($tag); ?></a>
+                        <a href="blog-tag/<?php echo strtolower(str_replace(' ', '-', $tag)); ?>.php" class="tag-small" title="View posts tagged with <?php echo htmlspecialchars($tag); ?>">#<?php echo htmlspecialchars($tag); ?></a>
                       <?php endforeach; ?>
                     </div>
-                    <a href="<?php echo htmlspecialchars($blog['url']); ?>" class="read-more">Read More</a>
+                    <a href="<?php echo htmlspecialchars($blog['url']); ?>" class="read-more" title="Read: <?php echo htmlspecialchars($blog['title']); ?>">Read More</a>
                   </div>
                 </article>
               <?php endforeach; ?>
@@ -150,16 +151,16 @@ if ($search_query) {
           <?php else: ?>
             <div class="no-results" data-aos="fade-up">
               <div class="no-results-content">
-                <div class="no-results-icon">🔍</div>
+                <div class="no-results-icon"><i class="fas fa-search"></i></div>
                 <h3>No Articles Found</h3>
                 <p>We couldn't find articles matching your search. Try different keywords or browse our categories below.</p>
                 <div class="search-suggestions">
                   <h4>Popular Categories</h4>
                   <ul>
-                    <li><a href="blog-category/skincare.php">Skincare Tips</a></li>
-                    <li><a href="blog-category/treatments.php">Treatment Guides</a></li>
-                    <li><a href="blog-category/beauty.php">Beauty Insights</a></li>
-                    <li><a href="blog-category/wellness.php">Wellness Articles</a></li>
+                    <li><a href="blog-category/skincare.php" title="Skincare Tips">Skincare Tips</a></li>
+                    <li><a href="blog-category/treatments.php" title="Treatment Guides">Treatment Guides</a></li>
+                    <li><a href="blog-category/beauty.php" title="Beauty Insights">Beauty Insights</a></li>
+                    <li><a href="blog-category/wellness.php" title="Wellness Articles">Wellness Articles</a></li>
                   </ul>
                 </div>
               </div>
@@ -184,11 +185,11 @@ if ($search_query) {
           <div class="sidebar-widget categories-widget" data-aos="fade-up" data-aos-delay="100">
             <h3>Categories</h3>
             <ul>
-              <li><a href="blog-category/skincare.php">Skincare <span class="count">(8)</span></a></li>
-              <li><a href="blog-category/treatments.php">Treatments <span class="count">(12)</span></a></li>
-              <li><a href="blog-category/beauty.php">Beauty Tips <span class="count">(6)</span></a></li>
-              <li><a href="blog-category/hair-health.php">Hair Health <span class="count">(5)</span></a></li>
-              <li><a href="blog-category/wellness.php">Wellness <span class="count">(9)</span></a></li>
+              <li><a href="blog-category/skincare.php" title="Skincare Tips">Skincare <span class="count">(8)</span></a></li>
+              <li><a href="blog-category/treatments.php" title="Treatment Guides">Treatments <span class="count">(12)</span></a></li>
+              <li><a href="blog-category/beauty.php" title="Beauty Tips">Beauty Tips <span class="count">(6)</span></a></li>
+              <li><a href="blog-category/hair-health.php" title="Hair Health">Hair Health <span class="count">(5)</span></a></li>
+              <li><a href="blog-category/wellness.php" title="Wellness Articles">Wellness <span class="count">(9)</span></a></li>
             </ul>
           </div>
 
@@ -196,10 +197,10 @@ if ($search_query) {
           <div class="sidebar-widget recent-posts-widget" data-aos="fade-up" data-aos-delay="200">
             <h3>Recent Posts</h3>
             <ul>
-              <li><a href="/blog/hifu-complete-guide.php">The Complete Guide to HIFU Facial Lifting</a></li>
-              <li><a href="/blog/co2-laser-benefits.php">Why CO2 Laser Therapy is Perfect for Acne Scars</a></li>
-              <li><a href="/blog/post-treatment-skincare.php">Post-Treatment Skincare: Maximize Your Results</a></li>
-              <li><a href="/blog/hair-restoration-myths.php">Hair Restoration: Separating Myth from Reality</a></li>
+              <li><a href="/blog/hifu-complete-guide.php" title="Read: The Complete Guide to HIFU Facial Lifting">The Complete Guide to HIFU Facial Lifting</a></li>
+              <li><a href="/blog/co2-laser-benefits.php" title="Read: Why CO2 Laser Therapy is Perfect for Acne Scars">Why CO2 Laser Therapy is Perfect for Acne Scars</a></li>
+              <li><a href="/blog/post-treatment-skincare.php" title="Read: Post-Treatment Skincare: Maximize Your Results">Post-Treatment Skincare: Maximize Your Results</a></li>
+              <li><a href="/blog/hair-restoration-myths.php" title="Read: Hair Restoration: Separating Myth from Reality">Hair Restoration: Separating Myth from Reality</a></li>
             </ul>
           </div>
 
@@ -207,13 +208,13 @@ if ($search_query) {
           <div class="sidebar-widget tags-widget" data-aos="fade-up" data-aos-delay="300">
             <h3>Popular Tags</h3>
             <div class="tags-cloud">
-              <a href="/blog-tag/skin.php" class="tag">Skin</a>
-              <a href="/blog-tag/treatment.php" class="tag">Treatment</a>
-              <a href="/blog-tag/anti-aging.php" class="tag">Anti-Aging</a>
-              <a href="/blog-tag/laser.php" class="tag">Laser</a>
-              <a href="/blog-tag/natural.php" class="tag">Natural</a>
-              <a href="/blog-tag/results.php" class="tag">Results</a>
-              <a href="/blog-tag/wellness.php" class="tag">Wellness</a>
+              <a href="/blog-tag/skin.php" class="tag" title="View posts tagged with Skin">Skin</a>
+              <a href="/blog-tag/treatment.php" class="tag" title="View posts tagged with Treatment">Treatment</a>
+              <a href="/blog-tag/anti-aging.php" class="tag" title="View posts tagged with Anti-Aging">Anti-Aging</a>
+              <a href="/blog-tag/laser.php" class="tag" title="View posts tagged with Laser">Laser</a>
+              <a href="/blog-tag/natural.php" class="tag" title="View posts tagged with Natural">Natural</a>
+              <a href="/blog-tag/results.php" class="tag" title="View posts tagged with Results">Results</a>
+              <a href="/blog-tag/wellness.php" class="tag" title="View posts tagged with Wellness">Wellness</a>
             </div>
           </div>
 
@@ -237,7 +238,7 @@ if ($search_query) {
   <!-- ── FOOTER ───────────────────────────────────────── -->
   <?php include 'footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

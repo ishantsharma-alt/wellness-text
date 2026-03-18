@@ -11,8 +11,10 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
   <meta name="description" content="Privacy Policy for Geneva Wellness Institute. Learn how we collect, use, and protect your personal information." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://genevawellness.com/privacy-policy" />
   <title>Privacy Policy — Geneva Wellness Institute</title>
 
   <!-- Fonts -->
@@ -101,8 +103,8 @@ $breadcrumb = [
           <p>If you have questions or concerns about this Privacy Policy or our privacy practices, please contact us at:</p>
           <p>
             <strong>Geneva Wellness Institute</strong><br>
-            Email: <a href="mailto:hello@genevawellness.com">hello@genevawellness.com</a><br>
-            Phone: <a href="tel:+1234567890">(123) 456-7890</a>
+            Email: <a href="mailto:hello@genevawellness.com" title="Email us at hello@genevawellness.com">hello@genevawellness.com</a><br>
+            Phone: <a href="tel:+1234567890" title="Call us at (123) 456-7890">(123) 456-7890</a>
           </p>
         </div>
       </div>

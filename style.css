@@ -510,6 +510,8 @@ a:hover {
 .site-header .container{
 max-width: 1800px!important;
 }
+
+
 /* Hero Content */
 .hero-content-col {
   color: var(--black);
@@ -1278,6 +1280,7 @@ max-width: 1800px!important;
   transform: translateX(4px);
 }
 .pillar-icon { font-size: 1.5rem; flex-shrink: 0; }
+.red-red { color: #C83232; }
 .about-pillar strong { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; }
 .about-pillar p { color: var(--muted); font-size: 0.82rem; margin: 0; }
 
@@ -1420,6 +1423,11 @@ max-width: 1800px!important;
   padding: 1rem;
 }
 
+#consultation-popup {
+  display: none !important;
+  visibility: hidden !important;
+}
+
 .popup-overlay.visible {
   opacity: 1;
   visibility: visible;
@@ -1434,8 +1442,8 @@ max-width: 1800px!important;
   position: relative;
   background: white;
   border-radius: 24px;
-  padding: 2rem 1.8rem;
-  max-width: 550px;
+  padding: 1.5rem 1.4rem;
+  max-width: 520px;
   width: 100%;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
   animation: popupSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1484,22 +1492,22 @@ max-width: 1800px!important;
 
 .popup-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
 }
 
 .popup-header h3 {
   font-family: "Lora", serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: var(--black);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-weight: 600;
 }
 
 .popup-header p {
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.85rem;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .popup-header p strong {
@@ -1510,23 +1518,23 @@ max-width: 1800px!important;
 .popup-form {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.55rem;
 }
 
 .popup-form .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 0.7rem;
 }
 
 .popup-form .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.25rem;
 }
 
 .popup-form .form-group label {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--black);
 }
@@ -1534,11 +1542,11 @@ max-width: 1800px!important;
 .popup-form .form-group input,
 .popup-form .form-group textarea,
 .popup-form .form-group select {
-  padding: 0.85rem 1rem;
+  padding: 0.65rem 0.85rem;
   border: 1.5px solid #e5ddd5;
   border-radius: 8px;
   font-family: "Inter", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--black);
   transition: all 0.3s ease;
   background: white;
@@ -1579,16 +1587,17 @@ max-width: 1800px!important;
 }
 
 .popup-form .btn {
-  padding: 1rem 2rem;
-  margin-top: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
 }
 
 .popup-form .form-note {
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   color: var(--muted);
-  margin-top: 0.8rem;
-  line-height: 1.5;
+  margin-top: 0.5rem;
+  line-height: 1.4;
 }
 
 /* ── BEFORE/AFTER SECTION ────────────────────────────────────────────────── */
@@ -2157,7 +2166,7 @@ max-width: 1800px!important;
 }
 
 .testimonial-quote { font-size: 3rem; color: var(--accent-gold); opacity: 0.3; line-height: 1; margin-bottom: 0.5rem; }
-.testimonial-stars { color: #FFD700; font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.testimonial-stars { color: #FFD700; font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }\n.testimonial-stars i { margin-right: 0.15rem; }\n.gw-proof-stars i, .hero-stars i { color: #FFD700; margin-right: 0.15rem; }\n.gw-stat-num i, .hero-stat-num i { color: #FFD700; margin-right: 0.25rem; }\n.gw-pill i { margin-right: 0.5rem; font-size: 1.1em; }\n.gw-fcard-ico { margin-right: 0.5rem; }\n.bk-submit i { margin-left: 3px; }
 
 .testimonial-card blockquote {
   margin: 0 0 1.5rem;
@@ -2505,8 +2514,10 @@ img.placeholder-image {
 
 .highlights { list-style: none; padding: 0; margin: 2rem 0 0 0; }
 .highlights li { padding: 0.75rem 0; color: var(--muted); font-size: 1rem; line-height: 1.6; }
-/* Red ✓ on list items — intentional highlight use */
-.highlights li:before { content: '✓ '; color: var(--primary); font-weight: 700; margin-right: 0.5rem; }
+/* Checkmark on list items — using icon class */
+.highlights li:before { content: ''; margin-right: 0.5rem; }
+.highlights li:before { display: inline-block; margin-right: 0.5rem; }
+.highlights li i:first-child { color: var(--primary); font-weight: 700; margin-right: 0.5rem; }
 
 /* ── VALUES GRID ─────────────────────────────────────────────────────────── */
 .values-section { background: linear-gradient(135deg, rgba(202, 174, 95, 0.08), rgba(250, 210, 184, 0.08)); }
@@ -2627,8 +2638,9 @@ img.placeholder-image {
 .treatment-card h4 { font-family: "Lora", serif; font-size: 1.25rem; color: var(--black); margin-bottom: 1.25rem; line-height: 1.3; }
 .treatment-benefits { list-style: none; padding: 0; margin: 0 0 1.5rem 0; }
 .treatment-benefits li { padding-left: 1.5rem; position: relative; color: var(--muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.75rem; }
-/* Red ✓ on treatment benefits — intentional accent */
-.treatment-benefits li:before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: 700; }
+/* Checkmark on treatment benefits — using icon class */
+.treatment-benefits li:before { content: ''; position: absolute; left: 0; }
+.treatment-benefits li i { color: var(--primary); font-weight: 700; position: absolute; left: 0; }
 .treatment-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; flex: 1; }
 .treatment-cta {
   display: inline-flex;

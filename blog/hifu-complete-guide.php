@@ -11,6 +11,7 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../img/geneva-favicon.svg" type="image/svg+xml">
   <meta name="description" content="Read our detailed blog article about wellness, skincare treatments, and beauty tips. Expert advice from Geneva Wellness Institute." />
   <meta name="keywords" content="blog, wellness, skincare, beauty, treatment, article, expert advice" />
   <meta name="robots" content="index, follow" />
@@ -301,7 +302,7 @@ $breadcrumb = [
           <section class="comment-cta">
             <h3>Questions About HIFU?</h3>
             <p>Have a question? Our experts are here to help. Get in touch or schedule a consultation.</p>
-            <a href="../contact-us.php#contact-form" class="btn btn-primary">Ask Our Experts</a>
+            <a href="../contact-us.php#contact-form" class="btn btn-primary" title="Book Your Consultation">Ask Our Experts</a>
           </section>
 
         </div>
@@ -314,7 +315,7 @@ $breadcrumb = [
             <h3>Search Articles</h3>
             <form class="search-form" action="../blog-search.php" method="get">
               <input type="search" name="q" placeholder="Search blog..." />
-              <button type="submit" aria-label="Search">🔍</button>
+              <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
             </form>
           </div>
 
@@ -365,7 +366,7 @@ $breadcrumb = [
           <div class="sidebar-widget" data-aos="fade-up" data-aos-delay="300">
             <h3>Book Your Consultation</h3>
             <p style="font-size: 0.9rem; margin-bottom: 1rem;">Ready to try HIFU? Schedule your free consultation today.</p>
-            <a href="../contact-us.php#contact-form" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Book Now</a>
+            <a href="../contact-us.php#contact-form" class="btn btn-primary" style="width:100%;text-align:center;display:block;" title="Book Your Consultation">Book Now</a>
           </div>
 
         </aside>
@@ -378,7 +379,7 @@ $breadcrumb = [
   <!-- ── UNIFIED FOOTER ───────────────────────────────────────── -->
   <?php include '../footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="../components.js"></script>

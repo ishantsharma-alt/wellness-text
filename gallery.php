@@ -1,21 +1,26 @@
 <?php 
-$page_title = 'Explore Our Transformations'; 
-$page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness Institute. From rejuvenated skin to revitalized hair, see the remarkable results our treatments have achieved. Let these transformations inspire your own path to beauty and wellness.'; 
+$page_title = 'Aesthetic Results Gallery'; 
+$page_subtitle = 'Discover real before and after results from our clients. See the remarkable transformations our aesthetic treatments achieve.'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="View real aesthetic treatment results including laser procedures, skin rejuvenation and body contouring at Geneva Wellness Institute. Explore the gallery today." />
-  <meta name="keywords" content="before and after, gallery, results, aesthetic treatments, Geneva Wellness" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
+  <meta name="description" content="See real before and after results from laser skin treatments, anti-aging procedures & body contouring at our aesthetic clinic in Alabang. Discover transformation." />
+  <meta name="keywords" content="before and after results, laser treatment gallery, aesthetic transformation, body contouring results" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="GALLERY PAGE	Geneva Wellness Institute | Aesthetic Treatment Results" />
-  <meta property="og:description" content="See real results from our clients and treatments." />
+  <meta property="og:title" content="Before & After Gallery | Aesthetic Results" />
+  <meta property="og:description" content="See real before and after results from our laser and aesthetic treatments." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genevawellness.com/gallery" />
-  <link rel="canonical" href="https://genevawellness.com/gallery" />
-  <title>GALLERY PAGE	Geneva Wellness Institute | Aesthetic Treatment Results</title>
+  <meta property="og:url" content="https://genevawellness.com/gallery" /><meta property="og:image" content="img/feature-img/gallery.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="img/feature-img/gallery.webp" />
+<link rel="canonical" href="https://genevawellness.com/gallery" />
+  <title>Aesthetic Results Gallery | Before & After</title>
 
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">
@@ -277,23 +282,23 @@ $page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness
 
         <div class="gallery8_component">
 
-          <div class="gallery-item"><img src="img/gallery-img-1.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-2.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-3.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-4.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-5.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-6.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-7.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-8.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-9.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-10.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-11.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-12.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-13.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-14.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-15.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-16.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
-          <div class="gallery-item"><img src="img/gallery-img-17.jpg" alt="Gallery Image"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-1.webp" alt="Gallery Image 1" title="Gallery Image 1"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-2.webp" alt="Gallery Image 2" title="Gallery Image 2"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-3.webp" alt="Gallery Image 3" title="Gallery Image 3"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-4.webp" alt="Gallery Image 4" title="Gallery Image 4"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-5.webp" alt="Gallery Image 5" title="Gallery Image 5"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-6.webp" alt="Gallery Image 6" title="Gallery Image 6"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-7.webp" alt="Gallery Image 7" title="Gallery Image 7"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-8.webp" alt="Gallery Image 8" title="Gallery Image 8"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-9.webp" alt="Gallery Image 9" title="Gallery Image 9"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-10.webp" alt="Gallery Image 10" title="Gallery Image 10"><div class="gallery-item-zoom">🔍</div></div>
+          <div class="gallery-item"><img src="img/gallery-img-11.webp" alt="Gallery Image 11" title="Gallery Image 11"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-12.webp" alt="Gallery Image 12" title="Gallery Image 12"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-13.webp" alt="Gallery Image 13" title="Gallery Image 13"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-14.webp" alt="Gallery Image 14" title="Gallery Image 14"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-15.webp" alt="Gallery Image 15" title="Gallery Image 15"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-16.webp" alt="Gallery Image 16" title="Gallery Image 16"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
+          <div class="gallery-item"><img src="img/gallery-img-17.webp" alt="Gallery Image 17" title="Gallery Image 17"><div class="gallery-item-zoom"><i class="fas fa-magnifying-glass"></i></div></div>
 
         </div>
 
@@ -304,7 +309,7 @@ $page_subtitle = 'Discover the beauty journeys of our clients at Geneva Wellness
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
       <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
       <button class="lightbox-arrow prev" id="lightboxPrev" aria-label="Previous">‹</button>
-      <img class="lightbox-img" src="" alt="Expanded Image" id="lightboxImg" />
+      <img class="lightbox-img" src="" alt="Expanded Image" title="View Full Size Image" id="lightboxImg" />
       <button class="lightbox-arrow next" id="lightboxNext" aria-label="Next">›</button>
       <div class="lightbox-counter" id="lightboxCounter"></div>
     </div>

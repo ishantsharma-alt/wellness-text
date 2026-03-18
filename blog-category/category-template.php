@@ -19,6 +19,7 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../img/geneva-favicon.svg" type="image/svg+xml">
   <meta name="description" content="Browse our <?php echo htmlspecialchars($category_title); ?> articles and insights. Expert advice from Geneva Wellness Institute." />
   <meta name="keywords" content="blog, wellness, skincare, <?php echo htmlspecialchars(strtolower($category_title)); ?>, beauty tips, articles" />
   <meta name="robots" content="index, follow" />
@@ -75,9 +76,9 @@ $breadcrumb = [
                   <span class="category"><?php echo htmlspecialchars($category_title); ?></span>
                   <span class="date">December 15, 2024</span>
                 </div>
-                <h3><a href="../blog/benefits-of-regular-facials.php">The Benefits of Regular Facials</a></h3>
+                <h3><a href="../blog/benefits-of-regular-facials.php" title="Read: The Benefits of Regular Facials">The Benefits of Regular Facials</a></h3>
                 <p class="post-excerpt">Discover how regular facial treatments can transform your skin, improve texture, and give you long-lasting radiance.</p>
-                <a href="../blog/benefits-of-regular-facials.php" class="read-more">Read Full Article →</a>
+                <a href="../blog/benefits-of-regular-facials.php" class="read-more" title="Read: The Benefits of Regular Facials">Read Full Article →</a>
               </div>
             </article>
 
@@ -90,9 +91,9 @@ $breadcrumb = [
                   <span class="category"><?php echo htmlspecialchars($category_title); ?></span>
                   <span class="date">December 10, 2024</span>
                 </div>
-                <h3><a href="../blog/body-contouring-techniques.php">Top 5 Body Contouring Techniques</a></h3>
+                <h3><a href="../blog/body-contouring-techniques.php" title="Read: Top 5 Body Contouring Techniques">Top 5 Body Contouring Techniques</a></h3>
                 <p class="post-excerpt">Learn about the most effective body contouring techniques and find out which is best suited for your goals.</p>
-                <a href="../blog/body-contouring-techniques.php" class="read-more">Read More</a>
+                <a href="../blog/body-contouring-techniques.php" class="read-more" title="Read: Top 5 Body Contouring Techniques">Read More</a>
               </div>
             </article>
 
@@ -105,9 +106,9 @@ $breadcrumb = [
                   <span class="category"><?php echo htmlspecialchars($category_title); ?></span>
                   <span class="date">December 5, 2024</span>
                 </div>
-                <h3><a href="../blog/hair-care-tips.php">Hair Care Tips for a Healthier Scalp</a></h3>
+                <h3><a href="../blog/hair-care-tips.php" title="Read: Hair Care Tips for a Healthier Scalp">Hair Care Tips for a Healthier Scalp</a></h3>
                 <p class="post-excerpt">Explore essential tips for maintaining a healthy scalp and vibrant hair with expert advice from our certified therapists.</p>
-                <a href="../blog/hair-care-tips.php" class="read-more">Read More</a>
+                <a href="../blog/hair-care-tips.php" class="read-more" title="Read: Hair Care Tips for a Healthier Scalp">Read More</a>
               </div>
             </article>
 
@@ -115,7 +116,7 @@ $breadcrumb = [
 
           <!-- Pagination -->
           <nav class="pagination" data-aos="fade-up" aria-label="Page navigation">
-            <a href="#" class="page-link" aria-disabled="true">← Previous</a>
+            <a href="#" class="page-link" aria-disabled="true"><i class="fas fa-arrow-left"></i> Previous</a>
             <a href="#" class="page-link active" aria-current="page">1</a>
             <a href="#" class="page-link">2</a>
             <a href="#" class="page-link">3</a>
@@ -140,12 +141,12 @@ $breadcrumb = [
           <div class="sidebar-widget categories-widget" data-aos="fade-up" data-aos-delay="100">
             <h3>Categories</h3>
             <ul>
-              <li><a href="../blog.php">All Posts</a></li>
-              <li><a href="skincare.php">Skincare <span class="count">(8)</span></a></li>
-              <li><a href="treatments.php">Treatments <span class="count">(12)</span></a></li>
-              <li><a href="beauty.php">Beauty Tips <span class="count">(6)</span></a></li>
-              <li><a href="hair-health.php">Hair Health <span class="count">(5)</span></a></li>
-              <li><a href="wellness.php">Wellness <span class="count">(9)</span></a></li>
+              <li><a href="../blog.php" title="View All Blog Posts">All Posts</a></li>
+              <li><a href="skincare.php" title="Skincare Articles">Skincare <span class="count">(8)</span></a></li>
+              <li><a href="treatments.php" title="Treatment Articles">Treatments <span class="count">(12)</span></a></li>
+              <li><a href="beauty.php" title="Beauty Tips">Beauty Tips <span class="count">(6)</span></a></li>
+              <li><a href="hair-health.php" title="Hair Health Articles">Hair Health <span class="count">(5)</span></a></li>
+              <li><a href="wellness.php" title="Wellness Articles">Wellness <span class="count">(9)</span></a></li>
             </ul>
           </div>
 
@@ -153,9 +154,9 @@ $breadcrumb = [
           <div class="sidebar-widget recent-posts-widget" data-aos="fade-up" data-aos-delay="200">
             <h3>Recent Posts</h3>
             <ul>
-              <li><a href="../blog/hair-care-tips.php">Hair Care Tips for a Healthier Scalp</a></li>
-              <li><a href="../blog/body-contouring-techniques.php">Top 5 Body Contouring Techniques</a></li>
-              <li><a href="../blog/benefits-of-regular-facials.php">The Benefits of Regular Facials</a></li>
+              <li><a href="../blog/hair-care-tips.php" title="Read: Hair Care Tips for a Healthier Scalp">Hair Care Tips for a Healthier Scalp</a></li>
+              <li><a href="../blog/body-contouring-techniques.php" title="Read: Top 5 Body Contouring Techniques">Top 5 Body Contouring Techniques</a></li>
+              <li><a href="../blog/benefits-of-regular-facials.php" title="Read: The Benefits of Regular Facials">The Benefits of Regular Facials</a></li>
             </ul>
           </div>
 
@@ -179,7 +180,7 @@ $breadcrumb = [
   <!-- ── UNIFIED FOOTER ───────────────────────────────────────── -->
   <?php include '../footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

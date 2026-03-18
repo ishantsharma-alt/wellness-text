@@ -1,21 +1,26 @@
 <?php 
-$page_title = 'What Our Clients Say'; 
-$page_subtitle = 'Hear from those who have experienced the transformative power of Geneva Wellness Institute. Our clients share their stories of rejuvenation, confidence, and beauty. Let their words inspire your own journey to wellness'; 
+$page_title = 'Client Testimonials'; 
+$page_subtitle = 'Real stories from patients who transformed their beauty and confidence'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read client reviews and treatment experiences from patients at Geneva Wellness Institute. Discover why many trust our aesthetic clinic for advanced treatments." />
-  <meta name="keywords" content="testimonials, client reviews, success stories, Geneva Wellness feedback" />
+  <link rel="icon" href="img/geneva-favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Read real client testimonials and before-after results from our aesthetic clinic. Discover why patients choose Geneva Wellness for laser treatments and body contouring." />
+  <meta name="keywords" content="client testimonials, treatment results, aesthetic reviews, before after, laser treatment results, Alabang clinic" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Geneva Wellness Institute | Aesthetic Clinic Reviews" />
-  <meta property="og:description" content="Real stories from our satisfied clients." />
+  <meta property="og:title" content="Client Testimonials | Aesthetic Results" />
+  <meta property="og:description" content="Real client testimonials and before-after treatment results from Geneva Wellness aesthetic clinic. See transformation results from laser and body treatments." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://genevawellness.com/testimonials" />
-  <link rel="canonical" href="https://genevawellness.com/testimonials" />
-  <title>Geneva Wellness Institute | Aesthetic Clinic Reviews</title>
+  <meta property="og:url" content="https://genevawellness.com/testimonials" /><meta property="og:image" content="img/feature-img/testimonials.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="img/feature-img/testimonials.webp" />
+<link rel="canonical" href="https://genevawellness.com/testimonials" />
+  <title>Client Testimonials | Aesthetic Results</title>
 
   <!-- ── STRUCTURED DATA (Schema.org) ───────────────────────────────── -->
   <script type="application/ld+json">
@@ -122,23 +127,6 @@ $page_subtitle = 'Hear from those who have experienced the transformative power 
 
    <?php include 'hero-section.php'; ?>
 
-  <!-- ── INNER PAGE BANNER ────────────────────────────– -->
-  <!-- <section class="inner-banner" style="background: linear-gradient(135deg, #B00E09 0%, #FAD2B8 100%);">
-    <div class="inner-banner-content container">
-      <h1 data-aos="fade-up">What Our Clients Say</h1>
-      <p class="inner-banner-subtitle" data-aos="fade-up" data-aos-delay="100">Hear from those who have experienced the transformative power of Geneva Wellness Institute. Our clients share their stories of rejuvenation, confidence, and beauty. Let their words inspire your own journey to wellness
-
-</p>
-  <nav class="breadcrumb container" aria-label="Breadcrumb">
-    <a href="index.php">Home</a>
-    <span>/</span>
-    <span aria-current="page">Testimonials</span>
-  </nav>
-    </div>
-  </section> -->
-
-  
-
   <main>
 
     
@@ -155,47 +143,47 @@ $page_subtitle = 'Hear from those who have experienced the transformative power 
     <div class="video-grid">
 
      <div class="video-card" data-video="ww-OefRLgiQ">
-    <img src="https://img.youtube.com/vi/ww-OefRLgiQ/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/ww-OefRLgiQ/hqdefault.jpg" alt="Client Testimonial - Facial Treatment Results" title="Client Testimonial - Facial Treatment Results">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="xMq9w8a81bo">
-    <img src="https://img.youtube.com/vi/xMq9w8a81bo/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/xMq9w8a81bo/hqdefault.jpg" alt="Client Testimonial - Skin Rejuvenation" title="Client Testimonial - Skin Rejuvenation">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="8ER__ofvhEQ">
-    <img src="https://img.youtube.com/vi/8ER__ofvhEQ/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/8ER__ofvhEQ/hqdefault.jpg" alt="Client Testimonial - Anti-Aging Treatment" title="Client Testimonial - Anti-Aging Treatment">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="PYHIzG4w2HY">
-    <img src="https://img.youtube.com/vi/PYHIzG4w2HY/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/PYHIzG4w2HY/hqdefault.jpg" alt="Client Testimonial - Body Contouring" title="Client Testimonial - Body Contouring">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="sUaxQuCmmXg">
-    <img src="https://img.youtube.com/vi/sUaxQuCmmXg/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/sUaxQuCmmXg/hqdefault.jpg" alt="Client Testimonial - Laser Treatment" title="Client Testimonial - Laser Treatment">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="BN-SkkUI7jE">
-    <img src="https://img.youtube.com/vi/BN-SkkUI7jE/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/BN-SkkUI7jE/hqdefault.jpg" alt="Client Testimonial - Hair Restoration" title="Client Testimonial - Hair Restoration">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="A-0R_S9fliw">
-    <img src="https://img.youtube.com/vi/A-0R_S9fliw/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/A-0R_S9fliw/hqdefault.jpg" alt="Client Testimonial - Beauty Transformation" title="Client Testimonial - Beauty Transformation">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="w-dkEQi-LTE">
-    <img src="https://img.youtube.com/vi/w-dkEQi-LTE/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/w-dkEQi-LTE/hqdefault.jpg" alt="Client Testimonial - Wellness Results" title="Client Testimonial - Wellness Results">
     <div class="play-btn">▶</div>
   </div>
 
   <div class="video-card" data-video="PXNpnWjP3DM">
-    <img src="https://img.youtube.com/vi/PXNpnWjP3DM/hqdefault.jpg" alt="Video Testimonial">
+    <img src="https://img.youtube.com/vi/PXNpnWjP3DM/hqdefault.jpg" alt="Client Testimonial - Aesthetic Results" title="Client Testimonial - Aesthetic Results">
     <div class="play-btn">▶</div>
   </div>
     </div>
@@ -208,6 +196,7 @@ $page_subtitle = 'Hear from those who have experienced the transformative power 
     <span class="close-video">&times;</span>
     <iframe id="videoFrame" width="100%" height="500"
       src=""
+      title="Client Testimonial Video - Geneva Wellness"
       frameborder="0"
       allow="autoplay; encrypted-media"
       allowfullscreen>
@@ -221,7 +210,7 @@ $page_subtitle = 'Hear from those who have experienced the transformative power 
 
   </main>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

@@ -19,58 +19,58 @@ $_asset_base = rtrim($_site_root, '/');
 ?>
 
 <!-- ── SKIP TO CONTENT ─────────────────────────────────── -->
-<a href="#main-content" class="skip-to-content">Skip to main content</a>
+<a href="#main-content" class="skip-to-content" title="Skip to main content">Skip to main content</a>
 
 <header class="site-header" id="site-header">
   <nav class="nav container" aria-label="Primary navigation">
 
     <!-- Logo -->
-    <a href="<?php echo htmlspecialchars($_home_url); ?>" class="nav-logo" aria-label="Geneva Wellness Institute - Home">
-        <img src="<?php echo htmlspecialchars($_asset_base); ?>/img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
+    <a href="<?php echo htmlspecialchars($_home_url); ?>" class="nav-logo" aria-label="Geneva Wellness Institute - Home" title="Geneva Wellness Institute - Home">
+        <img src="img/geneva-logo.svg" alt="Geneva Wellness Institute Logo" title="Geneva Wellness Institute Logo">
     </a>
 
     <!-- Desktop Nav Links -->
     <ul class="nav-list">
-      <li><a href="about-us.php" class="nav-link">About Us</a></li>
+      <li><a href="about-us.php" class="nav-link" title="Learn About Our Institute">About Us</a></li>
       <li class="nav-item-has-dropdown">
-        <a href="treatments.php" class="nav-link">Treatments <span class="nav-arrow">›</span></a>
+        <a href="treatments.php" class="nav-link" title="View Our Treatments">Treatments <span class="nav-arrow">›</span></a>
         <div class="nav-dropdown">
           <div class="dropdown-inner">
             <div class="dropdown-group">
               <p class="dropdown-label">Face</p>
-              <a href="treatments.php#hifu" class="dropdown-link"><span>✦</span> HIFU Lift</a>
-              <a href="treatments.php#co2" class="dropdown-link"><span>✦</span> CO2 Laser</a>
-              <a href="treatments.php#carbon" class="dropdown-link"><span>✦</span> Carbon Laser</a>
-              <a href="treatments.php#hydrafacial" class="dropdown-link"><span>✦</span> HYDRA 7D</a>
+              <a href="treatments.php#hifu" class="dropdown-link" title="HIFU Lift Treatment"><span>✦</span> HIFU Lift</a>
+              <a href="treatments.php#co2" class="dropdown-link" title="CO2 Laser Treatment"><span>✦</span> CO2 Laser</a>
+              <a href="treatments.php#carbon" class="dropdown-link" title="Carbon Laser Peel Treatment"><span>✦</span> Carbon Laser</a>
+              <a href="treatments.php#hydrafacial" class="dropdown-link" title="HYDRA 7D Facials"><span>✦</span> HYDRA 7D</a>
             </div>
             <div class="dropdown-group">
               <p class="dropdown-label">Body</p>
-              <a href="treatments.php#exilis-face" class="dropdown-link"><span>✦</span> Exilis</a>
-              <a href="treatments.php#pico" class="dropdown-link"><span>✦</span> Pico Laser</a>
+              <a href="treatments.php#exilis-face" class="dropdown-link" title="Exilis Skin Tightening"><span>✦</span> Exilis</a>
+              <a href="treatments.php#pico" class="dropdown-link" title="Pico Laser Treatment"><span>✦</span> Pico Laser</a>
             </div>
             <div class="dropdown-promo">
               <p class="promo-tag">✦ New</p>
               <strong>Free Consultation</strong>
               <p>Book your personalized skin assessment today</p>
-              <a href="contact-us.php" class="promo-btn">Book Now</a>
+              <a href="contact-us.php" class="promo-btn" title="Book Your Free Consultation">Book Now</a>
             </div>
           </div>
         </div>
       </li>
-      <li><a href="gallery.php" class="nav-link">Gallery</a></li>
-      <li><a href="testimonials.php" class="nav-link">Testimonials</a></li>
-      <li><a href="blog.php" class="nav-link">Blog</a></li>
-      <li><a href="contact-us.php" class="nav-link">Contact</a></li>
+      <li><a href="gallery.php" class="nav-link" title="View Our Gallery">Gallery</a></li>
+      <li><a href="testimonials.php" class="nav-link" title="Read Client Testimonials">Testimonials</a></li>
+      <li><a href="blog.php" class="nav-link" title="Read Our Blog">Blog</a></li>
+      <li><a href="contact-us.php" class="nav-link" title="Contact Us">Contact</a></li>
     </ul>
 
     <!-- Desktop CTA -->
     <div class="nav-actions">
-      <a href="tel:+639XXXXXXXXX" class="nav-phone" aria-label="Call us">
+      <a href="tel:+639XXXXXXXXX" class="nav-phone" aria-label="Call us" title="Call us now">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
         </svg>
       </a>
-      <a href="contact-us.php#contact-form" class="nav-cta-btn">
+      <a href="contact-us.php#contact-form" class="nav-cta-btn" title="Schedule Your Free Consultation">
         <span>Book Consultation</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -108,8 +108,8 @@ $_asset_base = rtrim($_site_root, '/');
 
   <!-- Panel Header -->
   <div class="flyout-header">
-    <a href="<?php echo htmlspecialchars($_home_url); ?>" class="flyout-logo" tabindex="-1">
-      <img src="<?php echo htmlspecialchars($_asset_base); ?>/img/geneva-logo.svg" alt="Geneva Wellness Institute Logo">
+    <a href="<?php echo htmlspecialchars($_home_url); ?>" class="flyout-logo" tabindex="-1" title="Geneva Wellness Institute - Home">
+      <img src="<?php echo htmlspecialchars($_asset_base); ?>/img/geneva-logo.svg" alt="Geneva Wellness Institute Logo" title="Geneva Wellness Institute Logo">
     </a>
     <button class="flyout-close" id="flyout-close" aria-label="Close menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
@@ -122,7 +122,7 @@ $_asset_base = rtrim($_site_root, '/');
   <nav class="flyout-nav" aria-label="Mobile navigation">
     <ul class="flyout-list">
       <li>
-        <a href="about-us.php" class="flyout-link">About Us</a>
+        <a href="about-us.php" class="flyout-link" title="Learn About Our Institute">About Us</a>
       </li>
 
       <!-- Treatments with accordion sub-menu -->
@@ -136,30 +136,30 @@ $_asset_base = rtrim($_site_root, '/');
         </button>
         <ul class="flyout-sub" aria-hidden="true">
           <li class="flyout-sub-label">Face</li>
-          <li><a href="treatments.php#hifu"        class="flyout-sub-link">✦ HIFU Lift</a></li>
-          <li><a href="treatments.php#co2-laser"   class="flyout-sub-link">✦ CO2 Laser</a></li>
-          <li><a href="treatments.php#carbon-laser" class="flyout-sub-link">✦ Carbon Laser</a></li>
-          <li><a href="treatments.php#hydra-7d"    class="flyout-sub-link">✦ HYDRA 7D</a></li>
+          <li><a href="treatments.php#hifu"        class="flyout-sub-link" title="HIFU Lift Treatment">✦ HIFU Lift</a></li>
+          <li><a href="treatments.php#co2-laser"   class="flyout-sub-link" title="CO2 Laser Treatment">✦ CO2 Laser</a></li>
+          <li><a href="treatments.php#carbon-laser" class="flyout-sub-link" title="Carbon Laser Peel Treatment">✦ Carbon Laser</a></li>
+          <li><a href="treatments.php#hydra-7d"    class="flyout-sub-link" title="HYDRA 7D Facials">✦ HYDRA 7D</a></li>
           <li class="flyout-sub-label">Body</li>
-          <li><a href="treatments.php#exilis"      class="flyout-sub-link">✦ Exilis</a></li>
-          <li><a href="treatments.php#hair"        class="flyout-sub-link">✦ Hair Restoration</a></li>
-          <li><a href="treatments.php#pico"        class="flyout-sub-link">✦ Pico Laser</a></li>
+          <li><a href="treatments.php#exilis"      class="flyout-sub-link" title="Exilis Skin Tightening">✦ Exilis</a></li>
+          <li><a href="treatments.php#hair"        class="flyout-sub-link" title="Hair Restoration Treatment">✦ Hair Restoration</a></li>
+          <li><a href="treatments.php#pico"        class="flyout-sub-link" title="Pico Laser Treatment">✦ Pico Laser</a></li>
         </ul>
       </li>
 
-      <li><a href="gallery.php"      class="flyout-link">Gallery</a></li>
-      <li><a href="testimonials.php" class="flyout-link">Testimonials</a></li>
-      <li><a href="blog.php"         class="flyout-link">Blog</a></li>
-      <li><a href="contact-us.php"   class="flyout-link">Contact</a></li>
+      <li><a href="gallery.php"      class="flyout-link" title="View Our Gallery">Gallery</a></li>
+      <li><a href="testimonials.php" class="flyout-link" title="Read Client Testimonials">Testimonials</a></li>
+      <li><a href="blog.php"         class="flyout-link" title="Read Our Blog">Blog</a></li>
+      <li><a href="contact-us.php"   class="flyout-link" title="Contact Us">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Panel CTA -->
   <div class="flyout-cta">
-    <a href="contact-us.php#contact-form" class="flyout-cta-btn">Book Consultation</a>
+    <a href="contact-us.php#contact-form" class="flyout-cta-btn" title="Schedule Your Free Consultation">Book Consultation</a>
     <div class="flyout-cta-links">
-      <a href="tel:+639XXXXXXXXX">📞 Call Us</a>
-      <a href="https://wa.me/639XXXXXXXXX">💬 WhatsApp</a>
+      <a href="tel:+639XXXXXXXXX" title="Call us now">📞 Call Us</a>
+      <a href="https://wa.me/639XXXXXXXXX" title="Chat with us on WhatsApp">💬 WhatsApp</a>
     </div>
   </div>
 

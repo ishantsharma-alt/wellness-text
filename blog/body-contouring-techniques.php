@@ -11,6 +11,7 @@ $breadcrumb = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../img/geneva-favicon.svg" type="image/svg+xml">
   <meta name="description" content="Discover the most effective body contouring techniques including CoolSculpting, laser lipolysis, RF treatments, and more. Learn about benefits, recovery times, and which approach suits your goals." />
   <meta name="keywords" content="body contouring, CoolSculpting, laser lipolysis, radiofrequency, ultrasonic cavitation, liposuction, fat reduction, body sculpting" />
   <meta name="robots" content="index, follow" />
@@ -72,7 +73,7 @@ $breadcrumb = [
         <div class="blog-single-main">
 
           <figure class="single-featured-image" data-aos="fade-up">
-            <img src="../img/blog-2-new.jpg" alt="Body contouring treatment in progress" loading="lazy" width="800" height="450" />
+            <img src="../img/blog-2-new.webp" alt="Body contouring treatment in progress" loading="lazy" width="800" height="450" />
           </figure>
 
           <header class="article-header" data-aos="fade-up">
@@ -169,7 +170,7 @@ $breadcrumb = [
             <div class="related-posts-grid">
               <article class="blog-post" data-aos="fade-up">
                 <div class="post-image">
-                  <img src="../img/blog-featured.jpg" alt="HIFU article" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-featured.webp" alt="HIFU article" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
@@ -183,7 +184,7 @@ $breadcrumb = [
               </article>
               <article class="blog-post" data-aos="fade-up" data-aos-delay="100">
                 <div class="post-image">
-                  <img src="../img/blog-04.jpg" alt="Microneedling article" loading="lazy" width="400" height="250" />
+                  <img src="../img/blog-04.webp" alt="Microneedling article" loading="lazy" width="400" height="250" />
                 </div>
                 <div class="post-content">
                   <div class="post-meta">
@@ -215,7 +216,7 @@ $breadcrumb = [
 
   <?php include '../footer.php'; ?>
 
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="../components.js"></script>

@@ -413,8 +413,9 @@ window.addEventListener('scroll', () => {
   siteHeader?.classList.toggle('scrolled', isScrolled);
 }, { passive: true });
 
-/* ── HOMEPAGE POPUP ──────────────────────────────────────────────────────── */
-let popupShown = sessionStorage.getItem('popupShown');
+/* ── HOMEPAGE POPUP - DEPRECATED ────────────────────────────────────────── */
+/* Old popup system disabled - now using popup-booking.php */
+/* let popupShown = sessionStorage.getItem('popupShown');
 
 function initPopup() {
   const popup = document.getElementById('consultation-popup');

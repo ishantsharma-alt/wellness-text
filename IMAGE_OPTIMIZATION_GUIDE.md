@@ -15,11 +15,11 @@ This document outlines the image optimization requirements and best practices fo
 ### 1. Image Formats & Compression
 
 #### WebP Format (Primary)
-- Convert all PNG and JPG images to WebP for 25-35% smaller file sizes
-- Use with fallback to JPG for older browsers
+- Convert all webp and webp images to WebP for 25-35% smaller file sizes
+- Use with fallback to webp for older browsers
 
 **Tools:**
-- Online: TinyPNG, CloudConvert
+- Online: Tinywebp, CloudConvert
 - Local: ImageMagick, FFmpeg
 - VS Code Extension: WebP Converter
 
@@ -27,17 +27,17 @@ This document outlines the image optimization requirements and best practices fo
 ```html
 <picture>
   <source srcset="image.webp" type="image/webp">
-  <img src="image.jpg" alt="Description" loading="lazy" width="400" height="300">
+  <img src="image.webp" alt="Description" loading="lazy" width="400" height="300">
 </picture>
 ```
 
 #### Compression Levels
 | Image Type | Max Size | Quality |
 |---|---|---|
-| Hero/Featured | 200KB | 80% WebP, 85% JPG |
-| Gallery Thumbs | 50KB | 75% WebP, 80% JPG |
-| Blog Posts | 150KB | 82% WebP, 85% JPG |
-| Icons/Logos | 10KB | Lossless PNG |
+| Hero/Featured | 200KB | 80% WebP, 85% webp |
+| Gallery Thumbs | 50KB | 75% WebP, 80% webp |
+| Blog Posts | 150KB | 82% WebP, 85% webp |
+| Icons/Logos | 10KB | Lossless webp |
 
 ### 2. Responsive Image Sizes
 
@@ -110,7 +110,7 @@ This document outlines the image optimization requirements and best practices fo
 </IfModule>
 
 # Cache images
-<FilesMatch "\.(jpg|jpeg|png|gif|webp|ico)$">
+<FilesMatch "\.(webp|jpeg|webp|gif|webp|ico)$">
   Header set Cache-Control "max-age=31536000, public"
 </FilesMatch>
 
@@ -260,11 +260,11 @@ Consider using a CDN for:
       type="image/webp"
     >
     <img 
-      src="img/gallery-01-400.jpg"
+      src="img/gallery-01-400.webp"
       srcset="
-        img/gallery-01-400.jpg 400w,
-        img/gallery-01-600.jpg 600w,
-        img/gallery-01-800.jpg 800w
+        img/gallery-01-400.webp 400w,
+        img/gallery-01-600.webp 600w,
+        img/gallery-01-800.webp 800w
       "
       sizes="(max-width: 480px) 100vw, (max-width: 768px) 80vw, 400px"
       alt="Treatment result - facial skin improvement"
@@ -290,11 +290,11 @@ Consider using a CDN for:
       type="image/webp"
     >
     <img 
-      src="img/blog-featured-800.jpg"
+      src="img/blog-featured-800.webp"
       srcset="
-        img/blog-featured-600.jpg 600w,
-        img/blog-featured-800.jpg 800w,
-        img/blog-featured-1200.jpg 1200w
+        img/blog-featured-600.webp 600w,
+        img/blog-featured-800.webp 800w,
+        img/blog-featured-1200.webp 1200w
       "
       sizes="(max-width: 480px) 100vw, (max-width: 768px) 90vw, 800px"
       alt="Article featured image"
@@ -311,9 +311,9 @@ Consider using a CDN for:
 ## Tools & Resources
 
 ### Optimization Tools
-- **TinyPNG**: tinypng.com (Free, up to 20 images/month)
+- **Tinywebp**: tinywebp.com (Free, up to 20 images/month)
 - **ImageOptim**: imageoptim.com (Free, Mac)
-- **OptiPNG**: optipng.sourceforge.net (Free, Command line)
+- **Optiwebp**: optiwebp.sourceforge.net (Free, Command line)
 - **ImageMagick**: imagemagick.org (Free, Powerful)
 
 ### Testing Tools
@@ -331,7 +331,7 @@ Consider using a CDN for:
 
 ## Checklist for Developers
 
-- [ ] All images are in WebP format with JPG fallbacks
+- [ ] All images are in WebP format with webp fallbacks
 - [ ] Images have proper width/height attributes
 - [ ] Below-the-fold images use `loading="lazy"`
 - [ ] Responsive sizes defined with `srcset` and `sizes`
