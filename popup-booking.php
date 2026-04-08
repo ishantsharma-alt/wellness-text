@@ -431,22 +431,105 @@ function bk_select(string $id, array $groups): string {
     $$('.has-error', panel).forEach(el => el.classList.remove('has-error'));
   }
 
+  /* ── CRM API ─────────────────────────────────────────── */
+  var CRM_BASE = 'https://cc-crm-backend-production.up.railway.app/api/leads';
+
+  function formatScheduleAPI(value) {
+    if (!value) return "";
+    var date = new Date(value);
+    var year = date.getFullYear();
+    var month = String(date.getMonth() + 1).padStart(2, '0');
+    var day = String(date.getDate()).padStart(2, '0');
+    var hours = date.getHours();
+    var minutes = String(date.getMinutes()).padStart(2, '0');
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+    return year + '-' + month + '-' + day + ' at ' + hours + ':' + minutes + ' ' + ampm;
+  }
+
+  function mapPayment(value) {
+    if (!value) return '';
+    if (value === 'cash') return 'Cash';
+    if (value === 'debit' || value === 'credit') return 'Card';
+    return value;
+  }
+
   /* ── Submit ──────────────────────────────────────────── */
   function handleSubmit(e, panelId) {
     e.preventDefault();
     if (!validatePanel(panelId)) return;
-    const btn = e.target.querySelector('.bk-submit');
-    if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending\u2026'; }
-    setTimeout(function () {
+
+    var btn = e.target.querySelector('.bk-submit');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending\u2026';
+    }
+
+    var form = e.target;
+    var isBooking = (panelId === 'panel-direct');
+    var type   = isBooking ? 'booking' : 'call';
+    var center = 'GENEVA';
+
+    var url = new URL(CRM_BASE);
+    url.searchParams.set('type', type);
+    url.searchParams.set('center', center);
+
+    var body;
+    if (isBooking) {
+      body = {
+        fullname:       (form.querySelector('[name="name"]')               || {}).value || '',
+        email:          (form.querySelector('[name="email"]')              || {}).value || '',
+        phone:          (form.querySelector('[name="phone"]')              || {}).value || '',
+        treatment:      (form.querySelector('[name="treatment"]')          || {}).value || '',
+        age:            (form.querySelector('[name="age"]')                || {}).value || '',
+        schedule:       formatScheduleAPI((form.querySelector('[name="preferred_schedule"]') || {}).value),
+        payment_method: mapPayment((form.querySelector('[name="payment_method"]') || {}).value)
+      };
+    } else {
+      body = {
+        fullname:  (form.querySelector('[name="name"]')      || {}).value || '',
+        email:     (form.querySelector('[name="email"]')     || {}).value || '',
+        phone:     (form.querySelector('[name="phone"]')     || {}).value || '',
+        treatment: (form.querySelector('[name="treatment"]') || {}).value || '',
+        message:   (form.querySelector('[name="message"]')   || {}).value || ''
+      };
+    }
+
+    fetch(url.toString(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    .then(function (res) {
+      if (!res.ok) throw new Error('Server responded with ' + res.status);
+      return res.text();
+    })
+    .then(function () {
       showSuccess(panelId);
+    })
+    .catch(function (err) {
+      console.error('CRM submission error:', err);
+      var panel = document.getElementById(panelId);
+      if (panel) {
+        var existing = panel.querySelector('.bk-error-msg');
+        if (existing) existing.remove();
+        var errDiv = document.createElement('div');
+        errDiv.className = 'bk-error-msg';
+        errDiv.style.cssText = 'background:#fff5f5;border:1.5px solid #e05555;border-radius:8px;padding:12px 16px;color:#c53030;font-size:.88rem;font-family:Inter,sans-serif;margin-bottom:14px;text-align:center;';
+        errDiv.textContent = 'Something went wrong. Please try again or contact us directly.';
+        var formEl = panel.querySelector('.bk-form');
+        if (formEl) formEl.prepend(errDiv);
+      }
+    })
+    .finally(function () {
       if (btn) {
         btn.disabled = false;
-        btn.innerHTML = panelId === 'panel-direct'
+        btn.innerHTML = isBooking
           ? 'Confirm Booking <i class="fas fa-arrow-right"></i>'
-          : 'Request Consultation <i class="fas fa-arrow-right"></i>';
-      }
-    }, 1400);
-  }
+        : 'Request Consultation <i class="fas fa-arrow-right"></i>';
+    }
+  });
+}
 
   /* ── Init ────────────────────────────────────────────── */
   function init() {
@@ -506,3 +589,5 @@ function bk_select(string $id, array $groups): string {
 
 <!-- Google reCAPTCHA Script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
