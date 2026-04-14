@@ -687,9 +687,6 @@ function sanitize_input($input) {
                   <label for="agree">I agree to the privacy policy and terms of service</label>
                 </div>
 
-                <!-- Google reCAPTCHA -->
-                <div class="g-recaptcha" data-sitekey="6Le4Ho0sAAAAAB8laKgSVW8HCDQO3m2hT5Fehopn"></div>
-
                 <button type="submit" class="btn btn-primary btn-block">Request Consultation</button>
                 <p class="form-note">We respect your privacy. Your information will only be used to contact you about your consultation.</p>
 
@@ -814,10 +811,8 @@ function sanitize_input($input) {
   <button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="components.js"></script>
   <script src="script.js"></script>
-  <script src="enhancements.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -837,10 +832,37 @@ function sanitize_input($input) {
           var submitBtn = form.querySelector('.btn-primary');
           if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026'; }
 
-          var leadApiConfig = window.GenevaLeadApi || {};
-          var url = new URL(leadApiConfig.endpoint || 'https://cc-crm-backend-production.up.railway.app/api/leads');
-          url.searchParams.set('type', 'call');
-          url.searchParams.set('center', leadApiConfig.center || 'GENEVA');
+          function showFormError(message) {
+            var errDiv = form.querySelector('.form-error-message');
+            if (!errDiv) {
+              errDiv = document.createElement('div');
+              errDiv.className = 'form-error-message';
+              errDiv.style.cssText = 'background:#fff5f5;border:1.5px solid #e05555;border-radius:8px;padding:14px 20px;color:#c53030;font-size:.92rem;text-align:center;margin-bottom:18px;';
+              form.prepend(errDiv);
+            }
+            errDiv.textContent = message;
+          }
+
+          function parseLeadApiResponse(res) {
+            return res.text().then(function (text) {
+              var data = {};
+              if (text) {
+                try {
+                  data = JSON.parse(text);
+                } catch (parseError) {
+                  data = { message: text };
+                }
+              }
+
+              if (!res.ok) {
+                throw new Error(data.message || ('Server responded with ' + res.status));
+              }
+
+              return data;
+            });
+          }
+
+          var submitUrl = 'lead-submit.php?type=call&center=GENEVA';
 
           var body = {
             fullname:  (form.querySelector('#name')      || {}).value || '',
@@ -850,15 +872,12 @@ function sanitize_input($input) {
             message:   (form.querySelector('#message')   || {}).value || ''
           };
 
-          fetch(url.toString(), {
+          fetch(submitUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body)
           })
-          .then(function (res) {
-            if (!res.ok) throw new Error('Server responded with ' + res.status);
-            return res.json();
-          })
+          .then(parseLeadApiResponse)
           .then(function () {
             var msgDiv = document.querySelector('.form-success-message');
             if (!msgDiv) {
@@ -872,14 +891,9 @@ function sanitize_input($input) {
           })
           .catch(function (err) {
             console.error('CRM submission error:', err);
-            var errDiv = form.querySelector('.form-error-message');
-            if (!errDiv) {
-              errDiv = document.createElement('div');
-              errDiv.className = 'form-error-message';
-              errDiv.style.cssText = 'background:#fff5f5;border:1.5px solid #e05555;border-radius:8px;padding:14px 20px;color:#c53030;font-size:.92rem;text-align:center;margin-bottom:18px;';
-              form.prepend(errDiv);
-            }
-            errDiv.textContent = 'Something went wrong. Please try again or contact us directly.';
+            showFormError(err && err.message
+              ? err.message
+              : 'Something went wrong. Please try again or contact us directly.');
           })
           .finally(function () {
             if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Request Consultation'; }

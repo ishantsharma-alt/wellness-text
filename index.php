@@ -1061,7 +1061,7 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #000; }
           <em>Wellness &amp; Aesthetic</em>
           Treatments
         </h1>
-        <p class="gw-sub">Premium non-invasive treatments crafted for your unique skin and hair goals — backed by 15+ years of expertise and cutting-edge technology.</p>
+        <p class="gw-sub">Premium non-invasive treatments crafted for your unique skin and hair goals. LOCAL PREVIEW TEST. Backed by 15+ years of expertise and cutting-edge technology.</p>
         <div class="gw-pills">
           <div class="gw-pill"><i class="fas fa-bolt"></i><span>Fast Results</span></div>
           <div class="gw-pill"><i class="fas fa-check"></i><span>100% Safe</span></div>
@@ -2072,7 +2072,6 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #000; }
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="components.js"></script>
   <script src="script.js"></script>
-  <script src="enhancements.js"></script>
 
   <!-- ── VIDEO MODAL SCRIPT ─────────────────────────── -->
   <script>

@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const popupOverlay = document.getElementById('consultation-popup');
   const popupTriggers = document.querySelectorAll('.popup-trigger');
   const popupClose = document.querySelector('.popup-close');
-  const popupForm = document.getElementById('consultation-form');
+  const popupForm = document.getElementById('popup-consultation-form');
   const hasBookingPopup = typeof window.BookingPopup !== 'undefined';
 
   if (hasBookingPopup && popupTriggers.length) {

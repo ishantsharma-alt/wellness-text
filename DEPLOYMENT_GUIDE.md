@@ -21,7 +21,6 @@ Complete step-by-step guide to deploy the website to production.
 - [ ] Contact form handler configured
 - [ ] Email notifications set up
 - [ ] Form validation tested
-- [ ] reCAPTCHA added (recommended)
 - [ ] Newsletter subscription configured
 - [ ] Database connections tested (if applicable)
 

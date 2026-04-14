@@ -114,9 +114,6 @@ function bk_select(string $id, array $groups): string {
 .bk-form .form-ctrl.error + .bk-field-err,
 .bk-form .form-group.has-error .bk-field-err{display:block}
 
-/* ── reCAPTCHA ───────────────────────────────────────────── */
-.g-recaptcha{margin:14px 0 16px 0;transform:scale(0.98);transform-origin:0}
-
 /* ── Submit ──────────────────────────────────────────────── */
 .bk-submit{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 28px;border-radius:8px;background:linear-gradient(135deg,#CAAE5F 0%,#B8955C 100%);color:#fff;font-family:'Inter',sans-serif;font-size:.92rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;border:none;box-shadow:0 4px 18px rgba(202,174,95,0.3);transition:transform 0.3s cubic-bezier(.4,0,.2,1),box-shadow 0.3s cubic-bezier(.4,0,.2,1);margin-top:6px;position:relative;overflow:hidden}
 .bk-submit::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.13);transform:translateX(-101%);transition:transform .34s ease}
@@ -152,7 +149,6 @@ function bk_select(string $id, array $groups): string {
   .bk-close{width:32px;height:32px;font-size:.8rem}
   .bk-tabs{margin:12px 0 0}
   .bk-tab-bar{margin-top:12px}
-  .g-recaptcha{margin:6px 0 8px 0;transform:scale(0.75);transform-origin:0;padding:8px 0}
   .bk-success h4{font-size:1.3rem;margin-bottom:6px}
   .bk-success p{font-size:.8rem}
   .bk-success-icon{width:60px;height:60px;font-size:1.5rem;margin-bottom:12px}
@@ -170,7 +166,6 @@ function bk_select(string $id, array $groups): string {
   .bk-close{width:28px;height:28px;font-size:.7rem}
   .bk-submit{padding:7px 14px;font-size:.7rem}
   .bk-tab-btn{font-size:.5rem;padding:6px 4px}
-  .g-recaptcha{transform:scale(0.65);transform-origin:0;margin:4px 0 6px 0}
 }
 </style>
 
@@ -251,8 +246,6 @@ function bk_select(string $id, array $groups): string {
                       placeholder="Tell us about your concerns or questions&hellip;" required></textarea>
             <span class="bk-field-err" role="alert"></span>
           </div>
-          <!-- Google reCAPTCHA -->
-          <div class="g-recaptcha" data-sitekey="6Le4Ho0sAAAAAB8laKgSVW8HCDQO3m2hT5Fehopn"></div>
           <button type="submit" class="bk-submit">
             Request Consultation <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </button>
@@ -317,8 +310,6 @@ function bk_select(string $id, array $groups): string {
               <option value="credit">Credit Card</option>
             </select>
           </div>
-          <!-- Google reCAPTCHA -->
-          <div class="g-recaptcha" data-sitekey="6Le4Ho0sAAAAAB8laKgSVW8HCDQO3m2hT5Fehopn"></div>
           <button type="submit" class="bk-submit">
             Confirm Booking <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </button>
@@ -335,6 +326,13 @@ function bk_select(string $id, array $groups): string {
 <script>
 (function () {
   'use strict';
+
+  <?php
+    $currentDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? ''));
+    $currentDir = rtrim($currentDir, '/');
+    $basePath = preg_replace('#/(blog|blog-category)$#', '', $currentDir);
+    $leadSubmitPath = ($basePath !== '' ? $basePath : '') . '/lead-submit.php';
+  ?>
 
   /* ── State ───────────────────────────────────────────── */
   const state = {};
@@ -432,12 +430,20 @@ function bk_select(string $id, array $groups): string {
   }
 
   /* ── CRM API ─────────────────────────────────────────── */
-  var leadApiConfig = window.GenevaLeadApi || {};
-  var CRM_BASE = leadApiConfig.endpoint || 'https://cc-crm-backend-production.up.railway.app/api/leads';
-  var CRM_CENTER = leadApiConfig.center || 'GENEVA';
+  var CRM_BASE = <?php echo json_encode($leadSubmitPath, JSON_UNESCAPED_SLASHES); ?>;
+  var CRM_CENTER = 'GENEVA';
 
   function formatScheduleAPI(value) {
     if (!value) return "";
+    var directMatch = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+    if (directMatch) {
+      var hour24 = parseInt(directMatch[4], 10);
+      var minutes = directMatch[5];
+      var ampm = hour24 >= 12 ? 'PM' : 'AM';
+      var hour12 = hour24 % 12 || 12;
+      return directMatch[1] + '-' + directMatch[2] + '-' + directMatch[3] + ' at ' + hour12 + ':' + minutes + ' ' + ampm;
+    }
+
     var date = new Date(value);
     var year = date.getFullYear();
     var month = String(date.getMonth() + 1).padStart(2, '0');
@@ -456,25 +462,55 @@ function bk_select(string $id, array $groups): string {
     return value;
   }
 
+  function showPanelError(panelId, message) {
+    var panel = document.getElementById(panelId);
+    if (!panel) return;
+    var existing = panel.querySelector('.bk-error-msg');
+    if (existing) existing.remove();
+    var errDiv = document.createElement('div');
+    errDiv.className = 'bk-error-msg';
+    errDiv.style.cssText = 'background:#fff5f5;border:1.5px solid #e05555;border-radius:8px;padding:12px 16px;color:#c53030;font-size:.88rem;font-family:Inter,sans-serif;margin-bottom:14px;text-align:center;';
+    errDiv.textContent = message;
+    var formEl = panel.querySelector('.bk-form');
+    if (formEl) formEl.prepend(errDiv);
+  }
+
+  function parseLeadApiResponse(res) {
+    return res.text().then(function (text) {
+      var data = {};
+      if (text) {
+        try {
+          data = JSON.parse(text);
+        } catch (parseError) {
+          data = { message: text };
+        }
+      }
+
+      if (!res.ok) {
+        throw new Error(data.message || ('Server responded with ' + res.status));
+      }
+
+      return data;
+    });
+  }
+
   /* ── Submit ──────────────────────────────────────────── */
   function handleSubmit(e, panelId) {
     e.preventDefault();
     if (!validatePanel(panelId)) return;
 
+    var form = e.target;
     var btn = e.target.querySelector('.bk-submit');
     if (btn) {
       btn.disabled = true;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending\u2026';
     }
 
-    var form = e.target;
     var isBooking = (panelId === 'panel-direct');
     var type   = isBooking ? 'booking' : 'call';
     var center = CRM_CENTER;
 
-    var url = new URL(CRM_BASE);
-    url.searchParams.set('type', type);
-    url.searchParams.set('center', center);
+    var submitUrl = CRM_BASE + '?type=' + encodeURIComponent(type) + '&center=' + encodeURIComponent(center);
 
     var body;
     if (isBooking) {
@@ -497,31 +533,20 @@ function bk_select(string $id, array $groups): string {
       };
     }
 
-    fetch(url.toString(), {
+    fetch(submitUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     })
-    .then(function (res) {
-      if (!res.ok) throw new Error('Server responded with ' + res.status);
-      return res.text();
-    })
+    .then(parseLeadApiResponse)
     .then(function () {
       showSuccess(panelId);
     })
     .catch(function (err) {
       console.error('CRM submission error:', err);
-      var panel = document.getElementById(panelId);
-      if (panel) {
-        var existing = panel.querySelector('.bk-error-msg');
-        if (existing) existing.remove();
-        var errDiv = document.createElement('div');
-        errDiv.className = 'bk-error-msg';
-        errDiv.style.cssText = 'background:#fff5f5;border:1.5px solid #e05555;border-radius:8px;padding:12px 16px;color:#c53030;font-size:.88rem;font-family:Inter,sans-serif;margin-bottom:14px;text-align:center;';
-        errDiv.textContent = 'Something went wrong. Please try again or contact us directly.';
-        var formEl = panel.querySelector('.bk-form');
-        if (formEl) formEl.prepend(errDiv);
-      }
+      showPanelError(panelId, err && err.message
+        ? err.message
+        : 'Something went wrong. Please try again or contact us directly.');
     })
     .finally(function () {
       if (btn) {
@@ -588,8 +613,5 @@ function bk_select(string $id, array $groups): string {
 
 })();
 </script>
-
-<!-- Google reCAPTCHA Script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 

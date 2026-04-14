@@ -311,7 +311,6 @@ img/
 ### Form Not Submitting
 - Verify action points to handler: `submit-contact.php`
 - Check form has `name` attributes
-- Enable reCAPTCHA (optional but recommended)
 
 ### Mobile Menu Not Working
 - Ensure script.js is loaded
@@ -402,7 +401,6 @@ img/
 - [ ] CSRF tokens on forms (if backend)
 - [ ] SQL injection protection (if database)
 - [ ] HTTPS enabled (SSL certificate)
-- [ ] reCAPTCHA on forms
 - [ ] Security headers configured
 - [ ] No debug mode in production
 - [ ] API keys not exposed
