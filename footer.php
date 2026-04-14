@@ -458,5 +458,12 @@
   </div>
 </div>
 
+<script>
+  window.GenevaLeadApi = window.GenevaLeadApi || {
+    endpoint: 'https://cc-crm-backend-production.up.railway.app/api/leads',
+    center: 'GENEVA'
+  };
+</script>
+
 <!-- Include the Popup Booking Component -->
 <?php require_once __DIR__ . '/popup-booking.php'; ?>

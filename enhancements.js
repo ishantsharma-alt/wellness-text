@@ -384,6 +384,11 @@ window.addEventListener('scroll', () => {
 let popupShown = false;
 
 function initPopup() {
+  if (typeof window.BookingPopup !== 'undefined') {
+    popupShown = true;
+    return;
+  }
+
   const popup = document.getElementById('consultation-popup');
   if (!popup) return;
 
@@ -425,6 +430,8 @@ function initPopup() {
 }
 
 function checkScrollTrigger() {
+  if (typeof window.BookingPopup !== 'undefined') return;
+
   try { if (sessionStorage.getItem('popupShown')) return; } catch(e) { return; }
   if (popupShown) return;
 
@@ -535,6 +542,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const popupTriggers = document.querySelectorAll('.popup-trigger');
   const popupClose = document.querySelector('.popup-close');
   const popupForm = document.getElementById('consultation-form');
+  const hasBookingPopup = typeof window.BookingPopup !== 'undefined';
+
+  if (hasBookingPopup && popupTriggers.length) {
+    popupTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.BookingPopup.open('consultation');
+      });
+    });
+    return;
+  }
 
   if (!popupOverlay) return;
 

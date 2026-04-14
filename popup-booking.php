@@ -432,7 +432,9 @@ function bk_select(string $id, array $groups): string {
   }
 
   /* ── CRM API ─────────────────────────────────────────── */
-  var CRM_BASE = 'https://cc-crm-backend-production.up.railway.app/api/leads';
+  var leadApiConfig = window.GenevaLeadApi || {};
+  var CRM_BASE = leadApiConfig.endpoint || 'https://cc-crm-backend-production.up.railway.app/api/leads';
+  var CRM_CENTER = leadApiConfig.center || 'GENEVA';
 
   function formatScheduleAPI(value) {
     if (!value) return "";
@@ -468,7 +470,7 @@ function bk_select(string $id, array $groups): string {
     var form = e.target;
     var isBooking = (panelId === 'panel-direct');
     var type   = isBooking ? 'booking' : 'call';
-    var center = 'GENEVA';
+    var center = CRM_CENTER;
 
     var url = new URL(CRM_BASE);
     url.searchParams.set('type', type);

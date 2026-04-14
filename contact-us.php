@@ -837,9 +837,10 @@ function sanitize_input($input) {
           var submitBtn = form.querySelector('.btn-primary');
           if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026'; }
 
-          var url = new URL('https://cc-crm-backend-production.up.railway.app/api/leads');
+          var leadApiConfig = window.GenevaLeadApi || {};
+          var url = new URL(leadApiConfig.endpoint || 'https://cc-crm-backend-production.up.railway.app/api/leads');
           url.searchParams.set('type', 'call');
-          url.searchParams.set('center', 'GENEVA');
+          url.searchParams.set('center', leadApiConfig.center || 'GENEVA');
 
           var body = {
             fullname:  (form.querySelector('#name')      || {}).value || '',
